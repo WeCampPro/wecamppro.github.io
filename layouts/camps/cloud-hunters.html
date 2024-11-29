@@ -14,12 +14,12 @@
    <i class="far fa-angle-double-up">
    </i>
   </button>
-  {{ partial "hamburger" . }}
+{{ partial "hamburger" . }}
   <div class="body-overlay">
   </div>
   <header class="it-header-height">
    <div class="it-header-2-top-area it-header-2-top-style it-header-inner-style black-bg">
-    {{ partial "top" . }}>
+{{ partial "top" . }}
    </div>
    <div class="it-header-5-area" id="header-sticky">
     <div class="container">
@@ -27,12 +27,12 @@
       <div class="row align-items-center">
        <div class="col-xl-2 col-6">
         <div class="it-header-5-logo">
-         <a href="index.html">
+         <a href="/">
           <img alt="" src="/img/logo/logo-black.png"/>
          </a>
         </div>
        </div>
-       {{ partial "nav" . }}
+{{ partial "nav-page" . }}
        <!--<div class="col-xl-3 col-6">
         <div class="it-header-2-left d-flex align-items-center justify-content-end">
          <div class="it-header-2-icon">
@@ -256,10 +256,10 @@
           <span>
            شهریه هر ترم
           </span>
-          <i><a href="/camps/price"><s>۲۳,۰۰۰,۰۰۰</s> تومان</a></i>
+          <i><a href="/camps/price">۲۳,۰۰۰,۰۰۰ تومان</a></i>
          </div>
          <i>
-          این کمپ در سه ترم برگزار می‌شود.
+          با امکان پرداخت قسطی
          </i>
         </div>
         <a class="it-btn w-100 text-center mb-20" href="/camps/price">
@@ -293,10 +293,10 @@
           </li>
           <li>
            <span>
-            مدت جلسات هر ترم
+            مدت کمپ
            </span>
            <span>
-            ۷۰+ ساعت
+            سه ترم
            </span>
           </li>
           <li>
@@ -330,42 +330,7 @@
      </div>
     </div>
    </div>
-   <div class="it-newsletter-area it-newsletter-height fix p-relative theme-bg">
-    <div class="it-newsletter-shape-1 d-none d-lg-block">
-     <img alt="" src="/img/newsletter/shape-1-1.png"/>
-    </div>
-    <div class="it-newsletter-shape-2 d-none d-lg-block">
-     <img alt="" src="/img/newsletter/shape-1-2.png"/>
-    </div>
-    <div class="it-newsletter-shape-3 d-none d-xl-block">
-     <img alt="" src="/img/newsletter/shape-1-3.png"/>
-    </div>
-    <div class="it-newsletter-shape-4 d-none d-xl-block">
-     <img alt="" src="/img/newsletter/shape-1-4.png"/>
-    </div>
-    <div class="container">
-     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-6">
-       <div class="it-newsletter-right">
-        <h4 class="it-section-title text-white pb-20">
-         به خبرنامه ما بپیوندید
-        </h4>
-        <span>
-         برای دریافت آخرین به روز رسانی و اخبار ما در خبرنامه ما مشترک شوید.
-        </span>
-       </div>
-      </div>
-      <div class="col-xl-6 col-lg-6 col-md-6">
-       <div class="it-newsletter-left p-relative text-end">
-        <input placeholder="ايميل خود را وارد کنيد" type="text"/>
-        <button class="it-btn black-bg" type="submit">
-         <span>اشتراک</span>
-        </button>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
+{{ partial "newsletter" . }}
   </main>
 {{ partial "footer" . }}
   <script src="/js/jquery.js">
