@@ -15,3 +15,9 @@ publishDir              = "docs"
     path = '/camps/cloud-hunters'
     [cascade.params]
       layout = "cloud-hunters"
+
+[[cascade]]
+   [cascade._target]
+    path = '/camps/price'
+    [cascade.params]
+      layout = "price"
