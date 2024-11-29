@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on وی‌کمپ، کمپ‌های حرفه‌ای</title>
+    <link>https://wecamp.pro/tags/</link>
+    <description>Recent content in Tags on وی‌کمپ، کمپ‌های حرفه‌ای</description>
+    <generator>Hugo</generator>
+    <language>fa-ir</language>
+    <lastBuildDate>Sun, 26 Nov 2017 18:17:52 -0700</lastBuildDate>
+    <atom:link href="https://wecamp.pro/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Article</title>
+      <link>https://wecamp.pro/tags/article/</link>
+      <pubDate>Sun, 26 Nov 2017 18:17:52 -0700</pubDate>
+      <guid>https://wecamp.pro/tags/article/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>First</title>
+      <link>https://wecamp.pro/tags/first/</link>
+      <pubDate>Sun, 26 Nov 2017 18:17:52 -0700</pubDate>
+      <guid>https://wecamp.pro/tags/first/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Demo</title>
+      <link>https://wecamp.pro/tags/demo/</link>
+      <pubDate>Wed, 29 Mar 2017 18:17:56 -0700</pubDate>
+      <guid>https://wecamp.pro/tags/demo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Example</title>
+      <link>https://wecamp.pro/tags/example/</link>
+      <pubDate>Wed, 29 Mar 2017 18:17:56 -0700</pubDate>
+      <guid>https://wecamp.pro/tags/example/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Post</title>
+      <link>https://wecamp.pro/tags/post/</link>
+      <pubDate>Wed, 29 Mar 2017 18:17:56 -0700</pubDate>
+      <guid>https://wecamp.pro/tags/post/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
