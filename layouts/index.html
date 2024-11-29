@@ -11,82 +11,55 @@
         <button class="scroll-top scroll-to-target" data-target="html">
             <i class="far fa-angle-double-up"> </i>
         </button>
-        <div class="it-offcanvas-area">
-            <div class="itoffcanvas">
-                <div class="it-offcanva-bottom-shape d-none d-xxl-block"></div>
-                <div class="itoffcanvas__close-btn">
-                    <button class="close-btn">
-                        <i class="fal fa-times"> </i>
-                    </button>
-                </div>
-                <div class="itoffcanvas__logo">
-                    <a href="index.html">
-                        <img alt="" src="/img/logo/logo-white.png" />
-                    </a>
-                </div>
-                <div class="itoffcanvas__text">
-                    <p>
-                        وی‌کمپ
-                    </p>
-                </div>
-                <div class="it-menu-mobile"></div>
-                <div class="itoffcanvas__info">
-                    <h3 class="offcanva-title">
-                        در تماس باشید
-                    </h3>
-                    <div class="it-info-wrapper mb-20 d-flex align-items-center">
-                        <div class="itoffcanvas__info-icon">
-                            <a href="#">
-                                <i class="fal fa-envelope"> </i>
-                            </a>
-                        </div>
-                        <div class="itoffcanvas__info-address">
-                            <span>
-                                ایمیل
-                            </span>
-                            <a href="maito:hello@yourmail.com">
-                                chat@wecamp.pro
-                            </a>
-                        </div>
-                    </div>
-                    <div class="it-info-wrapper mb-20 d-flex align-items-center">
-                        <div class="itoffcanvas__info-icon">
-                            <a href="#">
-                                <i class="fal fa-phone-alt"> </i>
-                            </a>
-                        </div>
-                        <div class="itoffcanvas__info-address">
-                            <span>
-                                تلفن
-                            </span>
-                            <a href="tel:+989369090351">
-                                09369090351
-                            </a>
-                        </div>
-                    </div>
-                    <div class="it-info-wrapper mb-20 d-flex align-items-center">
-                        <div class="itoffcanvas__info-icon">
-                            <a href="#">
-                                <i class="fas fa-map-marker-alt"> </i>
-                            </a>
-                        </div>
-                        <div class="itoffcanvas__info-address">
-                            <span>
-                                نشانی
-                            </span>
-                            <a href="https://maps.app.goo.gl/9As5bYDPS2Wc2c5J8" target="_blank">
-                                تهران، فرجام، ساختمان مهندسی پیشرفت، طبقه اول، انجمن TIM
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{ partial "hamburger" . }}
         <div class="body-overlay"></div>
         <header>
             <div class="it-header-transparent">
                 <div class="it-header-2-top-area it-header-3-top it-header-2-top-height white-bg">
-{{ partial "nav" . }}
+{{ partial "top" . }}
+                </div>
+                <div class="it-header-2-area it-header-3-style" id="header-sticky">
+                    <div class="container">
+                        <div class="it-header-2-plr">
+                            <div class="it-header-wrap p-relative">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-2 col-7">
+                                        <div class="it-header-2-logo">
+                                            <a href="index.html">
+                                                <img alt="" src="/img/logo/logo-yellow.png" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{ partial "nav" . }}
+                                    <div class="col-xl-3 col-5">
+                                        <div class="it-header-2-left d-flex align-items-center justify-content-end">
+                                            <!--<div class="it-header-2-icon">
+                                                <a href="cart.html">
+                                                    <i class="fa-regular fa-cart-shopping"> </i>
+                                                </a>
+                                            </div>
+                                            <div class="it-header-2-button d-none d-md-block">
+                                                <a class="it-btn-white" href="contact.html">
+                                                    <span>
+                                                        با ما تماس بگیرید
+                                                        <svg fill="none" height="14" viewBox="0 0 17 14" width="17" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 1.24023L16 7.24023L11 13.2402" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"></path>
+                                                            <path d="M1 7.24023H16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"></path>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                            </div>-->
+                                            <div class="it-header-2-bar d-xl-none">
+                                                <button class="it-menu-bar">
+                                                    <i class="fa-solid fa-bars"> </i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>

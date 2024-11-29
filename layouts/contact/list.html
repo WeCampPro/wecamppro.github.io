@@ -14,90 +14,56 @@
    <i class="far fa-angle-double-up">
    </i>
   </button>
-  <div class="it-offcanvas-area">
-   <div class="itoffcanvas">
-    <div class="it-offcanva-bottom-shape d-none d-xxl-block">
-    </div>
-    <div class="itoffcanvas__close-btn">
-     <button class="close-btn">
-      <i class="fal fa-times">
-      </i>
-     </button>
-    </div>
-    <div class="itoffcanvas__logo">
-     <a href="/">
-      <img alt="" src="/img/logo/logo-white.png"/>
-     </a>
-    </div>
-    <div class="itoffcanvas__text">
-     <p>
-      گاهی اوقات با شناسه رایگان دنبال می شود. خمیرمایه یا دروازه بالینی را ترک نکنید. کارتون Euismod nibh
-فردا یک بالش آویزان کنید
-     </p>
-    </div>
-    <div class="it-menu-mobile">
-    </div>
-    <div class="itoffcanvas__info">
-     <h3 class="offcanva-title">
-      در تماس باشید
-     </h3>
-     <div class="it-info-wrapper mb-20 d-flex align-items-center">
-      <div class="itoffcanvas__info-icon">
-       <a href="#">
-        <i class="fal fa-envelope">
-        </i>
-       </a>
-      </div>
-      <div class="itoffcanvas__info-address">
-       <span>
-        پست الکترونیک
-       </span>
-       <a href="maito:hello@yourmail.com">
-            example@mail.com
-       </a>
-      </div>
-     </div>
-     <div class="it-info-wrapper mb-20 d-flex align-items-center">
-      <div class="itoffcanvas__info-icon">
-       <a href="#">
-        <i class="fal fa-phone-alt">
-        </i>
-       </a>
-      </div>
-      <div class="itoffcanvas__info-address">
-       <span>
-        تلفن
-       </span>
-       <a href="tel:(00)45611227890">
-        (00) 456 1122 7890
-       </a>
-      </div>
-     </div>
-     <div class="it-info-wrapper mb-20 d-flex align-items-center">
-      <div class="itoffcanvas__info-icon">
-       <a href="#">
-        <i class="fas fa-map-marker-alt">
-        </i>
-       </a>
-      </div>
-      <div class="itoffcanvas__info-address">
-       <span>
-        محل
-       </span>
-       <a href="htits://www.google.com/maps/@37.4801311,22.8928877,3z" target="_blank">
-        ریورساید 255،
-سانفرانسیسکو، ایالات متحده آمریکا
-       </a>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
+{{ partial "hamburger" . }}
   <div class="body-overlay">
   </div>
   <header class="it-header-height">
    <div class="it-header-2-top-area it-header-2-top-style it-header-inner-style black-bg">
+{{ partial "top" . }}   </div>
+   <div class="it-header-5-area" id="header-sticky">
+    <div class="container">
+     <div class="it-header-wrap p-relative">
+      <div class="row align-items-center">
+       <div class="col-xl-2 col-6">
+        <div class="it-header-5-logo">
+         <a href="/">
+          <img alt="" src="/img/logo/logo-black.png"/>
+         </a>
+        </div>
+       </div>
 {{ partial "nav" . }}
+       <!--<div class="col-xl-3 col-6">
+        <div class="it-header-2-left d-flex align-items-center justify-content-end">
+         <div class="it-header-2-icon">
+          <a href="cart.html">
+           <i class="fa-regular fa-cart-shopping">
+           </i>
+          </a>
+         </div>
+         <div class="it-header-2-button d-none d-md-block">
+          <a class="it-btn" href="contact.html">
+           <span>
+            با ما تماس بگیرید
+            <svg fill="none" height="14" viewBox="0 0 17 14" width="17" xmlns="http://www.w3.org/2000/svg">
+             <path d="M11 1.24023L16 7.24023L11 13.2402" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5">
+             </path>
+             <path d="M1 7.24023H16" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5">
+             </path>
+            </svg>
+           </span>
+          </a>
+         </div>
+         <div class="it-header-2-bar d-xl-none">
+          <button class="it-menu-bar">
+           <i class="fa-solid fa-bars">
+           </i>
+          </button>
+         </div>
+        </div>
+       </div>-->
+      </div>
+     </div>
+    </div>
    </div>
   </header>
   <main>
