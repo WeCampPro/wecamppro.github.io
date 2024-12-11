@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/camps/</loc>
+    <loc>https://wecamp.pro/camps/</loc>
   </url><url>
-    <loc>http://localhost:1313/camps/cloud-hunters/</loc>
+    <loc>https://wecamp.pro/camps/cloud-hunters/</loc>
   </url><url>
-    <loc>http://localhost:1313/camps/price/</loc>
+    <loc>https://wecamp.pro/camps/price/</loc>
   </url><url>
-    <loc>http://localhost:1313/contact/</loc>
+    <loc>https://wecamp.pro/contact/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://wecamp.pro/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://wecamp.pro/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://wecamp.pro/</loc>
   </url>
 </urlset>
