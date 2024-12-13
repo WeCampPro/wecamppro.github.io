@@ -1345,5 +1345,14 @@
         <script src="/js/imagesloaded-pkgd.js"></script>
         <script src="/js/ajax-form.js"></script>
         <script src="/js/main.js"></script>
+        <script>
+            function openInApp(event, appLink) {
+                // Check if the visitor is using a mobile device
+                if (/obi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+                    window.location = appLink; // Redirect to Instagram app
+                }
+            }
+        </script>
+
     </body>
 </html>

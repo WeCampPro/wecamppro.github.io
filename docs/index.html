@@ -797,5 +797,14 @@
         <script src="https://wecamp.pro/js/imagesloaded-pkgd.js"></script>
         <script src="https://wecamp.pro/js/ajax-form.js"></script>
         <script src="https://wecamp.pro/js/main.js"></script>
+        <script>
+            function openInApp(event, appLink) {
+                
+                if (/obi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+                    window.location = appLink; 
+                }
+            }
+        </script>
+
     </body>
 </html>
