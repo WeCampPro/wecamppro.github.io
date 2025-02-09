@@ -15,6 +15,16 @@ publishDir              = "docs"
     path = '/camps/cloud-hunters'
     [cascade.params]
       layout = "cloud-hunters"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/design-magic'
+    [cascade.params]
+      layout = "design-magic"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/devops-taste'
+    [cascade.params]
+      layout = "devops-taste"
 
 [[cascade]]
    [cascade._target]
