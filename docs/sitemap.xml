@@ -2,24 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wecamp.pro/camps/</loc>
+    <loc>http://localhost:1313/camps/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/cloud-architects/</loc>
+    <loc>http://localhost:1313/camps/cloud-architects/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/cloud-hunters/</loc>
+    <loc>http://localhost:1313/camps/cloud-hunters/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/design-magic/</loc>
+    <loc>http://localhost:1313/camps/design-magic/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/devops-taste/</loc>
+    <loc>http://localhost:1313/camps/devops-taste/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/price/</loc>
+    <loc>http://localhost:1313/camps/price/</loc>
   </url><url>
-    <loc>https://wecamp.pro/contact/</loc>
+    <loc>http://localhost:1313/contact/</loc>
   </url><url>
-    <loc>https://wecamp.pro/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://wecamp.pro/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url><url>
-    <loc>https://wecamp.pro/</loc>
+    <loc>http://localhost:1313/</loc>
   </url>
 </urlset>
