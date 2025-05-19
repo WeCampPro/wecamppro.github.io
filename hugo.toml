@@ -12,11 +12,6 @@ publishDir              = "docs"
 
 [[cascade]]
    [cascade._target]
-    path = '/camps/cloud-hunters'
-    [cascade.params]
-      layout = "cloud-hunters"
-[[cascade]]
-   [cascade._target]
     path = '/camps/cloud-architects'
     [cascade.params]
       layout = "cloud-architects"
