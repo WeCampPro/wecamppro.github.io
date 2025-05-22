@@ -5,9 +5,9 @@ title                   = 'وی‌کمپ، کمپ‌های حرفه‌ای'
 publishDir              = "docs"
 
 [permalinks]
-    about-us             = "/:section/:filename/"  #why :filename, why not :title? not to break the return link in shop page; Better to use another idea by coding a bit in future.
+    about-us             = "/:section/:contentbasename/"  #why :contentbasename, why not :title? not to break the return link in shop page; Better to use another idea by coding a bit in future.
     blog                = "/:section/:year/:month/:title/"
-    apply                 = "/:section/:filename/"
+    apply                 = "/:section/:contentbasename/"
     something_else                = "/:title/"
 
 [[cascade]]
