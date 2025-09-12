@@ -1,2 +1,2 @@
 # Changelog
-## [0.1.0](https://github.com/...) (2024-11-27)
+## [1.0.0](https://wecamp.pro) (2025-9-12)

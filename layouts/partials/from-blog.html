@@ -1,55 +1,111 @@
-        <!-- Blog Start -->
-        <section class="iq-blog-section pt-0 iq-pb-55">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center iq-title-box iq-title-default iq-title-box-2">
-                            <div class="iq-title-icon">
-                            </div>
-                            <span class="iq-subtitle">وبلاگ</span>
-                            <h2 class="iq-title"> پست‌های اخیر </h2></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="3" data-items-laptop="3" data-items-tab="2" data-items-mobile="1" data-items-mobile-sm="1" data-margin="30">
-                        {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
-                            <div class="item">
-                                <div class="iq-blog-box">
-                                    <div class="iq-blog-image clearfix">
-                                        <img src="/{{ .Params.postimgpath }}/{{ .Params.postimg }}" class="img-fluid" alt="{{ .Params.postimgalt }}">
-                                        <ul class="iq-blogtag">
-                                            <li><a href="javascript:void(0)">Marketing</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="iq-blog-detail">
-                                        <div class="iq-blog-meta">
-                                            <ul class="iq-postdate">
-                                                <li class="list-inline-item">
-                                                    <i class="fa fa-calendar-alt mr-2"></i>
-                                                    <span class="screen-reader-text">Posted on</span>
-                                                    <a href="javascript:void(0)" rel="bookmark">
-                                                        <time class="entry-date published updated" datetime="2020-02-17T06:40:07+00:00">February 17, 2020</time>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-title">
-                                            <a href="{{ .Permalink }}">
-                                                <h5 class="mb-3">{{ .Title }}</h5>
-                                            </a>
-                                        </div>
-                                        <p class="">{{ .Summary }}</p>
-                                        <div class="blog-button">
-                                            <a class="iq-btn-link" href="{{ .Permalink }}"><i class="ml-2 ion-ios-arrow-left"></i>بخوانید</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{ end }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Blog End -->
+   <div class="section learning-center" data-w-id="0b097d78-b776-9e09-a4b6-8ab657637224" style="-webkit-transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+    <div class="container-small-462px text-center w-container" data-w-id="0b097d78-b776-9e09-a4b6-8ab657637225" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+     <h2>
+      مرکز آموزش
+     </h2>
+     <p>
+      محتوای عالی برای ارتقای مهارت‌های شما در رشته‌های طراحی، توسعه و فنی را کشف کنید.
+     </p>
+    </div>
+    <div class="container-default-1209px w-container">
+     <div class="w-dyn-list">
+      <div class="learning-center-section-grid w-dyn-items" role="list">
+       <div class="post-card w-dyn-item" data-w-id="0b097d78-b776-9e09-a4b6-8ab657637241" role="listitem" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+        <div class="card">
+         <a class="card-image-link post w-inline-block" href="/post/8-great-design-trends-that-are-coming-back">
+          <img alt="alt text" class="image post-card" src="/img/blog/post-1.jpg"/>
+         </a>
+         <div class="card-content">
+          <a class="card-title-link w-inline-block" href="/post/8-great-design-trends-that-are-coming-back">
+           <h3 class="title post-card">
+            ۸ روند عالی طراحی که دوباره بازمی‌گردند
+           </h3>
+          </a>
+          <p>
+           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+          </p>
+          <div class="divider card-post">
+          </div>
+          <a class="card-post-author-wrapper w-inline-block" data-w-id="6288b6c0-964c-5adc-f34f-d4b8510c1e2f" href="/teacher/norma-hicks">
+           <img alt="Norma Hicks" class="card-post-author-picture" src="/img/authors/user-1.jpg"/>
+           <div class="card-post-author-name">
+            تیم نویسندگان
+           </div>
+          </a>
+         </div>
+         <a class="category-wrapper w-inline-block" href="/blog-category/design">
+          <div class="category-text">
+           Design
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="post-card w-dyn-item" data-w-id="0b097d78-b776-9e09-a4b6-8ab657637241" role="listitem" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+        <div class="card">
+         <a class="card-image-link post w-inline-block" href="/post/5-great-marketing-trends-to-follow-in-2021">
+          <img alt="alt text" class="image post-card" src="/img/blog/post-2.jpg"/>
+         </a>
+         <div class="card-content">
+          <a class="card-title-link w-inline-block" href="/post/5-great-marketing-trends-to-follow-in-2021">
+           <h3 class="title post-card">
+            ۵ روند برتر بازاریابی که باید امسال دنبال کنید
+           </h3>
+          </a>
+          <p>
+           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+          </p>
+          <div class="divider card-post">
+          </div>
+          <a class="card-post-author-wrapper w-inline-block" data-w-id="6288b6c0-964c-5adc-f34f-d4b8510c1e2f" href="/teacher/sophie-moore">
+           <img alt="Sophie Moore" class="card-post-author-picture" src="/img/authors/user-2.jpg"/>
+           <div class="card-post-author-name">
+            تیم نویسندگان
+           </div>
+          </a>
+         </div>
+         <a class="category-wrapper w-inline-block" href="/blog-category/marketing">
+          <div class="category-text">
+           Marketing
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="post-card w-dyn-item" data-w-id="0b097d78-b776-9e09-a4b6-8ab657637241" role="listitem" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+        <div class="card">
+         <a class="card-image-link post w-inline-block" href="/post/how-to-design-a-memorable-brand-identity">
+          <img alt="alt text" class="image post-card" src="/img/blog/post-3.jpg"/>
+         </a>
+         <div class="card-content">
+          <a class="card-title-link w-inline-block" href="/post/how-to-design-a-memorable-brand-identity">
+           <h3 class="title post-card">
+            چگونه یک هویت برند به‌یادماندنی طراحی کنیم
+           </h3>
+          </a>
+          <p>
+           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+          </p>
+          <div class="divider card-post">
+          </div>
+          <a class="card-post-author-wrapper w-inline-block" data-w-id="6288b6c0-964c-5adc-f34f-d4b8510c1e2f" href="/teacher/john-carter">
+           <img alt="John Carter" class="card-post-author-picture" src="/img/authors/user-3.jpg"/>
+           <div class="card-post-author-name">
+            تیم نویسندگان
+           </div>
+          </a>
+         </div>
+         <a class="category-wrapper w-inline-block" href="/blog-category/design">
+          <div class="category-text">
+           Design
+          </div>
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="vc-flex" data-w-id="0b097d78-b776-9e09-a4b6-8ab657637245" style="-webkit-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+      <a class="button-secondary w-button" href="https://blog.wecamp.pro/">
+       مقاله‌های بیشتر
+      </a>
+     </div>
+    </div>
+   </div>
