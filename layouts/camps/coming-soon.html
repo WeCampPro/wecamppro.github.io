@@ -7,7 +7,7 @@
 {{ partial "nav" . }}
   <div class="utility-page-container" data-w-id="5ef18e651a86e00cded5b9a2aN" style="-webkit-transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 48PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
    <div class="card password w-password-page w-form">
-    <form action="/.wf_auth" class="utility-form w-password-page" data-name="Email Form" data-wf-element-id="5ef18e651a86e00cded5b9a200000000000c" data-wf-page-id="5f52d24bbe17c545941c6c09" id="email-form" method="post" name="email-form">
+    <form class="utility-form w-password-page" data-name="Email Form" data-wf-element-id="5ef18e651a86e00cded5b9a200000000000c" data-wf-page-id="5f52d24bbe17c545941c6c09" id="email-form" name="email-form" action="https://api.web3forms.com/submit" method="POST">
      <div class="icon-password-wrapper">
       <img alt="به زودی" class="icon-password" src="/img/icons/coming.png"/>
      </div>
@@ -17,7 +17,13 @@
      <p>
       برای اطلاع از زمان شروع این دوره، ایمیل خود را ثبت کنید.
      </p>
+     <input type="hidden" name="access_key" value="6540d8e6-186a-4cff-87b0-9e5c89f50b08">
      <input autofocus="true" class="input password w-password-page w-input" data-name="field" id="field" maxlength="256" name="email" placeholder="نشانی ایمیل" type="email"/>
+     <input type="hidden" name="subject" value="متقاضی دوره‌های آینده">
+     <input type="hidden" name="redirect" value="https://wecamp.pro/camps">
+     <!-- Honeypot Spam Protection -->
+     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
      <input class="button-primary full-width w-password-page w-button" data-wait="Please wait..." type="submit" value="ارسال"/>
      <div class="error-password w-password-page w-form-fail">
       <div>
