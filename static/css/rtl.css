@@ -552,3 +552,9 @@ a.button-primary[data-open-tab="4"] {
 .porsline-slider * {
   z-index: 99999 !important;
 }
+
+.textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  width: 100%; /* Optional: To make the text area fill its container */
+  min-height: 100px; /* Optional: Set a minimum height for better usability */
+}
