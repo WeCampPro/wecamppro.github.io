@@ -9,6 +9,9 @@ body {
 }
 
 /* =================Navbar================ */
+.nav-link{
+  margin-left: 28px
+}
 
 @media screen and (min-width: 992px) {
   .container-default-1209px, .slide-wrapper {
