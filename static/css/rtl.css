@@ -68,6 +68,10 @@ body {
   letter-spacing: 0;
 }
 
+.button-primary, .button-secondary {
+  border-radius: 36px;
+}
+
 .newsletter-icon-wrapper {
   margin-right: 0;
   margin-left: 16px;
