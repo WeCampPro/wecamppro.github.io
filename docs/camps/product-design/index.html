@@ -698,7 +698,7 @@
           ثبت‌نام
          </h3>
          <p class="paragraph">
-          برای ثبت‌نام در کمپ، لطفاً فرم زیر را به دقت تکمیل کنید. بعد از تکمیل فرم، در انتهای فرم این امکان را دارید که پیش از پرداخت شهریه، درخواستی برای یک گفت‌وگو جهت دریافت راهنمایی‌های بیشتر و اطلاعات تکمیلی درباره دوره ثبت کنید. این گفت‌وگو می‌تواند به شما کمک کند تا بهترین تصمیم را برای شرکت در دوره بگیرید.
+          برای ثبت‌نام در کمپ، لطفاً فرم زیر را به دقت تکمیل کنید. در انتهای فرم این امکان را دارید که پیش از پرداخت شهریه، درخواستی برای یک گفت‌وگو جهت دریافت راهنمایی‌های بیشتر درباره دوره ثبت کنید. این گفت‌وگو می‌تواند به شما کمک کند تا بهترین تصمیم را برای شرکت در دوره بگیرید.
          </p>
          <p>
          فرم پذیرش تا وجود داشتن ظرفیت و نهایتا تا <strong> ۳۱ شهریور</strong>  باز است.<br>
@@ -749,7 +749,7 @@
           <label class="w-commerce-commercecheckoutlabel" for="">
            شهر محل سکونت
           </label>
-          <input class="w-commerce-commercecheckoutshippingcity input checkout" data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.shippingAddressCity%22%7D%7D%5D" name="city" type="text"/>
+          <input class="w-commerce-commercecheckoutshippingcity input checkout" name="city" type="text"/>
          </div>
          <div class="w-commerce-commercecheckoutcolumn">
           <label class="w-commerce-commercecheckoutlabel" for="">
@@ -780,16 +780,13 @@
         <label class="w-commerce-commercecheckoutlabel" for="">
          💡 شناخت
          <p>
-          <p>
            یک محصول (دیجیتال یا فیزیکی) را که خیلی تحسینش می‌کنید، نام ببرید و در ۱-۲ جمله بگید چرا؟
            <span class="color-red">
             *
            </span>
-          </p>
          </p>
         </label>
-        <textarea class="w-commerce-commercecheckoutshippingfullname input checkout textarea" data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.shippingAddressAddressee%22%7D%7D%5D" name="which product" required="" type="text" minlength="20"/>
-        </textarea>
+        <textarea class="w-commerce-commercecheckoutshippingfullname input checkout textarea" name="which product" required="" minlength="20"></textarea>
         <label class="w-commerce-commercecheckoutlabel" for="">
          📑 رزومه
          <p>
@@ -798,27 +795,22 @@
           </small>
          </p>
         </label>
-        <input dir="ltr" class="w-commerce-commercecheckoutshippingfullname input checkout" data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.shippingAddressAddressee%22%7D%7D%5D" name="resume" type="url"/>
+        <input dir="ltr" class="w-commerce-commercecheckoutshippingfullname input checkout" name="resume" type="url"/>
         <label class="w-commerce-commercecheckoutlabel" for="">
 
        </fieldset>
        <fieldset>
-        <script id="wf-template-5ef15a21c26c9167c13e1974000000000042" type="text/x-wf-template">
-         %3Clabel%20class%3D%22w-commerce-commercecheckoutshippingmethoditem%22%3E%3Cinput%20required%3D%22%22%20data-wf-bindings%3D%22%255B%257B%2522id%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.availableShippingMethods%255B%255D.id%2522%257D%257D%252C%257B%2522value%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.availableShippingMethods%255B%255D.id%2522%257D%257D%252C%257B%2522checked%2522%253A%257B%2522type%2522%253A%2522Bool%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.availableShippingMethods%255B%255D.selected%2522%257D%257D%255D%22%20type%3D%22radio%22%20name%3D%22shipping-method-choice%22%2F%3E%3Cdiv%20class%3D%22w-commerce-commercecheckoutshippingmethoddescriptionblock%22%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.availableShippingMethods%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-commerce-commerceboldtextblock%20w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.availableShippingMethods%255B%255D.description%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePrice%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522price%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.availableShippingMethods%255B%255D.price%2522%257D%257D%255D%22%3E%24%C2%A00.00%C2%A0USD%3C%2Fdiv%3E%3C%2Flabel%3E
-        </script>
-        <div class="w-commerce-commercecheckoutshippingmethodslist" data-node-type="commerce-checkout-shipping-methods-list" data-wf-collection="database.commerceOrder.availableShippingMethods" data-wf-template-id="wf-template-5ef15a21c26c9167c13e1974000000000042">
+        <div class="w-commerce-commercecheckoutshippingmethodslist">
          <label class="w-commerce-commercecheckoutshippingmethoditem">
-          <input data-wf-bindings="%5B%7B%22id%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.availableShippingMethods%5B%5D.id%22%7D%7D%2C%7B%22value%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.availableShippingMethods%5B%5D.id%22%7D%7D%2C%7B%22checked%22%3A%7B%22type%22%3A%22Bool%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.availableShippingMethods%5B%5D.selected%22%7D%7D%5D" name="I am commited" type="radio"/>
-          <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.availableShippingMethods%5B%5D.price%22%7D%7D%5D">
+          <input name="I am commited" type="radio"/>
            ‌ ‌ می‌توانم هفته‌ای حداقل ۵ ساعت برای تمرین‌های دوره وقت بگذارم
-          </div>
          </label>
         </div>
        </fieldset>
        <input type="hidden" name="subject" id="var1" value="">
        <input type="hidden" name="redirect" id="var2" value="">
        
-       <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+       
        <div class="w-commerce-commercecheckoutrow row-checkout">
         <div class="w-commerce-commercecheckoutcolumn">
          <label class="w-commerce-commercecheckoutlabel" for="">‌ ‌</label>
