@@ -39,10 +39,10 @@ body {
 }
 
 /*Manually Added*/
-.mega-menu-column-4 {
-  margin-right: 100px; /*Handle the gep between Column4 and 1*/
-}
-
+/*Handle the gap between Column4 and 1*/
+/*.mega-menu-column-4 {
+  margin-right: 100px;
+}*/
 
 /* =================Mega Menue================ */
 .menu-grid-wrapper {
