@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wecamp.pro/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/</loc>
+    <loc>http://localhost:1313/camps/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/cloud-infra-deepdive/</loc>
+    <loc>http://localhost:1313/camps/cloud-infra-deepdive/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/cloud-infra-deployment/</loc>
+    <loc>http://localhost:1313/camps/cloud-infra-deployment/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/cloud-infra-management/</loc>
+    <loc>http://localhost:1313/camps/cloud-infra-management/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/coming-soon/</loc>
+    <loc>http://localhost:1313/camps/coming-soon/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/product-design-advanced/</loc>
+    <loc>http://localhost:1313/camps/product-design-advanced/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/product-design-project/</loc>
+    <loc>http://localhost:1313/camps/product-design-project/</loc>
   </url><url>
-    <loc>https://wecamp.pro/camps/product-design/</loc>
+    <loc>http://localhost:1313/camps/product-design/</loc>
   </url><url>
-    <loc>https://wecamp.pro/contact/</loc>
+    <loc>http://localhost:1313/contact/</loc>
   </url><url>
-    <loc>https://wecamp.pro/courses/</loc>
+    <loc>http://localhost:1313/courses/</loc>
   </url><url>
-    <loc>https://wecamp.pro/courses/cloud-infra-1/</loc>
+    <loc>http://localhost:1313/courses/cloud-infra-1/</loc>
   </url><url>
-    <loc>https://wecamp.pro/courses/cloud-infra-2/</loc>
+    <loc>http://localhost:1313/courses/cloud-infra-2/</loc>
   </url><url>
-    <loc>https://wecamp.pro/courses/product-design-1/</loc>
+    <loc>http://localhost:1313/courses/product-design-1/</loc>
   </url><url>
-    <loc>https://wecamp.pro/events/</loc>
+    <loc>http://localhost:1313/events/</loc>
   </url><url>
-    <loc>https://wecamp.pro/events/how-we-deisgn-a-product/</loc>
+    <loc>http://localhost:1313/events/how-we-deisgn-a-product/</loc>
   </url><url>
-    <loc>https://wecamp.pro/partnership/</loc>
+    <loc>http://localhost:1313/partnership/</loc>
   </url><url>
-    <loc>https://wecamp.pro/path/</loc>
+    <loc>http://localhost:1313/path/</loc>
   </url><url>
-    <loc>https://wecamp.pro/path/cloud-engineering/</loc>
+    <loc>http://localhost:1313/path/cloud-engineering/</loc>
   </url><url>
-    <loc>https://wecamp.pro/path/product-design/</loc>
+    <loc>http://localhost:1313/path/product-design/</loc>
   </url><url>
-    <loc>https://wecamp.pro/success/</loc>
+    <loc>http://localhost:1313/success/</loc>
   </url><url>
-    <loc>https://wecamp.pro/teachers/</loc>
+    <loc>http://localhost:1313/teachers/</loc>
   </url><url>
-    <loc>https://wecamp.pro/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://wecamp.pro/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url><url>
-    <loc>https://wecamp.pro/</loc>
+    <loc>http://localhost:1313/</loc>
   </url>
 </urlset>

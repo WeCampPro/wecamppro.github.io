@@ -14,7 +14,7 @@ body {
 }
 
 @media screen and (min-width: 992px) {
-  .container-default-1209px, .slide-wrapper {
+  .container-default-1209px {
     direction: rtl;
   }
 }
@@ -135,13 +135,18 @@ body {
 }
 
 /* =========About========== */
+.slide-wrapper {
+  direction: rtl;
+}
 .achievement-category, .teachers-work {
   letter-spacing: 0;
 }
 
-.split-content.our-story {
-  margin-right: auto;
-  margin-left: 63px;
+@media screen and (min-width: 767px) {
+  .split-content.our-story {
+    margin-right: auto;
+    margin-left: 63px;
+  }
 }
 
 .visit-us-icon {
