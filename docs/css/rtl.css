@@ -208,12 +208,14 @@ body {
 }
 
 /*Manually Created*/
-a.button-primary[data-open-tab="4"] {
-  margin-right: 16px; /* فاصله از دکمه کناری */
+@media screen and (min-width: 768px) {
+  a.button-primary[data-open-tab="4"] {
+    margin-right: 16px; /* فاصله از دکمه کناری */
+  }
 }
 
 @media screen and (max-width: 767px) {
-  a.button-primary[data-open-tab="4"] {
+  a.button-secondary[data-open-tab="1"] {
     display: none;
   }
 }
