@@ -1,3 +1,10 @@
+/*TEMPORARY*/
+.button-secondary.full-width {
+  width: auto; /*set the registration button fit the texy*/
+}
+
+/******RTL******/
+/***************/
 @import url("circle-shape.css");
 
 body {
