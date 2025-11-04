@@ -99,3 +99,12 @@ publishDir              = "docs"
     path = '/events/how-we-deisgn-a-product'
     [cascade.params]
       layout = "how-we-deisgn-a-product"
+
+#########################################
+#                Talents                #
+###################AI####################
+[[cascade]]
+   [cascade._target]
+    path = '/talents/firstname-lastname'
+    [cascade.params]
+      layout = "firstname-lastname"
