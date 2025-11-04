@@ -234,6 +234,10 @@ body {
 }
 
 /* =========Single Camp========== */
+.rich-text li {
+  margin-bottom: 0px;
+}
+
 .videos-detail-icon {
   margin-right: 0;
   margin-left: 14px;
