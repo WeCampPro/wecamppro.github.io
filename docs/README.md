@@ -1,1 +1,1 @@
-# WeCamp
+# WECAMP
