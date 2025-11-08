@@ -212,6 +212,10 @@ body {
 }
 
 /* =========Camps========== */
+.rich-text p {
+    margin-bottom: 14px;
+}
+
 .level-icon {
   margin-right: auto;
   margin-left: 8px;
