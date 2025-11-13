@@ -79,6 +79,15 @@ body {
   max-width: 260px;
 }
 
+.title.card-event {
+  color: var(--accent);
+}
+
+.title.card-event:hover {
+  /*color: var(--titles);*/
+  color: #0B2F9F;
+}
+
 .button-primary, .footer-title {
   letter-spacing: 0;
 }
