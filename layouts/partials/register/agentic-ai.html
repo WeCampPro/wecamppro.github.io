@@ -20,17 +20,20 @@
 <div class="divider clean">
 </div>
 
-
-<button
-   aria-label="Apply"
-   class="w-commerce-commercecheckoutdiscountsbutton button-primary full-width discounts"
-   type="submit"
-   href="#porsline-slider"
-      onclick="clmNm2lbbG('porsline-slider-iframe');showSlider()">
- <div>
+<div class="w-commerce-commercecheckoutrow row-checkout">
+ <button
+  aria-label="Apply"
+  class="w-commerce-commercecheckoutdiscountsbutton button-primary full-width discounts"
+  type="submit"
+  href="#porsline-slider"
+  onclick="clmNm2lbbG('porsline-slider-iframe');showSlider()">
+  <div>
   ثبت‌نام کمپ
+  </div>
+ </button>
+ {{ partial "register/request-for-info" . }}
 </div>
-</button>
+
 <script>
   (function() {
     var js,q,d=document,
