@@ -466,7 +466,32 @@
          <p class="paragraph">
          پذیرش با <strong>تکمیل شدن</strong> ظرفیت بسته می‌شود.<br>
          </p>
-{{ partial "register/agentic-ai" . }}
+                  <div class="top-content videos">
+         </div>
+         <div class="videos-wrapper">
+          <span class="card course-video w-inline-block width100" >
+           <div class="split-content course-video-left">
+            <img height=64px alt="" class="course-video-icon" src="/img/icons/credit-pay.png"/>
+            <div>
+             <h3 class="price">
+              ۲۹,۰۰۰,۰۰۰ تومان
+             </h3>
+            </div>
+           </div>
+           <div class="course-video-duration-text">
+            • با امکان پرداخت اقساطی از درگاه دیجی‌پی
+            <br />
+            • روش‌های پرداخت: آنلاین، انتقال بانکی، چک
+           </div>
+          </span>
+         </div>
+         <div class="divider clean">
+         </div>
+
+         <div class="w-commerce-commercecheckoutrow row-checkout">
+          {{ partial "register/payment" . }}
+          {{ partial "register/request-for-info" . }}
+         </div>
        </div>
       </div>
      </div>
