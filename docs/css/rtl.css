@@ -246,6 +246,13 @@ body {
   margin-left: -190px;
 }
 
+/*register buttons*/
+@media screen and (max-width: 768px) {
+  .set-center {
+    margin-left: 19%;
+  }
+}
+
 /* =========Single Camp========== */
 .rich-text li {
   margin-bottom: 0px;
