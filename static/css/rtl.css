@@ -1,0 +1,655 @@
+/*TEMPORARY*/
+.button-secondary.full-width {
+  width: auto; /*set the registration button fit the texy*/
+}
+
+/******RTL******/
+/***************/
+@import url("circle-shape.css");
+
+body {
+  color: var(--paragraphs);
+  font-family: Vazirmatn, Noto Naskh Arabic, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.667em;
+}
+
+.reverse {
+  -webkit-transform: scaleX(-1) !important;
+  transform: scaleX(-1) !important;
+}
+
+/* =================Navbar================ */
+.nav-link{
+  margin-left: 28px
+}
+
+@media screen and (min-width: 992px) {
+  .container-default-1209px {
+    direction: rtl;
+  }
+}
+
+.nav-menu {
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.cart {
+  margin-right: auto;
+  margin-left: 26px;
+}
+
+.dropdown-icon {
+  right: 4px;
+}
+
+.w-commerce-commercecartopenlinkcount {
+  margin-left: auto;
+  margin-right: 8px
+}
+
+/*Manually Added*/
+/*Handle the gap between Column4 and 1*/
+/*.mega-menu-column-4 {
+  margin-right: 100px;
+}*/
+
+/* =================Mega Menue================ */
+.menu-grid-wrapper {
+  text-align: right;
+}
+
+.menu-grid {
+  width: auto;
+}
+
+/* =================Index================ */
+.event-icon {
+  margin-left: 12px;
+}
+
+.event-date-wrapper {
+  margin-right: 0;
+  margin-left: 40px;
+}
+
+.event-location-text {
+  max-width: 260px;
+}
+
+.title.card-event {
+  color: var(--accent);
+}
+
+.title.card-event:hover {
+  /*color: var(--titles);*/
+  color: #0B2F9F;
+}
+
+.button-primary, .footer-title {
+  letter-spacing: 0;
+}
+
+.button-primary, .button-secondary, .input {
+  border-radius: 18px;
+}
+
+.input.newsletter-events {
+  margin-right: 0px;
+  margin-left: 14px;
+}
+
+.newsletter-icon-wrapper {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.why-us-icon {
+  margin-right: 0;
+  margin-left: 48px;
+}
+
+.circle-shape, .circle-shape-testimonial, .circle-shape-404 {
+  transform: scaleX(-1) !important;
+}
+
+.clean {
+  margin-bottom: 64px;
+  height: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .button-primary.full-width.discounts {
+    margin-right: 40%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-primary.full-width.discounts {
+    height: 100%;
+  }
+}
+
+.width100 {
+  width: 100%;
+}
+
+.price {
+  padding: 14px;
+  background-color: #f2f2f0;
+  color: #3e434d;
+  border-radius: 32px;
+}
+
+.course-video-duration-text {
+  margin-top: 14px;
+  line-height: 2.125em;
+}
+
+@media screen and (max-width: 479px) {
+  .split-content.course-video-left, .course-video-icon {
+    margin-right: 24% !important;
+  }
+}
+
+/* =================Sales Home================ */
+.section {
+  direction: rtl;
+}
+
+/* =========Primary Home========== */
+.split-content.about-section-right {
+  margin-left: auto;
+  margin-right: 71px;
+}
+
+/*Our Student section*/
+.title.companies {
+  letter-spacing: 0;
+}
+
+/* =========404========== */
+.text-center {
+  direction: rtl;
+}
+
+.button-secondary {
+  letter-spacing: .02em;
+}
+
+/* =========401========== */
+.card.password {
+  direction: rtl;
+}
+
+.input.password {
+  direction: ltr;
+  text-align: right;
+}
+
+/* =========Contact========== */
+.blue-social-icon {
+  margin-right: 0;
+  margin-left: 11px;
+}
+
+.faq-wrapper {
+  text-align: right;
+}
+
+/* =========About========== */
+.slide-wrapper {
+  direction: rtl;
+}
+.achievement-category, .teachers-work {
+  letter-spacing: 0;
+}
+
+@media screen and (min-width: 767px) {
+  .split-content.our-story {
+    margin-right: auto;
+    margin-left: 63px;
+  }
+}
+
+.visit-us-icon {
+  margin-right: auto;
+  margin-left: 12px;
+}
+
+/* =========Camps========== */
+.rich-text p {
+    margin-bottom: 14px;
+}
+
+.level-icon {
+  margin-right: auto;
+  margin-left: 8px;
+  -webkit-transform: scaleX(-1); /* For Safari */
+  transform: scaleX(-1);
+} /*WiFi icon*/
+
+.testimonial-student-image {
+  margin-right: auto;
+  margin-left: 18px;
+}
+
+.student-details {
+  text-align: right;
+}
+
+.image.courses {
+  margin-right: auto;
+  margin-left: -190px;
+}
+
+/*register buttons*/
+@media screen and (max-width: 768px) {
+  .set-center {
+    margin-left: 19%;
+  }
+}
+
+/* =========Single Camp========== */
+.rich-text li {
+  margin-bottom: 0px;
+}
+
+.videos-detail-icon {
+  margin-right: 0;
+  margin-left: 14px;
+  /*-webkit-transform: scaleX(-1);
+  transform: scaleX(-1);*/
+}
+
+.icon-videos-community-wrapper {
+  margin-right: 0;
+  margin-left: 24px;
+  width: 130px;
+  min-width: 130px;
+  height: 130px;
+}
+
+.icon-files-wrapper {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.course-video-icon {
+  margin-right: 0;
+  margin-left: 31px;
+}
+
+/*Manually Created*/
+@media screen and (min-width: 768px) {
+  a.button-primary[data-open-tab="4"] {
+    margin-right: 16px; /* فاصله از دکمه کناری */
+  }
+}
+
+@media screen and (max-width: 767px) {
+  a.button-secondary[data-open-tab="1"] {
+    display: none;
+  }
+}
+
+/*Form*/
+.checkout-label-box {
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.split-content.videos-community-left {
+  max-width: 590px; /* Increases teacher profile width */
+}
+
+/* =========Single Course - Sticky Tab Bar========== */
+/* Desktop/tablet sticky behavior */
+.videos-tabs-menu {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0; /* Stick to top of viewport */
+  z-index: 1000; /* Above other content */
+}
+
+/* Optional: shrink height a bit when sticky */
+.videos-tabs-menu.sticky {
+  padding: 12px 6px;
+}
+
+.videos-tabs-menu.sticky .videos-tab-link {
+  padding: 12px 16px; /* reduced when sticky */
+  transition: padding 0.2s ease; /* smooth change */
+}
+
+.videos-tabs-menu.sticky .videos-tab-link.w--current {
+  border-bottom: none;
+}
+
+.videos-tabs-menu.sticky .videos-tab-link.w--current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+  bottom: -16px; /* move up 4px from bottom */
+}
+
+/*Mobile*/
+@media screen and (max-width: 767px) {
+  .w-tab-pane {
+    padding-top: 24px; /* space above each section */
+    border-top: 2px solid #eee; /* light grey divider */
+    margin-top: 24px;
+  }
+
+  /* Optional: remove divider before the very first pane */
+  .w-tab-pane:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+/* === Mobile Override: Show all tabs stacked with integrated dividers === */
+@media screen and (max-width: 767px) {
+  /* Hide the tab menu completely */
+  .videos-tabs-menu {
+    display: none !important;
+  }
+
+  /* Show all tab panes stacked */
+  .w-tab-pane {
+    display: block !important;
+    opacity: 1 !important;
+    position: static !important;
+    visibility: visible !important;
+
+    /* Divider & spacing between tabs - match site style */
+    padding-top: 40px;
+    border-top: 1px solid #dcdcdc; /* same as site dividers */
+    margin-top: 40px;
+  }
+
+  /* Remove divider line before first tab, but keep spacing above */
+  .w-tab-pane:first-child {
+    border-top: none;
+    margin-top: 40px; /* match section spacing */
+    padding-top: 0;
+  }
+}
+
+/* Hide teacher bios only on Mobile, only in Tab 4 (تیم آموزشی) */
+@media (max-width: 767px) {
+  .videos-tab-panel[data-w-tab="Tab 4"] a.card.videos-community
+  .split-content.videos-community-left p.paragraph {
+    display: none !important;
+  }
+}
+
+/* Mobile: replace LinkedIn button text with icon only */
+/*@media (max-width: 767px) {
+  .videos-tab-panel[data-w-tab="Tab 4"] .button-secondary.small {
+    font-size: 0;
+    border: none;
+    box-shadow: none !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2۵px 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' fill='%230a66c2' class='bi bi-linkedin' viewBox='0 0 16 16'%3E%3Cpath d='M0 1.146C0 .513.526 0 1.175 0h13.65C15.473 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.527 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.52 1.248 1.327 1.248h.016zm4.908 8.212h2.4V9.359c0-.216.016-.432.08-.586.175-.431.573-.878 1.24-.878.873 0 1.222.662 1.222 1.634v3.865h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.276 0-1.845.7-2.165 1.193h.016V6.169h-2.4c.03.678 0 7.225 0 7.225z'/%3E%3C/svg%3E");
+  }
+  .videos-tab-panel[data-w-tab="Tab 4"] .button-secondary.small:hover,
+  .videos-tab-panel[data-w-tab="Tab 4"] .button-secondary.small:focus {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+}*/
+
+/* =========Single Camp - Boxes in 1st Tab========== */
+.videos-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* allows them to stack on small screens */
+  gap: 16px;       /* space between cards */
+}
+
+.videos-wrapper .videos-social-media-wrapper {
+  flex: 1 1 calc(50% - 16px); /* two per row on desktop */
+  box-sizing: border-box;
+}
+
+/* On mobile, make them full width */
+@media (max-width: 768px) {
+  .videos-wrapper .videos-social-media-wrapper {
+    flex: 1 1 100%;
+  }
+}
+
+/* Target ONLY LinkedIn buttons inside the videos wrapper */
+.videos-wrapper .card {
+  position: relative; /* establish positioning context */
+  display: flex;
+  /*flex-direction: column;  stack content vertically */
+}
+
+.videos-wrapper .button-secondary.small {
+  position: absolute;
+  bottom: 10px;   /* distance from bottom */
+  left: 10px;     /* distance from left */
+}
+
+/* On mobile, make them full width */
+@media (max-width: 768px) {
+  .videos-wrapper .button-secondary.small {
+    position: unset;
+  }
+}
+
+/* =========Course Page========== */
+.course-detail-icon {
+  margin-right: 0;
+  margin-left: 18px;
+}
+
+.price-wrapper {
+  margin-right: 0;
+  margin-left: 11px;
+}
+
+.image.course-teacher {
+  margin-right: auto;
+  margin-left: 24px;
+}
+
+/* =========Chat Popup========== */
+.more-templates-badge-wrapper {
+  direction: rtl;
+}
+
+.block {
+  display: block;
+} /*to have a new line after*/
+
+.more-templates-lottie-2 {
+  inset: -18px auto auto -19px;
+}
+
+.brix-badges-wrapper {
+  height: 148px;
+}
+
+.top-content.videos, .top-content.files {
+  max-width: none;
+}
+/* =========Hambergur Menu========== */
+@media screen and (max-width: 767px) {
+    .nav-link, .footer-links-block {
+        direction: rtl;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .header {
+        direction: rtl;
+    }
+}
+
+.w--nav-dropdown-open {
+  direction: rtl;
+}
+
+/* =========path pages========== */
+.card-post-author-picture {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+/* =========Success========== */
+.contact-link {
+  color: white;
+  text-decoration: underline;
+}
+
+/* =========Footer========== */
+ * .split-content.newsletter-left {
+  margin-right: 0;
+  margin-left: 25px;
+}
+
+/* ==========Others========= */
+@media screen and (min-width: 479px) {
+  .input.newsletter {
+    margin-right: auto;
+    margin-left: 14px;
+    direction: ltr;
+    text-align: right;
+  }
+}
+
+.newsletter-icon {
+  left: auto;
+  right: 4px;
+  -webkit-transform: scaleX(-1); /* For Safari */
+  transform: scaleX(-1);
+}
+/* ========================= */
+/* =========MOBILE========== */
+/* ========================= */
+@media screen and (max-width: 767px) {
+  .split-content.about-section-right {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+}
+
+.w-tab-link {
+  text-align: right;
+}
+
+@media screen and (max-width: 991px) {
+  .footer-mobile-content {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .input.newsletter {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .split-content.video-hero-left, .videos-tab-link.w--current, .student-details {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .links-block._2, .links-block._3, .split-content.newsletter-left {
+    direction: rtl;
+  }
+} /*footer*/
+
+@media screen and (max-width: 767px) {
+  .fine-print {
+    direction: rtl;
+  }
+} /*CopyRight*/
+
+@media screen and (max-width: 767px) {
+  .testimonial-student-image {
+    margin-left: 18px;
+  }
+} /*Courses*/
+
+@media screen and (max-width: 767px) {
+  .top-content.videos {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .top-content.files {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .rich-text img {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .rich-text img {
+    margin-bottom: 0;
+  }
+}
+
+/*############DEFINED############*/
+.calendar-wrapper {
+  margin-right: 0;
+  margin-left: 0;
+  width: 130px;
+  min-width: 130px;
+  height: 130px;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile {
+    display: unset;
+  }
+  .noborder {
+    border: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .desktop {
+    margin-bottom: 20px;
+  }
+  .no-hover:hover {
+    background-color: #0000;
+    color: var(--accent);
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* make the porsline slider always above navbars */
+#porsline-slider,
+#porsline-slider-iframe,
+#porsline-share,
+.porsline-slider,
+.porsline-slider * {
+  z-index: 99999 !important;
+}
+
+.textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  width: 100%; /* Optional: To make the text area fill its container */
+  min-height: 100px; /* Optional: Set a minimum height for better usability */
+}

@@ -1,0 +1,110 @@
+baseURL                 = 'https://wecamp.pro/'
+canonifyurls            = "true"
+languageCode            = 'fa-ir'
+title                   = 'وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ'
+publishDir              = "docs"
+
+#[permalinks]
+#    about-us             = "/:section/:contentbasename/"
+#    blog                = "/:section/:year/:month/:title/"
+#    apply                 = "/:section/:contentbasename/"
+#    something_else                = "/:title/"
+
+[[cascade]]
+   [cascade._target]
+    path = '/camps/coming-soon'
+    [cascade.params]
+      layout = "coming-soon"
+#########################################
+#                 Camps                 #
+#########################################
+
+####Product Design
+[[cascade]]
+   [cascade._target]
+    path = '/camps/product-design'
+    [cascade.params]
+      layout = "product-design"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/product-design-advanced'
+    [cascade.params]
+      layout = "product-design-advanced"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/product-design-project'
+    [cascade.params]
+      layout = "product-design-project"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/ux-research'
+    [cascade.params]
+      layout = "ux-research"
+
+####Cloud
+[[cascade]]
+   [cascade._target]
+    path = '/camps/cloud-infra-management'
+    [cascade.params]
+      layout = "cloud-infra-management"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/cloud-infra-deployment'
+    [cascade.params]
+      layout = "cloud-infra-deployment"
+[[cascade]]
+   [cascade._target]
+    path = '/camps/cloud-infra-deepdive'
+    [cascade.params]
+      layout = "cloud-infra-deepdive"
+
+####AI
+[[cascade]]
+   [cascade._target]
+    path = '/camps/agentic-ai'
+    [cascade.params]
+      layout = "agentic-ai"
+
+########################################
+#                 PATH                 #
+###################AI###################
+[[cascade]]
+   [cascade._target]
+    path = '/path/product-design'
+    [cascade.params]
+      layout = "product-design"
+
+[[cascade]]
+   [cascade._target]
+    path = '/path/cloud-engineering'
+    [cascade.params]
+      layout = "cloud-engineering"
+
+[[cascade]]
+   [cascade._target]
+    path = '/path/ai-engineering'
+    [cascade.params]
+      layout = "ai-engineering"
+#########################################
+#                 Other                 #
+###################AI####################
+[[cascade]]
+   [cascade._target]
+    path = '/courses/cloud-infra-management'
+    [cascade.params]
+      layout = "cloud-infra-management"
+
+[[cascade]]
+   [cascade._target]
+    path = '/events/how-we-deisgn-a-product'
+    [cascade.params]
+      layout = "how-we-deisgn-a-product"
+
+#########################################
+#                Talents                #
+###################AI####################
+[[cascade]]
+   [cascade._target]
+    path = '/talents/firstname-lastname'
+    [cascade.params]
+      layout = "firstname-lastname"

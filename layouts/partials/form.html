@@ -1,0 +1,155 @@
+    <div class="w-commerce-commercelayoutcontainer container-default-1209px checkout w-container">
+     <div class="w-commerce-commercelayoutmain top-content-checkout">
+      <form class="w-commerce-commercecheckoutcustomerinfowrapper customer-info" data-node-type="commerce-checkout-customer-info-wrapper" action="https://api.web3forms.com/submit" method="POST">
+       <input type="hidden" name="access_key" value="6540d8e6-186a-4cff-87b0-9e5c89f50b08">
+       <div class="w-commerce-commercecheckoutblockheader block-header">
+        <h4>
+         لطفا فرم زیر را تکمیل کنید.
+        </h4>
+        <div>
+         * الزامی
+        </div>
+       </div>
+       <fieldset class="w-commerce-commercecheckoutblockcontent block-content">
+        <label class="w-commerce-commercecheckoutlabel" for="">
+         نام و نام خانوادگی
+         <span class="color-red">
+          *
+         </span>
+        </label>
+        <input class="w-commerce-commercecheckoutshippingfullname input checkout" name="name" required="" type="text"/>
+        <div class="w-commerce-commercecheckoutrow row-checkout">
+         <div class="w-commerce-commercecheckoutcolumn">
+          <label class="w-commerce-commercecheckoutlabel" for="">
+         موبایل
+           <span class="color-red">
+            *
+           </span>
+          </label>
+          <input dir="ltr" class="w-commerce-commercecheckoutshippingzippostalcode input checkout" name="phone" required="" type="tel" pattern="[0-9\u06F0-\u06F9]{10,11}" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید"/>
+         </div>
+         <div class="w-commerce-commercecheckoutcolumn">
+          <label class="w-commerce-commercecheckoutlabel" for="">
+         ایمیل
+           <span class="color-red">
+            *
+           </span>
+          </label>
+        <input dir="ltr" class="w-commerce-commercecheckoutemailinput input checkout" name="email" required="" type="email"/>
+         </div>
+        </div>
+        <div class="w-commerce-commercecheckoutrow row-checkout">
+         <div class="w-commerce-commercecheckoutcolumn">
+          <label class="w-commerce-commercecheckoutlabel" for="">
+           شهر محل سکونت
+          </label>
+          <input class="w-commerce-commercecheckoutshippingcity input checkout" name="city" type="text"/>
+         </div>
+         <div class="w-commerce-commercecheckoutcolumn">
+          <label class="w-commerce-commercecheckoutlabel" for="">
+         بازه سنی
+          </label>
+          <select class="w-commerce-commercecheckoutshippingcountryselector select" name="age_range">
+             <option value="---">
+              ---
+             </option>
+             <option value="-18">
+              کمتر از ۱۸
+             </option>
+             <option value="18-24">
+              ۱۸ تا ۲۴
+             </option>
+             <option value="25-34">
+              ۲۵ تا ۳۴
+             </option>
+             <option value="35-44">
+              ۳۵ تا ۴۴
+             </option>
+             <option value="45+">
+              ۴۵ و بالاتر
+             </option>
+          </select>
+         </div>
+        </div>
+        <label class="w-commerce-commercecheckoutlabel" for="">
+         💡 شناخت
+         <p>
+           یک محصول (دیجیتال یا فیزیکی) را که خیلی تحسینش می‌کنید، نام ببرید و در ۱-۲ جمله بگید چرا؟
+           <span class="color-red">
+            *
+           </span>
+         </p>
+        </label>
+        <textarea class="w-commerce-commercecheckoutshippingfullname input checkout textarea" name="which product" required="" minlength="20"></textarea>
+        <label class="w-commerce-commercecheckoutlabel" for="">
+         📑 رزومه
+         <p>
+          <small>
+           اگر پروفایل لینکدین یا رزومه آماده (آپلود شده روی گوگل‌درایو) دارید، لینک آن را درج کنید.
+          </small>
+         </p>
+        </label>
+        <input dir="ltr" class="w-commerce-commercecheckoutshippingfullname input checkout" name="resume" type="url"/>
+        <label class="w-commerce-commercecheckoutlabel" for="">
+
+       </fieldset>
+       <fieldset>
+        <div class="w-commerce-commercecheckoutshippingmethodslist">
+         <label class="w-commerce-commercecheckoutshippingmethoditem">
+          <input name="I am commited" type="radio"/>
+           ‌ ‌ می‌توانم هفته‌ای حداقل ۵ ساعت برای تمرین‌های دوره وقت بگذارم
+         </label>
+        </div>
+       </fieldset>
+       <input type="hidden" name="subject" id="var1" value="">
+       <input type="hidden" name="redirect" id="var2" value="">
+       <!-- Honeypot Spam Protection -->
+       <!-- <input type="checkbox" name="botcheck" class="hidden" style="display: none;"> -->
+       <div class="w-commerce-commercecheckoutrow row-checkout">
+        <div class="w-commerce-commercecheckoutcolumn">
+         <label class="w-commerce-commercecheckoutlabel" for="">‌ ‌</label>
+         <button
+           aria-label="Apply"
+           class="w-commerce-commercecheckoutdiscountsbutton button-secondary full-width discounts"
+           type="submit"
+           onclick="setVars(event)">
+         <div style="display: flex; align-items: center;">
+          <img height="24px" src="/img/icons/about-slider-1.svg" />
+          <p style="margin-right: 8px; margin-top: 10px;">ارسال فرم</p>
+        </div>
+         </button>
+       </div>
+<!--        <div class="w-commerce-commercecheckoutcolumn">
+         <label class="w-commerce-commercecheckoutlabel" for="">‌ ‌</label>
+         <button
+           aria-label="Apply"
+           class="w-commerce-commercecheckoutdiscountsbutton button-secondary full-width discounts"
+           type="submit"
+           onclick="setVars(event)">
+         درخواست مشاوره
+         </button>
+        </div>-->
+       </div>
+      </form>
+
+<script>
+  function setVars(event) {
+    var buttonText = event.target.textContent.trim(); // Get the text of the clicked button
+    var var1 = document.getElementById('var1');
+    var var2 = document.getElementById('var2');
+
+    // Set values based on which button is clicked
+    if (buttonText === 'ارسال فرم') {
+      var1.value = 'در حال پرداخت شهریه';
+      var2.value = 'https://wecamp.pro/success';
+    } else if (buttonText === 'درخواست مشاوره') {
+      var1.value = 'مشاوره درخواست کرد';
+      var2.value = 'https://wecamp.pro/success';
+    }
+
+    // Allow form submission
+    return true;
+  }
+</script>
+     </div>
+    </div>
