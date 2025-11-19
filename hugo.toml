@@ -37,9 +37,9 @@ publishDir              = "docs"
       layout = "product-design-project"
 [[cascade]]
    [cascade._target]
-    path = '/camps/ux-research'
+    path = '/camps/user-research'
     [cascade.params]
-      layout = "ux-research"
+      layout = "user-research"
 
 ####Cloud
 [[cascade]]
