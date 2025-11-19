@@ -1,0 +1,176 @@
+<style>
+  .accordion {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0;
+  }
+
+  .accordion-question {
+    padding: 18px 15px 10px 15px;   /* equal top and bottom */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    user-select: none;
+    color: var(--titles);  /* ✅ your color variable */
+  }
+
+  .accordion-question::after {
+    content: "+";
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+
+  .accordion-item.active .accordion-question::after {
+    content: "−";
+  }
+
+  .accordion-answer {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease;
+    padding: 0 15px;
+    margin-top: 8px;
+  }
+
+  .accordion-answer p {
+    margin: 0 0 15px 0;
+    line-height: 1.6;
+  }
+</style>
+
+
+
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۱: مبانی AI و LLM
+    </div>
+    <div class="accordion-answer">
+      <p>
+            در این ماژول با اصول پایه هوش مصنوعی و مدل‌های زبان بزرگ آشنا می‌شوید. کار با APIها و چارچوب‌های Agentic AI را تجربه کرده، با چارچوب‌هایی مانند CrewAI، ‏LangGraph و Pydantic AI آشنا می‌شوید و برای ساخت عامل‌های هوشمند آماده می‌شوید. تمرین عملی شامل ساخت یک دستیار خلاق با قابلیت‌های متنوع LLM است.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۲: اصول مهندسی پرامپت
+    </div>
+    <div class="accordion-answer">
+      <p>
+      در این بخش یاد می‌گیرید چگونه پرامپت‌های مؤثر بسازید و آن‌ها را بهینه کنید. تکنیک‌های پایه و پیشرفته پرامپت برای تولید نتایج دقیق و کارآمد آموزش داده می‌شوند. تمرین عملی شامل ایجاد یک کتابخانه پرامپت مستندسازی‌شده است.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۳: اصول سیستم‌های عامل‌محور
+    </div>
+    <div class="accordion-answer">
+      <p>
+      این ماژول به بررسی مفاهیم Agency، Autonomy و معماری‌های مختلف عامل‌ها می‌پردازد. تفاوت بین Workflow و Agent و انتخاب معماری مناسب برای کاربردهای واقعی آموزش داده می‌شود. تمرین عملی شامل طراحی مستندات معماری برای سناریوهای مختلف است.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۴: ذهن عامل‌ها!
+    </div>
+    <div class="accordion-answer">
+      <p>
+      در این بخش ساختارهای دانش و روش‌های استدلال در عامل‌ها معرفی می‌شوند. به دانش ساختاریافته، تصمیم‌گیری و برنامه‌ریزی در عامل‌های هوشمند پرداخته می‌شود. تمرین عملی ساخت یک سیستم توصیه‌گر هوشمند با توضیح فرآیند تصمیم‌گیری است.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۵: توسعه عملی عامل‌ها
+    </div>
+    <div class="accordion-answer">
+      <p>
+      در این ماژول، ابزارهای سفارشی برای عامل‌ها تعریف و پیاده‌سازی می‌شوند و چارچوب‌های CrewAI و LangGraph به‌عنوان بسترهای توسعه معرفی می‌شوند. طراحی دقیق ابزارها، ادغام آن‌ها در عامل‌ها و ارزیابی چارچوب‌ها در عمل آموزش داده می‌شود. تمرین عملی پروژه میان‌ترم شامل ساخت یک عامل روزانه با چند ابزار و مستندسازی عملکرد آن‌ها است.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۶: همکاری چندعامل
+    </div>
+    <div class="accordion-answer">
+      <p>
+      در این ماژول، سیستم‌های چندعامل با نقش‌های مشخص طراحی و اجرا می‌شوند. الگوهای همکاری، جریان کار و مدیریت ارتباط بین عامل‌ها آموزش داده می‌شوند. تمرین عملی شامل ساخت یک تیم محتوایی مشارکتی با تقسیم نقش‌ها، استفاده از ابزارها و هماهنگی اطلاعات بین عامل‌ها است.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۷: قابلیت‌های پیشرفته
+    </div>
+    <div class="accordion-answer">
+      <p>
+      در این ماژول، خودبازبینی و اصلاح خطا در عامل‌ها، معماری حافظه و طراحی سیستم‌های پیچیده آموزش داده می‌شود. تمرکز روی اجرای پروژه نهایی چندعامل با بهترین شیوه‌های طراحی است. تمرین عملی شامل ساخت دستیار پشتیبانی خودکار است که به دانشجویان امکان می‌دهد تمام مفاهیم آموخته‌شده در ماژول‌های قبلی را در یک پروژه عملی و آماده تولید به‌کار گیرند.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    ماژول ۸: تولید و استقرار
+    </div>
+    <div class="accordion-answer">
+      <p>
+      این ماژول چالش‌های تولید و استقرار عامل‌ها را پوشش می‌دهد و به انتخاب چارچوب مناسب برای محیط واقغی و اجرای پروژه‌های تولیدی پایدارمی‌پردازد. اصول نظارت، امنیت و نگه‌داری سیستم‌ها آموزش داده می‌شوند. هم‌چنین دانشجویان به تکمیل پروژه نهایی خود می‌پردازند.
+      </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-question">
+    رزومه و مصاحبه
+    </div>
+    <div class="accordion-answer">
+      <p>
+      یاد می‌گیرید چطور پورتفولیوی شخصی بسازید، پروژه‌هاتون رو ارائه بدهید و برای مصاحبه‌های شغلی آماده شوید.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const items = document.querySelectorAll('.accordion-item');
+
+  items.forEach(item => {
+    const question = item.querySelector('.accordion-question');
+    const answer = item.querySelector('.accordion-answer');
+
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('active');
+
+      items.forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.accordion-answer').style.height = 0;
+      });
+
+      if (!isOpen) {
+        item.classList.add('active');
+        answer.style.height = answer.scrollHeight + "px";
+      }
+    });
+  });
+</script>
