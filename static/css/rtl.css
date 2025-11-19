@@ -122,7 +122,6 @@ body {
 
 @media screen and (min-width: 768px) {
   .button-primary.full-width.discounts {
-    margin-right: 40%;
     height: 100%;
   }
 }
@@ -246,12 +245,11 @@ body {
   margin-left: -190px;
 }
 
-/*register buttons*/
-@media screen and (max-width: 768px) {
-  .set-center {
-    margin-left: 19%;
-  }
+/*centers the register buttons horizontally*/
+._2-buttons {
+  justify-content: center;
 }
+
 
 /* =========Single Camp========== */
 .rich-text li {
