@@ -96,8 +96,13 @@ body {
   border-radius: 18px;
 }
 
-@media screen and (min-width: 768px) {
 .input.newsletter-events {
+  direction: ltr;
+  text-align: right; /*Controls the Persian text*/
+}
+
+@media screen and (min-width: 768px) {
+  .input.newsletter-events {
     margin-right: 0px;
     margin-left: 14px;
   }
@@ -250,10 +255,10 @@ body {
   text-align: right;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .image.courses {
     margin-right: auto;
-    margin-left: -90px;
+    margin-left: -190px;
   }
 }
 
@@ -374,7 +379,6 @@ body {
 
   /* Show all tab panes stacked */
   .w-tab-pane {
-    display: block !important;
     opacity: 1 !important;
     position: static !important;
     visibility: visible !important;
