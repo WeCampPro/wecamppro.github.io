@@ -248,9 +248,11 @@ body {
   text-align: right;
 }
 
-.image.courses {
-  margin-right: auto;
-  margin-left: -190px;
+@media screen and (min-width: 768px) {
+  .image.courses {
+    margin-right: auto;
+    margin-left: -90px;
+  }
 }
 
 /*centers the register buttons horizontally*/
