@@ -4,6 +4,9 @@ languageCode            = 'fa-ir'
 title                   = 'وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ'
 publishDir              = "docs"
 
+# Enable robots output in your config:
+enableRobotsTXT = true
+
 #[permalinks]
 #    about-us             = "/:section/:contentbasename/"
 #    blog                = "/:section/:year/:month/:title/"
@@ -18,7 +21,6 @@ publishDir              = "docs"
 #########################################
 #                 Camps                 #
 #########################################
-
 ####Product Design
 [[cascade]]
    [cascade._target]
@@ -85,6 +87,17 @@ publishDir              = "docs"
     path = '/path/ai-engineering'
     [cascade.params]
       layout = "ai-engineering"
+
+
+#########################################
+#                Talents                #
+###################AI####################
+[[cascade]]
+   [cascade._target]
+    path = '/talents/firstname-lastname'
+    [cascade.params]
+      layout = "firstname-lastname"
+
 #########################################
 #                 Other                 #
 ###################AI####################
@@ -96,15 +109,6 @@ publishDir              = "docs"
 
 [[cascade]]
    [cascade._target]
-    path = '/events/how-we-deisgn-a-product'
+    path = '/events/ai'
     [cascade.params]
-      layout = "how-we-deisgn-a-product"
-
-#########################################
-#                Talents                #
-###################AI####################
-[[cascade]]
-   [cascade._target]
-    path = '/talents/firstname-lastname'
-    [cascade.params]
-      layout = "firstname-lastname"
+      layout = "ai"
