@@ -1,4 +1,3 @@
-<script>
 document.addEventListener("DOMContentLoaded", function () {
   // Run only on mobile devices
   if (window.innerWidth <= 767) {
@@ -22,4 +21,3 @@ document.addEventListener("DOMContentLoaded", function () {
       .forEach(pane => pane.classList.remove("w--tab-active"));
   }
 });
-</script>

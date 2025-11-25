@@ -984,31 +984,6 @@
 
   <script src="https://wecamp.pro/js/sticky.js" type="text/javascript"></script>
   <script src="https://wecamp.pro/js/go-to-top-of-tab.js" type="text/javascript"></script>
-  <script src="https://wecamp.pro/js/go-to-the-specific-tab.js" type="text/javascript"></script><script>
-document.addEventListener("DOMContentLoaded", function () {
-  
-  if (window.innerWidth <= 767) {
-
-    
-    document.querySelectorAll(".w-tab-link").forEach(link => {
-      link.style.pointerEvents = "none";      
-      link.style.opacity = "0.4";             
-    });
-
-    
-    document.querySelectorAll(".w-tab-pane").forEach(pane => {
-      pane.style.display = "block";
-      pane.style.opacity = "1";
-      pane.style.visibility = "visible";
-      pane.classList.add("mobile-pane-visible");
-    });
-
-    
-    document.querySelectorAll(".w-tab-pane.w--tab-active")
-      .forEach(pane => pane.classList.remove("w--tab-active"));
-  }
-});
-</script>
-
+  <script src="https://wecamp.pro/js/go-to-the-specific-tab.js" type="text/javascript"></script>
  </body>
 </html>
