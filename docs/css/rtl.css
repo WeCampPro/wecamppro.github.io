@@ -6,7 +6,7 @@
 }
 
 .new-price {
-  color: green;       /* highlight new price */
+  color: #3434ff;       /* highlight new price */
   font-weight: bold;  /* make it stand out */
   font-size: 1em;     /* normal size */
 }
