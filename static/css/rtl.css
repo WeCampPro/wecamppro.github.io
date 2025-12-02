@@ -1,3 +1,16 @@
+/*Price*/
+.old-price {
+  color: red;         /* makes the strikethrough red */
+  font-size: 0.8em;   /* smaller than normal price */
+  margin-right: 10px; /* space between old and new price */
+}
+
+.new-price {
+  color: green;       /* highlight new price */
+  font-weight: bold;  /* make it stand out */
+  font-size: 1em;     /* normal size */
+}
+
 /*TEMPORARY*/
 .button-secondary.full-width {
   width: auto; /*set the registration button fit the texy*/
