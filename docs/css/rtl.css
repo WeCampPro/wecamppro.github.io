@@ -2,13 +2,31 @@
 .old-price {
   color: red;         /* makes the strikethrough red */
   font-size: 0.8em;   /* smaller than normal price */
-  margin-right: 10px; /* space between old and new price */
 }
 
 .new-price {
   color: #3434ff;       /* highlight new price */
   font-weight: bold;  /* make it stand out */
   font-size: 1em;     /* normal size */
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between prices */
+}
+
+/* Mobile view: stack prices */
+@media (max-width: 768px) {
+  .price {
+    flex-direction: column;
+    align-items: center; /* or 'flex-start' if you prefer at right */
+  }
+
+  .old-price,
+  .new-price {
+    display: block;
+  }
 }
 
 /*TEMPORARY*/
