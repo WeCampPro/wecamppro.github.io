@@ -1,3 +1,9 @@
+# 💙  WECAMP
+‌ ‌
+‌ ‌
+‌ ‌
+‌ ‌
+‌  
 # From Code to Cognition: Building Intelligent AI Agents with Python
 
 **Course Duration:** 60 Hours (12 weeks × ~5 hours/week)  
