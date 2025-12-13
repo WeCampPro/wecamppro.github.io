@@ -1,4 +1,4 @@
-baseURL                 = 'https://wecamp.pro/'
+baseURL                 = 'wecamp.pro/'
 canonifyurls            = "true"
 languageCode            = 'fa-ir'
 title                   = 'وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ'

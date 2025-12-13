@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ</title>
-    <link>https://wecamp.pro/talents/</link>
+    <link>wecamp.pro/talents/</link>
     <description>Recent content on وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ</description>
     <generator>Hugo</generator>
     <language>fa-ir</language>
-    <atom:link href="https://wecamp.pro/talents/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="wecamp.pro/talents/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://wecamp.pro/talents/firstname-lastname/</link>
+      <link>wecamp.pro/talents/firstname-lastname/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://wecamp.pro/talents/firstname-lastname/</guid>
+      <guid>wecamp.pro/talents/firstname-lastname/</guid>
       <description></description>
     </item>
   </channel>
