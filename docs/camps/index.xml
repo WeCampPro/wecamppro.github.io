@@ -2,72 +2,72 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ</title>
-    <link>wecamp.pro/camps/</link>
+    <link>//localhost:1313/camps/</link>
     <description>Recent content on وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ</description>
     <generator>Hugo</generator>
     <language>fa-ir</language>
-    <atom:link href="wecamp.pro/camps/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/camps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>wecamp.pro/camps/agentic-ai/</link>
+      <link>//localhost:1313/camps/agentic-ai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/agentic-ai/</guid>
+      <guid>//localhost:1313/camps/agentic-ai/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/cloud-infra-deepdive/</link>
+      <link>//localhost:1313/camps/cloud-infra-deepdive/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/cloud-infra-deepdive/</guid>
+      <guid>//localhost:1313/camps/cloud-infra-deepdive/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/cloud-infra-deployment/</link>
+      <link>//localhost:1313/camps/cloud-infra-deployment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/cloud-infra-deployment/</guid>
+      <guid>//localhost:1313/camps/cloud-infra-deployment/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/cloud-infra-management/</link>
+      <link>//localhost:1313/camps/cloud-infra-management/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/cloud-infra-management/</guid>
+      <guid>//localhost:1313/camps/cloud-infra-management/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/coming-soon/</link>
+      <link>//localhost:1313/camps/coming-soon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/coming-soon/</guid>
+      <guid>//localhost:1313/camps/coming-soon/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/product-design-advanced/</link>
+      <link>//localhost:1313/camps/product-design-advanced/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/product-design-advanced/</guid>
+      <guid>//localhost:1313/camps/product-design-advanced/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/product-design-project/</link>
+      <link>//localhost:1313/camps/product-design-project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/product-design-project/</guid>
+      <guid>//localhost:1313/camps/product-design-project/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/product-design/</link>
+      <link>//localhost:1313/camps/product-design/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/product-design/</guid>
+      <guid>//localhost:1313/camps/product-design/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>wecamp.pro/camps/user-research/</link>
+      <link>//localhost:1313/camps/user-research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>wecamp.pro/camps/user-research/</guid>
+      <guid>//localhost:1313/camps/user-research/</guid>
       <description></description>
     </item>
   </channel>
