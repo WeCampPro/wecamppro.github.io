@@ -72,19 +72,19 @@ enableRobotsTXT = true
 ###################AI###################
 [[cascade]]
    [cascade._target]
-    path = '/path/product-design'
+    path = '/school/product-design'
     [cascade.params]
       layout = "product-design"
 
 [[cascade]]
    [cascade._target]
-    path = '/path/cloud-engineering'
+    path = '/school/cloud-engineering'
     [cascade.params]
       layout = "cloud-engineering"
 
 [[cascade]]
    [cascade._target]
-    path = '/path/ai-engineering'
+    path = '/school/ai-engineering'
     [cascade.params]
       layout = "ai-engineering"
 
