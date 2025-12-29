@@ -748,13 +748,35 @@
         <div class="w-commerce-commercecheckoutrow row-checkout">
          <div class="w-commerce-commercecheckoutcolumn">
           <label class="w-commerce-commercecheckoutlabel" for="">
-           شهر محل سکونت
+         اتتخاب موضوع آموزشی
           </label>
-          <input class="w-commerce-commercecheckoutshippingcity input checkout" name="city" type="text"/>
+          <select class="w-commerce-commercecheckoutshippingcountryselector select" name="Which Camp">
+             <option value="---">
+              ---
+             </option>
+             <option value="AI">
+              هوش مصنوعی
+             </option>
+             <option value="Design">
+              محصول
+             </option>
+             <option value="Marketing">
+              مارکتینگ
+             </option>
+             <option value="DevOps&Cloud">
+              دواپس / کلود
+             </option>
+             <option value="Programing">
+              توسعه نرم‌افزار
+             </option>
+             <option value="Other">
+              سایر
+             </option>
+          </select>
          </div>
          <div class="w-commerce-commercecheckoutcolumn">
           <label class="w-commerce-commercecheckoutlabel" for="">
-         بازه سنی
+         بازه سنی شما
           </label>
           <select class="w-commerce-commercecheckoutshippingcountryselector select" name="age_range">
              <option value="---">
@@ -778,7 +800,14 @@
           </select>
          </div>
         </div>
+        <label class="w-commerce-commercecheckoutlabel" for="">
+         ‌ ‌
+         <p>
+           می‌توانید سوال(های) خود را در اینجا بنویسید.
 
+         </p>
+        </label>
+        <textarea class="w-commerce-commercecheckoutshippingfullname input checkout textarea" name="which product" minlength="20"></textarea>
         <label class="w-commerce-commercecheckoutlabel" for="">
          📑 رزومه
          <p>
@@ -791,14 +820,7 @@
         <label class="w-commerce-commercecheckoutlabel" for="">
 
        </fieldset>
-       <fieldset>
-        <div class="w-commerce-commercecheckoutshippingmethodslist">
-         <label class="w-commerce-commercecheckoutshippingmethoditem">
-          <input name="I am commited" type="radio"/>
-           ‌ ‌ می‌توانم هفته‌ای حداقل ۱۵ ساعت برای تمرین‌های کمپ وقت بگذارم.
-         </label>
-        </div>
-       </fieldset>
+
        <input type="hidden" name="subject" id="var1" value="">
        <input type="hidden" name="redirect" id="var2" value="">
        
