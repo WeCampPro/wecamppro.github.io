@@ -1,0 +1,1905 @@
+/* ==========================================================================
+   hd.css — WECAMP HD layout / utility layer (task W1.1)
+   --------------------------------------------------------------------------
+   The COMPLETE hand-authored CSS layer for the site — no framework, no build
+   step. It owns both the named, REPEATED structural primitives (container,
+   section rhythm, grids, spacers, headings, type) AND the small set of `.hd-*`
+   utility helpers (display, flex, alignment, sizing, visibility) that replace
+   Webflow's long tail of one-off classes. Exactly like the WECORE hd.css.
+
+   Every value references an --hd-* token from hd-tokens.css (a few structural
+   constants — 1fr / auto / 100% / 0 / 1px — and the academy flow-margins and
+   .01em heading letter-spacing, reproduced verbatim with academy.css line refs,
+   excepted). Depends on: static/css/hd-tokens.css (--hd-* props, W0.2).
+
+   Load order (head.html): hd-tokens.css → hd.css → academy.css (tokens first,
+   so the layer that consumes them via var() resolves correctly).
+
+   PARITY: values are verified byte-for-byte against academy.css so that when a
+   template swaps a Webflow class for the .hd-* equivalent (W5) it renders
+   identically. academy.css line refs are noted per block. Today NO template
+   uses .hd-* classes, so loading this file alongside academy.css changes
+   nothing on screen.
+
+   RTL-FIRST: WECAMP defaults to dir="rtl" (Persian). Every primitive uses CSS
+   logical properties (margin-inline, padding-inline, padding-block,
+   text-align: start/end) so a SINGLE rule serves both RTL and LTR.
+
+   BREAKPOINT TIERS (Webflow desktop-first, mirror academy.css @media):
+     lg = max-width 991px  (tablet)        md = max-width 767px  (mobile-land.)
+     sm = max-width 479px  (mobile)        wide = min-width 1440px
+   Used in the .hd-grid-stack-*, .hd-hide-*, .hd-show-* families below.
+
+   No !important anywhere — every rule sits at plain single-class specificity,
+   so the migration never needs an !important arms race against academy.css.
+   ========================================================================== */
+
+/* ==========================================================================
+   §1  Base — border-box only
+   academy.css/Webflow already apply this; declared here so the layer stays
+   self-sufficient once academy.css is removed (W6.1). Identical value =
+   zero render change today.
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   §2  Container — replaces .container-default-1209px (academy.css:4221-4227)
+   max-width 1209px, centred, 24px inline gutter → 16px @479; widens to 1320px
+   ≥1440px (academy.css:8230). --hd-gutter already ramps 24→16 @479 in
+   hd-tokens.css, so one rule reproduces the responsive gutter. Logical props
+   ⇒ RTL/LTR share one rule. Bespoke narrower containers (472/462/400/948px)
+   are page-specific and composed at W5 (.hd-container + a max-width override).
+   ========================================================================== */
+.hd-container {
+  width: 100%;
+  max-width: var(--hd-width-container); /* 1209px */
+  margin-inline: auto;
+  padding-inline: var(--hd-gutter); /* 24px → 16px @479 */
+}
+@media screen and (min-width: 1440px) {
+  .hd-container {
+    max-width: var(--hd-width-container-wide); /* 1320px */
+  }
+}
+
+/* Bare inline-gutter utility for full-bleed sections that still want padding. */
+.hd-padding-global {
+  padding-inline: var(--hd-gutter);
+}
+
+/* ==========================================================================
+   §3  Section vertical rhythm — replaces base .section (academy.css:4770-4772)
+   --hd-section-pad ramps 140 → 80 (@991) → 50 (@479) in hd-tokens.css, so
+   .hd-section reproduces academy's base .section byte-for-byte across
+   breakpoints. -sm/-lg are proportional design-system extensions (academy has
+   one base rhythm plus per-section bespoke paddings — .section.cta 137,
+   .section.events-section 120, … — which are reproduced at W5 via page CSS,
+   not here). -md is an explicit alias of the canonical value.
+   ========================================================================== */
+.hd-section,
+.hd-section-md {
+  padding-block: var(--hd-section-pad); /* 140 / 80 / 50 */
+}
+.hd-section-sm {
+  padding-block: calc(var(--hd-section-pad) * 0.6); /* 84 / 48 / 30 */
+}
+.hd-section-lg {
+  padding-block: calc(var(--hd-section-pad) * 1.4); /* 196 / 112 / 70 */
+}
+
+/* ==========================================================================
+   §4  Grid — generic primitive replacing .w-layout-grid (academy.css:2066:
+   display:grid; gap:16px; 1fr 1fr). Webflow's base grid does NOT auto-collapse
+   — each bespoke grid stacks at its OWN tier (companies 5→3@991→2@767→1@479,
+   choose 3→1@767, courses 3→1@991). So collapse is OPT-IN via .hd-grid-stack-*
+   rather than a blanket rule, to reproduce each grid faithfully at W5.
+   Bespoke column-gaps (27/68/70/80px) and asymmetric tracks (.8fr/1fr sales
+   grids) are page-specific → set at W5 in page CSS; the token gap scale below
+   covers the common cases.
+   ========================================================================== */
+.hd-grid {
+  display: grid;
+  gap: var(--hd-space-sm); /* 16px — academy .w-layout-grid default */
+}
+.hd-grid-2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+.hd-grid-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+.hd-grid-4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+.hd-grid-5col {
+  grid-template-columns: repeat(5, 1fr); /* .companies-grid base */
+}
+
+/* Gap modifiers (token scale) — compose on .hd-grid or any flex container. */
+.hd-gap-xs {
+  gap: var(--hd-space-xs); /* 8px  */
+}
+.hd-gap-sm {
+  gap: var(--hd-space-sm); /* 16px */
+}
+.hd-gap-md {
+  gap: var(--hd-space-md); /* 24px */
+}
+.hd-gap-lg {
+  gap: var(--hd-space-lg); /* 32px */
+}
+.hd-gap-xl {
+  gap: var(--hd-space-xl); /* 48px */
+}
+.hd-gap-xxl {
+  gap: var(--hd-space-xxl); /* 64px */
+}
+
+/* Opt-in single-column collapse at a chosen tier (mirror per-grid academy
+   @media). Add the tier that matches the grid being migrated. */
+@media screen and (max-width: 991px) {
+  .hd-grid-stack-lg {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 767px) {
+  .hd-grid-stack-md {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 479px) {
+  .hd-grid-stack-sm {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   §5  Spacers — systematic replacement for academy's bespoke .spacer.* set
+   Full-width zero-height blocks whose padding-top injects vertical rhythm
+   (the Client-First / WECORE spacer pattern). The --hd-space-* ramp is the
+   clean scale that the per-instance Webflow spacers migrate onto.
+   ========================================================================== */
+.hd-spacer-xxs,
+.hd-spacer-xs,
+.hd-spacer-sm,
+.hd-spacer-md,
+.hd-spacer-lg,
+.hd-spacer-xl,
+.hd-spacer-xxl {
+  width: 100%;
+}
+.hd-spacer-xxs {
+  padding-top: var(--hd-space-xxs); /* 4px  */
+}
+.hd-spacer-xs {
+  padding-top: var(--hd-space-xs); /* 8px  */
+}
+.hd-spacer-sm {
+  padding-top: var(--hd-space-sm); /* 16px */
+}
+.hd-spacer-md {
+  padding-top: var(--hd-space-md); /* 24px */
+}
+.hd-spacer-lg {
+  padding-top: var(--hd-space-lg); /* 32px */
+}
+.hd-spacer-xl {
+  padding-top: var(--hd-space-xl); /* 48px */
+}
+.hd-spacer-xxl {
+  padding-top: var(--hd-space-xxl); /* 64px */
+}
+
+/* ==========================================================================
+   §6  Typography — headings + display + body + text helpers
+   Sizes / line-heights from hd-tokens.css (which encode the @767 / @479
+   scale-downs from academy.css:9409-9427, 10456-10462). Weight 500, colour
+   --hd-color-title, font Vazirmatn-first, plus the per-heading letter-spacing
+   and FLOW MARGINS reproduced verbatim from academy.css h1-h6 (academy.css:
+   3240-3296) so a migrated <h2 class="hd-h2"> matches the old <h2> exactly —
+   the migration's prime directive. (Letter-spacing: h1/h5 none; h2/h3/h4/h6
+   .01em. Margins are asymmetric — h3/h4 carry a margin-top.)
+   ========================================================================== */
+.hd-h1,
+.hd-h2,
+.hd-h3,
+.hd-h4,
+.hd-h5,
+.hd-h6 {
+  font-family: var(--hd-font-heading);
+  font-weight: var(--hd-weight-heading); /* 500 */
+  color: var(--hd-color-title); /* #0b0b2c */
+}
+.hd-h1 {
+  margin: 0 0 24px; /* academy.css:3243-3244 */
+  font-size: var(--hd-h1-size); /* 60 → 48@767 → 38@479 */
+  line-height: var(--hd-h1-line); /* 1.133 */
+}
+.hd-h2 {
+  margin: 0 0 18px; /* academy.css:3251-3254 */
+  font-size: var(--hd-h2-size); /* 40 → 32@767 → 28@479 */
+  line-height: var(--hd-h2-line); /* 1.2 */
+  letter-spacing: 0.01em;
+}
+.hd-h3 {
+  margin: 16px 0 20px; /* academy.css:3260-3264 (has margin-top:16) */
+  font-size: var(--hd-h3-size); /* 25 → 21@767 */
+  line-height: var(--hd-h3-line); /* 1.36 */
+  letter-spacing: 0.01em;
+}
+.hd-h4 {
+  margin: 20px 0; /* academy.css:3270-3274 (margin-top & bottom 20) */
+  font-size: var(--hd-h4-size); /* 23 → 18@767 */
+  line-height: var(--hd-h4-line); /* 1.36 */
+  letter-spacing: 0.01em;
+}
+.hd-h5 {
+  margin: 0 0 16px; /* academy.css:3282-3283 */
+  font-size: var(--hd-h5-size); /* 18 → 17@767 */
+  line-height: var(--hd-h5-line); /* 1.222 */
+}
+.hd-h6 {
+  margin: 0 0 14px; /* academy.css:3292-3293 */
+  font-size: var(--hd-h6-size); /* 16 */
+  line-height: var(--hd-h6-line); /* 1.25 */
+  letter-spacing: 0.01em;
+}
+
+/* Hero display heading — replaces .special-2 (academy.css:7025-7030):
+   74 → 46@767 → 37@479 / 700 / 1.115 / .01em. No own margin (academy's base
+   .special-2 sets none; per-page variants .teachers/.about-us add it at W5). */
+.hd-special {
+  margin: 0;
+  font-family: var(--hd-font-heading);
+  font-size: var(--hd-special-size); /* 74 → 46@767 → 37@479 */
+  font-weight: 700; /* heavier than the 500 heading weight */
+  line-height: var(--hd-special-line); /* 1.115 */
+  letter-spacing: 0.01em;
+  color: var(--hd-color-title);
+}
+
+/* Body paragraph — replaces academy body / .paragraph (academy.css:3232-3238,
+   rtl.css:41): 18px / 1.667 / --hd-color-body, Vazirmatn-first body stack. */
+.hd-text-body {
+  font-family: var(--hd-font-body);
+  font-size: var(--hd-text-base); /* 18px  */
+  line-height: var(--hd-line-body); /* 1.667 */
+  color: var(--hd-color-body); /* #69697b */
+}
+
+/* Text colours (token-backed) — e.g. .font-color-primary → .hd-text-accent. */
+.hd-text-accent {
+  color: var(--hd-color-accent); /* #3434ff — .font-color-primary */
+}
+.hd-text-title {
+  color: var(--hd-color-title); /* #0b0b2c */
+}
+.hd-text-muted {
+  color: var(--hd-color-body); /* #69697b */
+}
+.hd-text-white {
+  color: var(--hd-color-white); /* on accent/dark sections */
+}
+
+/* Text alignment — logical, so they flip with dir automatically. */
+.hd-text-center {
+  text-align: center;
+}
+.hd-text-start {
+  text-align: start;
+}
+.hd-text-end {
+  text-align: end;
+}
+
+/* ==========================================================================
+   §7  Display & flex helpers — composite layout shortcuts. One-off display
+   cases get a small .hd-* helper here as templates need them; there is no
+   utility framework to fall back on.
+   ========================================================================== */
+.hd-block {
+  display: block;
+}
+.hd-inline-block {
+  display: inline-block;
+}
+.hd-inline {
+  display: inline;
+}
+.hd-flex {
+  display: flex;
+}
+.hd-inline-flex {
+  display: inline-flex;
+}
+.hd-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.hd-flex-wrap {
+  flex-wrap: wrap;
+}
+.hd-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hd-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   §8  Alignment helpers — compose on any flex/grid container; logical margins
+   for RTL/LTR parity.
+   ========================================================================== */
+.hd-items-start {
+  align-items: flex-start;
+}
+.hd-items-center {
+  align-items: center;
+}
+.hd-items-end {
+  align-items: flex-end;
+}
+.hd-justify-start {
+  justify-content: flex-start;
+}
+.hd-justify-center {
+  justify-content: center;
+}
+.hd-justify-between {
+  justify-content: space-between;
+}
+.hd-justify-end {
+  justify-content: flex-end;
+}
+.hd-mx-auto {
+  margin-inline: auto;
+}
+.hd-ms-auto {
+  margin-inline-start: auto;
+}
+.hd-me-auto {
+  margin-inline-end: auto;
+}
+
+/* ==========================================================================
+   §9  Sizing — structural width helpers (no hardcoded px).
+   ========================================================================== */
+.hd-w-full {
+  width: 100%;
+}
+.hd-mw-full {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   §10 Visibility — unconditional hide + responsive hide/show families.
+   academy.css ships NO reusable standalone hide/show utilities (only
+   host-scoped Webflow combinators), so these are authored here for W5.
+   .hd-hide-* hides at the tier AND below (cumulative); .hd-show-* is hidden by
+   default and shown only at the tier and below. Per-band hiding (visible on
+   desktop only / tablet only) is added at W5 if a template needs it.
+   ========================================================================== */
+.hd-hidden {
+  display: none;
+}
+.hd-show-lg,
+.hd-show-md,
+.hd-show-sm {
+  display: none; /* shown within their tier below */
+}
+@media screen and (max-width: 991px) {
+  .hd-hide-lg {
+    display: none;
+  }
+  .hd-show-lg {
+    display: block;
+  }
+}
+@media screen and (max-width: 767px) {
+  .hd-hide-md {
+    display: none;
+  }
+  .hd-show-md {
+    display: block;
+  }
+}
+@media screen and (max-width: 479px) {
+  .hd-hide-sm {
+    display: none;
+  }
+  .hd-show-sm {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   §11 Divider — 1px hairline (replaces the Webflow .divider hooks).
+   ========================================================================== */
+.hd-divider {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: var(--hd-color-neutral-300); /* #ececf4 */
+}
+
+/* ==========================================================================
+   §12 Button system (W1.2) — replaces academy's .button-primary /
+   .button-secondary (+ the .w-button reset) and their .large / .cta /
+   .header-button / .full-width / ._2-buttons modifiers.
+
+   WEBFLOW → HD MAPPING (so W5 markup migration is mechanical):
+     button-primary  w-button .............. .hd-button
+     button-secondary w-button ............. .hd-button .hd-button-secondary
+     .large ................................ .hd-button-lg
+     button-secondary .cta ................. .hd-button .hd-button-secondary .hd-button-cta
+     button-primary .header-button ........ .hd-button .hd-button-header
+     .full-width ........................... .hd-button-full
+     ._2-buttons  (hero button row) ........ .hd-button-group  (drop the inner .spacer._2-buttons)
+     leading/trailing icon ................. .hd-button-icon   (+ .hd-icon-directional to mirror arrows in RTL)
+
+   COMPOSABILITY: .hd-button ALONE is the filled primary button; every variant
+   is a single-class modifier that overrides the base by SOURCE ORDER at equal
+   (flat) specificity — no !important. The one exception is the two 2-class
+   `.hd-button.hd-button-secondary/-cta` border rules near the end: a single,
+   documented (0,2,0) bump that exists only to clear academy.css's native
+   `[type="button"]/[type="reset"]{border:0}` normalize on native controls while
+   the two stylesheets coexist (removable in W6.1). The .w-button reset
+   (display, margin, border:0, text-decoration, cursor) is folded into the base,
+   so an <a>, <button> or <input> needs only .hd-button.
+
+   PARITY is against the LIVE site = academy.css RECONCILED with the rtl.css
+   overrides that win today (rtl loads after academy): radius 18px (rtl.css:127,
+   not academy's 4px), primary letter-spacing 0 (rtl.css:123), secondary .02em
+   (rtl.css:225), centered button row (rtl.css:297). Those rtl rules target the
+   Webflow classes W5 deletes, so their effect is baked in here to keep the look
+   identical. fill / border / padding / font / hover all reproduce the live
+   appearance byte-for-byte (line refs per rule).
+
+   The primary :hover uses the darker --hd-color-accent-2 (#2c23d2 = academy
+   --secondary-2, academy.css:4353) — NOT the lighter --hd-color-accent-hover —
+   to match the live site exactly.
+
+   STATES added in W1.2 (Webflow shipped none): :focus-visible ring for keyboard
+   a11y, :active press, :disabled. Hover/active are suppressed on disabled
+   buttons via :where(:not(:disabled):not([aria-disabled="true"])), which adds
+   ZERO specificity so the rules stay flat.
+
+   RTL: label/icon order follows `dir` automatically (flex honours the writing
+   direction), so an icon sits on the leading edge in both RTL and LTR with no
+   extra rule. A directional glyph (arrow/chevron) that must point ALONG the
+   reading direction adds .hd-icon-directional — mirrored under dir="rtl". That
+   `[dir="rtl"] .hd-icon-directional` rule (0,1,1) is the one intentional
+   non-single-class selector in this file: mirroring a glyph is something logical
+   properties cannot express, and it targets only .hd-* elements, so it never
+   competes with academy.css.
+   ========================================================================== */
+
+/* Base = filled primary button — academy.css:4337-4350 (.button-primary) with
+   the .w-button reset (academy.css:265-275) folded in, plus the live rtl
+   radius/tracking. */
+.hd-button {
+  display: inline-block;
+  margin: 0;                                   /* .w-button reset — matters for <button>/<input> */
+  appearance: none;
+  -webkit-appearance: none;                    /* drop native control theming so <button>/<input>
+                                                  render like <a> (academy.css:481 leaves them
+                                                  appearance:button). The transparent secondary's
+                                                  border is restored by the (0,2,0) interop rules below. */
+  font-family: var(--hd-font-body);            /* <a> inherits body; explicit for <button>/<input> */
+  font-size: var(--hd-button-font);            /* 16px (academy.css:4346) */
+  font-weight: var(--hd-weight-medium);        /* 500 (academy.css:4347) */
+  line-height: var(--hd-button-line);          /* 18px (academy.css:4348) */
+  letter-spacing: 0;                           /* live primary tracking (rtl.css:123 over academy .08em) */
+  text-align: center;
+  text-transform: uppercase;                   /* academy.css:4340 (no-op on Persian glyphs) */
+  text-decoration: none;                       /* .w-button reset (anchors) */
+  color: var(--hd-color-neutral-100);          /* #fff (academy.css:4339) */
+  background-color: var(--hd-color-accent);    /* #3434ff (academy.css:4338) */
+  border: 0;                                   /* .w-button reset */
+  border-radius: var(--hd-radius-md);          /* 18px — live (rtl.css:127 over academy 4px) */
+  padding: var(--hd-button-pad-y) var(--hd-button-pad-x); /* 18px 24px (academy.css:4345) */
+  transform-style: preserve-3d;                /* academy.css:4342 — 3d context for the lift */
+  cursor: pointer;                             /* .w-button reset */
+  transition: transform var(--hd-transition-duration-fast),
+              box-shadow var(--hd-transition-duration-fast),
+              background-color var(--hd-transition-duration-fast); /* .3s (academy.css:4350) */
+}
+.hd-button:hover:where(:not(:disabled):not([aria-disabled="true"])) {
+  background-color: var(--hd-color-accent-2);  /* #2c23d2 (academy.css:4353) */
+  color: var(--hd-color-neutral-100);
+  transform: translate3d(0, var(--hd-button-hover-lift), .01px); /* -2px (academy.css:4355) */
+  box-shadow: var(--hd-button-hover-shadow);   /* 0 4px 10px #4a3aff26 (academy.css:4356) */
+}
+.hd-button:active:where(:not(:disabled):not([aria-disabled="true"])) {
+  transform: translate3d(0, 0, .01px);         /* press: settle the hover lift (NEW W1.2) */
+}
+.hd-button:focus-visible {
+  outline: var(--hd-button-focus-width) solid var(--hd-color-accent); /* NEW W1.2 — a11y */
+  outline-offset: var(--hd-button-focus-offset);
+}
+.hd-button:disabled,
+.hd-button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;                         /* NEW W1.2 */
+}
+
+/* Secondary — accent outline on transparent (academy.css:6621-6633). Resets the
+   base 500 weight to the body 400 academy's secondary inherits, and carries the
+   live .02em tracking. */
+.hd-button-secondary {
+  color: var(--hd-color-accent);
+  background-color: transparent;               /* academy.css:6629 (#0000) */
+  border: var(--hd-button-border) solid var(--hd-color-accent); /* 1px solid #3434ff (academy.css:6622) */
+  font-weight: var(--hd-weight-regular);       /* 400 — academy secondary sets no weight */
+  letter-spacing: var(--hd-button-tracking);   /* .02em live (rtl.css:225) */
+  transition: box-shadow var(--hd-transition-duration),
+              transform var(--hd-transition-duration),
+              color var(--hd-transition-duration-fast),
+              background-color var(--hd-transition-duration-fast); /* .35s/.35s/.3s/.3s (academy.css:6632) */
+}
+.hd-button-secondary:hover:where(:not(:disabled):not([aria-disabled="true"])) {
+  background-color: var(--hd-color-accent);    /* fill on hover (academy.css:6637) */
+  color: var(--hd-color-neutral-100);
+}
+
+/* CTA context — white fill on dark/accent bands, inverts to transparent on hover
+   (academy.css:6655-6665 .button-secondary.cta). Composes ON .hd-button-secondary;
+   the hover text stays white via .hd-button-secondary:hover above (source order). */
+.hd-button-cta {
+  background-color: var(--hd-color-neutral-100); /* white fill (academy.css:6657) */
+  border-color: var(--hd-color-neutral-100);     /* white border; width/style from secondary */
+  font-weight: var(--hd-weight-medium);          /* 500 (academy.css:6658) */
+  transition: border-color var(--hd-transition-duration),
+              box-shadow var(--hd-transition-duration),
+              transform var(--hd-transition-duration),
+              color var(--hd-transition-duration-fast),
+              background-color var(--hd-transition-duration-fast); /* academy.css:6659 */
+}
+.hd-button-cta:hover:where(:not(:disabled):not([aria-disabled="true"])) {
+  background-color: transparent;               /* invert (academy.css:6663) */
+  border-color: var(--hd-color-neutral-100);
+}
+
+/* academy.css normalize interop — academy.css:479 sets
+   `button, [type="button"], [type="reset"] { border: 0 }`. Its [type=…] parts
+   are ATTRIBUTE selectors at specificity (0,1,0), so on a <button type="button">
+   or <input type="button|reset"> they TIE the single-class .hd-button-secondary
+   / .hd-button-cta border above and win by load order (academy loads after
+   hd.css) — erasing the outline (an <a> has no [type], so it is unaffected).
+   These two 2-class rules re-assert the border at (0,2,0): the only deliberate
+   specificity bump in this file, scoped to the border alone. It is needed solely
+   while academy.css coexists; W6.1 removes academy, after which the single-class
+   rules above already suffice. Not an !important arms race. */
+.hd-button.hd-button-secondary {
+  border: var(--hd-button-border) solid var(--hd-color-accent);
+}
+.hd-button.hd-button-cta {
+  border-color: var(--hd-color-neutral-100);
+}
+
+/* Large (academy.css:4402-4406 / 6649-6653 .large). font ramps 18→16 @479 via
+   the token. */
+.hd-button-lg {
+  padding: var(--hd-button-pad-y-lg) var(--hd-button-pad-x-lg); /* 22px 32px */
+  font-size: var(--hd-button-font-lg);         /* 18px → 16px @479 */
+  line-height: var(--hd-button-line-lg);       /* 20px */
+}
+
+/* Full-width (academy.css:6671 .button-secondary.full-width = width:100%). */
+.hd-button-full {
+  width: 100%;
+}
+
+/* Both primary & secondary go full-width at ≤479 (academy.css:10639 / 11217). */
+@media screen and (max-width: 479px) {
+  .hd-button {
+    min-width: 100%;
+  }
+}
+
+/* Header-button context (academy.css:8450 / 9607 .button-primary.header-button):
+   ONLY responsive ordering/visibility — appearance is identical to the base. */
+@media screen and (max-width: 991px) {
+  .hd-button-header {
+    order: -1;                                 /* academy.css:8451 */
+  }
+}
+@media screen and (max-width: 767px) {
+  .hd-button-header {
+    display: none;                             /* academy.css:9608 */
+  }
+}
+
+/* Icon button — inline flex row + gap; DOM order of icon vs label follows `dir`,
+   so the icon sits on the leading edge in RTL and LTR alike. */
+.hd-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hd-space-xs);                     /* 8px */
+}
+/* Directional glyph — authored pointing the LTR way; mirror under RTL so it
+   points along the Persian reading direction. */
+[dir="rtl"] .hd-icon-directional {
+  transform: scaleX(-1);
+}
+
+/* Button row — replaces ._2-buttons (academy.css:5885 flex/align-center) with
+   the live centered layout (rtl.css:297) and the 27px gap that the inner
+   .spacer._2-buttons used to inject (academy.css:4265), so the spacer div drops. */
+.hd-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;                     /* live (rtl.css:298) */
+  gap: var(--hd-button-group-gap);             /* 27px */
+}
+
+/* ==========================================================================
+   §13 Form system (W1.3) — replaces the Webflow commerce-checkout form layer
+   (the live WECAMP forms wire those classes to web3forms) with a token-driven
+   .hd-* layer that renders identically.
+
+   WEBFLOW → HD MAPPING (W5 migrates markup; keep these intact when you do):
+     <input> w-commerce-…shippingfullname.input.checkout .. .hd-input
+     <input type=email> …emailinput.input.checkout ........ .hd-input  (+ dir="ltr")
+     <input type=tel>   …shippingzippostalcode.input.checkout .hd-input (+ dir="ltr",
+         KEEP the Farsi-digit pattern="[0-9۰-۹]{10,11}" + title)
+     <select> …shippingcountryselector.select ............. .hd-input .hd-select
+     <textarea> .input.checkout.textarea .................. .hd-input .hd-textarea
+     <label> w-commerce-commercecheckoutlabel ............. .hd-label
+     <span class="color-red">*</span> .................... .hd-required
+     block-header / block-content card ................... .hd-form-block-header / .hd-form-block
+     w-commerce-commercecheckoutrow / …column (2-col) .... .hd-form-row / .hd-form-col
+     <form> w-commerce-…customerinfowrapper .............. .hd-form
+     .w-form-done (success) / .w-form-fail (error) ....... .hd-form-success / .hd-form-error
+
+   *** web3forms WIRING MUST SURVIVE THE MIGRATION ***: keep the hidden
+   <input name="access_key">, every field `name=` (name/phone/email/"Which Camp"/
+   age_range/"which product"/resume/subject/redirect), the `action` URL and the
+   setVars() submit hook unchanged — only the CSS classes change in W5.
+
+   PARITY is against the LIVE site = academy.css RECONCILED with rtl.css: INPUT
+   corner 18px (rtl.css:126, not academy 4px); SELECT corner 4px (rtl rounds
+   .input but not .select — asymmetry kept for parity); textarea from rtl.css:696.
+   Values are token-driven (hd-tokens.css §Forms); academy/rtl line refs per rule.
+
+   Same flat single-class, source-order pattern as §11–§12: no !important; the
+   only non-single-class selectors are the documented state pairs (:hover/:focus)
+   and the one `html[dir="rtl"] .hd-select` chevron flip. STATES added in W1.3
+   (Webflow drove validity via JS): :focus-visible ring + .hd-input-error border.
+
+   RTL: labels align to the inline-start (right in Persian) by inheritance; tel/
+   email inputs that must read LTR get dir="ltr" in markup (W5) and align their
+   text to the inline-start. The select chevron sits on the inline-START side
+   (right in RTL, left in LTR) per the task spec, flipped via the dir rule below.
+   ========================================================================== */
+
+/* Text inputs (text/tel/email/url) — folds the w-commerce width/display reset
+   into the .input.checkout visual (academy.css:6283-6313 + 6369-6372, radius
+   from rtl.css:126). A bare <input class="hd-input"> needs no companion class. */
+.hd-input {
+  display: block;
+  width: 100%;
+  height: var(--hd-input-height);               /* 70px (academy.css:6288) */
+  min-height: auto;
+  margin: 0 0 var(--hd-input-gap);              /* mb 20px (.input.checkout, academy.css:6371) */
+  padding: var(--hd-input-pad);                 /* 20px (academy.css:6290) */
+  font-family: var(--hd-font-body);             /* native controls don't inherit it */
+  font-size: var(--hd-text-base);               /* 18px (academy.css:6291) — ≥16px, no iOS zoom */
+  line-height: var(--hd-input-line);            /* 1.1 (academy.css:6292) */
+  color: var(--hd-color-body);                  /* #69697b (academy.css:6285) */
+  background-color: var(--hd-color-neutral-100);/* #fff (.input.checkout, academy.css:6370) */
+  border: var(--hd-input-border) solid var(--hd-color-neutral-400); /* 1px #cfcfdb (academy.css:6284) */
+  border-radius: var(--hd-radius-md);           /* 18px — live (rtl.css:126 over academy 4px) */
+  appearance: none;
+  -webkit-appearance: none;                     /* w-commerce reset (academy.css:2531) — drop native chrome */
+  transition: border-color var(--hd-transition-duration),
+              color var(--hd-transition-duration); /* .35s (academy.css:6293) */
+}
+.hd-input::placeholder {
+  color: var(--hd-color-body);                  /* #69697b (academy.css:6308) */
+  line-height: var(--hd-placeholder-line);      /* 1.5 (academy.css:6310) */
+}
+.hd-input:hover:where(:not(:disabled):not([readonly])) {
+  border-color: var(--hd-color-accent);         /* #3434ff (academy.css:6297) */
+}
+.hd-input:focus {
+  border-color: var(--hd-color-accent);         /* (academy.css:6301) */
+  color: var(--hd-color-title);                 /* #0b0b2c (academy.css:6302) */
+}
+.hd-input:focus-visible {
+  outline: var(--hd-button-focus-width) solid var(--hd-color-accent); /* NEW W1.3 a11y ring */
+  outline-offset: var(--hd-button-focus-offset);
+}
+.hd-input:disabled,
+.hd-input[readonly] {
+  background-color: var(--hd-color-neutral-200);/* #fafafa — muted (NEW W1.3) */
+  cursor: not-allowed;
+}
+
+/* Invalid state — NEW in W1.3 (Webflow shipped none); red border through focus. */
+.hd-input-error,
+.hd-input-error:focus {
+  border-color: var(--hd-color-error);          /* #ff1c1c */
+}
+
+/* Select — .select visual (academy.css:3752-3780; corner 4px, NOT the input's
+   18px) + appearance:none and an inline-SVG chevron (no CDN per AGENTS.md). The
+   chevron sits on the inline-START side (task spec): right in RTL, left in LTR.
+   It tracks each control's OWN resolved direction via :dir() (below), so it
+   flips correctly even for an LTR field nested in the RTL page; the base
+   `right` is the production-RTL value + the fallback where :dir() is absent.
+   Extra inline-start padding clears it.
+   FIELD SPACING: .hd-select inherits the .hd-input 20px margin-bottom. On the
+   LIVE site .select carried margin-bottom:0 (only .input.checkout had the 20px),
+   so select rows sat tighter than input rows — a Webflow inconsistency. The hd
+   layer deliberately NORMALIZES selects to the same 20px rhythm as inputs (W5
+   inherits the cleaner value); the select's own box still renders byte-for-byte. */
+.hd-select {
+  height: auto;
+  min-height: var(--hd-select-min-height);      /* 60px (academy.css:3758) */
+  padding-block: 0;                             /* .select sets only inline padding */
+  padding-inline-end: var(--hd-input-pad);      /* 20px (academy.css:3760-3761) */
+  padding-inline-start: var(--hd-select-chevron-pad); /* 48px — clears the chevron */
+  line-height: var(--hd-select-line);           /* 1.111 (academy.css:3762) */
+  border-radius: var(--hd-radius-sm);           /* 4px — select keeps academy corner (rtl skips it) */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2369697b'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--hd-select-chevron-inset) center; /* inline-start in RTL (production default + no-:dir() fallback) */
+  background-size: var(--hd-select-chevron-size);
+}
+.hd-select:dir(ltr) {
+  background-position: left var(--hd-select-chevron-inset) center;  /* inline-start = left in LTR */
+}
+.hd-select:dir(rtl) {
+  background-position: right var(--hd-select-chevron-inset) center; /* inline-start = right in RTL */
+}
+
+/* Textarea — .input visual + the rtl.css:696 textarea rule (taller, resizable). */
+.hd-textarea {
+  height: auto;
+  min-height: var(--hd-textarea-min-height);    /* 100px (rtl.css:698) */
+  resize: vertical;                             /* rtl.css:697 */
+}
+
+/* Label — block, bold, sits above its control (academy.css:505 label +
+   .w-commerce-commercecheckoutlabel margin, academy.css:2499). Inherits the body
+   colour, so it aligns to the inline-start (right in RTL) with the page text. */
+.hd-label {
+  display: block;
+  margin-bottom: var(--hd-label-gap);           /* 8px (academy.css:2500) */
+  font-size: var(--hd-text-base);               /* 18px (inherited body size) */
+  font-weight: var(--hd-weight-bold);           /* bold (academy.css:505 label) */
+}
+/* Required asterisk — replaces <span class="color-red"> (academy.css:7762). */
+.hd-required {
+  color: var(--hd-color-error);                 /* #ff1c1c */
+}
+
+/* Form wrapper + card (academy .block-header/.block-content over the w-commerce
+   block, academy.css:2482-2495 / 7677-7691): a white, neutral-300-bordered card
+   with an 8px-rounded header bar above the fields. */
+.hd-form {
+  margin: 0;
+}
+.hd-form-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;                        /* academy.css:2485 */
+  padding: var(--hd-space-xxs) var(--hd-space-md); /* 4px 24px (academy.css:2486 + 7693) */
+  background-color: var(--hd-color-neutral-100);/* #fff */
+  border: var(--hd-input-border) solid var(--hd-color-neutral-300); /* 1px #ececf4 */
+  border-radius: var(--hd-form-block-radius) var(--hd-form-block-radius) 0 0; /* 8px top (academy.css:7689) */
+}
+.hd-form-block {
+  margin: 0;                                    /* neutralize the UA <fieldset> margin — block-content IS a fieldset (academy.css:473 fieldset reset) */
+  min-inline-size: 0;                           /* let the 2-col .hd-form-row shrink inside a <fieldset> (UA default min-inline-size:min-content would block it) */
+  padding: var(--hd-input-pad) var(--hd-space-md); /* 20px 24px (academy.css:2495 + 7682) */
+  background-color: var(--hd-color-neutral-100);/* #fff */
+  border: var(--hd-input-border) solid var(--hd-color-neutral-300); /* 1px #ececf4 */
+  border-top: 0;                                /* header owns the top edge */
+  border-radius: 0 0 var(--hd-form-block-radius) var(--hd-form-block-radius); /* 8px bottom (academy.css:7681) */
+}
+
+/* Two-column field row — replaces w-commerce-checkoutrow/column (academy.css:
+   2599-2609, a -8px/+8px negative-margin gutter = 16px between columns). Uses
+   column-gap (NOT gap) so that when the row stacks at ≤767px the vertical rhythm
+   comes from each field's own 20px margin-bottom — matching the live stacked
+   form — instead of a doubled 16px+20px gap. */
+.hd-form-row {
+  display: flex;
+  column-gap: var(--hd-space-sm);                /* 16px ≈ the 2×8px column gutters */
+}
+.hd-form-col {
+  flex: 1;
+}
+
+/* Success / error banners — academy.css:489 .w-form-done / :496 .w-form-fail.
+   Presentational only: Webflow also set display:none, revealing them by JS on
+   submit; that toggle is left to the AlpineJS x-show wiring in W7.4, so these
+   classes stay composable and never hide their own content. */
+.hd-form-success {
+  padding: var(--hd-form-success-pad);          /* 20px (academy.css:492) */
+  background-color: var(--hd-form-success-bg);  /* #ddd (academy.css:491) */
+  text-align: center;                           /* (academy.css:490) */
+}
+.hd-form-error {
+  margin-top: var(--hd-form-error-gap);         /* 10px (academy.css:498) */
+  padding: var(--hd-form-error-pad);            /* 10px (academy.css:499) */
+  background-color: var(--hd-form-error-bg);    /* #ffdede (academy.css:497) */
+}
+
+/* Two-column field rows collapse to a single column on mobile — the live
+   .row-checkout stacks at ≤767px (academy.css:9408/10399); the w-commerce row
+   itself stacks at ≤479px, but .row-checkout owns the larger breakpoint, so the
+   effective live stack point is 767px. Matched here so paired fields don't
+   squish on phones. */
+@media screen and (max-width: 767px) {
+  .hd-form-row {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   §14 Navigation (W2.1) — header bar + mega-menu dropdown + mobile drawer +
+   static hamburger. Replaces the Webflow w-nav/w-dropdown runtime and the
+   Lottie hamburger with an AlpineJS-driven, CSS-only nav. Markup: nav.html.
+
+   WEBFLOW → HD MAPPING (the markup migration is mechanical):
+     .header  .w-nav .......................... .hd-nav             (root banner)
+     .container-default-1209px .w-container ... .hd-container       (§2, reused)
+     .header-wrapper .......................... .hd-nav-wrapper
+     .split-content.header-left ............... .hd-nav-start
+     .split-content.header-right .............. .hd-nav-end
+     .brand .w-nav-brand ...................... .hd-nav-brand
+     .nav-menu .w-nav-menu .................... .hd-nav-menu        (drawer ≤991)
+     .nav-link ................................ .hd-nav-link
+     .header-dropdown .w-dropdown ............. .hd-dropdown
+     .header-dropdown-toggle .w-dropdown-toggle .hd-dropdown-toggle
+     .dropdown-icon ........................... .hd-dropdown-caret  (static SVG)
+     .dropdown-list .w-dropdown-list .......... .hd-dropdown-panel  (Alpine x-show)
+     .menu-grid-wrapper ....................... .hd-mega            (white card)
+     .menu-grid ............................... .hd-mega-grid
+     .menu-2-columns / .mega-menu-column-* .... .hd-mega-col
+     .mega-menu-title (+ .hidden-mobile) ...... .hd-mega-title (+ .hd-hide-lg §10)
+     .mega-menu-link (+ .special) ............. .hd-mega-link (+ .hd-mega-link-special)
+     .menu-button .w-nav-button ............... .hd-nav-toggle      (hamburger)
+     .button-primary.header-button ........... .hd-button .hd-button-header (§12)
+
+   PARITY: the live Persian site = academy.css RECONCILED with rtl.css (loads
+   last). There the header is ALWAYS RTL (.container-default-1209px{direction:rtl}
+   ≥992 + .header{direction:rtl} ≤991) and rtl.css flips the nav via the OLD
+   classes — which it can no longer reach once they become .hd-*. So RTL is
+   re-established here via dir="rtl" on the .hd-nav root (set in nav.html) +
+   CSS logical properties throughout, so ONE rule serves RTL (live) and any
+   future LTR build. Reconciled live values folded in: nav-link inline-end gap
+   28px (rtl.css:56), mega card text aligns to start (rtl.css:92), mega grid is
+   content-width (rtl.css:96 width:auto — achieved by grid-template-columns:auto),
+   CTA radius/tracking (§12 .hd-button). academy/rtl line refs per rule.
+
+   The desktop bar collapses to the dark full-screen drawer + hamburger at
+   ≤991px (Webflow data-collapse="medium"), with 767/479 refinements — mirroring
+   academy's @media blocks exactly. Single-class specificity, no !important; the
+   one deliberate (0,1,1) bump (button.hd-nav-toggle border) clears academy's
+   `[type=button]{border:0}` normalize, same documented interop as §12.
+   ========================================================================== */
+
+/* ---- Root banner (= .header + .w-nav) ---- */
+.hd-nav {
+  position: relative;                          /* positioning context for the absolute drawer + dropdown */
+  z-index: var(--hd-z-nav);                    /* 1000 — above page content (academy .w-nav z-index:1000) */
+  background-color: transparent;               /* .header bg #0000 (academy.css:4520) */
+  padding-block: 28px;                         /* .header padding-block (academy.css:4521-4522) → 24/20/18 below */
+}
+
+/* Content cluster (= .header-wrapper): logo+menu opposite CTA+toggle. */
+.hd-nav-wrapper {
+  display: flex;                               /* academy.css:6027-6028 */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left cluster (= .split-content.header-left): brand + desktop menu. */
+.hd-nav-start {
+  display: flex;                               /* academy.css:6528-6529 */
+  align-items: center;
+}
+
+/* Right cluster (= .split-content.header-right): cart + account CTA + hamburger. */
+.hd-nav-end {
+  display: flex;                               /* academy.css:6447-6448 */
+  align-items: center;
+  gap: var(--hd-space-md);                     /* 24px — replaces .spacer.header-right (academy.css:4293) */
+}
+
+/* Brand / logo link (= .brand). */
+.hd-nav-brand {
+  display: inline-block;
+  padding-inline-start: 0;                     /* .brand padding-left:0 (academy.css:6186) */
+  text-decoration: none;
+  transform-style: preserve-3d;                /* academy.css:6185 */
+  transition: transform var(--hd-transition-duration),
+              color var(--hd-transition-duration); /* .35s (academy.css:6187) */
+}
+.hd-nav-brand:hover {
+  transform: scale3d(1.1, 1.1, 1.01);          /* academy.css:6190-6191 */
+}
+.hd-nav-logo {
+  display: block;
+  width: var(--hd-nav-logo-width);             /* 148px (academy.css:4218) */
+  height: auto;
+}
+
+/* ---- Desktop menu row (= .nav-menu) ---- */
+.hd-nav-menu {
+  display: flex;
+  align-items: center;
+  margin-inline-start: var(--hd-nav-menu-gap); /* 40px gap from brand (academy.css:3703 / rtl.css:67) */
+}
+
+/* Primary links (= .nav-link). */
+.hd-nav-link {
+  display: flex;
+  align-items: center;
+  margin: var(--hd-nav-link-margin);           /* 10px all sides (academy.css:5472) */
+  margin-inline-end: var(--hd-nav-link-margin-end); /* 28px inline-end gap, live RTL (rtl.css:56) */
+  color: var(--hd-color-title);                /* --titles (academy.css:5471) */
+  line-height: var(--hd-nav-link-line);        /* 1.111em (academy.css:5474) */
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--hd-transition-duration); /* .35s (academy.css:5476) */
+}
+.hd-nav-link:hover,
+.hd-nav-link[aria-current="page"] {
+  color: var(--hd-color-accent);               /* hover/current → --accent (academy.css:5480/5484) */
+}
+.hd-nav-link[aria-current="page"] {
+  font-weight: var(--hd-weight-medium);        /* current weight 500 (academy.css:5485) */
+}
+
+/* ---- Dropdown wrapper (= .header-dropdown / .w-dropdown) ---- */
+.hd-dropdown {
+  position: relative;                          /* anchor for the absolute panel */
+}
+
+/* Toggle (= .header-dropdown-toggle) — a real <button>, native chrome reset. */
+.hd-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--hd-space-xs);                     /* 8px label↔caret */
+  margin: var(--hd-nav-link-margin);           /* match the .hd-nav-link rhythm (10px) */
+  margin-inline-end: var(--hd-nav-link-margin-end);
+  padding: 0;                                  /* .header-dropdown-toggle padding:0 (academy.css:5465) */
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--hd-nav-link-line);
+  color: var(--hd-color-title);
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: color var(--hd-transition-duration); /* .35s (academy.css:5466) */
+}
+.hd-dropdown-toggle:hover {
+  color: var(--hd-color-accent);
+}
+
+/* Caret glyph (= .dropdown-icon) — accent, static (Webflow had no rotation). */
+.hd-dropdown-caret {
+  flex: none;
+  width: var(--hd-nav-caret-size);             /* ~8px (academy.css:5706) */
+  height: auto;
+  color: var(--hd-color-accent);               /* accent caret (academy.css:5704) */
+}
+
+/* Panel (= .dropdown-list / .w-dropdown-list) — absolute on desktop, gated by
+   Alpine x-show. NO display set here so [x-cloak] (below) hides it pre-hydration
+   at flat specificity and x-show fully owns open/closed (no !important). */
+.hd-dropdown-panel {
+  position: absolute;
+  top: 100%;                                   /* drop below the toggle (Webflow w-dropdown-list top:100%) */
+  inset-inline-start: 0;                       /* anchor to the toggle's inline-start edge */
+  z-index: var(--hd-z-dropdown);               /* 100 (within the z-nav stacking context) */
+  margin: 0;
+}
+
+/* The visible white card (= .menu-grid-wrapper). */
+.hd-mega {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--hd-mega-card-pad-y) var(--hd-mega-card-pad-x); /* 40px 38px (academy.css:7740) */
+  border-radius: var(--hd-radius-lg);          /* 24px (academy.css:7738) */
+  background-color: var(--hd-color-neutral-100); /* #fff (academy.css:7737) */
+  box-shadow: var(--hd-mega-card-shadow);      /* layered soft shadows (academy.css:7742) */
+  text-align: start;                           /* rtl.css:92 text-align:right → logical start */
+}
+
+/* Two content columns (= .menu-grid). `auto auto` = content-width, reproducing
+   the live RTL `.menu-grid{width:auto}` (rtl.css:96) over academy's 770px. */
+.hd-mega-grid {
+  display: grid;
+  grid-template-columns: auto auto;            /* academy.css:5359 cols, sized to content */
+  gap: var(--hd-mega-grid-gap);                /* 0 (academy.css:5356-5357) */
+  justify-content: center;                     /* academy.css:5362 */
+  place-items: start stretch;                  /* academy.css:5363 */
+}
+
+/* A column (= .menu-2-columns / .mega-menu-column-*). */
+.hd-mega-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;                        /* .mega-menu-column-1 (academy.css:5809-5811) */
+}
+
+/* Column heading (= .mega-menu-title <h4>). All props set so academy's h4 base
+   (lower specificity, loaded later) can't bleed in. */
+.hd-mega-title {
+  margin: 0;                                   /* academy.css:5257-5258 */
+  padding: var(--hd-mega-title-pad-y) 0;       /* 10px block (academy.css:5259-5260) */
+  padding-inline-start: var(--hd-mega-title-pad-x); /* 20px inline-start (academy.css:5261) */
+  font-family: var(--hd-font-heading);
+  font-weight: var(--hd-weight-heading);       /* 500 */
+  font-size: var(--hd-mega-title-size);        /* 20px (academy.css:5262) */
+  line-height: 1.2;
+  color: var(--hd-color-title);
+}
+
+/* Mega links (= .mega-menu-link). */
+.hd-mega-link {
+  display: block;
+  padding: var(--hd-mega-link-pad-y) var(--hd-mega-link-pad-x); /* 10px 20px (academy.css:4740) */
+  border-radius: var(--hd-mega-link-radius);   /* 10px (academy.css:4739) */
+  background-color: var(--hd-color-neutral-100); /* #fff (academy.css:4736) */
+  color: var(--hd-color-body);                 /* --paragraphs (academy.css:4737) */
+  font-size: var(--hd-mega-link-size);         /* 18px (academy.css:4741) */
+  line-height: var(--hd-mega-link-line);       /* 20px (academy.css:4742) */
+  white-space: nowrap;                         /* academy.css:4738 */
+  text-decoration: none;
+  transition: background-color var(--hd-transition-duration),
+              color var(--hd-transition-duration); /* .35s (academy.css:4744) */
+}
+.hd-mega-link:hover {
+  background-color: var(--hd-color-surface);   /* --secondary-1 #f5f7ff (academy.css:4748) */
+  color: var(--hd-color-accent);               /* (academy.css:4749) */
+}
+.hd-mega-link[aria-current="page"] {
+  color: var(--hd-color-accent);               /* (academy.css:4753) */
+  font-weight: var(--hd-weight-medium);        /* 500 (academy.css:4754) */
+}
+
+/* Special CTA-style link (= .mega-menu-link.special). */
+.hd-mega-link-special {
+  padding-block: var(--hd-mega-link-special-pad-y); /* 14px (academy.css:4761-4762) */
+  background-color: var(--hd-mega-link-special-bg); /* faint accent (academy.css:4760) */
+  color: var(--hd-color-accent);               /* (academy.css:4759) */
+  font-weight: var(--hd-weight-bold);          /* 700 (academy.css:4763) */
+}
+.hd-mega-link-special:hover {
+  background-color: var(--hd-color-accent);    /* solid accent (academy.css:4766) */
+  color: var(--hd-color-neutral-100);          /* white (academy.css:4767) */
+}
+
+/* ---- Static hamburger (= .menu-button / .w-nav-button) ---- Hidden on desktop;
+   shown at ≤991. A real <button>; three CSS bars morph to an X when open. */
+.hd-nav-toggle {
+  display: none;                               /* desktop: hidden (.w-nav-button display:none) */
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--hd-nav-toggle-size);            /* 45px (academy.css:9296) */
+  height: var(--hd-nav-toggle-size);           /* 45px (academy.css:9297) */
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border-radius: var(--hd-nav-toggle-radius);  /* 4px (academy.css:9298) */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--hd-transition-duration),
+              background-color var(--hd-transition-duration); /* .35s (academy.css:9300) */
+}
+.hd-nav-toggle:hover {
+  transform: scale(0.9);                       /* academy.css:9304 */
+}
+.hd-nav-toggle[aria-expanded="true"] {
+  background-color: var(--hd-color-neutral-100); /* white when open (academy.css:9308) */
+}
+/* academy.css:479 `button,[type="button"]{border:0}` (0,1,0) ties + beats the
+   single-class border by load order; re-assert the 1px box border at (0,1,1) —
+   the same documented interop bump as the §12 buttons. Removable in W6.1. */
+button.hd-nav-toggle {
+  border: var(--hd-input-border) solid var(--hd-color-neutral-300); /* 1px #ececf4 (academy.css:9295) */
+}
+
+/* The 3-bar icon (replaces the 25×25 Lottie glyph, academy.css:8853-8854). */
+.hd-nav-toggle-icon {
+  position: relative;
+  display: block;
+  width: var(--hd-nav-bar-icon);               /* 25px */
+  height: 16px;
+}
+.hd-nav-toggle-icon span {
+  position: absolute;
+  inset-inline: 0;
+  height: var(--hd-nav-bar-line);              /* 2px */
+  border-radius: var(--hd-radius);             /* 3px (subtle rounding) */
+  background-color: var(--hd-color-title);     /* dark bars (#0b0b2c) */
+  transition: transform var(--hd-transition-duration-fast),
+              opacity var(--hd-transition-duration-fast),
+              top var(--hd-transition-duration-fast);
+}
+.hd-nav-toggle-icon span:nth-child(1) { top: 0; }
+.hd-nav-toggle-icon span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hd-nav-toggle-icon span:nth-child(3) { top: 100%; transform: translateY(-100%); }
+/* Open (aria-expanded=true) → X: outer bars cross at center, middle bar fades. */
+.hd-nav-toggle[aria-expanded="true"] .hd-nav-toggle-icon span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.hd-nav-toggle[aria-expanded="true"] .hd-nav-toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+.hd-nav-toggle[aria-expanded="true"] .hd-nav-toggle-icon span:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* Keyboard focus ring for every interactive nav element (Webflow shipped none). */
+.hd-nav-link:focus-visible,
+.hd-dropdown-toggle:focus-visible,
+.hd-mega-link:focus-visible,
+.hd-nav-toggle:focus-visible {
+  outline: var(--hd-button-focus-width) solid var(--hd-color-accent);
+  outline-offset: var(--hd-button-focus-offset);
+  border-radius: var(--hd-radius);
+}
+
+/* ==========================================================================
+   Mobile collapse (≤991px) — Webflow data-collapse="medium". The desktop menu
+   becomes a dark full-screen drawer; the hamburger appears. Mirrors academy's
+   @media(max-width:991px) nav/drawer block.
+   ========================================================================== */
+@media screen and (max-width: 991px) {
+  .hd-nav {
+    padding-block: 24px;                       /* .header @991 (academy.css:8475-8476) */
+  }
+
+  .hd-nav-toggle {
+    display: flex;                             /* hamburger revealed (.w-nav-button @collapse) */
+  }
+
+  /* Desktop menu → dark full-screen drawer (.nav-menu @991, academy.css:8344-8352).
+     Fixed below the bar; fades/drops in when .hd-nav-menu-open is toggled by
+     Alpine. Closed state is removed from the tab order (visibility:hidden). */
+  .hd-nav-menu {
+    position: fixed;
+    inset-block-start: var(--hd-nav-bar-h);    /* flush below the bar (measured per breakpoint) */
+    inset-block-end: 0;
+    inset-inline: 0;
+    z-index: var(--hd-z-dropdown);             /* below the bar's own content (header stays clickable) */
+    flex-direction: column;
+    align-items: stretch;
+    margin-inline-start: 0;                    /* reset the 40px desktop gap */
+    padding: var(--hd-nav-drawer-pad-y) var(--hd-nav-drawer-pad-x); /* 22px 28px (academy.css:8349) */
+    background-color: var(--hd-color-title);   /* --titles dark drawer (academy.css:8345) */
+    box-shadow: var(--hd-nav-drawer-shadow);   /* (academy.css:8351) */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateY(-0.5rem);            /* closed: lifted + faded (Webflow "default" feel) */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--hd-nav-menu-duration) ease,
+                transform var(--hd-nav-menu-duration) ease,
+                visibility 0s linear var(--hd-nav-menu-duration);
+  }
+  .hd-nav-menu.hd-nav-menu-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity var(--hd-nav-menu-duration) ease,
+                transform var(--hd-nav-menu-duration) ease;
+  }
+
+  /* Links: large, centered, translucent-white on the dark drawer (academy.css:8775-8784). */
+  .hd-nav-link {
+    margin-inline: 0;
+    justify-content: center;
+    text-align: center;
+    padding-block: 8px;
+    font-size: 33px;                           /* (academy.css:8779) */
+    color: var(--hd-nav-link-mobile-color);    /* #ffffff85 */
+  }
+  .hd-nav-link:hover,
+  .hd-nav-link[aria-current="page"] {
+    color: var(--hd-color-neutral-100);        /* solid white (academy.css:8783) */
+  }
+
+  /* Dropdown goes full width and flows in-line in the drawer (academy.css:8454-8458, 8908-8913). */
+  .hd-dropdown {
+    width: 100%;
+  }
+  .hd-dropdown-toggle {
+    width: 100%;
+    margin-inline: 0;
+    justify-content: center;
+    padding-block: 8px;
+    font-size: 33px;
+    color: var(--hd-nav-link-mobile-color);
+  }
+  .hd-dropdown-toggle:hover {
+    color: var(--hd-color-neutral-100);
+  }
+  .hd-dropdown-caret {
+    width: 13px;                               /* grows on the drawer (academy.css:8825 10px @8px base ratio) */
+    color: var(--hd-color-neutral-100);        /* white caret on dark (academy.css:8824) */
+  }
+  .hd-dropdown-panel {
+    position: static;                          /* stacks in flow (academy.css:8911) */
+    inset: auto;
+    z-index: auto;
+  }
+
+  /* Mega card keeps the white card through 991 (no @991 academy override);
+     the grid collapses to one column with a 32px gap (= .mega-menu-column-4
+     margin-top:32px, academy.css:8809-8810). */
+  .hd-mega-grid {
+    grid-template-columns: 1fr;                /* single column (academy.css:8759) */
+    width: 100%;
+    row-gap: var(--hd-space-lg);               /* 32px between the stacked columns */
+    padding-inline: 18px;                      /* (academy.css:8762-8763) */
+  }
+
+  /* Title: white on dark, padding 0 0 20px (academy.css:8743-8747). */
+  .hd-mega-title {
+    padding: 0 0 20px;
+    color: var(--hd-color-neutral-100);
+  }
+
+  /* Mega links go dark-theme (academy.css:8538-8568). */
+  .hd-mega-link {
+    background-color: var(--hd-color-title);   /* --titles dark (academy.css:8541) */
+    color: var(--hd-mega-link-mobile-color);   /* #ffffffa6 */
+    padding: var(--hd-mega-link-mobile-pad);   /* 16px (academy.css:8544) */
+    font-size: 22px;                           /* (academy.css:8545) */
+    line-height: 24px;                         /* (academy.css:8546) */
+  }
+  .hd-mega-link:hover {
+    background-color: var(--hd-mega-link-mobile-hover-bg); /* #1b1b55 (academy.css:8550) */
+    color: var(--hd-color-neutral-100);
+  }
+  .hd-mega-link[aria-current="page"] {
+    color: var(--hd-color-neutral-100);
+    font-weight: var(--hd-weight-bold);        /* 700 (academy.css:8556) */
+  }
+  .hd-mega-link-special {
+    background-color: var(--hd-color-accent);  /* accent bg (academy.css:8560) */
+    color: var(--hd-color-neutral-100);        /* white (academy.css:8561) */
+    padding-block: 22px;                       /* (academy.css:8562-8563) */
+  }
+  .hd-mega-link-special:hover {
+    background-color: var(--hd-color-neutral-100); /* invert (academy.css:8566) */
+    color: var(--hd-color-accent);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hd-nav {
+    padding-block: 20px;                       /* .header @767 (academy.css:9631-9632) */
+  }
+  .hd-nav-link,
+  .hd-dropdown-toggle {
+    font-size: 32px;                           /* (academy.css:9844) */
+  }
+  /* Mega card dissolves into the dark drawer (academy.css:9331-9336). */
+  .hd-mega {
+    padding: 16px 0 0;                         /* only 16px top */
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .hd-mega-grid {
+    padding-inline: 10px;                      /* (academy.css:9826-9827) */
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .hd-nav {
+    padding-block: 18px;                       /* .header @479 (academy.css:10675-10676) */
+  }
+  /* Drawer left-aligns its content (academy.css:10540-10544); side padding 28→18
+     comes from the --hd-nav-drawer-pad-x token override (hd-tokens.css @479). */
+  .hd-nav-menu {
+    align-items: stretch;
+    text-align: start;
+  }
+  .hd-nav-link,
+  .hd-dropdown-toggle {
+    justify-content: flex-start;               /* left-align (academy.css:10542) */
+    text-align: start;
+    font-size: 28px;                           /* (academy.css:10945) */
+  }
+  .hd-mega-link {
+    padding-block: 14px;                       /* (academy.css:10755-10756) */
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+/* Reduced motion: drawer + brand/hamburger animations snap instead of easing. */
+@media (prefers-reduced-motion: reduce) {
+  .hd-nav-menu,
+  .hd-nav-menu.hd-nav-menu-open,
+  .hd-nav-brand,
+  .hd-nav-toggle,
+  .hd-nav-toggle-icon span {
+    transition: none;
+  }
+}
+
+/* x-cloak — hide the Alpine x-show dropdown panel until Alpine boots and strips
+   the attribute, so it never flashes open pre-hydration. Declared LAST (flat
+   0,1,0) and the panel sets no `display`, so this wins by source order without
+   !important. First Alpine component on the site, so it lives here. */
+[x-cloak] {
+  display: none;
+}
+
+/* ==========================================================================
+   §15 Tabs (W3.1) — behaviour layer for the AlpineJS tab component (hd-tabs.js)
+   that replaces the Webflow w-tabs runtime + the five helper scripts.
+
+   Strategy: the four distinct tab *looks* keep their brand classes, which
+   academy.css/rtl.css still style (cleaned up in W5.4/W6), so visuals are
+   unchanged. These rules only (a) restore the few structural bits lost with the
+   removed w-tab* classes and (b) re-point the `.w--current` / `.w--tab-active`
+   active state and the `[data-w-tab]`/`.w-tab-pane` responsive rules onto the
+   Alpine-driven `.hd-tab-active` / `.hd-tab-pane` / `[data-hd-tab]` hooks — a
+   1:1 rename (same elements, same declarations). hd.css loads BEFORE academy.css,
+   so the active shims use 0,2,0 specificity to win regardless of source order.
+   var(--accent…) are academy.css :root props (academy.css:2055-2061); kept
+   verbatim for pixel parity, remapped to --hd-* when academy.css goes in W6.
+
+   class/attr map  (academy/rtl line refs per rule):
+     .w-tabs ............... .hd-tabs            (academy.css:1958)
+     .w-tab-menu .......... .hd-tab-menu         (academy.css:1972)
+     .w-tab-link .......... .hd-tab-link         (academy.css:1976 + rtl.css:593)
+     .w-tab-content ....... .hd-tab-content      (academy.css:1996)
+     .w-tab-pane .......... .hd-tab-pane         (academy.css:2002; display via x-show)
+     .X.w--current ........ .X.hd-tab-active     (per-style refs below)
+     [data-w-tab="Tab 4"] . [data-hd-tab="Tab 4"](rtl.css:433)
+   ========================================================================== */
+
+/* Structural hooks — port of the Webflow base tab rules (academy.css:1958-1999).
+   No `display:none` on the pane: Alpine x-show owns pane display. */
+.hd-tabs { position: relative; }
+.hd-tab-menu { position: relative; }
+.hd-tab-content { position: relative; display: block; }   /* overflow stays on .videos-tabs-content (academy.css:6868) */
+.hd-tab-link {
+  position: relative;            /* academy.css:1976 — brand classes use bottom/top:-1px */
+  vertical-align: top;
+  text-align: right;             /* academy .w-tab-link left, rtl.css:593 right (RTL-first) */
+  cursor: pointer;
+  text-decoration: none;
+}
+.hd-tab-link:focus { outline: 0; }            /* academy.css:1992 */
+.hd-tab-pane { position: relative; }          /* academy.css:2002 (minus display) */
+@media screen and (max-width: 479px) {
+  .hd-tab-link { display: block; }            /* academy.css:2012 */
+}
+
+/* Active-state shim — port of the brand `.X.w--current` rules onto the
+   Alpine-toggled `.hd-tab-active`. Same selectors (custom class + state),
+   same declarations, same 0,2,0 specificity. */
+.videos-tab-link.hd-tab-active {              /* academy.css:5584 */
+  border-bottom: 4px solid var(--accent);
+  color: var(--accent);
+  background-color: #0000;
+  font-weight: 500;
+}
+.student-wrapper.hd-tab-active {              /* academy.css:6946 */
+  border-top: 4px solid var(--accent);
+  color: var(--accent);
+  background-color: #0000;
+}
+.course-tab-link.hd-tab-active {             /* academy.css:7303 */
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+  background-color: #0000;
+}
+.tab-link.teacher.hd-tab-active {            /* academy.css:7410 */
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--neutral-100);
+  box-shadow: 0 1px 10px #3434ff3b;
+}
+
+/* Sticky-menu active state — port of rtl.css:374-386. The menu keeps its
+   .videos-tabs-menu + toggled .sticky classes, so rtl.css:357-372 still apply;
+   only the `.w--current` underline indicator needs re-pointing. */
+.videos-tabs-menu.sticky .videos-tab-link.hd-tab-active {            /* rtl.css:374 */
+  border-bottom: none;
+}
+.videos-tabs-menu.sticky .videos-tab-link.hd-tab-active::after {     /* rtl.css:378 */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+  bottom: -16px;
+}
+
+/* Responsive active-state — academy.css ≤767 block. */
+@media screen and (max-width: 767px) {
+  .videos-tab-link.hd-tab-active {           /* academy.css:9870 */
+    border-bottom-width: 1px;
+    border-bottom-color: var(--accent);
+    background-color: var(--secondary-1);
+  }
+  .videos-tab-link.hd-tab-active {           /* rtl.css:610 */
+    text-align: right;
+  }
+  .student-wrapper.hd-tab-active {           /* academy.css:10226 */
+    background-color: var(--secondary-1);
+    border-top-width: 0;
+    border-radius: 8px;
+  }
+  .course-tab-link.hd-tab-active {           /* academy.css:10302 */
+    background-color: var(--secondary-1);
+  }
+}
+
+/* Mobile stacked panes — 1:1 port of the two rtl.css ≤767 `.w-tab-pane` blocks
+   (rtl.css:389-402 then 405-428; second block's overlaps win by source order,
+   preserved here). On camp pages the menu is hidden (rtl.css:407, retained
+   .videos-tabs-menu) and Alpine's shown() reveals every pane; on the generic
+   pages a single pane shows, so the dividers land exactly as before. */
+@media screen and (max-width: 767px) {
+  .hd-tab-pane {                              /* rtl.css:390 */
+    padding-top: 24px;
+    border-top: 2px solid #eee;
+    margin-top: 24px;
+  }
+  .hd-tab-pane:first-child {                  /* rtl.css:397 */
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .hd-tab-pane {                              /* rtl.css:412 */
+    opacity: 1 !important;
+    position: static !important;
+    visibility: visible !important;
+    padding-top: 40px;
+    border-top: 1px solid #dcdcdc;
+    margin-top: 40px;
+  }
+  .hd-tab-pane:first-child {                  /* rtl.css:424 */
+    border-top: none;
+    margin-top: 40px;
+    padding-top: 0;
+  }
+  /* Hide teacher bios on mobile inside the camp "تیم آموزشی" pane (rtl.css:433). */
+  .videos-tab-panel[data-hd-tab="Tab 4"] a.card.videos-community
+  .split-content.videos-community-left p.paragraph {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   §16 Sliders (W3.2) — two slider systems replacing the Webflow w-slider
+   runtime (wf.js) + the porsline survey slide-in (static/js/slider.js):
+
+     (a) hd-snap CSS scroll-snap carousels driven by hd-snap-slider.js. The
+         .hd-snap-* primitives are reused from WECORE; the about/single.html
+         carousel keeps its brand look on .slider/.slide-wrapper/.left-arrow/
+         .right-arrow/.slide-nav (academy.css), so only the structure the removed
+         w-slider* classes provided is restored here.
+     (b) .hd-survey-* — the porsline survey slide-in (hd-survey.js +
+         partials/survey.html), a verbatim port of the CSS slider.js injected at
+         runtime (renamed, position-aware via --right/--left modifiers).
+   ========================================================================== */
+
+/* --- (a) Scroll-snap carousel ------------------------------------------------
+   .hd-snap-slider / .hd-snap-track / .hd-snap-slide ported from WECORE; the
+   track additionally hides its scrollbar (the Webflow slider showed none). */
+.hd-snap-slider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.hd-snap-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
+}
+.hd-snap-track::-webkit-scrollbar { display: none; }   /* WebKit/Blink */
+.hd-snap-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* about/single.html arrows sit 28px outside the slider box (.left-arrow /
+   .right-arrow at left/right:-28px), so this slider opts out of the base
+   overflow:hidden — the same override WECORE uses for .about_story_slider. The
+   track keeps its own overflow, so nothing else leaks. */
+.slider.hd-snap-slider { overflow: visible; }
+
+/* Restore the absolute placement + vertical centering the removed
+   .w-slider-arrow-* base supplied (academy.css:1276/1299/1304). The brand
+   .left-arrow/.right-arrow (academy.css:6738/6035) keep the look + left/right
+   offsets; they remain role="button" divs, so no UA reset is needed. */
+.hd-snap-slider .left-arrow,
+.hd-snap-slider .right-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-block: auto;
+  z-index: 3;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Dot indicators generated by hd-snap-slider.js into [data-hd-slider-dots].
+   On about/single.html the host is .slide-nav, which academy.css keeps
+   display:none (the Webflow design hid the nav) — so the dots stay hidden there
+   for visual parity while remaining fully functional if a slider shows its nav.
+   Look ported from Webflow .w-slider-dot / .w-active (academy.css:1252-1265). */
+.hd-snap-dot {
+  cursor: pointer;
+  background-color: #fff6;
+  width: 1em;
+  height: 1em;
+  margin: 0 3px .5em;
+  padding: 0;
+  border: 0;
+  border-radius: 100%;
+  transition: background-color .1s, color .1s;
+  display: inline-block;
+  position: relative;            /* parity with Webflow .w-slider-dot (academy.css:1260) */
+}
+.hd-snap-dot.is-active { background-color: #fff; }
+.hd-snap-dot:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff; }
+
+/* --- (b) Porsline survey slide-in -------------------------------------------
+   Verbatim port of the styles static/js/slider.js injected at runtime, renamed
+   .porsline-* → .hd-survey-* and made position-aware via the --right/--left
+   modifiers instead of JS string interpolation. Timing unchanged: overlay
+   700ms, panel 500ms. The overlay's own z-index lifts it above the navbars,
+   replacing the dead rtl.css porsline z-index block. */
+.hd-survey {
+  position: fixed;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .7);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 700ms;
+}
+.hd-survey.is-active {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+  height: auto;
+  z-index: 99999;
+}
+.hd-survey-panel {
+  width: 70%;
+  height: 100vh;
+  position: relative;
+  transition: all 500ms ease-in-out;
+}
+.hd-survey--right .hd-survey-panel { margin-left: 100%; }
+.hd-survey--left .hd-survey-panel { margin-left: -100%; }
+.hd-survey--right.is-open .hd-survey-panel { margin: 0 0 0 30%; }
+.hd-survey--left.is-open .hd-survey-panel { margin: 0; }
+.hd-survey-header { position: relative; }
+.hd-survey-close {
+  -webkit-appearance: none;       /* reset native button chrome (academy.css:479
+                                     sets -webkit-appearance:button); same interop
+                                     shim as §12 .hd-button / §14 .hd-nav-toggle */
+  appearance: none;
+  transition: all 200ms;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #f0f2f5;
+  border-radius: 50%;
+  background-color: #3e434d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hd-survey--right .hd-survey-close { left: -16px; }
+.hd-survey--left .hd-survey-close { right: -16px; }
+.hd-survey-content { height: 100vh; }
+.hd-survey-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* CTA pill — ports .porsline-button (used as a styled label on
+   camps/cloud-infra-management.html). */
+.hd-survey-button {
+  color: #fff;
+  background-color: #118eb7;
+  border-radius: 4px;
+  padding: 7px 16px;
+  margin: 4px 2px;
+  line-height: 1.4;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+  cursor: pointer;
+}
+
+/* Bottom-sheet on ≤1024px — same breakpoint + declarations as the original
+   media query; modifier-level specificity matched so these win at the
+   breakpoint regardless of source order. */
+@media (max-width: 1024px) {
+  .hd-survey {
+    background: none;
+    height: 95% !important;
+    top: unset !important;
+  }
+  .hd-survey--right .hd-survey-panel,
+  .hd-survey--left .hd-survey-panel {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 100%;
+  }
+  .hd-survey--right.is-open .hd-survey-panel,
+  .hd-survey--left.is-open .hd-survey-panel { margin: 0; }
+  .hd-survey--right .hd-survey-close,
+  .hd-survey--left .hd-survey-close { top: -16px; }
+  .hd-survey--right .hd-survey-close { left: 16px; }
+  .hd-survey--left .hd-survey-close { right: 16px; }
+  .hd-survey-content .hd-survey-iframe { border-radius: 16px 16px 0 0; }
+}
+
+/* ==========================================================================
+   §17 Video modal (W3.3) — accessible player (hd-video.js +
+   partials/video-modal.html) replacing the Webflow w-lightbox runtime (wf.js)
+   and its w-json payloads. Adapted from the WECORE hero-video.css modal: a dark
+   centred overlay (backdrop bumped to match the Webflow lightbox's #000000e6),
+   an inline <video> or <iframe>, and a close button placed with logical
+   properties so it mirrors in RTL. The .hd-modal display:none guard is the inline
+   style on the element; x-show flips it to flex (the [x-cloak] §14 rule is not
+   !important, so it can't be relied on here). Brand thumbnail look (.course-preview
+   /.button-play-wrapper, academy.css) is untouched; .hd-lightbox-thumb is just the
+   trigger hook. */
+.hd-modal {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, .9);          /* ≈ Webflow .w-lightbox-backdrop #000000e6 */
+  overscroll-behavior: contain;
+}
+.hd-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 940px;                       /* source video width (940 mp4 / 854 yt) */
+}
+.hd-modal-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;                   /* stable box before metadata/iframe loads */
+  border: 0;
+  border-radius: 12px;
+  background: #000;
+}
+.hd-modal-close {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: -3rem;
+  inset-inline-end: 0;                    /* RTL-aware: right in LTR, left in RTL */
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Trigger hook on the preview thumbnails (the play-button anchor). */
+.hd-lightbox-thumb {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 479px) {
+  .hd-modal-content { width: 100%; }
+  .hd-modal-close { top: -2.75rem; }      /* keep the X on-screen on small viewports */
+}
+
+/* ==========================================================================
+   §18 FAQ / accordion (W3.4) — AlpineJS disclosure replacing the Webflow
+   one-offs. The component is built HERE and consumed by two callers: the custom
+   partials/temp/ai-accordion.html (an inline <style> + a JS height tween + a
+   ::after +/− marker — ported below), and, in W5.5, the contact FAQ (a Webflow
+   IX2 height/rotate interaction). Single-expand state lives on the wrapper
+   (x-data="{ active: null }", active = the open index or null); each trigger is
+   a real <button> so Enter/Space toggle and a focus-visible ring come for free.
+
+   The hd-faq-* shims (ported from WECORE hd.css §14) are component-agnostic — a
+   button reset, a grid-template-rows 0fr→1fr height animation, and an icon
+   rotation — so the same classes will drive the contact FAQ in W5.5. The height
+   tween animates height:auto with no JS via a 1-row grid whose track grows
+   0fr→1fr; the inner clips the overflow. Collapsed is the CSS default (0fr), so
+   nothing flashes open before Alpine hydrates (no x-cloak needed) and visibility
+   flips the collapsed panel out of the a11y tree + tab order.
+
+   The ai-accordion's own chrome (dividers, padding, the +/− marker) is the
+   .hd-accordion-* block at the end; its RTL comes from dir="rtl" on the root +
+   logical properties, replacing the inline direction:rtl the partial carried.
+   ========================================================================== */
+
+/* -- reusable shims (WECORE hd.css §14) ----------------------------------- */
+/* trigger — the question row as a real <button>: neutralise native chrome and
+   stretch it to the row width; the caller's own class keeps the visual layout. */
+.hd-faq-trigger {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.hd-faq-trigger:focus-visible {
+  outline: var(--hd-button-focus-width) solid var(--hd-color-accent);
+  outline-offset: var(--hd-button-focus-offset);
+  border-radius: var(--hd-radius);
+}
+
+/* icon — rotate an <img>-based marker 45° on open (a + becomes an ×). Used by
+   the contact FAQ (W5.5); the ai-accordion uses a ::after text marker instead. */
+.hd-faq-icon > img      { transition: transform var(--hd-transition); }
+.hd-faq-icon-open > img { transform: rotate(45deg); }
+
+/* panel — CSS-only height:auto animation (grid-template-rows 0fr→1fr). */
+.hd-faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--hd-transition);
+}
+.hd-faq-panel-open { grid-template-rows: 1fr; }
+.hd-faq-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility var(--hd-transition-duration);
+}
+.hd-faq-panel-open > .hd-faq-panel-inner { visibility: visible; }
+
+/* reduced-motion: toggle instantly — no height or icon-rotation animation. */
+@media (prefers-reduced-motion: reduce) {
+  .hd-faq-panel,
+  .hd-faq-panel-inner,
+  .hd-faq-icon > img { transition: none; }
+}
+
+/* -- ai-accordion chrome (was the inline <style> in temp/ai-accordion.html) -- */
+.hd-accordion {
+  width: 100%;
+  max-width: 700px;
+  margin-block: 20px;
+  margin-inline: auto;
+  text-align: start;           /* RTL via dir="rtl" on the root → start = right */
+}
+.hd-accordion-item {
+  border-block-end: 1px solid #ddd;
+}
+/* question — layered on .hd-faq-trigger (which supplied the button reset). */
+.hd-accordion-question {
+  position: relative;
+  padding-block: 18px 10px;    /* top 18 / bottom 10 (was the JS-tween question row) */
+  padding-inline: 15px;        /* symmetric — direction-agnostic, consistent w/ the block */
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.667em;        /* match the body line-height the old div inherited */
+  color: var(--titles);
+  user-select: none;
+}
+.hd-accordion-question::after {
+  content: "+";
+  position: absolute;
+  inset-inline-end: 20px;      /* was left:20px under direction:rtl → inline-end */
+  font-size: 20px;
+  transition: transform var(--hd-transition-duration-fast);
+}
+.hd-accordion-question.hd-accordion-open::after { content: "−"; }
+/* the padded answer body, inside .hd-faq-panel-inner so its spacing is clipped
+   while collapsed (the inner is an overflow:hidden BFC, so margins don't leak). */
+.hd-accordion-answer-inner {
+  padding-inline: 15px;
+  margin-block-start: 8px;
+}
+.hd-accordion-answer-inner p {
+  margin: 0 0 15px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   §19 Richtext (W3.4) — .hd-richtext replaces Webflow's .w-richtext on the 5
+   CMS-body templates. The academy .rich-text / .rich-text-bullets classes stay
+   and keep supplying the typography (headings, p/li/ul/ol margins, img radius,
+   figcaption, blockquote, figure margins — academy.css:7059+); these rules only
+   reproduce what the removed .w-richtext gave the FIGURE (academy.css:1698+):
+   the 60% default width, the alt-placeholder <div> hidden via font-size:0, the
+   image-figure table layout, and the align-fullwidth override to 100% width
+   (without it the about/cover image would cap at 60%). Logical props mirror in
+   RTL. No flow-spacing or list-padding is added here — academy .rich-text owns
+   that, so typography is unchanged.
+   ========================================================================== */
+.hd-richtext figure {
+  max-width: 60%;
+  position: relative;
+}
+.hd-richtext figure img {
+  width: 100%;
+}
+.hd-richtext figure div {              /* the Webflow alt-text placeholder wrapper */
+  color: transparent;
+  font-size: 0;
+}
+.hd-richtext figure.hd-richtext-figure-image {
+  display: table;
+}
+.hd-richtext figure.hd-richtext-figure-image > div {
+  display: inline-block;
+}
+.hd-richtext figure.hd-richtext-figure-image > figcaption {
+  caption-side: bottom;
+  display: table-caption;
+}
+.hd-richtext figure.hd-richtext-align-fullwidth {
+  clear: both;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+.hd-richtext figure.hd-richtext-align-fullwidth > div {
+  display: inline-block;
+  padding-bottom: inherit;
+}
+.hd-richtext figure.hd-richtext-align-fullwidth > figcaption {
+  display: block;
+}
+
