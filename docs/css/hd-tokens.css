@@ -19,10 +19,9 @@
 
 :root {
   /* ----- Brand colors --------------------------------------------------- */
-  /* Ported verbatim from academy.css :root (line 2052-2064) per the
-     NAMING_CONVENTION mapping table. WECAMP's electric-blue brand — NOT
-     WECORE's near-black palette. */
-  --hd-color-accent: #3434ff;            /* was --accent       (academy.css:2055) */
+  /* Ported from academy.css :root (line 2052-2064) per the
+     NAMING_CONVENTION mapping table, then migrated to WECAMP's cobalt brand. */
+  --hd-color-accent: #0b2f9f;            /* brand cobalt */
   --hd-color-accent-2: #2c23d2;          /* was --secondary-2  (academy.css:2056) — link/CTA hover */
   --hd-color-title: #0b0b2c;             /* was --titles       (academy.css:2054) */
   --hd-color-body: #69697b;              /* was --paragraphs   (academy.css:2053) */
@@ -171,10 +170,10 @@
      NEW TOKENS — not present in Webflow; added per W0.2 §3 & §5.
      ====================================================================== */
 
-  /* Accent hover: a touch lighter than the #3434ff brand accent, for lifted
-     interactive states. (Distinct from --hd-color-accent-2, the darker
-     link/CTA hover the site already uses via a:hover, academy.css:3310.) */
-  --hd-color-accent-hover: #4a4aff;      /* NEW: lightened #3434ff */
+  /* Accent hover: legacy lifted-state blue retained separately from the primary
+     brand accent. (Distinct from --hd-color-accent-2, the darker link/CTA hover
+     the site already uses via a:hover, academy.css:3310.) */
+  --hd-color-accent-hover: #4a4aff;      /* NEW */
 
   /* White/black helpers used across components. */
   --hd-color-white: #fff;                /* NEW */
@@ -189,8 +188,10 @@
 
   /* Elevation / shadows — real accent-tinted composites from academy.css. */
   --hd-shadow-sm: 0 4px 8px #0b0b2c05;                          /* academy.css box-shadow */
-  --hd-shadow-md: 0 4px 8px #0b0b2c05, 0 10px 34px #3434ff0d;   /* academy.css composite */
-  --hd-shadow-lg: 0 16px 34px #3434ff1f, 0 14px 44px #0b0b2c2e; /* academy.css composite */
+  --hd-shadow-md: 0 4px 8px #0b0b2c05, 0 10px 34px #0b2f9f0d;   /* academy.css composite */
+  --hd-shadow-lg: 0 16px 34px #0b2f9f1f, 0 14px 44px #0b0b2c2e; /* academy.css composite */
+  --hd-shadow-card: 0 20px 34px #0b0b2c0a, 0 4px 8px #0b0b2c05, 0 10px 34px #0b2f9f0d;       /* .card (academy.css:3405) */
+  --hd-shadow-card-hover: 0 5px 18px #0b0b2c0a, 0 1px 2px #0b0b2c05, 0 3px 15px #0b2f9f0d; /* .card:hover (academy.css:3410) */
 
   /* Z-index scale: dropdown < nav < modal (cart wrapper ran at 1001). */
   --hd-z-dropdown: 100;                  /* NEW */
@@ -203,16 +204,16 @@
      truth: 188 inline `translate3d(0, 48px, 0);opacity:0` (fade-up) and 716
      inline `scale3d(0.97, 0.97, 1);opacity:0` (fade-in-scale) — see
      inventory.md §3. The inline template styles only set the INITIAL hide state;
-     the reveal timing lives in the IX2 actionLists in static/js/wf.js. Ground
-     truth (wf.js): reveal steps run "easing":"ease","duration":700 (×31); the
+     the reveal timing lives in the archived IX2 action lists. Ground
+     truth: reveal steps run "easing":"ease","duration":700 (×31); the
      pre-scroll hide state is "easing":"","duration":500. (NB: data-duration="1000"
      in the templates is the sticky-nav interaction, NOT the fade entrances.)
      Per-element delays/eager flags are finalized in W4.1 (animation-audit).
      ====================================================================== */
   --hd-fade-up-distance: 48px;           /* inline translate3d(0, 48px, 0) — fade-up variant */
   --hd-fade-scale: 0.97;                 /* inline scale3d(0.97, 0.97, 1) — fade-in-scale variant */
-  --hd-fade-duration: 700ms;             /* wf.js IX2 reveal: "easing":"ease","duration":700 */
-  --hd-fade-easing: ease;                /* wf.js IX2 reveal easing */
+  --hd-fade-duration: 700ms;             /* IX2 reveal: "easing":"ease","duration":700 */
+  --hd-fade-easing: ease;                /* IX2 reveal easing */
   --hd-fade-stagger: 300ms;              /* most common non-zero IX2 delay (×6); full per-element map in W4.1 */
 
   /* ======================================================================
@@ -228,49 +229,49 @@
      (link 33→32→28, mega-link 22→18, header padding 28→24→20→18, drawer
      offset) live inline in the nav @media blocks of hd.css, mirroring the
      §12 .hd-button-header pattern. */
-  --hd-nav-logo-width: 148px;            /* .header-logo width (academy.css:4218); 200×40 png → ~148×29.6 */
-  --hd-nav-menu-gap: 40px;               /* desktop nav-menu gap from brand (academy.css:3703 / rtl.css:67) */
-  --hd-nav-link-margin: 10px;            /* .nav-link margin all sides (academy.css:5472) */
-  --hd-nav-link-margin-end: 28px;        /* .nav-link inline-end margin, live RTL (rtl.css:56 margin-left:28px) */
-  --hd-nav-link-line: 1.111em;           /* .nav-link line-height (academy.css:5474) */
-  --hd-nav-caret-size: 11px;             /* .dropdown-icon glyph (academy.css:5706 8px icon-font); SVG chevron nudged up for like-for-like weight */
+  --hd-nav-logo-width: 142px;
+  --hd-nav-menu-gap: 16px;
+  --hd-nav-link-margin: 0px;
+  --hd-nav-link-margin-end: 0px;
+  --hd-nav-link-line: 1.4;
+  --hd-nav-caret-size: 16px;
 
   /* Mega-menu desktop card — the floating white panel (.menu-grid-wrapper, academy.css:7735-7743). */
-  --hd-mega-card-pad-y: 40px;            /* academy.css:7740 */
-  --hd-mega-card-pad-x: 38px;            /* academy.css:7740 */
-  --hd-mega-card-shadow: 0 -4px 20px #0b0b2c0a, 0 40px 44px #0000000f; /* academy.css:7742 */
+  --hd-mega-card-pad-y: 12px;
+  --hd-mega-card-pad-x: 12px;
+  --hd-mega-card-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
   --hd-mega-grid-gap: 0px;               /* .menu-grid grid gap (academy.css:5356-5357) */
   --hd-mega-col-gap: 0px;                /* .menu-2-columns is a flush flex row (academy.css:5323) */
-  --hd-mega-title-size: 20px;            /* .mega-menu-title font-size (academy.css:5262) */
-  --hd-mega-title-pad-y: 10px;           /* .mega-menu-title padding-block (academy.css:5259-5260) */
-  --hd-mega-title-pad-x: 20px;           /* .mega-menu-title padding-inline-start (academy.css:5261) */
+  --hd-mega-title-size: 15px;
+  --hd-mega-title-pad-y: 8px;
+  --hd-mega-title-pad-x: 12px;
   --hd-mega-link-radius: 10px;           /* .mega-menu-link radius (academy.css:4739) */
   --hd-mega-link-pad-y: 10px;            /* .mega-menu-link padding-block (academy.css:4740) */
-  --hd-mega-link-pad-x: 20px;            /* .mega-menu-link padding-inline (academy.css:4740) */
-  --hd-mega-link-size: 18px;             /* .mega-menu-link font-size (academy.css:4741) */
-  --hd-mega-link-line: 20px;             /* .mega-menu-link line-height (academy.css:4742) */
-  --hd-mega-link-special-pad-y: 14px;    /* .mega-menu-link.special padding-block (academy.css:4761) */
-  --hd-mega-link-special-bg: #3434ff14;  /* .special faint-accent fill, ~8% (academy.css:4760) */
+  --hd-mega-link-pad-x: 12px;
+  --hd-mega-link-size: 14px;
+  --hd-mega-link-line: 1.5;
+  --hd-mega-link-special-pad-y: 10px;
+  --hd-mega-link-special-bg: #0b2f9f14;  /* .special faint-accent fill, ~8% (academy.css:4760) */
 
-  /* Mobile drawer (≤991) — the dark full-screen menu (.nav-menu @991, academy.css:8344-8352). */
-  --hd-nav-drawer-shadow: 0 4px 10px #4a3aff2e;     /* .nav-menu @991 box-shadow (academy.css:8351) */
-  --hd-nav-drawer-pad-y: 22px;           /* .nav-menu @991 padding-block (academy.css:8349) */
-  --hd-nav-drawer-pad-x: 28px;           /* .nav-menu @991 padding-inline (academy.css:8349) → 18px @479 */
+  /* Mobile drawer (≤1120) — the compact dark menu used by the shared nav. */
+  --hd-nav-drawer-shadow: 0 30px 70px rgba(0, 0, 0, 0.24);
+  --hd-nav-drawer-pad-y: 18px;
+  --hd-nav-drawer-pad-x: 18px;
   --hd-nav-menu-duration: 0.4s;          /* drawer open/close transition (≈ Webflow data-duration ease-out feel) */
   --hd-nav-link-mobile-color: #ffffff85; /* .nav-link @991 translucent white on dark drawer (academy.css:8777) */
   --hd-mega-link-mobile-color: #ffffffa6;/* .mega-menu-link @991 translucent white (academy.css:8541) */
   --hd-mega-link-mobile-hover-bg: #1b1b55;/* .mega-menu-link:hover @991 deep navy (academy.css:8550) */
-  --hd-mega-link-mobile-pad: 16px;       /* .mega-menu-link @991 padding (academy.css:8544) */
+  --hd-mega-link-mobile-pad: 10px 12px;
 
   /* Static hamburger (replaces the Lottie icon) — box from .menu-button @991 (academy.css:9293-9309). */
-  --hd-nav-toggle-size: 45px;            /* .menu-button width/height (academy.css:9296-9297) */
-  --hd-nav-toggle-radius: 4px;           /* .menu-button radius (academy.css:9298) */
-  --hd-nav-bar-icon: 25px;               /* hamburger glyph box, from .menu-mobile-button-icon (academy.css:8853-8854) */
+  --hd-nav-toggle-size: 46px;
+  --hd-nav-toggle-radius: 14px;
+  --hd-nav-bar-icon: 22px;
   --hd-nav-bar-line: 2px;                /* hamburger bar thickness (static SVG/CSS replacement) */
 
   /* Drawer top offset = measured header-bar height at the collapse breakpoints
      (the fixed drawer starts flush below the bar). Verified by CDP getBoundingClientRect. */
-  --hd-nav-bar-h: 102px;                 /* 768–991: padding 24×2 + header-right (account btn ~54) */
+  --hd-nav-bar-h: 86px;
 }
 
 /* ==========================================================================
@@ -296,7 +297,7 @@
     --hd-h4-size: 18px;                  /* academy.css:9422 */
     --hd-h5-size: 17px;                  /* academy.css:9426 */
     --hd-special-size: 46px;             /* .special-2 @767 (academy.css:10256) */
-    --hd-nav-bar-h: 85px;                /* header bar ≤767: padding 20×2 + hamburger 45 (.header @767 academy.css:9631) */
+    --hd-nav-bar-h: 74px;
   }
 }
 
@@ -317,7 +318,8 @@
     --hd-button-font-lg: 16px;
 
     /* nav @479: header padding 18×2 + hamburger 45 = ~81; drawer side padding 28→18 (academy.css:10543-10544) */
-    --hd-nav-bar-h: 81px;
-    --hd-nav-drawer-pad-x: 18px;
+    --hd-nav-bar-h: 64px;
+    --hd-nav-drawer-pad-y: 14px;
+    --hd-nav-drawer-pad-x: 14px;
   }
 }

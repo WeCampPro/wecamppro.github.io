@@ -1,5 +1,5 @@
 /* hd-video.js (W3.3) — accessible video modal replacing the Webflow w-lightbox
-   runtime (wf.js) and its w-json payloads. Reuses the WECORE hero-video.js modal
+   runtime and its embedded payloads. Reuses the WECORE hero-video.js modal
    pattern (open/close, body-scroll lock, focus trap, focus restore, pause-on-close),
    generalised to:
      - many triggers per page (the camp/course preview thumbnails), and
@@ -7,8 +7,8 @@
 
    A thumbnail opens the modal by firing a window event, translated from a data
    attribute by the delegated listener below:
-     <a ... data-hd-video="/vid/x.mp4"            data-hd-video-kind="video">
-     <a ... data-hd-video="https://…/embed/ID?…"  data-hd-video-kind="iframe">
+     <button ... data-hd-video="/vid/x.mp4"            data-hd-video-kind="video">
+     <button ... data-hd-video="https://…/embed/ID?…"  data-hd-video-kind="iframe">
    The modal markup (layouts/partials/video-modal.html) is a single shared
    instance; all styling is in hd.css §17 (.hd-modal-* / .hd-lightbox-thumb).
 
@@ -21,10 +21,14 @@ document.addEventListener('alpine:init', () => {
     kind: '',        // 'video' | 'iframe'
     src: '',
     _opener: null,   // element to restore focus to on close
+    _previousBodyOverflow: null,
 
     show(detail) {
       if (!detail || !detail.src) return;
-      this._opener = document.activeElement;
+      if (!this.open) {
+        this._opener = document.activeElement;
+        this._previousBodyOverflow = document.body.style.overflow;
+      }
       this.kind = detail.kind === 'iframe' ? 'iframe' : 'video';
       this.src = detail.src;
       this.open = true;
@@ -48,10 +52,11 @@ document.addEventListener('alpine:init', () => {
       this.open = false;
       this.src = '';
       this.kind = '';
-      document.body.style.overflow = '';
+      document.body.style.overflow = this._previousBodyOverflow || '';
+      this._previousBodyOverflow = null;
       const opener = this._opener;
       this._opener = null;
-      if (opener && typeof opener.focus === 'function') opener.focus();
+      if (opener && opener.isConnected && typeof opener.focus === 'function') opener.focus();
     },
 
     /* Manual focus trap (Alpine core ships no focus plugin). Mirrors WECORE
@@ -62,7 +67,7 @@ document.addEventListener('alpine:init', () => {
       if (!this.open) return;
       const sel = 'a[href],button:not([disabled]),video[controls],iframe,[tabindex]:not([tabindex="-1"])';
       const items = Array.from(this.$root.querySelectorAll(sel))
-        .filter((el) => el.offsetWidth > 0 || el.offsetHeight > 0);
+        .filter((el) => getComputedStyle(el).visibility !== 'hidden' && el.getClientRects().length > 0);
       if (!items.length) return;
       const first = items[0];
       const last = items[items.length - 1];

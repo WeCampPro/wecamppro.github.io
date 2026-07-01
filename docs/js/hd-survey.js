@@ -25,6 +25,8 @@ document.addEventListener('alpine:init', () => {
     open: false,     // panel slid in (500ms)
     src: '',
     _timer: null,
+    _opener: null,
+    _previousBodyOverflow: null,
 
     /* detail.url → iframe src, then reveal overlay + slide the panel in. Both
        flags flip in the same tick: the element is already rendered in its closed
@@ -32,6 +34,10 @@ document.addEventListener('alpine:init', () => {
        which set the styles and added .open synchronously). */
     show(detail) {
       if (this._timer) { clearTimeout(this._timer); this._timer = null; }
+      if (!this.active) {
+        this._opener = document.activeElement;
+        this._previousBodyOverflow = document.body.style.overflow;
+      }
       const url = detail && detail.url;
       if (url) {
         if (this.$refs.frame) this.$refs.frame.fetchPriority = 'high';
@@ -39,6 +45,10 @@ document.addEventListener('alpine:init', () => {
       }
       this.active = true;
       this.open = true;
+      document.body.style.overflow = 'hidden';
+      this.$nextTick(() => requestAnimationFrame(() => {
+        if (this.$refs.close) this.$refs.close.focus();
+      }));
     },
 
     /* Slide the panel out (500ms), then hide the overlay and drop the iframe —
@@ -51,7 +61,29 @@ document.addEventListener('alpine:init', () => {
         this.active = false;
         this.src = '';
         this._timer = null;
+        document.body.style.overflow = this._previousBodyOverflow || '';
+        this._previousBodyOverflow = null;
+        const opener = this._opener;
+        this._opener = null;
+        if (opener && opener.isConnected && typeof opener.focus === 'function') opener.focus();
       }, 500);
+    },
+
+    trap(e) {
+      if (!this.active) return;
+      const sel = 'a[href],button:not([disabled]),iframe,[tabindex]:not([tabindex="-1"])';
+      const items = Array.from(this.$root.querySelectorAll(sel))
+        .filter((el) => getComputedStyle(el).visibility !== 'hidden' && el.getClientRects().length > 0);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     },
   }));
 });

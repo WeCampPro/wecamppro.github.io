@@ -19,29 +19,43 @@
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
-  <link rel="preload" href="https://wecamp.pro/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="https://wecamp.pro/css/fonts.css" rel="stylesheet" type="text/css"/>
+  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
+  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
   
-  <link href="https://wecamp.pro/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
-  <link href="https://wecamp.pro/css/hd.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="https://wecamp.pro/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
-  <link href="https://wecamp.pro/css/academy.css" rel="stylesheet" type="text/css"/>
-
-  <link href="https://wecamp.pro/css/rtl.css" rel="stylesheet" />
-  <link href="https://wecamp.pro/css/main.css" rel="stylesheet">
+  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
   
-  <script defer src="https://wecamp.pro/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
-  <script defer src="https://wecamp.pro/js/hd-animations.js" type="text/javascript"></script>
-  <script defer src="https://wecamp.pro/js/hd-snap-slider.js" type="text/javascript"></script>
-  <link href="https://wecamp.pro/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
-  <link href="https://wecamp.pro/img/favicon.png" rel="apple-touch-icon"/>
-
+  
+  
+  
+  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
+  <script defer src="/js/hd-animations.js" type="text/javascript"></script>
+  <script defer src="/js/hd-forms.js" type="text/javascript"></script>
+  <script type="text/javascript">
+   (function () {
+    var s = document.createElement("script");
+    s.defer = true;
+    s.src = "\/js\/hd-cta-parallax.js";
+    document.head.appendChild(s);
+   })();
+  </script>
+  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
+  <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+  <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body>
   <meta name="robots" content="noindex, nofollow"/>
+  <a class="hd-skip-link" href="#hd-main">پرش به محتوای اصلی</a>
+  <main id="hd-main">
 
   
   <section class="hd-section" style="background-color: var(--hd-color-surface);">
@@ -71,7 +85,7 @@
   <section class="hd-section-sm">
    <div class="hd-container">
     
-    <h1 class="hd-h1">H1 — تیتر شصت پیکسلی</h1>
+    <h2 class="hd-h1">H1 — تیتر شصت پیکسلی</h2>
     <h2 class="hd-h2">H2 — تیتر چهل پیکسلی</h2>
     <h3 class="hd-h3">H3 — تیتر بیست‌وپنج پیکسلی</h3>
     <h4 class="hd-h4">H4 — تیتر بیست‌وسه پیکسلی</h4>
@@ -135,40 +149,35 @@
    <div class="hd-container">
     <h2 class="hd-h2 hd-text-center">سیستم دکمه‌ها (W1.2)</h2>
     <p class="hd-text-body hd-text-center hd-mx-auto" style="max-width:560px;">
-     هر ردیف: دکمه‌ی HD (راست) کنار معادل وبفلوی زنده‌اش (چپ) — باید یکسان باشند.
+     نمونه‌های اصلی سیستم دکمه‌ها در اندازه‌ها و حالت‌های مختلف.
     </p>
     <div class="hd-spacer-lg"></div>
 
     
     
     <div class="hd-flex hd-items-center hd-gap-lg hd-flex-wrap" style="margin-bottom: var(--hd-space-lg);">
-     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button  ·  .button-primary</span>
+     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button</span>
      <a class="hd-button" href="#">دکمه</a>
-     <a class="button-primary w-button" href="#">دکمه</a>
     </div>
     
     <div class="hd-flex hd-items-center hd-gap-lg hd-flex-wrap" style="margin-bottom: var(--hd-space-lg);">
-     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-lg  ·  .button-primary.large</span>
+     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-lg</span>
      <a class="hd-button hd-button-lg" href="#">دکمه</a>
-     <a class="button-primary large w-button" href="#">دکمه</a>
     </div>
     
     <div class="hd-flex hd-items-center hd-gap-lg hd-flex-wrap" style="margin-bottom: var(--hd-space-lg);">
-     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-secondary  ·  .button-secondary</span>
+     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-secondary</span>
      <a class="hd-button hd-button-secondary" href="#">دکمه</a>
-     <a class="button-secondary w-button" href="#">دکمه</a>
     </div>
     
     <div class="hd-flex hd-items-center hd-gap-lg hd-flex-wrap" style="margin-bottom: var(--hd-space-lg);">
-     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">secondary.large</span>
+     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-secondary.hd-button-lg</span>
      <a class="hd-button hd-button-secondary hd-button-lg" href="#">دکمه</a>
-     <a class="button-secondary large w-button" href="#">دکمه</a>
     </div>
     
     <div class="hd-flex hd-items-center hd-gap-lg hd-flex-wrap" style="margin-bottom: var(--hd-space-lg);">
-     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">Latin (uppercase &#43; tracking)</span>
+     <span class="hd-text-muted" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">Latin uppercase sample</span>
      <a class="hd-button" href="#">Get started</a>
-     <a class="button-primary w-button" href="#">Get started</a>
     </div>
     
    </div>
@@ -180,9 +189,8 @@
     <h2 class="hd-h2 hd-text-center hd-text-white">CTA (روی پس‌زمینه‌ی برند)</h2>
     <div class="hd-spacer-md"></div>
     <div class="hd-flex hd-items-center hd-gap-lg hd-flex-wrap hd-justify-center">
-     <span class="hd-text-white" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-cta  ·  .button-secondary.cta</span>
+     <span class="hd-text-white" style="min-width:240px;font-size:13px;direction:ltr;text-align:start;">.hd-button-cta</span>
      <a class="hd-button hd-button-secondary hd-button-cta" href="#">مشاوره رایگان</a>
-     <a class="button-secondary cta w-button" href="#">مشاوره رایگان</a>
     </div>
    </div>
   </section>
@@ -232,7 +240,7 @@
    <div class="hd-container">
     <h2 class="hd-h2 hd-text-center">سیستم فرم‌ها (W1.3)</h2>
     <p class="hd-text-body hd-text-center hd-mx-auto" style="max-width:640px;">
-     راست: فرم بازسازی‌شده با <code>.hd-form</code> — چپ: فرم زندهٔ وبفلو. باید یکسان رندر شوند.
+     فرم نمونه برای کنترل فیلدها، سلکت‌ها، تکست‌اریا و حالت‌های پیام.
     </p>
     <div class="hd-spacer-lg"></div>
 
@@ -247,22 +255,22 @@
         <div class="hd-text-muted">* الزامی</div>
        </div>
        <fieldset class="hd-form-block">
-        <label class="hd-label">نام و نام خانوادگی <span class="hd-required">*</span></label>
-        <input class="hd-input" name="name" type="text"/>
+        <label class="hd-label" for="test-hd-name">نام و نام خانوادگی <span class="hd-required">*</span></label>
+        <input class="hd-input" id="test-hd-name" name="name" autocomplete="name" type="text"/>
         <div class="hd-form-row">
          <div class="hd-form-col">
-          <label class="hd-label">موبایل <span class="hd-required">*</span></label>
-          <input dir="ltr" class="hd-input" name="phone" type="tel" pattern="[0-9۰-۹]{10,11}" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید"/>
+          <label class="hd-label" for="test-hd-phone">موبایل <span class="hd-required">*</span></label>
+          <input dir="ltr" class="hd-input" id="test-hd-phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" pattern="[0-9۰-۹]{10,11}" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید"/>
          </div>
          <div class="hd-form-col">
-          <label class="hd-label">ایمیل <span class="hd-required">*</span></label>
-          <input dir="ltr" class="hd-input" name="email" type="email"/>
+          <label class="hd-label" for="test-hd-email">ایمیل <span class="hd-required">*</span></label>
+          <input dir="ltr" class="hd-input" id="test-hd-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" type="email"/>
          </div>
         </div>
         <div class="hd-form-row">
          <div class="hd-form-col">
-          <label class="hd-label">انتخاب موضوع آموزشی</label>
-          <select class="hd-input hd-select" name="Which Camp">
+          <label class="hd-label" for="test-hd-camp">انتخاب موضوع آموزشی</label>
+          <select class="hd-input hd-select" id="test-hd-camp" name="Which Camp" autocomplete="off">
            <option value="---">---</option>
            <option value="AI">هوش مصنوعی</option>
            <option value="Design">محصول</option>
@@ -270,18 +278,18 @@
           </select>
          </div>
          <div class="hd-form-col">
-          <label class="hd-label">بازه سنی شما</label>
-          <select class="hd-input hd-select" name="age_range">
+          <label class="hd-label" for="test-hd-age">بازه سنی شما</label>
+          <select class="hd-input hd-select" id="test-hd-age" name="age_range" autocomplete="off">
            <option value="---">---</option>
            <option value="-18">کمتر از ۱۸</option>
            <option value="18-24">۱۸ تا ۲۴</option>
           </select>
          </div>
         </div>
-        <label class="hd-label">می‌توانید سوال خود را اینجا بنویسید.</label>
-        <textarea class="hd-input hd-textarea" name="which product" minlength="20"></textarea>
-        <label class="hd-label">📑 رزومه</label>
-        <input dir="ltr" class="hd-input" name="resume" type="url"/>
+        <label class="hd-label" for="test-hd-question">می‌توانید سوال خود را اینجا بنویسید.</label>
+        <textarea class="hd-input hd-textarea" id="test-hd-question" name="which product" autocomplete="off" minlength="20"></textarea>
+        <label class="hd-label" for="test-hd-resume">📑 رزومه</label>
+        <input dir="ltr" class="hd-input" id="test-hd-resume" name="resume" autocomplete="url" inputmode="url" spellcheck="false" type="url"/>
        </fieldset>
        <div style="margin-top: var(--hd-space-md);">
         
@@ -292,52 +300,51 @@
 
      
      <div>
-      <p class="hd-text-muted" style="margin:0 0 12px;direction:ltr;text-align:start;font-size:13px;">.input.checkout (Webflow)</p>
-      <form class="w-commerce-commercecheckoutcustomerinfowrapper customer-info" action="#" method="post" onsubmit="return false">
-       <div class="w-commerce-commercecheckoutblockheader block-header">
+      <p class="hd-text-muted" style="margin:0 0 12px;direction:ltr;text-align:start;font-size:13px;">.hd-form compact</p>
+      <form class="hd-form" action="#" method="post" onsubmit="return false">
+       <div class="hd-form-block-header">
         <h4>لطفا فرم زیر را تکمیل کنید.</h4>
         <div>* الزامی</div>
        </div>
-       <fieldset class="w-commerce-commercecheckoutblockcontent block-content">
-        <label class="w-commerce-commercecheckoutlabel">نام و نام خانوادگی <span class="color-red">*</span></label>
-        <input class="w-commerce-commercecheckoutshippingfullname input checkout" name="name" type="text"/>
-        <div class="w-commerce-commercecheckoutrow row-checkout">
-         <div class="w-commerce-commercecheckoutcolumn">
-          <label class="w-commerce-commercecheckoutlabel">موبایل <span class="color-red">*</span></label>
-          <input dir="ltr" class="w-commerce-commercecheckoutshippingzippostalcode input checkout" name="phone" type="tel"/>
+       <fieldset class="hd-form-block">
+        <label class="hd-label" for="test-compact-name">نام و نام خانوادگی <span class="hd-required">*</span></label>
+        <input class="hd-input" id="test-compact-name" name="name" autocomplete="name" type="text"/>
+        <div class="hd-form-row">
+         <div class="hd-form-col">
+          <label class="hd-label" for="test-compact-phone">موبایل <span class="hd-required">*</span></label>
+          <input dir="ltr" class="hd-input" id="test-compact-phone" name="phone" autocomplete="tel" inputmode="tel" type="tel"/>
          </div>
-         <div class="w-commerce-commercecheckoutcolumn">
-          <label class="w-commerce-commercecheckoutlabel">ایمیل <span class="color-red">*</span></label>
-          <input dir="ltr" class="w-commerce-commercecheckoutemailinput input checkout" name="email" type="email"/>
+         <div class="hd-form-col">
+          <label class="hd-label" for="test-compact-email">ایمیل <span class="hd-required">*</span></label>
+          <input dir="ltr" class="hd-input" id="test-compact-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" type="email"/>
          </div>
         </div>
-        <div class="w-commerce-commercecheckoutrow row-checkout">
-         <div class="w-commerce-commercecheckoutcolumn">
-          <label class="w-commerce-commercecheckoutlabel">انتخاب موضوع آموزشی</label>
-          <select class="w-commerce-commercecheckoutshippingcountryselector select" name="Which Camp">
+        <div class="hd-form-row">
+         <div class="hd-form-col">
+          <label class="hd-label" for="test-compact-camp">انتخاب موضوع آموزشی</label>
+          <select class="hd-input hd-select" id="test-compact-camp" name="Which Camp" autocomplete="off">
            <option value="---">---</option>
            <option value="AI">هوش مصنوعی</option>
            <option value="Design">محصول</option>
            <option value="DevOps&amp;Cloud">دواپس / کلود</option>
           </select>
          </div>
-         <div class="w-commerce-commercecheckoutcolumn">
-          <label class="w-commerce-commercecheckoutlabel">بازه سنی شما</label>
-          <select class="w-commerce-commercecheckoutshippingcountryselector select" name="age_range">
+         <div class="hd-form-col">
+          <label class="hd-label" for="test-compact-age">بازه سنی شما</label>
+          <select class="hd-input hd-select" id="test-compact-age" name="age_range" autocomplete="off">
            <option value="---">---</option>
            <option value="-18">کمتر از ۱۸</option>
            <option value="18-24">۱۸ تا ۲۴</option>
           </select>
          </div>
         </div>
-        <label class="w-commerce-commercecheckoutlabel">می‌توانید سوال خود را اینجا بنویسید.</label>
-        <textarea class="w-commerce-commercecheckoutshippingfullname input checkout textarea" name="which product" minlength="20"></textarea>
-        <label class="w-commerce-commercecheckoutlabel">📑 رزومه</label>
-        <input dir="ltr" class="w-commerce-commercecheckoutshippingfullname input checkout" name="resume" type="url"/>
+        <label class="hd-label" for="test-compact-question">می‌توانید سوال خود را اینجا بنویسید.</label>
+        <textarea class="hd-input hd-textarea" id="test-compact-question" name="which product" autocomplete="off" minlength="20"></textarea>
+        <label class="hd-label" for="test-compact-resume">📑 رزومه</label>
+        <input dir="ltr" class="hd-input" id="test-compact-resume" name="resume" autocomplete="url" inputmode="url" spellcheck="false" type="url"/>
        </fieldset>
        <div style="margin-top: 20px;">
-        
-        <button class="button-secondary full-width w-button" type="button">ارسال فرم</button>
+        <button class="hd-button hd-button-secondary" type="button">ارسال فرم</button>
        </div>
       </form>
      </div>
@@ -354,16 +361,16 @@
     <div class="hd-grid hd-grid-2col hd-gap-lg hd-grid-stack-md">
      <div>
       <p class="hd-text-muted" style="margin:0 0 8px;">RTL — چِورن سمت راست (inline-start)</p>
-      <label class="hd-label">انتخاب موضوع</label>
-      <select class="hd-input hd-select">
+      <label class="hd-label" for="test-rtl-select">انتخاب موضوع</label>
+      <select class="hd-input hd-select" id="test-rtl-select" name="test_rtl_select" autocomplete="off">
        <option>هوش مصنوعی</option>
        <option>محصول</option>
       </select>
      </div>
      <div dir="ltr">
       <p class="hd-text-muted" style="margin:0 0 8px;direction:ltr;text-align:start;">LTR — chevron on the left (inline-start)</p>
-      <label class="hd-label" style="text-align:start;">Choose a topic</label>
-      <select class="hd-input hd-select">
+      <label class="hd-label" for="test-ltr-select" style="text-align:start;">Choose a topic</label>
+      <select class="hd-input hd-select" id="test-ltr-select" name="test_ltr_select" autocomplete="off">
        <option>AI engineering</option>
        <option>Product design</option>
       </select>
@@ -375,14 +382,14 @@
     <h3 class="hd-h3 hd-text-center">حالت‌های فیلد و پیام‌ها</h3>
     <div class="hd-spacer-md"></div>
     <div style="max-width:520px;margin-inline:auto;">
-     <label class="hd-label">عادی</label>
-     <input class="hd-input" type="text" value="مقدار نمونه"/>
+     <label class="hd-label" for="test-state-normal">عادی</label>
+     <input class="hd-input" id="test-state-normal" name="test_state_normal" autocomplete="off" type="text" value="مقدار نمونه"/>
 
-     <label class="hd-label">نامعتبر (<code>.hd-input-error</code>)</label>
-     <input class="hd-input hd-input-error" type="email" value="not-an-email" dir="ltr"/>
+     <label class="hd-label" for="test-state-invalid">نامعتبر (<code>.hd-input-error</code>)</label>
+     <input class="hd-input hd-input-error" id="test-state-invalid" name="test_state_invalid" autocomplete="email" inputmode="email" spellcheck="false" type="email" value="not-an-email" dir="ltr"/>
 
-     <label class="hd-label">غیرفعال (disabled)</label>
-     <input class="hd-input" type="text" value="غیرقابل ویرایش" disabled/>
+     <label class="hd-label" for="test-state-disabled">غیرفعال (disabled)</label>
+     <input class="hd-input" id="test-state-disabled" name="test_state_disabled" autocomplete="off" type="text" value="غیرقابل ویرایش" disabled/>
 
      <div class="hd-form-success">فرم با موفقیت ارسال شد. به‌زودی با شما تماس می‌گیریم.</div>
      <div class="hd-form-error">خطایی رخ داد. لطفاً دوباره تلاش کنید.</div>
@@ -427,37 +434,37 @@
     <div class="w14-stage hero">
      <span class="w14-tag">.hd-shape ._01.._05</span>
      
-     <img alt="" class="hd-shape _01" src="https://wecamp.pro/img/shapes/index_circle-shape-01.svg"/>
+     <img alt="" class="hd-shape _01" src="/img/shapes/index_circle-shape-01.svg"/>
      
-     <img alt="" class="hd-shape _02" src="https://wecamp.pro/img/shapes/index_circle-shape-02.svg"/>
+     <img alt="" class="hd-shape _02" src="/img/shapes/index_circle-shape-02.svg"/>
      
-     <img alt="" class="hd-shape _03" src="https://wecamp.pro/img/shapes/index_circle-shape-03.svg"/>
+     <img alt="" class="hd-shape _03" src="/img/shapes/index_circle-shape-03.svg"/>
      
-     <img alt="" class="hd-shape _04" src="https://wecamp.pro/img/shapes/index_circle-shape-04.svg"/>
+     <img alt="" class="hd-shape _04" src="/img/shapes/index_circle-shape-04.svg"/>
      
-     <img alt="" class="hd-shape _05" src="https://wecamp.pro/img/shapes/index_circle-shape-05.svg"/>
+     <img alt="" class="hd-shape _05" src="/img/shapes/index_circle-shape-05.svg"/>
      
     </div>
 
     <div class="w14-stage about">
      <span class="w14-tag">.hd-shape-about-section ._1/._2</span>
      
-     <img alt="" class="hd-shape-about-section _1" src="https://wecamp.pro/img/shapes/index_circle-shape-about-01.svg"/>
+     <img alt="" class="hd-shape-about-section _1" src="/img/shapes/index_circle-shape-about-01.svg"/>
      
-     <img alt="" class="hd-shape-about-section _2" src="https://wecamp.pro/img/shapes/index_circle-shape-about-02.svg"/>
+     <img alt="" class="hd-shape-about-section _2" src="/img/shapes/index_circle-shape-about-02.svg"/>
      
     </div>
 
     <div class="w14-stage testi">
      <span class="w14-tag">.hd-shape-testimonial ._1.._4</span>
      
-     <img alt="" class="hd-shape-testimonial _1" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-01.svg"/>
+     <img alt="" class="hd-shape-testimonial _1" src="/img/shapes/index_circle-shape-testimonial-01.svg"/>
      
-     <img alt="" class="hd-shape-testimonial _2" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-02.svg"/>
+     <img alt="" class="hd-shape-testimonial _2" src="/img/shapes/index_circle-shape-testimonial-02.svg"/>
      
-     <img alt="" class="hd-shape-testimonial _3" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-03.svg"/>
+     <img alt="" class="hd-shape-testimonial _3" src="/img/shapes/index_circle-shape-testimonial-03.svg"/>
      
-     <img alt="" class="hd-shape-testimonial _4" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-04.svg"/>
+     <img alt="" class="hd-shape-testimonial _4" src="/img/shapes/index_circle-shape-testimonial-04.svg"/>
      
     </div>
 
@@ -471,53 +478,94 @@
      <div class="w14-stage hero">
       <span class="w14-tag">hero — .hd-shape vs .circle-shape</span>
       
-      <img alt="" class="circle-shape _01" src="https://wecamp.pro/img/shapes/index_circle-shape-01.svg"/>
-      <img alt="" class="hd-shape _01" src="https://wecamp.pro/img/shapes/index_circle-shape-01.svg"/>
+      <img alt="" class="circle-shape _01" src="/img/shapes/index_circle-shape-01.svg"/>
+      <img alt="" class="hd-shape _01" src="/img/shapes/index_circle-shape-01.svg"/>
       
-      <img alt="" class="circle-shape _02" src="https://wecamp.pro/img/shapes/index_circle-shape-02.svg"/>
-      <img alt="" class="hd-shape _02" src="https://wecamp.pro/img/shapes/index_circle-shape-02.svg"/>
+      <img alt="" class="circle-shape _02" src="/img/shapes/index_circle-shape-02.svg"/>
+      <img alt="" class="hd-shape _02" src="/img/shapes/index_circle-shape-02.svg"/>
       
-      <img alt="" class="circle-shape _03" src="https://wecamp.pro/img/shapes/index_circle-shape-03.svg"/>
-      <img alt="" class="hd-shape _03" src="https://wecamp.pro/img/shapes/index_circle-shape-03.svg"/>
+      <img alt="" class="circle-shape _03" src="/img/shapes/index_circle-shape-03.svg"/>
+      <img alt="" class="hd-shape _03" src="/img/shapes/index_circle-shape-03.svg"/>
       
-      <img alt="" class="circle-shape _04" src="https://wecamp.pro/img/shapes/index_circle-shape-04.svg"/>
-      <img alt="" class="hd-shape _04" src="https://wecamp.pro/img/shapes/index_circle-shape-04.svg"/>
+      <img alt="" class="circle-shape _04" src="/img/shapes/index_circle-shape-04.svg"/>
+      <img alt="" class="hd-shape _04" src="/img/shapes/index_circle-shape-04.svg"/>
       
-      <img alt="" class="circle-shape _05" src="https://wecamp.pro/img/shapes/index_circle-shape-05.svg"/>
-      <img alt="" class="hd-shape _05" src="https://wecamp.pro/img/shapes/index_circle-shape-05.svg"/>
+      <img alt="" class="circle-shape _05" src="/img/shapes/index_circle-shape-05.svg"/>
+      <img alt="" class="hd-shape _05" src="/img/shapes/index_circle-shape-05.svg"/>
       
      </div>
 
      <div class="w14-stage about">
       <span class="w14-tag">about — .hd-shape-about-section vs .circle-shape-about-section</span>
       
-      <img alt="" class="circle-shape-about-section _1" src="https://wecamp.pro/img/shapes/index_circle-shape-about-01.svg"/>
-      <img alt="" class="hd-shape-about-section _1" src="https://wecamp.pro/img/shapes/index_circle-shape-about-01.svg"/>
+      <img alt="" class="circle-shape-about-section _1" src="/img/shapes/index_circle-shape-about-01.svg"/>
+      <img alt="" class="hd-shape-about-section _1" src="/img/shapes/index_circle-shape-about-01.svg"/>
       
-      <img alt="" class="circle-shape-about-section _2" src="https://wecamp.pro/img/shapes/index_circle-shape-about-02.svg"/>
-      <img alt="" class="hd-shape-about-section _2" src="https://wecamp.pro/img/shapes/index_circle-shape-about-02.svg"/>
+      <img alt="" class="circle-shape-about-section _2" src="/img/shapes/index_circle-shape-about-02.svg"/>
+      <img alt="" class="hd-shape-about-section _2" src="/img/shapes/index_circle-shape-about-02.svg"/>
       
      </div>
 
      <div class="w14-stage testi" style="background:var(--hd-color-surface)">
       <span class="w14-tag">testimonial — .hd-shape-testimonial vs .circle-shape-testimonial</span>
       
-      <img alt="" class="circle-shape-testimonial _1" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-01.svg"/>
-      <img alt="" class="hd-shape-testimonial _1" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-01.svg"/>
+      <img alt="" class="circle-shape-testimonial _1" src="/img/shapes/index_circle-shape-testimonial-01.svg"/>
+      <img alt="" class="hd-shape-testimonial _1" src="/img/shapes/index_circle-shape-testimonial-01.svg"/>
       
-      <img alt="" class="circle-shape-testimonial _2" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-02.svg"/>
-      <img alt="" class="hd-shape-testimonial _2" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-02.svg"/>
+      <img alt="" class="circle-shape-testimonial _2" src="/img/shapes/index_circle-shape-testimonial-02.svg"/>
+      <img alt="" class="hd-shape-testimonial _2" src="/img/shapes/index_circle-shape-testimonial-02.svg"/>
       
-      <img alt="" class="circle-shape-testimonial _3" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-03.svg"/>
-      <img alt="" class="hd-shape-testimonial _3" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-03.svg"/>
+      <img alt="" class="circle-shape-testimonial _3" src="/img/shapes/index_circle-shape-testimonial-03.svg"/>
+      <img alt="" class="hd-shape-testimonial _3" src="/img/shapes/index_circle-shape-testimonial-03.svg"/>
       
-      <img alt="" class="circle-shape-testimonial _4" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-04.svg"/>
-      <img alt="" class="hd-shape-testimonial _4" src="https://wecamp.pro/img/shapes/index_circle-shape-testimonial-04.svg"/>
+      <img alt="" class="circle-shape-testimonial _4" src="/img/shapes/index_circle-shape-testimonial-04.svg"/>
+      <img alt="" class="hd-shape-testimonial _4" src="/img/shapes/index_circle-shape-testimonial-04.svg"/>
       
      </div>
     </div>
    </div>
   </section>
 
+  
+  <section class="hd-section-sm" style="background-color: var(--hd-color-neutral-200);">
+   <div class="hd-container">
+    <h2 class="hd-h2 hd-text-center" data-hd-animate="fade-up" data-hd-animate-eager>انیمیشن‌های ورود (W4.2)</h2>
+    <p class="hd-text-body hd-text-center hd-mx-auto" data-hd-animate="fade-up-2" data-hd-animate-eager style="max-width:660px;">
+     عنوان و این پاراگراف با پرچم <code>-eager</code> هنگام بارگذاری ظاهر می‌شوند؛
+     کارت‌های پایین هنگام اسکرول به داخل دید. بدون جاوااسکریپت همه چیز نمایان می‌ماند.
+    </p>
+    <div class="hd-spacer-lg"></div>
+
+    
+    <h3 class="hd-h3 hd-text-center" data-hd-animate="fade-up">عنوان بخش — fade-up (۰ms)</h3>
+    <div class="hd-spacer-md"></div>
+    <div class="hd-grid hd-grid-3col hd-gap-lg hd-grid-stack-md">
+     
+     <div data-hd-animate="fade-in-scale" class="hd-delay-300" style="background-color: var(--hd-color-neutral-100); border-radius: var(--hd-radius-lg); box-shadow: var(--hd-shadow-md); padding: var(--hd-space-lg);">
+      <h4 class="hd-h4" style="margin-top:0;">fade-in-scale</h4>
+      <p class="hd-text-body" style="margin:0;">
+       از <code>scale(0.97)</code> به ۱، با تأخیر <strong>300ms</strong> (پلهٔ stagger از ممیزی W4.1).
+      </p>
+     </div>
+     
+     <div data-hd-animate="fade-in-scale" class="hd-delay-500" style="background-color: var(--hd-color-neutral-100); border-radius: var(--hd-radius-lg); box-shadow: var(--hd-shadow-md); padding: var(--hd-space-lg);">
+      <h4 class="hd-h4" style="margin-top:0;">fade-in-scale</h4>
+      <p class="hd-text-body" style="margin:0;">
+       از <code>scale(0.97)</code> به ۱، با تأخیر <strong>500ms</strong> (پلهٔ stagger از ممیزی W4.1).
+      </p>
+     </div>
+     
+     <div data-hd-animate="fade-in-scale" class="hd-delay-700" style="background-color: var(--hd-color-neutral-100); border-radius: var(--hd-radius-lg); box-shadow: var(--hd-shadow-md); padding: var(--hd-space-lg);">
+      <h4 class="hd-h4" style="margin-top:0;">fade-in-scale</h4>
+      <p class="hd-text-body" style="margin:0;">
+       از <code>scale(0.97)</code> به ۱، با تأخیر <strong>700ms</strong> (پلهٔ stagger از ممیزی W4.1).
+      </p>
+     </div>
+     
+    </div>
+   </div>
+  </section>
+
+  </main>
  </body>
 </html>

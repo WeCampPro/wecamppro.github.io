@@ -76,4 +76,5 @@
       observer.observe(el);
     }
   });
+
 })();

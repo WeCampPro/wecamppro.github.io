@@ -9,14 +9,14 @@
    animation. Depends on nothing (pure geometry); loaded after hd.css.
 
    ── WHY ACADEMY.CSS IS THE SOURCE (not circle-shape.css) ──────────────────
-   The repo ships static/css/circle-shape.css, but it is DEAD: rtl.css pulls it
-   in with `@import url("circle-shape.css");` at rtl.css:39 — AFTER ordinary
-   rules (rtl.css:33-35) — and a misplaced @import is invalid per spec, so the
-   browser drops it. The shapes therefore render purely from academy.css today.
+   The repo used to ship static/css/circle-shape.css, but it was DEAD and was
+   deleted in W6.1: rtl.css pulled it in with `@import url("circle-shape.css");`
+   placed AFTER ordinary rules — a misplaced @import is invalid per spec, so the
+   browser dropped it. The shapes therefore render purely from academy.css today.
    academy.css is the byte-for-byte source of truth ported below (line refs per
-   block). circle-shape.css itself is exactly academy's left/right values
-   mirrored (left↔right swap) — i.e. the RTL design that the broken @import was
-   meant to apply but never did.
+   block). circle-shape.css was exactly academy's left/right values mirrored
+   (left↔right swap) — i.e. the RTL design that the broken @import was meant to
+   apply but never did.
 
    ── PHYSICAL → LOGICAL MAPPING (RTL-correct, single rule for both dirs) ────
    academy positions with PHYSICAL left/right/top/bottom. We re-express them as
@@ -306,3 +306,76 @@
     inset-inline-start: -90px;
   }
 }
+
+  /* banner CTA — academy.css 5936-5958 (desktop), 8884-8897 (@991),
+     9950-9969 (@767), 11024-11041 (@479) */
+  .hd-shape-cta {
+    position: absolute;
+  }
+  .hd-shape-cta._1 {              /* academy: top -201px; left -246px */
+    inset-block-start: -201px;
+    inset-inline-start: -246px;
+  }
+  .hd-shape-cta._2 {              /* academy: bottom -300.5px; left 301px */
+    inset-block-end: -300.5px;
+    inset-inline-start: 301px;
+  }
+  .hd-shape-cta._4 {              /* academy: top -21px; right -295px */
+    inset-block-start: -21px;
+    inset-inline-end: -295px;
+  }
+  .hd-shape-cta._3 {              /* academy: top -283px; right 206px */
+    inset-block-start: -283px;
+    inset-inline-end: 206px;
+  }
+  @media screen and (max-width: 991px) {
+    .hd-shape-cta._1 {            /* academy: top -110px; left -199px */
+      inset-block-start: -110px;
+      inset-inline-start: -199px;
+    }
+    .hd-shape-cta._2 {            /* academy: left -135px */
+      inset-inline-start: -135px;
+    }
+    .hd-shape-cta._3 {            /* academy: max-width 45%; top -220px; right 123px */
+      max-width: 45%;
+      inset-block-start: -220px;
+      inset-inline-end: 123px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .hd-shape-cta._1 {            /* academy: left -296px */
+      inset-inline-start: -296px;
+    }
+    .hd-shape-cta._2 {            /* academy: max-width 80%; bottom -255.5px; left -95px */
+      max-width: 80%;
+      inset-block-end: -255.5px;
+      inset-inline-start: -95px;
+    }
+    .hd-shape-cta._4 {            /* academy: max-width 80%; top 91px; right -259px */
+      max-width: 80%;
+      inset-block-start: 91px;
+      inset-inline-end: -259px;
+    }
+    .hd-shape-cta._3 {            /* academy: max-width 60%; top -203px; right -97px */
+      max-width: 60%;
+      inset-block-start: -203px;
+      inset-inline-end: -97px;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .hd-shape-cta._1 {            /* academy: top -56px; left -181px */
+      inset-block-start: -56px;
+      inset-inline-start: -181px;
+    }
+    .hd-shape-cta._2 {            /* academy: bottom -138.5px */
+      inset-block-end: -138.5px;
+    }
+    .hd-shape-cta._4 {            /* academy: top 324px; right -125px */
+      inset-block-start: 324px;
+      inset-inline-end: -125px;
+    }
+    .hd-shape-cta._3 {            /* academy: top -69px; right -71px */
+      inset-block-start: -69px;
+      inset-inline-end: -71px;
+    }
+  }

@@ -50,13 +50,17 @@
   </url><url>
     <loc>https://wecamp.pro/talents/</loc>
   </url><url>
-    <loc>https://wecamp.pro/talents/firstname-lastname/</loc>
-  </url><url>
     <loc>https://wecamp.pro/teachers/</loc>
   </url><url>
     <loc>https://wecamp.pro/categories/</loc>
   </url><url>
     <loc>https://wecamp.pro/tags/</loc>
+  </url><url>
+    <loc>https://wecamp.pro/talents/firstname-lastname/</loc>
+  </url><url>
+    <loc>https://wecamp.pro/cert/wc-1404-ai-0001/</loc>
+  </url><url>
+    <loc>https://wecamp.pro/cert/</loc>
   </url><url>
     <loc>https://wecamp.pro/</loc>
   </url>

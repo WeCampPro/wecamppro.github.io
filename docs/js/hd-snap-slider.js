@@ -1,5 +1,5 @@
 /* hd-snap-slider.js (W3.2) — controls for the CSS scroll-snap carousels that
-   replace the Webflow w-slider runtime (wf.js). Reused from WECORE and extended
+   replace the Webflow w-slider runtime. Reused from WECORE and extended
    here with optional dot indicators + looping so it can reproduce the Webflow
    slider on about/single.html (prev/next arrows + a w-slider-nav of dots).
 
@@ -14,7 +14,7 @@
      prev/next [data-hd-slider-prev/next] (any element; role=button gets keyboard)
      dots      [data-hd-slider-dots]      optional — host that JS fills with one
                                           .hd-snap-dot button per slide (the
-                                          Webflow w-slider-nav wf.js used to build)
+                                          Webflow w-slider-nav used to build)
 
    Navigation is index-based (move to the neighbouring slide) rather than a raw
    scrollBy, so the active dot stays in sync. getBoundingClientRect math keeps it
@@ -80,7 +80,7 @@
         goTo(track, activeIndex(track) + direction, loop);
       }
       button.addEventListener("click", activate);
-      /* role="button" divs aren't keyboard-operable on their own. */
+      /* Non-button controls are not keyboard-operable on their own. */
       if (button.getAttribute("role") === "button") {
         button.addEventListener("keydown", function (e) {
           if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
@@ -99,7 +99,7 @@
     });
 
     /* Optional dot indicators — generated one per slide (reproduces the Webflow
-       w-slider-nav that wf.js used to populate). Clicking a dot scrolls to its
+       w-slider-nav that the old runtime used to populate). Clicking a dot scrolls to its
        slide; the active dot follows the scroll position. */
     var dotsHost = slider.querySelector("[data-hd-slider-dots]");
     if (dotsHost) {
