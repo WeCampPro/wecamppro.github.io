@@ -4338,6 +4338,261 @@ button.hd-nav-toggle {
 .hd-teachers-heading {
   margin-bottom: 27px;                  /* academy.css:7032 */
 }
+
+/* ==========================================================================
+   30.1 Registration Coming Soon
+   Dedicated /register/ holding page linked from the navbar auth CTA.
+   ========================================================================== */
+
+.hd-register-soon-page {
+  --hd-register-blue: #0b2f9f;
+  --hd-register-ink: #101010;
+  --hd-register-paper: #f2f2f0;
+  background: var(--hd-register-paper);
+}
+
+.hd-register-soon-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-block: clamp(64px, 8vw, 108px);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(49, 200, 217, 0.28), transparent 30%),
+    linear-gradient(180deg, rgba(11, 47, 159, 0.98), rgba(7, 30, 99, 0.98));
+}
+
+.hd-register-soon-hero::before,
+.hd-register-soon-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.hd-register-soon-hero::before {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(242, 242, 240, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 242, 240, 0.08) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image: linear-gradient(180deg, #000 0 56%, transparent 86%);
+}
+
+.hd-register-soon-hero::after {
+  inset-inline-start: clamp(22px, 6vw, 96px);
+  inset-block-start: 126px;
+  width: clamp(110px, 13vw, 190px);
+  aspect-ratio: 1;
+  border: 2px solid rgba(242, 242, 240, 0.18);
+  transform: rotate(45deg);
+}
+
+.hd-register-soon-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+  gap: clamp(26px, 4vw, 56px);
+  align-items: center;
+}
+
+.hd-register-soon-copy {
+  color: var(--hd-register-paper);
+}
+
+.hd-register-soon-kicker {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 18px;
+  padding: 8px 12px;
+  border: 1px solid rgba(242, 242, 240, 0.22);
+  border-radius: 999px;
+  background: rgba(242, 242, 240, 0.1);
+  color: rgba(242, 242, 240, 0.9);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hd-register-soon-copy h1 {
+  max-width: 780px;
+  margin: 0;
+  color: var(--hd-register-paper);
+  font-size: clamp(48px, 7vw, 92px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.hd-register-soon-copy p {
+  max-width: 720px;
+  margin: 24px 0 0;
+  color: rgba(242, 242, 240, 0.82);
+  font-size: 18px;
+  line-height: 1.95;
+}
+
+.hd-register-soon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.hd-register-soon-copy .hd-button {
+  box-shadow: 0 22px 56px rgba(3, 11, 41, 0.2);
+}
+
+.hd-register-soon-actions .hd-button-secondary {
+  border-color: rgba(242, 242, 240, 0.94);
+  background-color: var(--hd-register-paper);
+  color: var(--hd-register-blue);
+  font-weight: var(--hd-weight-medium);
+}
+
+.hd-register-soon-actions .hd-button-secondary:hover:where(:not(:disabled):not([aria-disabled="true"])) {
+  border-color: var(--hd-register-paper);
+  background-color: transparent;
+  color: var(--hd-register-paper);
+}
+
+.hd-register-soon-card {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding: clamp(24px, 3vw, 34px);
+  border: 1px solid rgba(11, 47, 159, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(242, 242, 240, 0.9)),
+    var(--hd-register-paper);
+  color: var(--hd-register-ink);
+  box-shadow: 0 32px 90px rgba(16, 16, 16, 0.18);
+}
+
+.hd-register-soon-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 22px;
+  inset-block-start: -3px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--hd-register-blue);
+}
+
+.hd-register-soon-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid rgba(11, 47, 159, 0.18);
+  border-radius: 999px;
+  background: rgba(11, 47, 159, 0.08);
+  color: var(--hd-register-blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hd-register-soon-status span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--hd-register-blue);
+  box-shadow: 0 0 0 5px rgba(11, 47, 159, 0.1);
+}
+
+.hd-register-soon-card h2 {
+  margin: 0;
+  color: var(--hd-register-ink);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.hd-register-soon-card p {
+  margin: 0;
+  color: rgba(16, 16, 16, 0.68);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.85;
+}
+
+.hd-register-soon-facts {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.hd-register-soon-facts div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 14px;
+  border: 1px solid rgba(11, 47, 159, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.hd-register-soon-facts dt {
+  color: rgba(16, 16, 16, 0.52);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hd-register-soon-facts dd {
+  margin: 0;
+  color: var(--hd-register-ink);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.hd-register-soon-facts a {
+  color: var(--hd-register-blue);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 991px) {
+  .hd-register-soon-hero {
+    background:
+      radial-gradient(circle at 8% 10%, rgba(49, 200, 217, 0.24), transparent 32%),
+      linear-gradient(180deg, rgba(11, 47, 159, 0.98), rgba(7, 30, 99, 0.98));
+  }
+
+  .hd-register-soon-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hd-register-soon-hero {
+    padding-block: 42px;
+  }
+
+  .hd-register-soon-copy h1 {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+
+  .hd-register-soon-copy p {
+    font-size: 16px;
+  }
+
+  .hd-register-soon-actions,
+  .hd-register-soon-actions .hd-button {
+    width: 100%;
+  }
+
+  .hd-register-soon-actions {
+    flex-direction: column;
+  }
+
+  .hd-register-soon-facts div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
 .hd-teachers-paragraph {
   margin-bottom: 0;
 }

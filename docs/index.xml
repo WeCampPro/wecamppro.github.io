@@ -20,69 +20,6 @@
 			</item>
 			<item>
 				<title></title>
-				<link>https://wecamp.pro/camps/agentic-ai/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/agentic-ai/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/cloud-infra-deepdive/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/cloud-infra-deepdive/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/cloud-infra-deployment/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/cloud-infra-deployment/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/cloud-infra-management/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/cloud-infra-management/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/coming-soon/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/coming-soon/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/product-design-advanced/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/product-design-advanced/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/product-design-project/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/product-design-project/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/product-design/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/product-design/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
-				<link>https://wecamp.pro/camps/user-research/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://wecamp.pro/camps/user-research/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title></title>
 				<link>https://wecamp.pro/contact/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 				<guid>https://wecamp.pro/contact/</guid>
@@ -164,6 +101,76 @@
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 				<guid>https://wecamp.pro/talents/firstname-lastname/</guid>
 				<description>&lt;p&gt;من روی طراحی محصولاتی کار می‌کنم که از مشاهده رفتار کاربر شروع می‌شوند و به تصمیم‌های روشن برای تیم محصول می‌رسند. در پروژه‌های اخیر، تمرکزم روی ساده‌سازی مسیرهای پیچیده، تعریف مسئله پیش از طراحی راه‌حل و ساخت نمونه‌هایی بوده که بتوان آن‌ها را سریع تست کرد.&lt;/p&gt;&#xA;&lt;h3 id=&#34;سوابق-کاری-من&#34;&gt;سوابق کاری من&lt;/h3&gt;&#xA;&lt;p&gt;در چند تیم محصولی با نقش طراح محصول و پژوهشگر تجربه کاربر همکاری کرده‌ام. بخش مهمی از کارم گفت‌وگو با کاربران، تحلیل الگوهای رفتاری، طراحی جریان‌های اصلی و همراهی با تیم فنی تا زمان پیاده‌سازی بوده است.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>ثبت‌نام به زودی باز می‌شود</title>
+				<link>https://wecamp.pro/register/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/register/</guid>
+				<description>&lt;p&gt;ثبت‌نام و ورود به پنل وی‌کمپ به‌زودی باز می‌شود.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>کمپ پروژه دیزاین محصول</title>
+				<link>https://wecamp.pro/camps/product-design-project/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/product-design-project/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ پیشرفته دیزاین محصول</title>
+				<link>https://wecamp.pro/camps/product-design-advanced/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/product-design-advanced/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ توسعه عامل‌های هوش مصنوعی</title>
+				<link>https://wecamp.pro/camps/agentic-ai/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/agentic-ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ دیزاین محصول</title>
+				<link>https://wecamp.pro/camps/product-design/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/product-design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ راه‌اندازی کلود با اپن‌استک</title>
+				<link>https://wecamp.pro/camps/cloud-infra-deployment/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/cloud-infra-deployment/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ عمیق‌کاوی زیرساخت کلود</title>
+				<link>https://wecamp.pro/camps/cloud-infra-deepdive/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/cloud-infra-deepdive/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ کاربرپژوهی</title>
+				<link>https://wecamp.pro/camps/user-research/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/user-research/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ مدیریت کلود</title>
+				<link>https://wecamp.pro/camps/cloud-infra-management/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/cloud-infra-management/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>کمپ‌های آینده وی‌کمپ</title>
+				<link>https://wecamp.pro/camps/coming-soon/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>https://wecamp.pro/camps/coming-soon/</guid>
+				<description></description>
 			</item>
 			<item>
 				<title>گواهی آرمان رضایی</title>

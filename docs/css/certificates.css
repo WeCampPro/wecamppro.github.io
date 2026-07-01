@@ -19,6 +19,14 @@
   color: var(--hd-cert-ink);
 }
 
+html[lang="en"] .hd-cert-page {
+  font-family: var(--hd-font-latin);
+}
+
+html[dir="ltr"] .hd-cert-title-block span {
+  text-align: left;
+}
+
 .hd-cert-hero {
   --hd-cert-blue-depth: 560px;
   --hd-cert-blue-clearance: 38px;
@@ -194,6 +202,20 @@
   border-color: rgba(242, 242, 240, 0.4);
   background: rgba(242, 242, 240, 0.18);
   color: var(--hd-cert-paper);
+}
+
+.hd-cert-copy .hd-cert-language-button {
+  border-color: rgba(242, 242, 240, 0.26);
+  background: transparent;
+  color: var(--hd-cert-paper);
+  box-shadow: none;
+}
+
+.hd-cert-copy .hd-cert-language-button:hover {
+  border-color: rgba(242, 242, 240, 0.46);
+  background: rgba(242, 242, 240, 0.12);
+  color: var(--hd-cert-paper);
+  box-shadow: none;
 }
 
 .hd-cert-linkedin-button span {
