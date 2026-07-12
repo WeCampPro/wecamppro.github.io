@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="fa" dir="rtl">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
   <title>
-   وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ
+   تماس با ما؛ مشاوره و پاسخ به پرسش‌های شما | وی‌کمپ
   </title>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." name="description"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="og:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="og:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="og:image"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="twitter:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="twitter:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="twitter:image"/>
+  <meta content="برای انتخاب کمپ مناسب، مشاوره مسیر یادگیری یا هر پرسش دیگری پیام بدهید؛ تیم وی‌کمپ طی یک روز کاری با شما تماس می‌گیرد." name="description"/>
+  <meta content="تماس با ما؛ مشاوره و پاسخ به پرسش‌های شما | وی‌کمپ" property="og:title"/>
+  <meta content="برای انتخاب کمپ مناسب، مشاوره مسیر یادگیری یا هر پرسش دیگری پیام بدهید؛ تیم وی‌کمپ طی یک روز کاری با شما تماس می‌گیرد." property="og:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="og:image"/>
+  <meta content="تماس با ما؛ مشاوره و پاسخ به پرسش‌های شما | وی‌کمپ" property="twitter:title"/>
+  <meta content="برای انتخاب کمپ مناسب، مشاوره مسیر یادگیری یا هر پرسش دیگری پیام بدهید؛ تیم وی‌کمپ طی یک روز کاری با شما تماس می‌گیرد." property="twitter:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="twitter:image"/>
   <meta content="website" property="og:type"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -28,34 +27,23 @@
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
   
   
   
   
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
-  
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body>
   <div class="page-wrapper">
-
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('nav', () => ({
@@ -72,6 +60,12 @@
       },
       toggleServices() {
         this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
       },
       closeServices(restoreFocus) {
         this.servicesOpen = false;
@@ -143,7 +137,7 @@
             x-ref="navMenu"
             :class="{ 'hd-nav-menu-open': menuOpen }"
             @click.outside="menuOpen && closeMenu()">
-       <a class="hd-nav-link" href="/">
+       <a class="hd-nav-link" href="/" @click="onNavigate()">
          خانه
         </a>
 
@@ -173,33 +167,38 @@
              <h4 class="hd-mega-title">
               کمپ‌ها
              </h4>
-             <a class="hd-mega-link" href="/camps/agentic-ai">
-              توسعه عامل‌های هوش مصنوعی
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/camps/cloud-infra-management">
-              مدیریت کلود با اپن‌استک
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
              </a>
-             <a class="hd-mega-link" href="/camps/product-design">
-              دیزاین محصول
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
              </a>
-             <a class="hd-mega-link" href="/camps/user-research">
-              کاربرپژوهی
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
              </a>
             </div>
             <div class="hd-mega-col">
              <h4 class="hd-mega-title">
               مسیرهای شغلی
              </h4>
-             <a class="hd-mega-link" href="/school/ai-engineering">
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
               مدرسه هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/school/cloud-engineering">
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
               مدرسه مهندسی ابر
              </a>
-             <a class="hd-mega-link" href="/school/product-design">
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
               مدرسه دیزاین محصول
              </a>
-             <a class="hd-mega-link hd-mega-link-special" href="/school">
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
               همه برنامه‌های آموزشی
              </a>
             </div>
@@ -208,11 +207,20 @@
          </div>
         </div>
 
-        <a class="hd-nav-link" href="/about">
-         درباره
+        
+        <a class="hd-nav-link" href="/events" @click="onNavigate()">
+         رویدادها
         </a>
-        <a class="hd-nav-link" href="/partnership">
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" @click="onNavigate()">
          همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" @click="onNavigate()">
+         ورود / حساب کاربری
         </a>
        </nav>
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
@@ -235,358 +243,186 @@
 
       
       <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
        <a class="hd-button hd-button-header" href="/camps">
         <span>همه کمپ‌ها</span>
         <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
          <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
        </a>
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/register/">
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-         <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>ورود / ثبت نام</span>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
        </a>
+       
       </div>
 
      </div>
     </div>
    </header>
+<main id="hd-main">
+    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="contact-hero-title">
+     <div class="hd-container">
+      <div class="hd-ds-hero-copy hd-measure-xl" data-hd-animate="fade-up" data-hd-animate-eager>
+       <p class="hd-ds-eyebrow">تماس با ما</p>
+       <h1 id="contact-hero-title">سؤالی دارید؟ با تیم وی‌کمپ صحبت کنید.</h1>
+       <p class="hd-ds-hero-lede">برای انتخاب کمپ مناسب، مشاوره مسیر یادگیری یا هر پرسش دیگری فرم زیر را پر کنید؛ طی یک روز کاری با شما تماس می‌گیریم.</p>
+      </div>
+     </div>
+    </section>
 
-   <main id="hd-main">
-   <h1 class="hd-sr-only">تماس با ما</h1>
-   <div class="hd-section hd-contact-us">
-    <div class="hd-container-medium-810 hd-clearfix">
-     <div data-hd-animate="fade-in-scale" data-hd-animate-eager class="animation-wrapper hd-delay-500">
-      <div class="hd-card hd-contact-us">
-       <div class="top-content hd-contact-us">
-        <div class="hd-split-content contact-us-left">
-         <h2 class="title hd-contact-us">
-          تماس با ما
-         </h2>
-         <p class="paragraph mg-bottom-0px">
-          اگر سؤالی درباره وی‌کمپ دارید، لطفاً فرم زیر را پر کنید. طی یک روز کاری آینده با شما تماس خواهیم گرفت.
-         </p>
-        </div>
-        <div class="contact-us-icon-wrapper">
-         <img alt="Email Icon" src="/img/icons/email-contact.svg"/>
-        </div>
-       </div>
-       <div class="hd-divider contact-us-form">
-       </div>
-       <div class="hd-form-wrap">
-        <form id="contact-form" name="contact-form" action="https://api.web3forms.com/submit" method="POST">
-         <input type="hidden" name="access_key" value="6540d8e6-186a-4cff-87b0-9e5c89f50b08">
-         <div class="hd-layout-grid contact-us-form-grid">
-          <div class="input-wrapper">
-           <label for="name">
-            نام کامل
-           </label>
-           <input class="input hd-field" id="name" autocomplete="name" maxlength="256" name="name" placeholder="نام و نام خانوادگی" required="" type="text"/>
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="contact-form-title">
+     <div class="hd-container">
+      <div class="hd-ds-hero">
+       <div class="hd-ds-hero-copy" data-hd-animate="fade-up">
+        <p class="hd-ds-kicker">ارسال پیام</p>
+        <h2 id="contact-form-title" class="hd-h2-fluid-md">پیام‌تان را برای ما بفرستید.</h2>
+        <div class="hd-ds-card hd-mbs-20">
+         <div class="hd-form-wrap">
+          <form id="contact-form" name="contact-form" action="https://api.web3forms.com/submit" method="POST">
+           <input type="hidden" name="access_key" value="6540d8e6-186a-4cff-87b0-9e5c89f50b08">
+           <div class="hd-layout-grid contact-us-form-grid">
+            <div class="input-wrapper">
+             <label for="name">نام کامل</label>
+             <input class="input hd-field" id="name" autocomplete="name" maxlength="256" name="name" placeholder="نام و نام خانوادگی" required="" type="text"/>
+            </div>
+            <div class="input-wrapper">
+             <label for="Email">آدرس ایمیل</label>
+             <input dir="ltr" class="input hd-field" id="Email" autocomplete="email" inputmode="email" maxlength="256" name="Email" placeholder="example@youremail.com" required="" spellcheck="false" type="email"/>
+            </div>
+            <div class="input-wrapper">
+             <label for="Phone">شماره تلفن</label>
+             <input dir="ltr" class="input hd-field" id="Phone" autocomplete="tel" inputmode="tel" maxlength="256" name="Phone" pattern="[0-9۰-۹]{10,11}" placeholder="۰۹۱۹۲۳۴۵۶۷۸" required="" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید" type="tel"/>
+            </div>
+            <div class="input-wrapper">
+             <label for="Subject">موضوع</label>
+             <input class="input hd-field" id="Subject" autocomplete="off" maxlength="256" name="Subject" placeholder="چطور می‌توانیم به شما کمک کنیم؟" type="text"/>
+            </div>
+           </div>
+           <div class="input-wrapper word-area">
+            <label for="Message">متن پیام</label>
+            <textarea class="text-area hd-field" id="Message" autocomplete="off" maxlength="5000" name="Message" placeholder="در چه زمینه‌ای می‌توانیم به شما کمک کنیم؟ لطفاً با جزئیات توضیح دهید." required=""></textarea>
+           </div>
+           <input type="hidden" name="subject" value="پیام جدید از فرم تماس">
+           <input type="hidden" name="redirect" value="https://wecamp.pro/">
+           
+           <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
+           <button class="hd-ds-cta hd-ds-cta-primary" type="submit">ارسال پیام</button>
+          </form>
+          <div class="success-message hd-contact-us hd-form-success" aria-live="polite" aria-hidden="true">
+           <div>فرم با موفقیت ارسال شد. به‌زودی با شما تماس می‌گیریم.</div>
           </div>
-          <div class="input-wrapper">
-           <label for="Email">
-            آدرس ایمیل
-           </label>
-           <input dir="ltr" class="input hd-field" id="Email" autocomplete="email" inputmode="email" maxlength="256" name="Email" placeholder="example@youremail.com" required="" spellcheck="false" type="email"/>
-          </div>
-          <div class="input-wrapper">
-           <label for="Phone">
-            شماره تلفن
-           </label>
-           <input dir="ltr" class="input hd-field" id="Phone" autocomplete="tel" inputmode="tel" maxlength="256" name="Phone" pattern="[0-9۰-۹]{10,11}" placeholder="۰۹۱۹۲۳۴۵۶۷۸" required="" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید" type="tel"/>
-          </div>
-          <div class="input-wrapper">
-           <label for="Subject">
-            موضوع
-           </label>
-           <input class="input hd-field" id="Subject" autocomplete="off" maxlength="256" name="Subject" placeholder="چطور می‌توانیم به شما کمک کنیم؟" type="text"/>
+          <div class="error-message hd-form-error" aria-live="polite" aria-hidden="true">
+           <div>خطایی رخ داد. لطفاً دوباره تلاش کنید.</div>
           </div>
          </div>
-         <div class="input-wrapper word-area">
-          <label for="Message">
-           متن پیام
-          </label>
-          <textarea class="text-area hd-field" id="Message" autocomplete="off" maxlength="5000" name="Message" placeholder="در چه زمینه‌ای می‌توانیم به شما کمک کنیم؟ لطفاً با جزئیات توضیح دهید." required=""></textarea>
-         </div>
+        </div>
+       </div>
 
-         <input type="hidden" name="subject" value="پیام جدید از فرم تماس">
-         <input type="hidden" name="redirect" value="https://wecamp.pro/">
-         
-         <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" style="display: none;">
-         <input class="hd-button hd-button-lg hd-inline-block" type="submit" value="ارسال پیام"/>
-        </form>
-        <div class="success-message hd-contact-us hd-form-success" aria-live="polite" aria-hidden="true">
-         <div>
-          فرم با موفقیت ارسال شد. به‌زودی با شما تماس می‌گیریم.
+       <div class="hd-ds-hero-copy" data-hd-animate="fade-up">
+        <p class="hd-ds-kicker">راه‌های تماس مستقیم</p>
+        <h2 class="hd-h2-fluid-md">مستقیم در ارتباط باشید.</h2>
+        <div class="hd-ds-card-grid hd-grid-cols-2 hd-mbs-20">
+         <div class="hd-ds-contact-card">
+          <span>تلفن — تهران</span>
+          <a href="tel:02182802264">۰۲۱-۸۲۸۰۲۲۶۴</a>
+          <a href="tel:09369090351">۰۹۳۶۹۰۹۰۳۵۱</a>
          </div>
-        </div>
-        <div class="error-message hd-form-error" aria-live="polite" aria-hidden="true">
-         <div>
-          خطایی رخ داد. لطفاً دوباره تلاش کنید.
+         <div class="hd-ds-contact-card">
+          <span>ایمیل</span>
+          <a href="mailto:we@wecamp.pro">we@wecamp.pro</a>
+          <a href="mailto:info@wecamp.pro">info@wecamp.pro</a>
+         </div>
+         <div class="hd-ds-contact-card hd-col-span-full">
+          <span>شبکه‌های اجتماعی</span>
+          <div class="hd-ds-chip-row hd-mbs-6">
+           <a class="hd-ds-chip" href="https://t.me/wecamppro" target="_blank" rel="noopener">تلگرام</a>
+           <a class="hd-ds-chip" href="https://x.com/wecamppro" target="_blank" rel="noopener">ایکس</a>
+           <a class="hd-ds-chip" href="https://www.instagram.com/wecamppro" target="_blank" rel="noopener">اینستاگرام</a>
+           <a class="hd-ds-chip" href="https://www.linkedin.com/company/wecamppro" target="_blank" rel="noopener">لینکدین</a>
+          </div>
          </div>
         </div>
        </div>
       </div>
      </div>
-    </div>
-    <div data-hd-animate="fade-in-scale" class="hd-container-small-615 text-center hd-clearfix hd-delay-300">
-     <h2>
-      به اطلاعات بیشتری نیاز دارید؟
-     </h2>
-     <p class="paragraph hd-more-information">
-      اگر می‌خواهید مستقیماً با ما در ارتباط باشید، می‌توانید از اطلاعات تماس زیر استفاده کنید.
-     </p>
-    </div>
-    <div class="hd-container hd-clearfix">
-     <div class="hd-layout-grid more-information-grid">
-      <div data-hd-animate="fade-in-scale" class="animation-wrapper hd-delay-500">
-       <div class="hd-card hd-more-information">
-        <h3 class="title more-information-card">
-         تلفن
-        </h3>
-        <div class="more-information-links-wrapper">
-         <div class="more-information-location-text">
-          تهران
-         </div>
-         <a class="more-information-text" href="tel:02182802264">
-          ۰۲۱-۸۲۸۰۲۲۶۴
-         </a>
-        </div>
-        <div class="hd-spacer hd-more-information">
-        </div>
-        <div class="more-information-links-wrapper">
-         <div class="more-information-location-text">
-          موبایل
-         </div>
-         <a class="more-information-text" href="tel:09369090351">
-          ۰۹۳۶۹۰۹۰۳۵۱
-         </a>
-        </div>
-       </div>
-      </div>
-      <div data-hd-animate="fade-in-scale" class="animation-wrapper hd-delay-600">
-       <div class="hd-card hd-more-information email">
-        <h3 class="title more-information-card">
-         ایمیل
-        </h3>
-        <div class="more-information-links-wrapper">
-         <div class="more-information-location-text">
-          دانشجویان
-         </div>
-         <a class="more-information-text" href="mailto:we@wecamp.pro">
-          we@wecamp.pro
-         </a>
-        </div>
-        <div class="hd-spacer hd-more-information">
-        </div>
-        <div class="more-information-links-wrapper">
-         <div class="more-information-location-text">
-          سازمان‌ها
-         </div>
-         <a class="more-information-text" href="mailto:info@wecamp.pro">
-          info@wecamp.pro
-         </a>
-        </div>
-       </div>
-      </div>
-      <div data-hd-animate="fade-in-scale" class="animation-wrapper hd-delay-700">
-       <div class="hd-card hd-more-information">
-        <h3 class="title more-information-card">
-         شبکه‌های اجتماعی
-        </h3>
-        <a class="more-information-links-wrapper social-media hd-inline-block" href="https://t.me/wecamppro">
-         <div class="blue-social-icon facebook">
-          <div>
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
-           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
-           </svg>
-          </div>
-         </div>
-         <div class="more-information-social-media">
-          ‪@wecamppro
-         </div>
-        </a>
-        <div class="hd-spacer more-information-social-media">
-        </div>
-        <a class="more-information-links-wrapper social-media hd-inline-block" href="https://x.com/wecamppro">
-         <div class="blue-social-icon">
-          <div>
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-           <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-           </svg>
-          </div>
-         </div>
-         <div class="more-information-social-media">
-          ‪@wecamppro
-         </div>
-        </a>
-        <div class="hd-spacer more-information-social-media">
-        </div>
-        <a class="more-information-links-wrapper social-media hd-inline-block" href="https://www.instagram.com/wecamppro">
-         <div class="blue-social-icon instagram">
-          <div>
-           
-          </div>
-         </div>
-         <div class="more-information-social-media">
-          ‪@wecamppro
-         </div>
-        </a>
-        <div class="hd-spacer more-information-social-media">
-        </div>
-        <a class="more-information-links-wrapper social-media hd-inline-block" href="https://www.linkedin.com/company/wecamppro">
-         <div class="blue-social-icon">
-          <div>
-           
-          </div>
-         </div>
-         <div class="more-information-social-media">
-          wecamppro
-         </div>
-        </a>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="hd-container hd-clearfix">
-    <div data-hd-animate="fade-up" class="hd-divider">
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" class="hd-section faqs">
-    <div class="hd-container hd-clearfix">
-     <div class="faqs-section-wrapper">
-      <h2 data-hd-animate="fade-in-scale" class="hd-delay-300">
-       سؤالات متداول
-      </h2>
-      <div data-hd-animate="fade-in-scale" class="faqs-wrapper hd-delay-500">
-       <div class="faq-wrapper" x-data="{ open: false }">
-        <button class="faq-top hd-faq-trigger" type="button" id="contact-faq-trigger-1" aria-controls="contact-faq-panel-1" :aria-expanded="open" @click="open = !open">
-         <span class="title faq heading-h4-size">
-          وی‌کمپ چه زمانی تأسیس شد؟
-         </span>
-         <div class="faq-dropdown-wrapper">
-          <div class="faq-icon reverse hd-faq-icon" :class="{ 'hd-faq-icon-open': open }">
-           
-          </div>
-         </div>
-        </button>
-        <div class="faq-content hd-faq-panel" id="contact-faq-panel-1" role="region" aria-labelledby="contact-faq-trigger-1" :aria-hidden="open ? 'false' : 'true'" :class="{ 'hd-faq-panel-open': open }">
-         <div class="hd-faq-panel-inner">
-          <div class="hd-spacer faq">
-          </div>
-          <p class="paragraph faq">
-           وی‌کمپ فعالیت رسمی خود را در پاییز ۱۴۰۳ آغاز کرد. از همان زمان به‌عنوان بستری تخصصی برای یادگیری و رشد در حوزه‌های نوین شکل گرفت. هدف این آکادمی از ابتدا ایجاد محیطی حرفه‌ای، به‌روز و کاربردی بوده است تا علاقه‌مندان بتوانند با بهره‌گیری از آموزش‌های پروژه‌محور و همراهی منتورها، مسیر یادگیری و پیشرفت شغلی خود را با اطمینان بیشتری طی کنند.
-          </p>
-         </div>
-        </div>
-       </div>
-       <div class="faq-wrapper" x-data="{ open: false }">
-        <button class="faq-top hd-faq-trigger" type="button" id="contact-faq-trigger-2" aria-controls="contact-faq-panel-2" :aria-expanded="open" @click="open = !open">
-         <span class="title faq heading-h4-size">
-          روش‌های پرداخت برای دوره‌ها چیست؟
-         </span>
-         <div class="faq-dropdown-wrapper">
-          <div class="faq-icon reverse hd-faq-icon" :class="{ 'hd-faq-icon-open': open }">
-           
-          </div>
-         </div>
-        </button>
-        <div class="faq-content hd-faq-panel" id="contact-faq-panel-2" role="region" aria-labelledby="contact-faq-trigger-2" :aria-hidden="open ? 'false' : 'true'" :class="{ 'hd-faq-panel-open': open }">
-         <div class="hd-faq-panel-inner">
-          <div class="hd-spacer faq">
-          </div>
-          <p class="paragraph faq">
-           از طریق درگاه پرداخت و نیز به صورت مستقیم با کارت-به-کارت.
-          </p>
-         </div>
-        </div>
-       </div>
-       <div class="faq-wrapper" x-data="{ open: false }">
-        <button class="faq-top hd-faq-trigger" type="button" id="contact-faq-trigger-3" aria-controls="contact-faq-panel-3" :aria-expanded="open" @click="open = !open">
-         <span class="title faq heading-h4-size">
-          آیا می‌توانم کمپی را به صورت اقساطی ثبت‌نام کنم؟
-         </span>
-         <div class="faq-dropdown-wrapper">
-          <div class="faq-icon reverse hd-faq-icon" :class="{ 'hd-faq-icon-open': open }">
-           
-          </div>
-         </div>
-        </button>
-        <div class="faq-content hd-faq-panel" id="contact-faq-panel-3" role="region" aria-labelledby="contact-faq-trigger-3" :aria-hidden="open ? 'false' : 'true'" :class="{ 'hd-faq-panel-open': open }">
-         <div class="hd-faq-panel-inner">
-          <div class="hd-spacer faq">
-          </div>
-          <p class="paragraph faq">
-           بله، شرایط پرداخت قسطی شهریه وجود دارد. می‌توانید از درگاه پرداخت دیجی‌پی شهریه را در قالب کسر از اعتبار خود یا وام پرداخت نمایید. برای روش‌های دیگر با ما تماس بگیرید.
-          </p>
-         </div>
-        </div>
-       </div>
-       <div class="faq-wrapper last" x-data="{ open: false }">
-        <button class="faq-top hd-faq-trigger" type="button" id="contact-faq-trigger-4" aria-controls="contact-faq-panel-4" :aria-expanded="open" @click="open = !open">
-         <span class="title faq heading-h4-size">
-          آیا امکان استفاده از تخفیف وجود دارد؟
-         </span>
-         <div class="faq-dropdown-wrapper">
-          <div class="faq-icon reverse hd-faq-icon" :class="{ 'hd-faq-icon-open': open }">
-           
-          </div>
-         </div>
-        </button>
-        <div class="faq-content hd-faq-panel" id="contact-faq-panel-4" role="region" aria-labelledby="contact-faq-trigger-4" :aria-hidden="open ? 'false' : 'true'" :class="{ 'hd-faq-panel-open': open }">
-         <div class="hd-faq-panel-inner">
-          <div class="hd-spacer faq">
-          </div>
-          <p class="paragraph faq">
-           کمپ‌ها معمولا دارای تخفیف ثبت‌نام زودهنگام در هفته بازگشایی ثبت‌نام هستند. ما را در شبکه‌های اجتماعی دنبال کنید تا از شروع ثبت‌نام کمپ‌ها به‌موقع آگاه شوید.
-          </p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" data-hd-cta-parallax class="hd-section hd-section-cta">
-    <div class="hd-container hd-clearfix">
-     <div class="hd-cta-wrapper">
-      <div data-hd-animate="fade-in-scale" class="hd-cta-left hd-delay-300">
-       <h2 class="hd-h2 hd-cta-title">
-        رشد شغلی خود را آغاز کنید!
-        <br/>
-        یادگیری از همین امروز...
-       </h2>
-       <p class="hd-text-body hd-cta-paragraph">
-        مهارت‌های کاربردی را از متخصصان می‌آموزید، تجربه‌های واقعی را تمرین می‌کنید و برای رسیدن به اهداف حرفه‌ای‌تان یک قدم بزرگ برمی‌دارید.
-       </p>
-       <a class="hd-button hd-button-cta hd-inline-block" href="/camps">
-        همه کمپ‌ها
-       </a>
-      </div>
-      <div data-hd-animate="fade-in-scale" data-hd-animate-eager="" class="hd-cta-right hd-delay-500">
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-main _1" src="/img/na/banner-main.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _4" data-hd-cta-y="0:50,85:-20" src="/img/na/banner-right-down.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _3" data-hd-cta-y="0:40,85:-40" src="/img/na/banner-right-up.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _2" data-hd-cta-y="0:100,90:-80" src="/img/na/banner-left.svg"/>
-      </div>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _4 hd-delay-600" src="/img/shapes/circle-shape-cta-04.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _3 hd-delay-800" src="/img/shapes/circle-shape-cta-03.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _2 hd-delay-800" src="/img/shapes/circle-shape-cta-02.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _1 hd-delay-600" src="/img/shapes/circle-shape-cta-01.svg"/>
-     </div>
-    </div>
-   </div>
+    </section>
 
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="contact-faq-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">سؤالات متداول</p>
+       <h2 id="contact-faq-title">پاسخ پرسش‌های رایج.</h2>
+      </div>
+      <div class="hd-ds-accordion hd-measure-xl" data-hd-animate="fade-up">
+       <div class="hd-ds-accordion-item" x-data="{ open: false }">
+        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-0">
+         <span>وی‌کمپ چه زمانی تأسیس شد؟</span>
+         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="hd-ds-accordion-panel" id="contact-faq-panel-0" x-bind:hidden="!open">
+         <p class="hd-m-0">وی‌کمپ فعالیت رسمی خود را در پاییز ۱۴۰۳ آغاز کرد و از همان زمان به‌عنوان بستری تخصصی برای یادگیری و رشد در حوزه‌های نوین شکل گرفت. هدف ما از ابتدا ایجاد محیطی حرفه‌ای، به‌روز و کاربردی بوده است.</p>
+        </div>
+       </div>
+       <div class="hd-ds-accordion-item" x-data="{ open: false }">
+        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-1">
+         <span>روش‌های پرداخت برای دوره‌ها چیست؟</span>
+         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="hd-ds-accordion-panel" id="contact-faq-panel-1" x-bind:hidden="!open">
+         <p class="hd-m-0">از طریق درگاه پرداخت و نیز به‌صورت مستقیم با کارت‌به‌کارت.</p>
+        </div>
+       </div>
+       <div class="hd-ds-accordion-item" x-data="{ open: false }">
+        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-2">
+         <span>آیا می‌توانم کمپی را به‌صورت اقساطی ثبت‌نام کنم؟</span>
+         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="hd-ds-accordion-panel" id="contact-faq-panel-2" x-bind:hidden="!open">
+         <p class="hd-m-0">بله، شرایط پرداخت قسطی شهریه وجود دارد. می‌توانید از درگاه پرداخت دیجی‌پی شهریه را در قالب کسر از اعتبار خود یا وام پرداخت کنید. برای روش‌های دیگر با ما تماس بگیرید.</p>
+        </div>
+       </div>
+       <div class="hd-ds-accordion-item" x-data="{ open: false }">
+        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-3">
+         <span>آیا امکان استفاده از تخفیف وجود دارد؟</span>
+         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="hd-ds-accordion-panel" id="contact-faq-panel-3" x-bind:hidden="!open">
+         <p class="hd-m-0">کمپ‌ها معمولاً دارای تخفیف ثبت‌نام زودهنگام در هفته بازگشایی ثبت‌نام هستند. ما را در شبکه‌های اجتماعی دنبال کنید تا از شروع ثبت‌نام کمپ‌ها به‌موقع آگاه شوید.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="contact-cta-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head hd-measure-md" data-hd-animate="fade-up">
+       <p class="hd-ds-eyebrow">پرسش دیگری دارید؟</p>
+       <h2 id="contact-cta-title">پرسش‌تان را مستقیم با تیم وی‌کمپ در میان بگذارید.</h2>
+       <p>فرم همین صفحه را پر کنید؛ طی یک روز کاری با شما تماس می‌گیریم. اگر هم آماده انتخاب هستید، کمپ‌ها را ببینید.</p>
+      </div>
+      <div class="hd-ds-actions" data-hd-animate="fade-up">
+       
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="#contact-form">فرم تماس را پر کنید</a>
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps">مشاهده کمپ‌ها</a>
+      </div>
+     </div>
+    </section>
    </main>
    <footer data-hd-animate="fade-up" class="hd-footer">
     <div class="hd-container hd-clearfix">
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -636,6 +472,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -643,23 +480,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -707,14 +539,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -740,7 +585,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -768,7 +615,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -799,6 +646,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 

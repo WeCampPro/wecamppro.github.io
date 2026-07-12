@@ -3,15 +3,20 @@
    ========================================================================== */
 
 .hd-camp-page {
-  --hd-camp-blue: #0b2f9f;
-  --hd-camp-ink: #101010;
-  --hd-camp-paper: #f2f2f0;
-  --hd-camp-muted: #62646f;
-  --hd-camp-line: rgba(11, 47, 159, 0.16);
-  --hd-camp-cyan: #31c8d9;
-  --hd-camp-lilac: #a8a7ff;
-  --hd-camp-green: #19ad69;
-  --hd-camp-radius: 8px;
+  /* Thin aliases onto the --wc-* brand tokens (hd-tokens.css) — edit values there. */
+  --hd-camp-blue: var(--wc-cobalt);
+  --hd-camp-blue-deep: var(--wc-cobalt-deep);      /* cobalt hover (sticky pill quiet state) */
+  --hd-camp-ink: var(--wc-ink);
+  --hd-camp-paper: var(--wc-paper);
+  --hd-camp-muted: var(--wc-muted);
+  --hd-camp-line: var(--wc-line);
+  --hd-camp-cyan: var(--wc-cyan);
+  --hd-camp-lilac: #a8a7ff;          /* camp-page-only local accent — no --wc-* twin */
+  --hd-camp-green: var(--wc-green);
+  --hd-camp-accent: var(--wc-accent);              /* warm brand accent — register CTAs (matches homepage) */
+  --hd-camp-accent-strong: var(--wc-accent-deep);  /* accent hover */
+  --hd-camp-accent-ink: var(--wc-accent-ink);      /* AA-legible text on accent fill */
+  --hd-camp-radius: var(--wc-radius);
 
   background: var(--hd-camp-paper);
   color: var(--hd-camp-ink);
@@ -106,29 +111,50 @@
   min-width: 0;
 }
 
-.hd-camp-eyebrow,
+/* ALIAS of the canonical .hd-ds-eyebrow spec (hd-page.css) — identical
+   values, kept only because registration-panel.html (frozen), curriculum.html
+   and the --plain consumers below (faq/teachers/overview/proof-project) still
+   carry this class name; migrate their markup to .hd-ds-eyebrow/.hd-ds-kicker
+   in a follow-up, then delete this block. The camp hero itself now uses
+   .hd-ds-eyebrow directly (uiux-0.2). */
 .hd-camp-section-kicker {
   display: inline-flex;
   width: fit-content;
   margin: 0 0 14px;
-  padding: 7px 11px;
-  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid var(--wc-line);
+  border-radius: var(--wc-radius-pill);
+  background: rgba(11, 47, 159, 0.08);
+  color: var(--hd-camp-blue);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.2;
 }
 
-.hd-camp-eyebrow {
-  border: 1px solid rgba(242, 242, 240, 0.24);
-  background: rgba(242, 242, 240, 0.11);
-  color: rgba(242, 242, 240, 0.92);
+/* ALIAS of the canonical .hd-ds-kicker (hd-page.css) — same caveat. */
+.hd-camp-section-kicker.hd-camp-section-kicker--plain {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--hd-camp-blue);
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* Camp hero genuine per-family differences on the shared primitives:
+   glassy blur + the hero's own copy rhythm (margins, not grid gap). */
+.hd-camp-hero .hd-ds-eyebrow {
+  margin-block-end: 14px;
   backdrop-filter: blur(18px);
 }
 
-.hd-camp-section-kicker {
-  border: 1px solid rgba(11, 47, 159, 0.16);
-  background: rgba(11, 47, 159, 0.08);
-  color: var(--hd-camp-blue);
+.hd-camp-hero .hd-ds-chip-row {
+  margin-block-start: 24px;
+}
+
+.hd-camp-hero .hd-ds-cta-secondary {
+  backdrop-filter: blur(18px);
 }
 
 .hd-camp-hero h1 {
@@ -149,56 +175,11 @@
   line-height: 1.95;
 }
 
-.hd-camp-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.hd-camp-chip-row span {
-  display: inline-flex;
-  min-height: 36px;
-  align-items: center;
-  padding: 8px 12px;
-  border: 1px solid rgba(242, 242, 240, 0.2);
-  border-radius: 999px;
-  background: rgba(16, 16, 16, 0.18);
-  color: rgba(242, 242, 240, 0.9);
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
+/* Hero chip + CTA chrome comes from the shared primitives (.hd-ds-chip,
+   .hd-ds-cta*, hd-page.css) with the .hd-ds-on-dark flip; the wrapper only
+   keeps the hero rhythm. */
 .hd-camp-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
   margin-top: 30px;
-}
-
-.hd-camp-primary-cta {
-  background: var(--hd-camp-paper);
-  color: var(--hd-camp-blue);
-  box-shadow: 0 20px 50px rgba(3, 11, 41, 0.2);
-}
-
-.hd-camp-primary-cta:hover {
-  background: #fff;
-  color: var(--hd-camp-blue);
-}
-
-.hd-camp-secondary-cta {
-  border-color: rgba(242, 242, 240, 0.5);
-  background: rgba(242, 242, 240, 0.08);
-  color: var(--hd-camp-paper);
-  backdrop-filter: blur(18px);
-}
-
-.hd-camp-secondary-cta:hover {
-  border-color: var(--hd-camp-paper);
-  background: rgba(242, 242, 240, 0.16);
-  color: var(--hd-camp-paper);
 }
 
 .hd-camp-hero-media-wrap {
@@ -207,6 +188,8 @@
 
 .hd-camp-media-frame {
   position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(242, 242, 240, 0.3);
   border-radius: 28px;
@@ -216,7 +199,13 @@
     0 12px 34px rgba(16, 16, 16, 0.22);
 }
 
-.hd-camp-media-frame::before {
+/* Poster + play button live here so the button centers on the image alone,
+   not on the frame (which on mobile also holds the stacked proof card). */
+.hd-camp-media {
+  position: relative;
+}
+
+.hd-camp-media::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -227,9 +216,13 @@
     linear-gradient(90deg, rgba(49, 200, 217, 0.18), transparent 44%);
 }
 
-.hd-camp-media-frame > img {
+.hd-camp-media > img,
+.hd-camp-media > picture > img, /* uiux-8.2: pipeline wraps in <picture> */
+.hd-camp-media > video.hd-camp-loop { /* ambient loop occupies the same box */
   display: block;
   width: 100%;
+  height: auto;              /* neutralize the height="" presentational hint so
+                                aspect-ratio governs regardless of the asset's attrs */
   aspect-ratio: 594 / 344;
   object-fit: cover;
 }
@@ -237,13 +230,18 @@
 .hd-camp-play {
   position: absolute;
   z-index: 2;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
+  /* inset + margin:auto centers on both axes independent of writing direction
+     (a logical inset + physical negative margin used to drift it off-centre in
+     RTL). The bottom reserve keeps the button centered in the poster ABOVE the
+     proof-card overlay on desktop; mobile drops the reserve (card stacks below).
+     ~56px lifts the button just clear of the card while keeping it near the
+     poster centre (a full-card reserve pushed it up onto the subject's face). */
+  inset: 0 0 56px 0;
+  margin: auto;
   display: grid;
   place-items: center;
   width: 74px;
   height: 74px;
-  margin: -37px 0 0 -37px;
   border: 1px solid rgba(242, 242, 240, 0.52);
   border-radius: 50%;
   background: rgba(242, 242, 240, 0.94);
@@ -264,6 +262,52 @@
   margin-left: 5px;
   border-block: 12px solid transparent;
   border-left: 18px solid currentColor;
+}
+
+/* Loop mode (hero.video_loop): the ambient clip is the star, so the play button
+   sheds its solid white disc and becomes a full-bleed transparent click layer —
+   click anywhere on the video to open the full narrated intro with sound. The only
+   visible affordance is a compact frosted chip so the loop shows through around it. */
+.hd-camp-play-overlay {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #fff;                 /* the ::before disc is dark; render a white triangle */
+}
+
+.hd-camp-play-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;                /* centre the fixed-size chip behind the triangle */
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(242, 242, 240, 0.62);
+  border-radius: 50%;
+  background: rgba(16, 16, 16, 0.34);
+  backdrop-filter: blur(8px);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.hd-camp-play-overlay span {
+  position: relative;          /* triangle rides above the frosted chip */
+  z-index: 1;
+}
+
+.hd-camp-play-overlay:hover {
+  transform: none;             /* base :hover scales the solid disc; not wanted here */
+  background: transparent;
+}
+
+.hd-camp-play-overlay:hover::before,
+.hd-camp-play-overlay:focus-visible::before {
+  transform: scale(1.06);
+  background: rgba(16, 16, 16, 0.52);
 }
 
 .hd-camp-hero-proof {
@@ -391,9 +435,8 @@
 .hd-camp-story p,
 .hd-camp-fit-lede,
 .hd-camp-proof p,
-.hd-camp-register-copy p,
-.hd-camp-teacher p,
-.hd-camp-disclosure p {
+.hd-camp-register-copy p:not(.hd-camp-section-kicker),
+.hd-camp-teacher p {
   margin: 0;
   color: var(--hd-camp-muted);
   font-size: 16px;
@@ -414,9 +457,13 @@
 .hd-camp-about-media img {
   display: block;
   width: 100%;
+  height: auto;              /* neutralize the height="" presentational hint so
+                                aspect-ratio governs regardless of the asset's attrs */
   aspect-ratio: 1524 / 878;
   object-fit: cover;
 }
+
+
 
 .hd-camp-fit {
   display: grid;
@@ -660,6 +707,9 @@
   height: 18px;
 }
 
+/* Thin camp-family wrapper on the canonical .hd-ds-accordion (hd-page.css):
+   measure + section rhythm only. The old <details>.hd-camp-disclosure chrome
+   was deleted (uiux-0.2 step 5) — chrome now comes from hd-ds-accordion-*. */
 .hd-camp-details {
   max-width: 900px;
   margin-top: 34px;
@@ -671,74 +721,6 @@
   font-size: 22px;
   font-weight: 900;
   line-height: 1.35;
-}
-
-.hd-camp-disclosure {
-  border-top: 1px solid var(--hd-camp-line);
-}
-
-.hd-camp-disclosure:last-child {
-  border-bottom: 1px solid var(--hd-camp-line);
-}
-
-.hd-camp-disclosure summary {
-  display: flex;
-  width: 100%;
-  min-height: 64px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  border: 0;
-  background: transparent;
-  color: var(--hd-camp-ink);
-  cursor: pointer;
-  padding: 16px 0;
-  text-align: start;
-  list-style: none;
-}
-
-.hd-camp-disclosure summary::-webkit-details-marker {
-  display: none;
-}
-
-.hd-camp-disclosure summary > span:first-child {
-  font-size: 17px;
-  font-weight: 900;
-  line-height: 1.5;
-}
-
-.hd-camp-disclosure summary > span:last-child {
-  position: relative;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--hd-camp-line);
-  border-radius: 50%;
-}
-
-.hd-camp-disclosure summary > span:last-child::before,
-.hd-camp-disclosure summary > span:last-child::after {
-  content: "";
-  position: absolute;
-  inset: 50% auto auto 50%;
-  width: 12px;
-  height: 2px;
-  background: var(--hd-camp-blue);
-  transform: translate(-50%, -50%);
-}
-
-.hd-camp-disclosure summary > span:last-child::after {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.hd-camp-disclosure[open] summary > span:last-child::after {
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.hd-camp-disclosure > div {
-  padding: 0 0 20px;
 }
 
 .hd-camp-proof {
@@ -761,14 +743,14 @@
 .hd-camp-proof h2,
 .hd-camp-proof h3,
 .hd-camp-proof p,
-.hd-camp-proof li,
-.hd-camp-proof .hd-camp-section-kicker {
+.hd-camp-proof li {
   color: var(--hd-camp-paper);
 }
 
-.hd-camp-proof .hd-camp-section-kicker {
-  border-color: rgba(242, 242, 240, 0.22);
-  background: rgba(242, 242, 240, 0.11);
+/* Proof kicker is demoted to plain text (uiux-2.1); translucent-paper ink
+   on the dark band, no pill chrome. */
+.hd-camp-proof .hd-camp-section-kicker--plain {
+  color: rgba(242, 242, 240, 0.72);
 }
 
 .hd-camp-proof-main,
@@ -895,6 +877,22 @@
   object-fit: cover;
 }
 
+/* uiux-4.3: honest fallback for a teacher entry without a photo —
+   initial monogram on cobalt, never a silhouette or generated face. */
+.hd-camp-teacher-monogram {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--hd-camp-blue);
+  color: var(--hd-camp-paper);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+}
+
 .hd-camp-teacher h3 {
   margin: 0;
   color: var(--hd-camp-ink);
@@ -953,18 +951,6 @@
   border-radius: var(--hd-camp-radius);
   background: var(--hd-camp-paper);
   box-shadow: 0 24px 70px rgba(16, 16, 16, 0.1);
-}
-
-.hd-camp-status {
-  display: inline-flex;
-  width: fit-content;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: rgba(25, 173, 105, 0.12);
-  color: #087347;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1.3;
 }
 
 .hd-camp-price small,
@@ -1033,6 +1019,32 @@
   min-width: 0;
 }
 
+/* Price suffix inside the sticky anchor — desktop-only enrichment (uiux-6.3);
+   mobile keeps the short label so the bar never wraps. */
+.hd-camp-sticky-price {
+  display: none;
+}
+
+/* Warm accent on the primary register CTA — one consistent "action" colour
+   across the homepage → camp → register funnel. Scoped to camp CTAs only;
+   the ghost secondary (.hd-button-secondary) and global .hd-button are
+   untouched. Orange accent contract (uiux-3.2, see .hd-ds-cta-primary in
+   hd-page.css): every accent element on a camp page targets the single
+   #register flow; enforced by scripts/audit/orange-census.cjs. */
+.hd-camp-register-actions .hd-button:not(.hd-button-secondary),
+.hd-camp-sticky-cta .hd-button:not(.hd-button-secondary) {
+  border-color: var(--hd-camp-accent);
+  background: var(--hd-camp-accent);
+  color: var(--hd-camp-accent-ink);
+}
+
+.hd-camp-register-actions .hd-button:not(.hd-button-secondary):hover,
+.hd-camp-sticky-cta .hd-button:not(.hd-button-secondary):hover {
+  border-color: var(--hd-camp-accent-strong);
+  background: var(--hd-camp-accent-strong);
+  color: var(--hd-camp-accent-ink);
+}
+
 .hd-camp-faq {
   padding-block-start: clamp(60px, 8vw, 96px);
 }
@@ -1085,15 +1097,7 @@
     font-size: clamp(34px, 11vw, 46px);
   }
 
-  .hd-camp-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .hd-camp-actions .hd-button {
-    width: 100%;
-    min-width: 0;
-  }
+  /* Full-width mobile hero CTAs come from the shared .hd-ds-actions rule. */
 
   .hd-camp-media-frame {
     border-radius: 20px;
@@ -1102,13 +1106,23 @@
   .hd-camp-play {
     width: 62px;
     height: 62px;
-    margin: -31px 0 0 -31px;
+    inset-block-end: 0;   /* card stacks below now — center in the full poster */
+  }
+
+  .hd-camp-play-overlay {
+    width: 100%;           /* keep the click layer full-bleed; the mobile rule above
+                              shrinks the base .hd-camp-play the overlay also carries */
+    height: 100%;
+    inset: 0;
   }
 
   .hd-camp-hero-proof {
-    inset: auto 12px 12px;
-    padding: 12px;
-    border-radius: 14px;
+    position: static;      /* stack under the poster instead of overlaying it */
+    padding: 14px 16px;
+    border: 0;
+    border-radius: 0;
+    background: #101010;
+    backdrop-filter: none;
   }
 
   .hd-camp-facts {
@@ -1177,16 +1191,51 @@
     padding-inline-start: 32px;
   }
 
-  .hd-camp-sticky-cta {
-    display: none;
-  }
-
   .hd-camp-page.hd-camp-sticky-ready .hd-camp-sticky-cta {
     display: block;
   }
 
+  /* uiux-6.3 single-orange contract — while the registration panel is on
+     screen, its own orange primary takes over and the bar steps away. */
+  .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta {
+    display: none;
+  }
+
   .hd-camp-faq {
     padding-block-end: 96px;
+  }
+}
+
+/* uiux-6.3 — desktop persistence: the same sticky component, compact pill form.
+   Appears with the existing .hd-camp-sticky-ready gate (hero orange has left the
+   viewport), pinned to the physical left (inset-inline-end in RTL) — the Goftino
+   launcher owns the bottom-right corner (right: 20px, 80x80, verified against the
+   live widget build), so the two never share a corner on desktop. */
+@media screen and (min-width: 1121px) {
+  .hd-camp-page.hd-camp-sticky-ready .hd-camp-sticky-cta {
+    display: block;
+    inset-inline: auto 32px;
+    width: max-content;
+    max-width: 360px;
+  }
+
+  .hd-camp-sticky-cta .hd-camp-sticky-price {
+    display: inline;
+  }
+
+  /* Single-orange contract on desktop: hiding the pill would break register-CTA
+     persistence, so while the registration panel (and its orange primary) is on
+     screen the pill goes quiet cobalt instead. */
+  .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta .hd-button:not(.hd-button-secondary) {
+    border-color: var(--hd-camp-blue);
+    background: var(--hd-camp-blue);
+    color: var(--hd-camp-paper);
+  }
+
+  .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta .hd-button:not(.hd-button-secondary):hover {
+    border-color: var(--hd-camp-blue-deep);
+    background: var(--hd-camp-blue-deep);
+    color: var(--hd-camp-paper);
   }
 }
 
@@ -1223,7 +1272,8 @@
   }
 
   .hd-camp-lead img,
-  .hd-camp-teacher img {
+  .hd-camp-teacher img,
+  .hd-camp-teacher-monogram {
     width: 84px;
     height: 84px;
   }

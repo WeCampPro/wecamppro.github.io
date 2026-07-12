@@ -4,15 +4,15 @@
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
   <title>
-   وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ
+   مدرسان و منتورها | وی‌کمپ
   </title>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." name="description"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="og:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="og:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="og:image"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="twitter:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="twitter:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="twitter:image"/>
+  <meta content="با مدرسان و منتورهای وی‌کمپ آشنا شوید؛ متخصصانی از صنعت که با تجربه عملی و پروژه‌های واقعی، دوره‌های تخصصی را همراهی می‌کنند." name="description"/>
+  <meta content="مدرسان و منتورها | وی‌کمپ" property="og:title"/>
+  <meta content="با مدرسان و منتورهای وی‌کمپ آشنا شوید؛ متخصصانی از صنعت که با تجربه عملی و پروژه‌های واقعی، دوره‌های تخصصی را همراهی می‌کنند." property="og:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="og:image"/>
+  <meta content="مدرسان و منتورها | وی‌کمپ" property="twitter:title"/>
+  <meta content="با مدرسان و منتورهای وی‌کمپ آشنا شوید؛ متخصصانی از صنعت که با تجربه عملی و پروژه‌های واقعی، دوره‌های تخصصی را همراهی می‌کنند." property="twitter:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="twitter:image"/>
   <meta content="website" property="og:type"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -27,34 +27,23 @@
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
   
   
   
   
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
-  
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body>
   <div class="page-wrapper">
-
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('nav', () => ({
@@ -71,6 +60,12 @@
       },
       toggleServices() {
         this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
       },
       closeServices(restoreFocus) {
         this.servicesOpen = false;
@@ -142,7 +137,7 @@
             x-ref="navMenu"
             :class="{ 'hd-nav-menu-open': menuOpen }"
             @click.outside="menuOpen && closeMenu()">
-       <a class="hd-nav-link" href="/">
+       <a class="hd-nav-link" href="/" @click="onNavigate()">
          خانه
         </a>
 
@@ -172,33 +167,38 @@
              <h4 class="hd-mega-title">
               کمپ‌ها
              </h4>
-             <a class="hd-mega-link" href="/camps/agentic-ai">
-              توسعه عامل‌های هوش مصنوعی
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/camps/cloud-infra-management">
-              مدیریت کلود با اپن‌استک
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
              </a>
-             <a class="hd-mega-link" href="/camps/product-design">
-              دیزاین محصول
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
              </a>
-             <a class="hd-mega-link" href="/camps/user-research">
-              کاربرپژوهی
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
              </a>
             </div>
             <div class="hd-mega-col">
              <h4 class="hd-mega-title">
               مسیرهای شغلی
              </h4>
-             <a class="hd-mega-link" href="/school/ai-engineering">
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
               مدرسه هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/school/cloud-engineering">
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
               مدرسه مهندسی ابر
              </a>
-             <a class="hd-mega-link" href="/school/product-design">
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
               مدرسه دیزاین محصول
              </a>
-             <a class="hd-mega-link hd-mega-link-special" href="/school">
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
               همه برنامه‌های آموزشی
              </a>
             </div>
@@ -207,11 +207,20 @@
          </div>
         </div>
 
-        <a class="hd-nav-link" href="/about">
-         درباره
+        
+        <a class="hd-nav-link" href="/events" @click="onNavigate()">
+         رویدادها
         </a>
-        <a class="hd-nav-link" href="/partnership">
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" @click="onNavigate()">
          همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" @click="onNavigate()">
+         ورود / حساب کاربری
         </a>
        </nav>
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
@@ -234,539 +243,233 @@
 
       
       <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
        <a class="hd-button hd-button-header" href="/camps">
         <span>همه کمپ‌ها</span>
         <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
          <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
        </a>
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/register/">
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-         <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>ورود / ثبت نام</span>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
        </a>
+       
       </div>
 
      </div>
     </div>
    </header>
+<main id="hd-main">
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section-tight" aria-labelledby="teachers-hero-title">
+     <div class="hd-container">
+      <div class="hd-ds-title-row" data-hd-animate="fade-up" data-hd-animate-eager>
+       <h1 id="teachers-hero-title">مدرسان و منتورهایی که کنار شما هستند.</h1>
+       <p>متخصصانی از صنعت که با تجربه عملی و پروژه‌های واقعی، دوره‌های تخصصی وی‌کمپ را همراهی می‌کنند.</p>
+       <p class="hd-ds-title-hint">هر کارت را انتخاب کنید تا پروفایل حرفه‌ای مدرس را ببینید.</p>
+      </div>
+      <div class="hd-ds-people-grid" data-hd-animate="fade-up" data-hd-animate-eager role="list">
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/armin-abbasi/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_b1fa61c49a4fa355.avif 200w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_e9f0e547ade3df1b.avif 360w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_a730f5fd447dd302.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c354aac9ac28c0fa.webp 200w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_8f6c80fd53d7eb72.webp 360w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c0891c0346970974.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c3572260dd07fa63.jpg" alt="آرمین عباسی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>آرمین عباسی</strong>
+  <small>مشاور دیزاین محصول</small><small class="hd-ds-person-note">پیشینه کاری در ازکی، گروه اسنپ</small>
+ </div>
+</a>
 
-   <main id="hd-main">
-   <div class="hd-section hd-section-teachers">
-    <div data-hd-animate="fade-in-scale" data-hd-animate-eager class="hd-container-medium-727 hd-text-center hd-clearfix hd-delay-500">
-     <h1 class="hd-special hd-teachers-heading">
-      تیم آموزشی
-      <span class="hd-text-accent">
-       وی‌کمپ
-      </span>
-     </h1>
-     <p class="hd-text-body hd-teachers-paragraph">
-      متخصصان عزیزی که تا کنون برای تدریس دوره‌های تخصصی IT همراه ما بوده‌اند
-     </p>
-    </div>
-    <div class="hd-container hd-clearfix">
-     <div >
-      <div class="hd-teachers-grid" role="list">
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/armin-abbasi/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/آرمین_عباسی.jpg"/>
-           <h2 class="hd-teacher-title">
-            آرمین عباسی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مشاور دیزاین محصول
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           پیشینه کاری در ازکی، گروه اسنپ
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/armin-abbasi/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/morteza-farkhondepour/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_6810a3fee8e03111.avif 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_34b315de96d2344e.avif 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_8e2283f48e81ba7a.webp 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_b482eeb8b6473b8f.webp 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_a2c1367f3abd1be2.jpg" alt="مرتضی فرخنده‌پور" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>مرتضی فرخنده‌پور</strong>
+  <small>مهندس پلتفرم و کلود</small><small class="hd-ds-person-note">شرکت آبالون</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/morteza-farkhondepour/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/مرتضی_فرخنده‌پور.jpg"/>
-           <h2 class="hd-teacher-title">
-            مرتضی فرخنده‌پور
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مهندس پلتفرم و کلود
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت آبالون
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/morteza-farkhondepour">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/paeez-mousavi/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_adb6c4a09b2b032d.avif 200w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_8a5d12e04cbcc0c4.avif 360w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_64d7d8b875eccf4.avif 500w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_5b07e1ef430a932b.webp 200w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_6ed75906be7dc5fd.webp 360w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_ed154384c434ff49.webp 500w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_6f9a0b66b1dbd432.jpg" alt="پاییز موسوی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>پاییز موسوی</strong>
+  <small>دیزاینر محصول</small><small class="hd-ds-person-note">پیشینه کاری در آپ، همراه اول</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/paeez-mousavi/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/پاییز_موسوی.jpg"/>
-           <h2 class="hd-teacher-title">
-            پاییز موسوی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           دیزاینر محصول
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           پیشینه کاری در آپ، همراه اول
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/paeez-mousavi/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/mahdi-bahari-developer" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_cc3fc5b461776bc2.avif 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_9eefb213cbd68edd.avif 230w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_da0e21a7a53d0b15.webp 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_a560437ac8dec748.webp 230w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_ff534fba96119a23.jpg" alt="مهدی بهاری" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>مهدی بهاری</strong>
+  <small>توسعه‌دهنده ارشد نرم‌افزار و AI</small><small class="hd-ds-person-note">شرکت فلش</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/mahdi-bahari-developer">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/مهدی_بهاری.jpg"/>
-           <h2 class="hd-teacher-title">
-            مهدی بهاری
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-            توسعه‌دهنده ارشد نرم‌افزار و AI
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت فلش
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/mahdi-bahari-developer">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/farnazjamarani" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_baa266ac9e7c9dd6.avif 200w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_d131f21eccc2ef57.avif 360w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_7ff6bbe28a2acd30.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_6fb2f3e95d879a0f.webp 200w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_5ffcafb84f9a582d.webp 360w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_7946164bd8a48bf7.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_886a64abe033de07.jpg" alt="فرناز جمارانی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>فرناز جمارانی</strong>
+  <small>دیزاینر محصول و تجربه کاربری</small><small class="hd-ds-person-note">شرکت کارگزاری کارآمد و خنیاگر</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/farnazjamarani">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/فرناز_جمارانی.jpg"/>
-           <h2 class="hd-teacher-title">
-            فرناز جمارانی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           دیزاینر محصول و تجربه کاربری
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت کارگزاری کارآمد و خنیاگر
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/farnazjamarani">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/irsodeh/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_1906507c67497485.avif 200w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_9dba7d84d1f579be.avif 360w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_2bf6c8e161c5259e.avif 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_5c2293c389105e14.webp 200w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_8de068c3f58327d5.webp 360w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_c685108681f6c40d.webp 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_86c58a40d7eec839.jpg" alt="سوده محمدآبادی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>سوده محمدآبادی</strong>
+  <small>دیزاینر محصول و خدمات؛ مربی تفکر دیزاین سازمانی</small><small class="hd-ds-person-note">کانون تفکر دیزاین</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/irsodeh/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/سوده_محمدآبادی.jpg"/>
-           <h2 class="hd-teacher-title">
-            سوده محمدآبادی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           دیزاینر محصول و خدمات<br>مربی تفکر دیزاین سازمانی
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           کانون تفکر دیزاین
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/irsodeh/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/salehmiri/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_4b75fda0f831a2dd.avif 200w, /img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_9507584cb8217cb5.avif 210w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_95e6f3d4c107a731.webp 200w, /img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_f3f3ec576246e238.webp 210w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_6a8ee9402e8fb7ad.jpg" alt="صالح میری" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>صالح میری</strong>
+  <small>مهندس دواپس</small><small class="hd-ds-person-note">شرکت همراه اول</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/salehmiri/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/صالح_میری.jpg"/>
-           <h2 class="hd-teacher-title">
-            صالح میری
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-            مهندس دواپس
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت همراه اول
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/salehmiri">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/alizokaei1/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_15bdd5887e2c52a8.avif 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_d5ead3af98f5ec09.avif 360w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_c7922b188b3cc711.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_59f350c61086e20d.webp 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_76272e7d59f7dfd8.webp 360w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_c628f4fdb5d64b70.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_6864253210b5523c.jpg" alt="علی ذکایی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>علی ذکایی</strong>
+  <small>مدیر فناوری و نوآوری</small><small class="hd-ds-person-note">پژوهشگر دکتری مدیریت</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/alizokaei1/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/علی_ذکایی.jpg"/>
-           <h2 class="hd-teacher-title">
-            علی ذکایی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مدیر فناوری و نوآوری
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           پژوهشگر دکتری مدیریت
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/alizokaei1/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/fatemeh-chehregan/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_3dc2a0da03afd4ea.avif 200w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_41684ec47b607ef8.avif 360w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_c4c0ea2b8f05ff00.avif 381w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_89814a0cbb3e0062.webp 200w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_1275be3183e381b8.webp 360w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_fe9550464e310dcb.webp 381w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_4d8ae295a8e3c810.jpg" alt="فاطمه چهرگان" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>فاطمه چهرگان</strong>
+  <small>محقق محصول</small><small class="hd-ds-person-note">شرکت شب</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/fatemeh-chehregan/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/فاطمه_چهرگان.jpg"/>
-           <h2 class="hd-teacher-title">
-            فاطمه چهرگان
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           محقق محصول
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت شب
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/fatemeh-chehregan/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.behance.net/saeidmirzaei" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_16094cab3a2a7569.avif 200w, /img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_5f2b1a72292bb873.avif 359w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_ba7c28507b6ca837.webp 200w, /img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_d0d7182e3dba8985.webp 359w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_80f890baddb47df6.jpg" alt="سعید میرزایی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>سعید میرزایی</strong>
+  <small>مدیر محصول</small><small class="hd-ds-person-note">مدیر سابق تجربه مشتریان مرکز کسب‌وکار تسلا (امارات)</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.behance.net/saeidmirzaei">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/سعید_میرزایی.jpg"/>
-           <h2 class="hd-teacher-title">
-            سعید میرزایی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مدیر محصول
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           مدیر سابق تجربه مشتریان مرکز کسب‌وکار تسلا (امارات)
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.behance.net/saeidmirzaei">
-           Behance
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/rezamoradidesign/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_3f71dbfa3fb34ce0.avif 200w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_9333cc2315925e7c.avif 360w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_12e8641161eb4301.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_55131269e5963815.webp 200w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_b162d09ae2c0beaf.webp 360w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_3e31e40311909c5f.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_297c43c342f0aeff.jpg" alt="رضا مرادی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>رضا مرادی</strong>
+  <small>استراتژیست برند و مدیر هنری</small><small class="hd-ds-person-note">شرکت ستاره یک</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/rezamoradidesign/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/رضا_مرادی.jpg"/>
-           <h2 class="hd-teacher-title">
-            رضا مرادی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           استراتژیست برند و مدیر هنری
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت ستاره یک
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/rezamoradidesign/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/m-rasouli/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_cb0f684315566f82.avif 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_d418f46a664da1f1.avif 360w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_b66ffe2382ac58e2.avif 629w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_3a424f24f8548473.webp 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_7c632948f24b43a1.webp 360w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_2fc0e99dccf16929.webp 629w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_8314cf1c85e0899b.jpg" alt="مهدی رسولی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>مهدی رسولی</strong>
+  <small>متخصص هوش مصنوعی</small><small class="hd-ds-person-note">شرکت فلش</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/m-rasouli/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/مهدی_رسولی.jpg"/>
-           <h2 class="hd-teacher-title">
-            مهدی رسولی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           متخصص هوش مصنوعی
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت فلش
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/m-rasouli/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/nesapabakht/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_253ff5f184c3eb73.avif 200w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_b7402597befeea6a.avif 360w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_22e64e6a00308a4d.avif 430w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_e767f33dd93182d1.webp 200w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_b029813e30f395f5.webp 360w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_e32e46ba57457b64.webp 430w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_8af2f4162b79cb07.jpg" alt="نسا پابخت‌زاده" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>نسا پابخت‌زاده</strong>
+  <small>دیزاینر تجربه کاربر</small><small class="hd-ds-person-note">شرکت میروریم</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/nesapabakht/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/نسا_پابخت‌زاده.jpg"/>
-           <h2 class="hd-teacher-title">
-            نسا پابخت‌زاده
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           دیزاینر تجربه کاربر
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت میروریم
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/nesapabakht/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/mohammad-shahmaleki/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_73a990fef01cc295.avif 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_f10eb498c518f47d.avif 303w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_8bab6952a8ff757f.webp 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_fbec980de1ff7077.webp 303w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_95893c2e8c376341.jpg" alt="محمد شاهملکی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>محمد شاهملکی</strong>
+  <small>مهندس ارشد دواپس</small><small class="hd-ds-person-note">شرکت اسکای‌روم</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/mohammad-shahmaleki/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/محمد_شاهملکی.jpg"/>
-           <h2 class="hd-teacher-title">
-           محمد شاهملکی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مهندس ارشد دواپس
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت اسکای‌روم
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/mohammad-shahmaleki">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/behnam-neshatpour-62a97265/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_e789cf58d899be10.avif 200w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_be7f6a90143ba61d.avif 360w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_3e4003e42e144fbf.avif 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_63ee962f36c0d3a2.webp 200w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_a09dded0a061161b.webp 360w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_1a53153fe4b507a2.webp 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_1fff2f74e6aabe2.jpg" alt="بهنام نشاط‌پور" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>بهنام نشاط‌پور</strong>
+  <small>مهندس دواپس</small><small class="hd-ds-person-note">فریلنسر</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/zahra8amiri/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/زهرا_امیری.jpg"/>
-           <h2 class="hd-teacher-title">
-            زهرا امیری
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           استراتژیست روایت برند
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           پیشینه کاری در ازکی‌وام، بارجیل، آروان‌کلاد، فیلیمو
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/zahra8amiri/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/komeil-roudi-7b62536b" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_7390bf6a4d4d9de4.avif 200w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_324ff2a4689693e0.avif 360w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_3f1dbce9752ee1fc.avif 420w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_d3902a8306c1d46a.webp 200w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_6df85a9bc9cef3a2.webp 360w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_96697d2f7f81aa0.webp 420w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_fe2050db77eb3798.jpg" alt="کمیل رودی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>کمیل رودی</strong>
+  <small>مشاور مدیریت مالی</small><small class="hd-ds-person-note">آکادمی هوش مالی</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/behnam-neshatpour-62a97265/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/بهنام_نشاط‌پور.jpg"/>
-           <h2 class="hd-teacher-title">
-            بهنام نشاط‌پور
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مهندس دواپس
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           فریلنسر
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/behnam-neshatpour-62a97265/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/mohammadpoursaadat/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_9f66bd5ef16cd7b2.avif 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_5a8e9eeb83107438.avif 360w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_e56fa1bec9a8bb38.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_9c5689fe9ffd01be.webp 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_cf30f6e6eaecb4f0.webp 360w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_1998e05f899fd105.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_155b0e874d3bd764.jpg" alt="محمد پورسعادت" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>محمد پورسعادت</strong>
+  <small>مهندس توسعه نرم‌افزار و AI</small><small class="hd-ds-person-note">شرکت فلش</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/komeil-roudi-7b62536b">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/کمیل_رودی.jpg"/>
-           <h2 class="hd-teacher-title">
-            کمیل رودی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مشاور مدیریت مالی
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           آکادمی هوش مالی
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/komeil-roudi-7b62536b">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/alibmn/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_127973f1b4fd6cc3.avif 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_ed7c2a325b8c2430.avif 350w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_54da007a3f2298d.webp 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_138cdb85a010e93a.webp 350w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_5c4971dbf7235f2c.jpg" alt="علی بهمنی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>علی بهمنی</strong>
+  <small>دیزاینر محصول</small><small class="hd-ds-person-note">شرکت Passage (کانادا)</small>
+ </div>
+</a>
 
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/mohammadpoursaadat/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/محمد_پورسعادت.jpg"/>
-           <h2 class="hd-teacher-title">
-            محمد پورسعادت
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مهندس توسعه نرم‌افزار و AI
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت فلش
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/mohammadpoursaadat/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
-
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/alibmn/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/علی_بهمنی.jpg"/>
-           <h2 class="hd-teacher-title">
-            علی بهمنی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           دیزاینر محصول
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت Passage (کانادا)
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/alibmn/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
-
-       <div data-hd-animate="fade-in-scale" class="hd-teacher-card hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-teacher">
-         <div class="hd-teacher-card-wrapper">
-          <a class="hd-teacher-link hd-inline-block" href="https://www.linkedin.com/in/benyaminnajafi/">
-           <img alt="مدرس" class="hd-teacher-image" src="/img/camps/square/بنیامین_نجفی.jpg"/>
-           <h2 class="hd-teacher-title">
-            بنیامین نجفی
-           </h2>
-          </a>
-          <div class="hd-teacher-work">
-           مدیر دیزاین محصول
-          </div>
-          <p class="hd-text-body hd-teacher-text">
-           شرکت حامی‌سیستم ‌شریف
-          </p>
-          <a class="hd-button hd-button-secondary hd-inline-block" href="https://www.linkedin.com/in/benyaminnajafi/">
-           لینکدین
-          </a>
-         </div>
-        </div>
-       </div>
+       
+<a class="hd-ds-person-card" href="https://www.linkedin.com/in/benyaminnajafi/" target="_blank" rel="noopener noreferrer">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_3f5799b36f8fbc28.avif 200w, /img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_19c23bc9ca9283ff.avif 333w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_7c40732dfd707a8d.webp 200w, /img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_ddb784f6d12745ac.webp 333w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_f008cbdc0c2e952d.jpg" alt="بنیامین نجفی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>بنیامین نجفی</strong>
+  <small>مدیر دیزاین محصول</small><small class="hd-ds-person-note">شرکت حامی‌سیستم ‌شریف</small>
+ </div>
+</a>
 
       </div>
      </div>
-     <div data-hd-animate="fade-up" class="hd-new-teachers-card">
-      <div data-hd-animate="fade-in-scale" class="hd-new-teachers-wrapper hd-delay-700">
-       <h3 class="hd-h3 hd-new-teachers-title">
-        ما برای همکاری با مدرسان جدید و پرانرژی آماده‌ایم.
-       </h3>
-       <p class="hd-text-body hd-new-teachers-text">
-       اگر علاقه‌مند به اشتراک‌گذاری دانش و تجربه‌هاتون هستید، خوشحال می‌شیم با هم کار کنیم! برای اطلاعات بیشتر با ما در تماس باشید.
-       </p>
-       <a class="hd-button hd-relative-z1 hd-inline-block" href="/contact">
-        با ما در تماس باشید
-       </a>
-      </div>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-new-teachers hd-shape-new-teachers-4 hd-delay-800" src="/img/shapes/circle-shape-teachers-04.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-new-teachers hd-shape-new-teachers-3 hd-delay-1000" src="/img/shapes/circle-shape-teachers-03.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-new-teachers hd-shape-new-teachers-2 hd-delay-1000" src="/img/shapes/circle-shape-teachers-02.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-new-teachers hd-shape-new-teachers-1 hd-delay-800" src="/img/shapes/circle-shape-teachers-01.svg"/>
-     </div>
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" data-hd-cta-parallax class="hd-section hd-section-cta">
-    <div class="hd-container hd-clearfix">
-     <div class="hd-cta-wrapper">
-      <div data-hd-animate="fade-in-scale" class="hd-cta-left hd-delay-300">
-       <h2 class="hd-h2 hd-cta-title">
-        رشد شغلی خود را آغاز کنید!
-        <br/>
-        یادگیری از همین امروز...
-       </h2>
-       <p class="hd-text-body hd-cta-paragraph">
-        مهارت‌های کاربردی را از متخصصان می‌آموزید، تجربه‌های واقعی را تمرین می‌کنید و برای رسیدن به اهداف حرفه‌ای‌تان یک قدم بزرگ برمی‌دارید.
-       </p>
-       <a class="hd-button hd-button-cta hd-inline-block" href="/camps">
-        همه کمپ‌ها
-       </a>
-      </div>
-      <div data-hd-animate="fade-in-scale" data-hd-animate-eager="" class="hd-cta-right hd-delay-500">
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-main _1" src="/img/na/banner-main.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _4" data-hd-cta-y="0:50,85:-20" src="/img/na/banner-right-down.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _3" data-hd-cta-y="0:40,85:-40" src="/img/na/banner-right-up.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _2" data-hd-cta-y="0:100,90:-80" src="/img/na/banner-left.svg"/>
-      </div>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _4 hd-delay-600" src="/img/shapes/circle-shape-cta-04.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _3 hd-delay-800" src="/img/shapes/circle-shape-cta-03.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _2 hd-delay-800" src="/img/shapes/circle-shape-cta-02.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _1 hd-delay-600" src="/img/shapes/circle-shape-cta-01.svg"/>
-     </div>
-    </div>
-   </div>
+    </section>
 
+    <section class="hd-ds-band hd-ds-band-strip" aria-labelledby="teachers-join-title">
+     <div class="hd-container">
+      <div class="hd-ds-strip-row" data-hd-animate="fade-up">
+       <div class="hd-ds-strip-copy">
+        <p class="hd-ds-kicker">همکاری با وی‌کمپ</p>
+        <h2 id="teachers-join-title">برای همکاری با مدرسان جدید و پرانرژی آماده‌ایم.</h2>
+        <p>اگر علاقه‌مند به اشتراک‌گذاری دانش و تجربه‌هایتان هستید، خوشحال می‌شویم با هم کار کنیم.</p>
+       </div>
+       <a class="hd-ds-cta hd-ds-cta-primary" href="/contact">با ما در تماس باشید</a>
+      </div>
+     </div>
+    </section>
    </main>
    <footer data-hd-animate="fade-up" class="hd-footer">
     <div class="hd-container hd-clearfix">
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -816,6 +519,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -823,23 +527,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -887,14 +586,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -920,7 +632,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -948,7 +662,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -979,6 +693,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 

@@ -23,33 +23,26 @@
   <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-ExtraBold.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Black.woff2" as="font" type="font/woff2" crossorigin/>
+  
   <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
-  
   
   <link href="/css/certificates.css" rel="stylesheet" type="text/css"/>
   
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
@@ -57,7 +50,6 @@
  <body>
   <div class="page-wrapper">
    <div lang="fa" dir="rtl">
-
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('nav', () => ({
@@ -74,6 +66,12 @@
       },
       toggleServices() {
         this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
       },
       closeServices(restoreFocus) {
         this.servicesOpen = false;
@@ -145,7 +143,7 @@
             x-ref="navMenu"
             :class="{ 'hd-nav-menu-open': menuOpen }"
             @click.outside="menuOpen && closeMenu()">
-       <a class="hd-nav-link" href="/">
+       <a class="hd-nav-link" href="/" @click="onNavigate()">
          خانه
         </a>
 
@@ -175,33 +173,38 @@
              <h4 class="hd-mega-title">
               کمپ‌ها
              </h4>
-             <a class="hd-mega-link" href="/camps/agentic-ai">
-              توسعه عامل‌های هوش مصنوعی
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/camps/cloud-infra-management">
-              مدیریت کلود با اپن‌استک
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
              </a>
-             <a class="hd-mega-link" href="/camps/product-design">
-              دیزاین محصول
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
              </a>
-             <a class="hd-mega-link" href="/camps/user-research">
-              کاربرپژوهی
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
              </a>
             </div>
             <div class="hd-mega-col">
              <h4 class="hd-mega-title">
               مسیرهای شغلی
              </h4>
-             <a class="hd-mega-link" href="/school/ai-engineering">
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
               مدرسه هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/school/cloud-engineering">
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
               مدرسه مهندسی ابر
              </a>
-             <a class="hd-mega-link" href="/school/product-design">
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
               مدرسه دیزاین محصول
              </a>
-             <a class="hd-mega-link hd-mega-link-special" href="/school">
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
               همه برنامه‌های آموزشی
              </a>
             </div>
@@ -210,11 +213,20 @@
          </div>
         </div>
 
-        <a class="hd-nav-link" href="/about">
-         درباره
+        
+        <a class="hd-nav-link" href="/events" @click="onNavigate()">
+         رویدادها
         </a>
-        <a class="hd-nav-link" href="/partnership">
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" @click="onNavigate()">
          همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" @click="onNavigate()">
+         ورود / حساب کاربری
         </a>
        </nav>
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
@@ -237,19 +249,25 @@
 
       
       <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
        <a class="hd-button hd-button-header" href="/camps">
         <span>همه کمپ‌ها</span>
         <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
          <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
        </a>
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/register/">
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-         <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>ورود / ثبت نام</span>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
        </a>
+       
       </div>
 
      </div>
@@ -262,17 +280,17 @@
      <div class="hd-container">
       <div class="hd-cert-layout">
        <div class="hd-cert-copy" data-hd-animate="fade-up" data-hd-animate-eager>
-        <p class="hd-cert-eyebrow">Verified WECAMP Certificate</p>
+        <p class="hd-cert-eyebrow">گواهی تایید‌شدهٔ وی‌کمپ</p>
         <h1>گواهی رسمی و قابل اعتبارسنجی وی‌کمپ</h1>
         <p>در این صفحه می‌توانید اعتبار گواهی، مشخصات دانش‌آموخته، مسیر آموزشی، پروژه پایانی و کد گواهی را به‌صورت شفاف بررسی کنید.</p>
         <div class="hd-cert-hero-meta" aria-label="خلاصه گواهی">
-         <span>وضعیت: تایید شده</span>
-         <span>کمپ هوش مصنوعی عاملی</span>
+         <span>وضعیت: تایید‌شده</span>
+         <span>کمپ توسعه عامل‌های هوش مصنوعی</span>
          <span dir="ltr">WC-1404-AI-0001</span>
         </div>
         <div class="hd-cert-actions">
          <a class="hd-button hd-button-lg hd-inline-block" href="#certificate">مشاهده گواهی</a>
-         <a class="hd-button hd-button-lg hd-inline-block hd-cert-linkedin-button" href="https://www.linkedin.com/profile/add?startTask=%DA%AF%D9%88%D8%A7%D9%87%DB%8C&#43;%D9%BE%D8%A7%DB%8C%D8%A7%D9%86&#43;%DA%A9%D9%85%D9%BE&#43;%D9%87%D9%88%D8%B4&#43;%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C&#43;%D8%B9%D8%A7%D9%85%D9%84%DB%8C&amp;name=%DA%AF%D9%88%D8%A7%D9%87%DB%8C&#43;%D9%BE%D8%A7%DB%8C%D8%A7%D9%86&#43;%DA%A9%D9%85%D9%BE&#43;%D9%87%D9%88%D8%B4&#43;%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C&#43;%D8%B9%D8%A7%D9%85%D9%84%DB%8C&amp;organizationId=105715526&amp;issueYear=2026&amp;issueMonth=6&amp;certUrl=https%3A%2F%2Fwecamp.pro%2Fcert%2Fwc-1404-ai-0001%2F&amp;certId=WC-1404-AI-0001" target="_blank" rel="noopener noreferrer">
+         <a class="hd-button hd-button-lg hd-inline-block hd-cert-linkedin-button" href="https://www.linkedin.com/profile/add?startTask=%DA%AF%D9%88%D8%A7%D9%87%DB%8C&#43;%D9%BE%D8%A7%DB%8C%D8%A7%D9%86&#43;%DA%A9%D9%85%D9%BE&#43;%D8%AA%D9%88%D8%B3%D8%B9%D9%87&#43;%D8%B9%D8%A7%D9%85%D9%84%E2%80%8C%D9%87%D8%A7%DB%8C&#43;%D9%87%D9%88%D8%B4&#43;%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C&amp;name=%DA%AF%D9%88%D8%A7%D9%87%DB%8C&#43;%D9%BE%D8%A7%DB%8C%D8%A7%D9%86&#43;%DA%A9%D9%85%D9%BE&#43;%D8%AA%D9%88%D8%B3%D8%B9%D9%87&#43;%D8%B9%D8%A7%D9%85%D9%84%E2%80%8C%D9%87%D8%A7%DB%8C&#43;%D9%87%D9%88%D8%B4&#43;%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C&amp;organizationId=105715526&amp;issueYear=2026&amp;issueMonth=6&amp;certUrl=https%3A%2F%2Fwecamp.pro%2Fcert%2Fwc-1404-ai-0001%2F&amp;certId=WC-1404-AI-0001" target="_blank" rel="noopener noreferrer">
          <span aria-hidden="true">in</span>
           افزودن به لینکدین
          </a>
@@ -307,7 +325,7 @@
            </div>
            <div class="hd-cert-status" data-status="verified">
             <span></span>
-            تایید شده
+            تایید‌شده
            </div>
           </header>
 
@@ -319,7 +337,7 @@
            </div>
 
           <p class="hd-cert-statement">
-            این گواهی تایید می‌کند که آرمان رضایی، کمپ هوش مصنوعی عاملی را در سال ۱۴۰۴ با موفقیت به پایان رسانده است.
+            این گواهی تایید می‌کند که آرمان رضایی، کمپ توسعه عامل‌های هوش مصنوعی را در سال ۱۴۰۴ با موفقیت به پایان رسانده است.
            </p>
 
            <div class="hd-cert-validation-strip">
@@ -330,7 +348,7 @@
            <dl class="hd-cert-facts">
             <div>
              <dt>کمپ</dt>
-             <dd>کمپ هوش مصنوعی عاملی</dd>
+             <dd>کمپ توسعه عامل‌های هوش مصنوعی</dd>
             </div>
             <div>
              <dt>مدت</dt>
@@ -351,13 +369,13 @@
             <strong>طراحی دستیار هوشمند تحلیل درخواست‌های مشتری</strong>
            </section>
 
-           <section class="hd-cert-skills" aria-label="مهارت‌های تاییدشده">
+           <section class="hd-cert-skills" aria-label="مهارت‌های تایید‌شده">
             
-            <span>طراحی workflow عامل‌ها</span>
+            <span>طراحی جریان کاری عامل‌ها</span>
             
             <span>مهندسی پرامپت و ارزیابی خروجی</span>
             
-            <span>اتصال ابزارها و APIها</span>
+            <span>اتصال ابزارها و API‌ها</span>
             
             <span>تحویل پروژه پایانی</span>
             
@@ -391,15 +409,15 @@
       <section class="hd-cert-context" aria-label="خلاصه محتوای کمپ و تیم آموزشی">
        <div class="hd-cert-context-main">
         <div class="hd-cert-context-kicker">
-         <span>Verified completion scope</span>
-         <strong>کمپ هوش مصنوعی عاملی</strong>
+         <span>محدودهٔ تایید‌شده</span>
+         <strong>کمپ توسعه عامل‌های هوش مصنوعی</strong>
         </div>
         
         <div class="hd-cert-context-topics">
          <h2>این گواهی چه مسیری را پوشش می‌دهد؟</h2>
          <ul>
           
-          <li>مبانی AI، مدل‌های زبانی و کار با APIها</li>
+          <li>مبانی AI، مدل‌های زبانی و کار با API‌ها</li>
           
           <li>مهندسی پرامپت و ارزیابی خروجی</li>
           
@@ -435,7 +453,7 @@
          
          <div class="hd-cert-teacher">
           
-          <img src="/img/camps/1404/agentic-ai/Mahdi-Bahari.png" alt="مهدی بهاری" loading="lazy">
+          <picture><source type="image/avif" srcset="/img/camps/1404/agentic-ai/Mahdi-Bahari_hu_3ef07d1b25f2cfbe.avif 1x, /img/camps/1404/agentic-ai/Mahdi-Bahari_hu_81a18330cfb155c.avif 2x"><source type="image/webp" srcset="/img/camps/1404/agentic-ai/Mahdi-Bahari_hu_18078c7561209b40.webp 1x, /img/camps/1404/agentic-ai/Mahdi-Bahari_hu_5d1e10f92973c18d.webp 2x"><img src="/img/camps/1404/agentic-ai/Mahdi-Bahari_hu_712767c0f36bd648.png" alt="مهدی بهاری" width="46" height="46" loading="lazy" decoding="async"></picture>
           
           <div>
            <strong>مهدی بهاری</strong>
@@ -446,7 +464,7 @@
          
          <div class="hd-cert-teacher">
           
-          <img src="/img/camps/1404/agentic-ai/Mohammad-Poursaadat.png" alt="محمد پورسعادت" loading="lazy">
+          <picture><source type="image/avif" srcset="/img/camps/1404/agentic-ai/Mohammad-Poursaadat_hu_69bafb7f53f7d56e.avif 1x, /img/camps/1404/agentic-ai/Mohammad-Poursaadat_hu_659662564d3f1e7f.avif 2x"><source type="image/webp" srcset="/img/camps/1404/agentic-ai/Mohammad-Poursaadat_hu_87b010efc469ad54.webp 1x, /img/camps/1404/agentic-ai/Mohammad-Poursaadat_hu_44eb5e780bba771d.webp 2x"><img src="/img/camps/1404/agentic-ai/Mohammad-Poursaadat_hu_81db17353156827e.png" alt="محمد پورسعادت" width="46" height="46" loading="lazy" decoding="async"></picture>
           
           <div>
            <strong>محمد پورسعادت</strong>
@@ -457,7 +475,7 @@
          
          <div class="hd-cert-teacher">
           
-          <img src="/img/camps/1404/agentic-ai/Mahdi-Rasouli.png" alt="مهدی رسولی" loading="lazy">
+          <picture><source type="image/avif" srcset="/img/camps/1404/agentic-ai/Mahdi-Rasouli_hu_7e34c339d8ada929.avif 1x, /img/camps/1404/agentic-ai/Mahdi-Rasouli_hu_c2481a6d9693109b.avif 2x"><source type="image/webp" srcset="/img/camps/1404/agentic-ai/Mahdi-Rasouli_hu_67a977492fab2477.webp 1x, /img/camps/1404/agentic-ai/Mahdi-Rasouli_hu_3d05d96c33a1ed52.webp 2x"><img src="/img/camps/1404/agentic-ai/Mahdi-Rasouli_hu_94524438a0e36d5c.png" alt="مهدی رسولی" width="46" height="46" loading="lazy" decoding="async"></picture>
           
           <div>
            <strong>مهدی رسولی</strong>
@@ -480,7 +498,7 @@
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -530,6 +548,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -537,23 +556,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -601,14 +615,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -634,7 +661,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -662,7 +691,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -692,6 +721,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 

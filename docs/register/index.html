@@ -4,15 +4,15 @@
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
   <title>
-   ثبت‌نام به زودی باز می‌شود | وی‌کمپ
+   پنل کاربری در راه است | وی‌کمپ
   </title>
-  <meta content="ثبت‌نام و ورود به پنل وی‌کمپ به‌زودی باز می‌شود. تا آن زمان می‌توانید کمپ‌ها را ببینید یا با تیم وی‌کمپ در تماس باشید." name="description"/>
-  <meta content="ثبت‌نام به زودی باز می‌شود | وی‌کمپ" property="og:title"/>
-  <meta content="ثبت‌نام و ورود به پنل وی‌کمپ به‌زودی باز می‌شود. تا آن زمان می‌توانید کمپ‌ها را ببینید یا با تیم وی‌کمپ در تماس باشید." property="og:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="og:image"/>
-  <meta content="ثبت‌نام به زودی باز می‌شود | وی‌کمپ" property="twitter:title"/>
-  <meta content="ثبت‌نام و ورود به پنل وی‌کمپ به‌زودی باز می‌شود. تا آن زمان می‌توانید کمپ‌ها را ببینید یا با تیم وی‌کمپ در تماس باشید." property="twitter:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="twitter:image"/>
+  <meta content="پنل کاربری و ورود وی‌کمپ در حال ساخت است. تا آماده شدن پنل، کمپ‌های وی‌کمپ را از صفحه کمپ‌ها ببینید؛ برای راهنمایی بیشتر با تیم وی‌کمپ در تماس باشید." name="description"/>
+  <meta content="پنل کاربری در راه است | وی‌کمپ" property="og:title"/>
+  <meta content="پنل کاربری و ورود وی‌کمپ در حال ساخت است. تا آماده شدن پنل، کمپ‌های وی‌کمپ را از صفحه کمپ‌ها ببینید؛ برای راهنمایی بیشتر با تیم وی‌کمپ در تماس باشید." property="og:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="og:image"/>
+  <meta content="پنل کاربری در راه است | وی‌کمپ" property="twitter:title"/>
+  <meta content="پنل کاربری و ورود وی‌کمپ در حال ساخت است. تا آماده شدن پنل، کمپ‌های وی‌کمپ را از صفحه کمپ‌ها ببینید؛ برای راهنمایی بیشتر با تیم وی‌کمپ در تماس باشید." property="twitter:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="twitter:image"/>
   <meta content="website" property="og:type"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -27,34 +27,23 @@
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
   
   
   
   
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
-  
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body>
   <div class="page-wrapper hd-register-soon-page">
-
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('nav', () => ({
@@ -71,6 +60,12 @@
       },
       toggleServices() {
         this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
       },
       closeServices(restoreFocus) {
         this.servicesOpen = false;
@@ -142,7 +137,7 @@
             x-ref="navMenu"
             :class="{ 'hd-nav-menu-open': menuOpen }"
             @click.outside="menuOpen && closeMenu()">
-       <a class="hd-nav-link" href="/">
+       <a class="hd-nav-link" href="/" @click="onNavigate()">
          خانه
         </a>
 
@@ -172,33 +167,38 @@
              <h4 class="hd-mega-title">
               کمپ‌ها
              </h4>
-             <a class="hd-mega-link" href="/camps/agentic-ai">
-              توسعه عامل‌های هوش مصنوعی
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/camps/cloud-infra-management">
-              مدیریت کلود با اپن‌استک
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
              </a>
-             <a class="hd-mega-link" href="/camps/product-design">
-              دیزاین محصول
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
              </a>
-             <a class="hd-mega-link" href="/camps/user-research">
-              کاربرپژوهی
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
              </a>
             </div>
             <div class="hd-mega-col">
              <h4 class="hd-mega-title">
               مسیرهای شغلی
              </h4>
-             <a class="hd-mega-link" href="/school/ai-engineering">
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
               مدرسه هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/school/cloud-engineering">
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
               مدرسه مهندسی ابر
              </a>
-             <a class="hd-mega-link" href="/school/product-design">
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
               مدرسه دیزاین محصول
              </a>
-             <a class="hd-mega-link hd-mega-link-special" href="/school">
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
               همه برنامه‌های آموزشی
              </a>
             </div>
@@ -207,11 +207,20 @@
          </div>
         </div>
 
-        <a class="hd-nav-link" href="/about">
-         درباره
+        
+        <a class="hd-nav-link" href="/events" @click="onNavigate()">
+         رویدادها
         </a>
-        <a class="hd-nav-link" href="/partnership">
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" @click="onNavigate()">
          همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" aria-current="page" @click="onNavigate()">
+         ورود / حساب کاربری
         </a>
        </nav>
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
@@ -234,19 +243,25 @@
 
       
       <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-current="page" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
        <a class="hd-button hd-button-header" href="/camps">
         <span>همه کمپ‌ها</span>
         <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
          <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
        </a>
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/register/">
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-         <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>ورود / ثبت نام</span>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
        </a>
+       
       </div>
 
      </div>
@@ -259,35 +274,40 @@
       <div class="hd-register-soon-shell">
        <div class="hd-register-soon-copy" data-hd-animate="fade-up" data-hd-animate-eager>
         <p class="hd-register-soon-kicker">حساب کاربری وی‌کمپ</p>
-        <h1 id="register-soon-title">ثبت‌نام به زودی باز می‌شود</h1>
+        <h1 id="register-soon-title">پنل کاربری در راه است</h1>
+        
         <p>
-         در حال آماده‌سازی تجربه ورود و ثبت‌نام وی‌کمپ هستیم. تا باز شدن پنل،
-         می‌توانید کمپ‌ها را بررسی کنید یا برای راهنمایی مستقیم با تیم ما در تماس باشید.
+         ورود و پنل کاربری وی‌کمپ در حال ساخت است و پس از آماده شدن، از همین
+         صفحه در دسترس شما قرار می‌گیرد. تا آن زمان،
+         <a href="/camps/">کمپ‌های وی‌کمپ</a>
+         را ببینید و از صفحهٔ هر کمپ ادامه دهید.
         </p>
-        <div class="hd-register-soon-actions">
-         <a class="hd-button hd-button-lg hd-inline-block" href="/camps">
+        
+        <div class="hd-register-soon-actions hd-ds-on-dark">
+         <a class="hd-ds-cta hd-ds-cta-primary" href="/camps/">
           مشاهده کمپ‌ها
          </a>
-         <a class="hd-button hd-button-lg hd-button-secondary hd-inline-block" href="/contact">
+         <a class="hd-ds-cta hd-ds-cta-secondary" href="/contact">
           تماس با وی‌کمپ
          </a>
         </div>
        </div>
 
-       <aside class="hd-register-soon-card" aria-label="وضعیت ثبت‌نام" data-hd-animate="fade-in-scale">
+       <aside class="hd-register-soon-card" aria-label="وضعیت پنل کاربری" data-hd-animate="fade-in-scale">
         <div class="hd-register-soon-status">
          <span aria-hidden="true"></span>
-         در حال آماده‌سازی
+         پنل در حال آماده‌سازی
         </div>
-        <h2>اولین نفر مطلع شوید.</h2>
+        <h2>اعلام باز شدن پنل</h2>
         <p>
-         زمان باز شدن ثبت‌نام از طریق سایت و شبکه‌های اجتماعی وی‌کمپ اعلام می‌شود.
-         اگر درباره انتخاب کمپ سوال دارید، همین حالا می‌توانید با ما صحبت کنید.
+         زمان باز شدن پنل کاربری از طریق همین سایت و شبکه‌های اجتماعی وی‌کمپ
+         اعلام می‌شود. اگر درباره انتخاب کمپ یا ثبت‌نام سوال دارید، همین حالا
+         می‌توانید با ما صحبت کنید.
         </p>
         <dl class="hd-register-soon-facts">
          <div>
           <dt>مسیر بعدی</dt>
-          <dd>انتخاب کمپ مناسب</dd>
+          <dd><a href="/camps">مشاهده کمپ‌ها</a></dd>
          </div>
          <div>
           <dt>پشتیبانی</dt>
@@ -304,7 +324,7 @@
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -354,6 +374,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -361,23 +382,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -425,14 +441,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -458,7 +487,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -486,7 +517,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -516,6 +547,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 

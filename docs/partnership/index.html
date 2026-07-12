@@ -4,15 +4,15 @@
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
   <title>
-   وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ
+   همکاری سازمانی؛ ارتقای مهارت تیم شما | وی‌کمپ
   </title>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." name="description"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="og:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="og:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="og:image"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="twitter:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="twitter:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="twitter:image"/>
+  <meta content="وی‌کمپ با دوره‌های تخصصی و کاربردی، راهکارهایی متناسب با نیاز سازمان شما طراحی می‌کند تا تیم‌تان دانش خود را سریع و باکیفیت عملیاتی کند." name="description"/>
+  <meta content="همکاری سازمانی؛ ارتقای مهارت تیم شما | وی‌کمپ" property="og:title"/>
+  <meta content="وی‌کمپ با دوره‌های تخصصی و کاربردی، راهکارهایی متناسب با نیاز سازمان شما طراحی می‌کند تا تیم‌تان دانش خود را سریع و باکیفیت عملیاتی کند." property="og:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="og:image"/>
+  <meta content="همکاری سازمانی؛ ارتقای مهارت تیم شما | وی‌کمپ" property="twitter:title"/>
+  <meta content="وی‌کمپ با دوره‌های تخصصی و کاربردی، راهکارهایی متناسب با نیاز سازمان شما طراحی می‌کند تا تیم‌تان دانش خود را سریع و باکیفیت عملیاتی کند." property="twitter:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="twitter:image"/>
   <meta content="website" property="og:type"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -27,34 +27,23 @@
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
   
   
   
   
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
-  
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body>
   <div class="page-wrapper">
-
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('nav', () => ({
@@ -71,6 +60,12 @@
       },
       toggleServices() {
         this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
       },
       closeServices(restoreFocus) {
         this.servicesOpen = false;
@@ -142,7 +137,7 @@
             x-ref="navMenu"
             :class="{ 'hd-nav-menu-open': menuOpen }"
             @click.outside="menuOpen && closeMenu()">
-       <a class="hd-nav-link" href="/">
+       <a class="hd-nav-link" href="/" @click="onNavigate()">
          خانه
         </a>
 
@@ -172,33 +167,38 @@
              <h4 class="hd-mega-title">
               کمپ‌ها
              </h4>
-             <a class="hd-mega-link" href="/camps/agentic-ai">
-              توسعه عامل‌های هوش مصنوعی
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/camps/cloud-infra-management">
-              مدیریت کلود با اپن‌استک
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
              </a>
-             <a class="hd-mega-link" href="/camps/product-design">
-              دیزاین محصول
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
              </a>
-             <a class="hd-mega-link" href="/camps/user-research">
-              کاربرپژوهی
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
              </a>
             </div>
             <div class="hd-mega-col">
              <h4 class="hd-mega-title">
               مسیرهای شغلی
              </h4>
-             <a class="hd-mega-link" href="/school/ai-engineering">
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
               مدرسه هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/school/cloud-engineering">
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
               مدرسه مهندسی ابر
              </a>
-             <a class="hd-mega-link" href="/school/product-design">
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
               مدرسه دیزاین محصول
              </a>
-             <a class="hd-mega-link hd-mega-link-special" href="/school">
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
               همه برنامه‌های آموزشی
              </a>
             </div>
@@ -207,11 +207,20 @@
          </div>
         </div>
 
-        <a class="hd-nav-link" href="/about">
-         درباره
+        
+        <a class="hd-nav-link" href="/events" @click="onNavigate()">
+         رویدادها
         </a>
-        <a class="hd-nav-link" href="/partnership" aria-current="page">
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" aria-current="page" @click="onNavigate()">
          همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" @click="onNavigate()">
+         ورود / حساب کاربری
         </a>
        </nav>
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
@@ -234,101 +243,162 @@
 
       
       <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
        <a class="hd-button hd-button-header" href="/camps">
         <span>همه کمپ‌ها</span>
         <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
          <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
        </a>
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/register/">
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-         <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>ورود / ثبت نام</span>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
        </a>
+       
       </div>
 
      </div>
     </div>
    </header>
-
-   <main id="hd-main">
-   <section data-hd-animate="fade-up" class="hd-partnership-hero">
-    <div class="hd-container-medium">
-     <div class="hd-text-center">
-      <div class="hd-text-white">
-       <h1 data-hd-animate="fade-in-scale" class="hd-text-white hd-delay-300">
-        همکاری با سازمان‌ها
-       </h1>
-       <p data-hd-animate="fade-in-scale" class="hd-delay-500">
-        آموزشگاه وی‌کمپ همواره به دنبال ایجاد شراکت‌های موثر با سازمان‌ها و شرکت‌ها است تا مهارت‌های نیروی انسانی را در زمینه فناوری و دیجیتال به بالاترین سطح ارتقا دهد.
-        <br/>
-        <br/>
-        ما با ارائه دوره‌های تخصصی و کاربردی، راهکارهایی متناسب با نیازهای سازمان شما طراحی می‌کنیم تا تیم شما بتواند با سرعت و کیفیت بالا، دانش خود را به‌روز و عملیاتی کند.
-        <br/>
-        <br/>
-        اگر سازمان شما به دنبال ارتقای مهارت تیم‌های فناوری، دیجیتال مارکتینگ، برنامه‌نویسی یا داده‌کاوی است، همکاری با وی‌کمپ می‌تواند مسیر رشد شما را هموار کند. برای شروع همکاری و مشاوره در زمینه برنامه‌های آموزشی سازمانی، با ما در تماس باشید.
-       </p>
+<main id="hd-main">
+    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="partner-hero-title">
+     <div class="hd-container">
+      <div class="hd-ds-hero-copy hd-measure-3xl" data-hd-animate="fade-up" data-hd-animate-eager>
+       <p class="hd-ds-eyebrow">همکاری سازمانی</p>
+       <h1 id="partner-hero-title">مهارت تیم‌تان را با وی‌کمپ ارتقا دهید.</h1>
+       <p class="hd-ds-hero-lede">وی‌کمپ با ارائه دوره‌های تخصصی و کاربردی، راهکارهایی متناسب با نیاز سازمان شما طراحی می‌کند تا تیم‌تان دانش خود را با سرعت و کیفیت بالا به‌روز و عملیاتی کند.</p>
+       <div class="hd-ds-actions">
+        
+        <a class="hd-ds-cta hd-ds-cta-primary" href="/contact">درخواست همکاری سازمانی</a>
+        <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps">مشاهده کمپ‌ها</a>
+       </div>
       </div>
      </div>
-    </div>
-   </section>
-   <section data-hd-animate="fade-up" data-hd-animate-eager class="hd-section hd-section-licenses">
-    <div data-hd-animate="fade-in-scale" data-hd-animate-eager class="hd-container-medium-810 hd-delay-300">
-     <div class="hd-container-small-left">
-      <h2>
-       مزایای همکاری
-      </h2>
-      <p>
-همکاری با وی‌کمپ به سازمان‌ها این امکان را می‌دهد که فرهنگ یادگیری مستمر را در تیم‌های خود نهادینه کنند و با بهره‌گیری از متدهای آموزشی روز دنیا، کارکنان خود را برای چالش‌های واقعی صنعت آماده سازند. این رویکرد نه تنها مهارت‌های فردی را تقویت می‌کند، بلکه کارایی تیم و بهره‌وری سازمان را نیز به شکل قابل توجهی افزایش می‌دهد. با وی‌کمپ، سازمان‌ها می‌توانند اطمینان حاصل کنند که سرمایه‌گذاری در آموزش کارکنان، بازده ملموس و پایدار خواهد داشت.
-      </p>
+    </section>
+
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="partner-offer-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head hd-measure-xl" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">مزایای همکاری</p>
+       <h2 id="partner-offer-title">آنچه برای سازمان‌ها ارائه می‌دهیم.</h2>
+       <p>با نهادینه‌کردن فرهنگ یادگیری مستمر و متدهای آموزشی روز، کارکنان شما برای چالش‌های واقعی صنعت آماده می‌شوند.</p>
+      </div>
+      <div class="hd-ds-card-grid" data-hd-animate="fade-up">
+       <div class="hd-ds-value">
+        <span aria-hidden="true">◆</span>
+        <div>
+         <h3>دوره‌های اختصاصی سازمانی</h3>
+         <p>طراحی برنامه‌های آموزشی متناسب با نیاز واقعی تیم شما؛ از سرفصل تا پروژه‌های تمرینی مرتبط با کسب‌وکارتان.</p>
+        </div>
+       </div>
+       <div class="hd-ds-value">
+        <span aria-hidden="true">◆</span>
+        <div>
+         <h3>اساتید حرفه‌ای و باتجربه</h3>
+         <p>آموزش توسط متخصصانی که تجربه عملی در صنعت دارند و مفاهیم را با مثال‌های واقعی منتقل می‌کنند.</p>
+        </div>
+       </div>
+       <div class="hd-ds-value">
+        <span aria-hidden="true">◆</span>
+        <div>
+         <h3>پشتیبانی و ارزیابی مستمر</h3>
+         <p>سنجش مهارت‌ها و ارائه بازخورد در طول دوره برای اطمینان از یادگیری مؤثر و ماندگار.</p>
+        </div>
+       </div>
+       <div class="hd-ds-value">
+        <span aria-hidden="true">◆</span>
+        <div>
+         <h3>انعطاف در زمان‌بندی و شیوه آموزش</h3>
+         <p>برگزاری دوره‌ها به‌صورت حضوری، آنلاین یا ترکیبی، متناسب با شرایط و زمان‌بندی سازمان شما.</p>
+        </div>
+       </div>
+      </div>
      </div>
-     <div class="hd-mt-40">
-      <h3>
-       دوره‌های اختصاصی سازمانی
-      </h3>
-      <p>
-       آموزش توسط متخصصانی که تجربه عملی در صنعت دارند.
-      </p>
+    </section>
+
+    <section class="hd-ds-band hd-ds-band-proof hd-ds-section" aria-labelledby="partner-proof-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-eyebrow">اعتماد</p>
+       <h2 id="partner-proof-title">دانش‌آموختگان ما در این شرکت‌ها استخدام شده‌اند.</h2>
+      </div>
+      <div class="hd-ds-logos" data-hd-animate="fade-up" aria-label="شرکت‌هایی که دانش‌آموختگان وی‌کمپ در آنها استخدام شده‌اند">
+       <picture><source type="image/avif" srcset="/img/companies/logo-company-01_hu_76ca2e1139a106e6.avif 160w" sizes="160px"><source type="image/webp" srcset="/img/companies/logo-company-01_hu_c2d855a8bbe6af24.webp 160w" sizes="160px"><img src="/img/companies/logo-company-01_hu_d7c36c61caf64dc7.png" alt="لوگوی جاباما" loading="lazy" decoding="async"></picture>
+       <picture><source type="image/avif" srcset="/img/index/hero/company-tapsi_hu_efce870efbc913c8.avif 112w, /img/index/hero/company-tapsi_hu_56d647794c397740.avif 224w, /img/index/hero/company-tapsi_hu_3add5d0c3934c28d.avif 336w" sizes="112px"><source type="image/webp" srcset="/img/index/hero/company-tapsi_hu_e4dba882ee9b9c7b.webp 112w, /img/index/hero/company-tapsi_hu_30d9f1e540091653.webp 224w, /img/index/hero/company-tapsi_hu_fcf7e6870072a754.webp 336w" sizes="112px"><img src="/img/index/hero/company-tapsi_hu_774f910dd0f3b37c.png" alt="لوگوی تپسی" loading="lazy" decoding="async"></picture>
+       <img src="/img/index/hero/company-snapp.svg" alt="لوگوی اسنپ" loading="lazy" decoding="async">
+       <picture><source type="image/avif" srcset="/img/index/hero/company-digikala_hu_7c6fb1237cbccecf.avif 109w, /img/index/hero/company-digikala_hu_1577d81d61dc1bba.avif 218w, /img/index/hero/company-digikala_hu_5ee943f9e4379f34.avif 327w" sizes="109px"><source type="image/webp" srcset="/img/index/hero/company-digikala_hu_bf55b3ed2cb88410.webp 109w, /img/index/hero/company-digikala_hu_f8edc0b4a9cf0e51.webp 218w, /img/index/hero/company-digikala_hu_7b03cca42ebf9a17.webp 327w" sizes="109px"><img src="/img/index/hero/company-digikala_hu_4e8ef6a581a8e235.png" alt="لوگوی دیجی‌کالا" loading="lazy" decoding="async"></picture>
+      </div>
      </div>
-     <div class="hd-mt-40">
-      <div class="hd-divider hd-divider-licenses"></div>
-      <h3>
-       اساتید حرفه‌ای و باتجربه
-      </h3>
-      <p>
-       آموزش توسط متخصصانی که تجربه عملی در صنعت دارند.
-      </p>
+    </section>
+
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="partner-how-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">مسیر همکاری</p>
+       <h2 id="partner-how-title">همکاری چطور پیش می‌رود.</h2>
+       <p>از اولین گفت‌وگو تا سنجش نتایج، در هر گام کنار تیم شما هستیم.</p>
+      </div>
+      <div class="hd-ds-card-grid" data-hd-animate="fade-up">
+       <div class="hd-ds-value">
+        <span>۱</span>
+        <div>
+         <h3>تماس و آشنایی</h3>
+         <p>نیازها، اهداف و سطح تیم شما را در یک گفت‌وگوی اولیه بررسی می‌کنیم.</p>
+        </div>
+       </div>
+       <div class="hd-ds-value">
+        <span>۲</span>
+        <div>
+         <h3>طراحی برنامه</h3>
+         <p>سرفصل، فرمت و زمان‌بندی دوره را متناسب با تیم شما تنظیم می‌کنیم.</p>
+        </div>
+       </div>
+       <div class="hd-ds-value">
+        <span>۳</span>
+        <div>
+         <h3>اجرای دوره</h3>
+         <p>دوره با مدرسان صنعت و پروژه‌های کاربردی برای تیم شما برگزار می‌شود.</p>
+        </div>
+       </div>
+       <div class="hd-ds-value">
+        <span>۴</span>
+        <div>
+         <h3>ارزیابی نتایج</h3>
+         <p>با سنجش مهارت‌ها و بازخورد، اثر آموزش را ملموس و قابل اندازه‌گیری می‌کنیم.</p>
+        </div>
+       </div>
+      </div>
      </div>
-     <div class="hd-mt-40">
-      <div class="hd-divider hd-divider-licenses"></div>
-      <h3>
-       پشتیبانی و ارزیابی مستمر
-      </h3>
-      <p>
-       سنجش مهارت‌ها و ارائه بازخورد برای اطمینان از یادگیری موثر.
-      </p>
+    </section>
+
+    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="partner-cta-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head hd-measure-lg" data-hd-animate="fade-up">
+       <p class="hd-ds-eyebrow">شروع همکاری</p>
+       <h2 id="partner-cta-title">بیایید درباره تیم شما صحبت کنیم.</h2>
+       <p>برای مشاوره و طراحی برنامه آموزشی سازمانی با تیم وی‌کمپ در تماس باشید.</p>
+      </div>
+      <div class="hd-ds-actions" data-hd-animate="fade-up">
+       
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="/contact">درخواست همکاری سازمانی</a>
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="/school">مشاهده مدرسه‌ها</a>
+      </div>
      </div>
-     <div class="hd-mt-40">
-      <div class="hd-divider hd-divider-licenses"></div>
-      <h3>
-       انعطاف در زمان‌بندی و شیوه آموزش
-      </h3>
-      <p>
-       امکان برگزاری دوره‌ها به صورت حضوری، آنلاین یا ترکیبی، با توجه به نیاز سازمان.
-       .
-      </p>
-     </div>
-    </div>
-   </section>
+    </section>
    </main>
    <footer data-hd-animate="fade-up" class="hd-footer">
     <div class="hd-container hd-clearfix">
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -378,6 +448,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -385,23 +456,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -449,14 +515,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -482,7 +561,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -510,7 +591,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -541,6 +622,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 

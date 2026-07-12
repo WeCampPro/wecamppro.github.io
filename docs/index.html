@@ -10,10 +10,10 @@
   <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." name="description"/>
   <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="og:title"/>
   <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="og:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="og:image"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="og:image"/>
   <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="twitter:title"/>
   <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="twitter:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="twitter:image"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="twitter:image"/>
   <meta content="website" property="og:type"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -28,744 +28,686 @@
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
-  
   <link href="/css/home.css" rel="stylesheet" type="text/css"/>
   
   
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body class="hd-home-page">
   <div class="page-wrapper">
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('nav', () => ({
+      menuOpen: false,
+      servicesOpen: false,
+
+      toggleMenu() {
+        this.menuOpen = !this.menuOpen;
+        if (!this.menuOpen) this.servicesOpen = false;
+      },
+      closeMenu() {
+        this.menuOpen = false;
+        this.servicesOpen = false;
+      },
+      toggleServices() {
+        this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
+      },
+      closeServices(restoreFocus) {
+        this.servicesOpen = false;
+        if (restoreFocus && this.$refs.servicesToggle) this.$refs.servicesToggle.focus();
+      },
+      trapMenu(e) {
+        if (!this.menuOpen || window.innerWidth > 1120) return;
+        const sel = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])';
+        const menuItems = this.$refs.navMenu ? Array.from(this.$refs.navMenu.querySelectorAll(sel)) : [];
+        const endItems = Array.from(this.$root.querySelectorAll('.hd-nav-end a[href], .hd-nav-end button:not([disabled])'));
+        const items = menuItems.concat(endItems)
+          .filter((el) => getComputedStyle(el).visibility !== 'hidden' && el.getClientRects().length > 0);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!e.shiftKey && this.$refs.menuToggle && document.activeElement === this.$refs.menuToggle) {
+          e.preventDefault();
+          first.focus();
+          return;
+        }
+        if (e.shiftKey && this.$refs.menuToggle && document.activeElement === this.$refs.menuToggle) {
+          e.preventDefault();
+          last.focus();
+          return;
+        }
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          if (this.$refs.menuToggle) this.$refs.menuToggle.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          if (this.$refs.menuToggle) this.$refs.menuToggle.focus();
+        }
+      },
+
+      
+      onEscape() {
+        const wasServices = this.servicesOpen;
+        const wasMenu = this.menuOpen;
+        this.servicesOpen = false;
+        this.menuOpen = false;
+        if (wasServices && this.$refs.servicesToggle) this.$refs.servicesToggle.focus();
+        else if (wasMenu && this.$refs.menuToggle) this.$refs.menuToggle.focus();
+      },
+
+      
+      
+      
+      
+      onResize() {
+        if (this.menuOpen && window.innerWidth > 1120) this.closeMenu();
+      },
+    }));
+  });
+</script>
+
    <a class="hd-skip-link" href="#hd-main">پرش به محتوای اصلی</a>
-   <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('nav', () => ({
-        menuOpen: false,
-        servicesOpen: false,
+   <header class="hd-nav hd-nav-transparent" role="banner" dir="rtl"
+           x-data="nav"
+           x-effect="document.body.style.overflow = menuOpen ? 'hidden' : ''"
+           @keydown.escape.window="onEscape()"
+           @keydown.tab="trapMenu($event)"
+           @resize.window.debounce.150ms="onResize()">
+    <div class="hd-container">
+     <div class="hd-nav-wrapper">
 
-        toggleMenu() {
-          this.menuOpen = !this.menuOpen;
-          if (!this.menuOpen) this.servicesOpen = false;
-        },
-        closeMenu() {
-          this.menuOpen = false;
-          this.servicesOpen = false;
-        },
-        toggleServices() {
-          this.servicesOpen = !this.servicesOpen;
-        },
-        closeServices(restoreFocus) {
-          this.servicesOpen = false;
-          if (restoreFocus && this.$refs.servicesToggle) this.$refs.servicesToggle.focus();
-        },
-        trapMenu(e) {
-          if (!this.menuOpen || window.innerWidth > 1120) return;
-          const sel = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])';
-          const menuItems = this.$refs.navMenu ? Array.from(this.$refs.navMenu.querySelectorAll(sel)) : [];
-          const endItems = Array.from(this.$root.querySelectorAll('.hd-home-nav-actions a[href], .hd-home-nav-actions button:not([disabled])'));
-          const items = menuItems.concat(endItems)
-            .filter((el) => getComputedStyle(el).visibility !== 'hidden' && el.getClientRects().length > 0);
-          if (!items.length) return;
-          const first = items[0];
-          const last = items[items.length - 1];
-          if (!e.shiftKey && this.$refs.menuToggle && document.activeElement === this.$refs.menuToggle) {
-            e.preventDefault();
-            first.focus();
-            return;
-          }
-          if (e.shiftKey && this.$refs.menuToggle && document.activeElement === this.$refs.menuToggle) {
-            e.preventDefault();
-            last.focus();
-            return;
-          }
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            if (this.$refs.menuToggle) this.$refs.menuToggle.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            if (this.$refs.menuToggle) this.$refs.menuToggle.focus();
-          }
-        },
-        onEscape() {
-          const wasServices = this.servicesOpen;
-          const wasMenu = this.menuOpen;
-          this.servicesOpen = false;
-          this.menuOpen = false;
-          if (wasServices && this.$refs.servicesToggle) this.$refs.servicesToggle.focus();
-          else if (wasMenu && this.$refs.menuToggle) this.$refs.menuToggle.focus();
-        },
-        onResize() {
-          if (this.menuOpen && window.innerWidth > 1120) this.closeMenu();
-        },
-      }));
-    });
-   </script>
-   <main id="hd-main">
-   <section class="hd-section-hero" aria-labelledby="home-hero-title">
-    <div class="hd-hero-outer">
-     <div class="hd-hero-shell" x-data="nav"
-          x-effect="document.body.style.overflow = menuOpen ? 'hidden' : ''"
-          @keydown.escape.window="onEscape()"
-          @keydown.tab="trapMenu($event)"
-          @resize.window.debounce.150ms="onResize()">
-      <div class="hd-hero-frame">
-       <div class="hd-hero-grid-texture" aria-hidden="true"></div>
+      
+      <div class="hd-nav-start">
+       <nav class="hd-nav-menu" id="hd-nav-menu" aria-label="منوی اصلی"
+            x-ref="navMenu"
+            :class="{ 'hd-nav-menu-open': menuOpen }"
+            @click.outside="menuOpen && closeMenu()">
+       <a class="hd-nav-link" href="/" aria-current="page" @click="onNavigate()">
+         خانه
+        </a>
 
-       <header class="hd-home-nav" role="banner" dir="rtl">
-        <div class="hd-home-nav-actions">
-         <a class="hd-home-nav-cta hd-home-nav-cta-primary" href="/camps">
-          <span>همه کمپ‌ها</span>
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-           <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <div class="hd-dropdown" @click.outside="closeServices(false)">
+         <button type="button" class="hd-dropdown-toggle"
+                 x-ref="servicesToggle"
+                 @click="toggleServices()"
+                 aria-haspopup="true"
+                 aria-controls="hd-mega-panel"
+                 
+                 :aria-expanded="servicesOpen ? 'true' : 'false'">
+          <span>آموزش‌ها</span>
+          <svg class="hd-dropdown-caret" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+           <path d="M4 6l4 4 4-4"/>
           </svg>
-         </a>
-         <a class="hd-home-nav-cta hd-home-nav-cta-ghost" href="/register/">
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-           <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-           <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          <span>ورود / ثبت نام</span>
-         </a>
-        </div>
-
-        <div class="hd-home-nav-main">
-         <nav class="hd-home-nav-menu" id="hd-home-nav-menu" aria-label="منوی اصلی"
-              x-ref="navMenu"
-              :class="{ 'hd-home-nav-menu-open': menuOpen }"
-              @click.outside="menuOpen && closeMenu()">
-          <a class="hd-home-nav-link" href="/" aria-current="page">
-           خانه
-          </a>
-          <div class="hd-home-dropdown" @click.outside="closeServices(false)">
-           <button type="button" class="hd-home-nav-link hd-home-dropdown-toggle"
-                   x-ref="servicesToggle"
-                   @click="toggleServices()"
-                   aria-haspopup="true"
-                   aria-controls="hd-home-mega-panel"
-                   aria-expanded="false"
-                   x-bind:aria-expanded="servicesOpen ? 'true' : 'false'">
-            <span>آموزش‌ها</span>
-            <svg class="hd-home-dropdown-caret" viewBox="0 0 16 16" aria-hidden="true">
-             <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-           </button>
-           <div class="hd-home-dropdown-panel" id="hd-home-mega-panel"
-                x-show="servicesOpen"
-                x-cloak
-                aria-hidden="true"
-                x-bind:aria-hidden="!servicesOpen"
-                @keydown.escape.prevent.stop="closeServices(true)">
-            <div class="hd-home-mega">
-             <div class="hd-home-mega-col">
-              <h4 class="hd-home-mega-title">کمپ‌ها</h4>
-              <a href="/camps/agentic-ai">توسعه عامل‌های هوش مصنوعی</a>
-              <a href="/camps/cloud-infra-management">مدیریت کلود با اپن‌استک</a>
-              <a href="/camps/product-design">دیزاین محصول</a>
-              <a href="/camps/user-research">کاربرپژوهی</a>
-             </div>
-             <div class="hd-home-mega-col">
-              <h4 class="hd-home-mega-title">مسیرهای شغلی</h4>
-              <a href="/school/ai-engineering">مدرسه هوش مصنوعی</a>
-              <a href="/school/cloud-engineering">مدرسه مهندسی ابر</a>
-              <a href="/school/product-design">مدرسه دیزاین محصول</a>
-              <a class="hd-home-mega-special" href="/school">همه برنامه‌های آموزشی</a>
-             </div>
-            </div>
-           </div>
-          </div>
-          <a class="hd-home-nav-link" href="/about">
-           درباره ما
-          </a>
-          <a class="hd-home-nav-link" href="/partnership">
-           همکاری با ما
-          </a>
-         </nav>
-         <a class="hd-home-nav-brand" href="/" aria-label="وی‌کمپ">
-          <img src="/img/logo.png" alt="" width="200" height="40"/>
-         </a>
-         <button type="button" class="hd-home-nav-toggle"
-                 x-ref="menuToggle"
-                 @click.stop="toggleMenu()"
-                 aria-controls="hd-home-nav-menu"
-                 aria-expanded="false"
-                 x-bind:aria-expanded="menuOpen ? 'true' : 'false'"
-                 aria-label="باز کردن منو"
-                 x-bind:aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
          </button>
+         <div class="hd-dropdown-panel" id="hd-mega-panel"
+              x-show="servicesOpen"
+              x-cloak
+              :aria-hidden="!servicesOpen"
+              @keydown.escape.prevent.stop="closeServices(true)">
+          <div class="hd-mega">
+           <div class="hd-mega-grid">
+            <div class="hd-mega-col">
+             <h4 class="hd-mega-title">
+              کمپ‌ها
+             </h4>
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
+             </a>
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
+             </a>
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
+             </a>
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
+             </a>
+            </div>
+            <div class="hd-mega-col">
+             <h4 class="hd-mega-title">
+              مسیرهای شغلی
+             </h4>
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
+              مدرسه هوش مصنوعی
+             </a>
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
+              مدرسه مهندسی ابر
+             </a>
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
+              مدرسه دیزاین محصول
+             </a>
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
+              همه برنامه‌های آموزشی
+             </a>
+            </div>
+           </div>
+          </div>
+         </div>
         </div>
-       </header>
 
-       <div class="hd-hero-stage">
-        <div class="hd-hero-content">
-         <div class="hd-hero-kicker">
-          <span>با بهترین اساتید هر رشته</span>
-          <span aria-hidden="true">🚀</span>
-         </div>
-         <h1 id="home-hero-title" class="hd-hero-title">
-          یادگیری، شغل می‌شه
-         </h1>
-         <p class="hd-hero-text">
-          تو بوت‌کمپ‌های وی‌کمپ یاد می‌گیری، تجربه می‌کنی و برای شغل رویایی‌ات آماده می‌شی.
-         </p>
-         <a class="hd-hero-button" href="/camps/product-design">
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-           <path d="m13.4 2.8 1.2 2.6 2.8 1.1-2.8 1.2-1.2 2.8-1.2-2.8-2.8-1.2 2.8-1.1 1.2-2.6Z" fill="currentColor"/>
-           <path d="m6.8 9.8.8 1.8 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8.8-1.8Z" fill="currentColor"/>
-          </svg>
-          <span>کمپ دیزاین محصول</span>
-         </a>
+        
+        <a class="hd-nav-link" href="/events" @click="onNavigate()">
+         رویدادها
+        </a>
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" @click="onNavigate()">
+         همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" @click="onNavigate()">
+         ورود / حساب کاربری
+        </a>
+       </nav>
+       <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
+        <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
+       </a>
+       <button type="button" class="hd-nav-toggle"
+               x-ref="menuToggle"
+               @click.stop="toggleMenu()"
+               aria-controls="hd-nav-menu"
+               :aria-expanded="menuOpen ? 'true' : 'false'"
+               aria-label="باز کردن منو"
+               :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
+        <span class="hd-nav-toggle-icon" aria-hidden="true">
+         <span></span>
+         <span></span>
+         <span></span>
+        </span>
+       </button>
+      </div>
+
+      
+      <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
+       <a class="hd-button hd-button-header" href="/camps">
+        <span>همه کمپ‌ها</span>
+        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
+         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+       </a>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
+       </a>
+       
+      </div>
+
+     </div>
+    </div>
+   </header>
+<main id="hd-main">
+    <section class="hd-index-hero" aria-labelledby="home-hero-title">
+     <div class="hd-index-hero-shell hd-ds-on-dark">
+      <div class="hd-index-grid" aria-hidden="true"></div>
+      <div class="hd-index-hero-layout hd-container">
+       <div class="hd-index-hero-copy" data-hd-animate="fade-up" data-hd-animate-eager>
+        <p class="hd-ds-eyebrow">کمپ‌های تخصصی وی‌کمپ</p>
+        <h1 id="home-hero-title">مهارت‌های واقعی، برای بازار کار واقعی.</h1>
+        <p class="hd-index-hero-lede">
+         با راهنمایی منتورهای صنعت روی پروژه‌های واقعی کار می‌کنید و با گواهی قابل استعلام و خروجی قابل ارائه، مهارت‌تان را اثبات می‌کنید.
+        </p>
+        <div class="hd-ds-actions">
+         
+         <a class="hd-ds-cta hd-ds-cta-primary" href="#camps">مقایسه کمپ‌ها</a>
+         
+         <a class="hd-ds-cta hd-ds-cta-secondary" href="/request">درخواست مشاوره</a>
         </div>
+        
+        <nav class="hd-index-subnav" aria-label="بخش‌های این صفحه">
+         <a href="#method">روش یادگیری</a>
+         <a href="#proof">اثبات مهارت</a>
+        </nav>
+       </div>
 
-        <div class="hd-hero-media" aria-label="دانشجوی وی‌کمپ در حال یادگیری">
-         <img alt="" class="hd-hero-img" src="/img/index/hero/person.png" width="1147" height="1572"/>
-         <div class="hd-hero-stat hd-hero-stat-progress" aria-label="رضایت دانشجویان ۹۴٪">
-          <span class="hd-hero-stat-chart" aria-hidden="true"></span>
-          <span class="hd-hero-stat-value">۹۴٪</span>
-          <span class="hd-hero-stat-label">رضایت دانشجویان</span>
+       <div class="hd-index-proof-board" data-hd-animate="fade-in-scale" data-hd-animate-eager><a class="hd-index-proof-window" href="/camps/agentic-ai/" aria-label="مشاهده کمپ توسعه عامل‌های هوش مصنوعی">
+         <div class="hd-index-window-bar" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
          </div>
-         <div class="hd-hero-stat hd-hero-stat-people" aria-label="بهترین اساتید ایران در هر حوزه">
-          <span class="hd-hero-avatars" aria-hidden="true">
-           <span class="hd-hero-avatar hd-hero-avatar-gray">
-            <img src="/img/index/hero/avatar-01.jpg" alt=""/>
-           </span>
-           <span class="hd-hero-avatar hd-hero-avatar-mauve">
-            <img src="/img/index/hero/avatar-02.jpg" alt=""/>
-           </span>
-           <span class="hd-hero-avatar hd-hero-avatar-rose">
-            <img src="/img/index/hero/avatar-03.jpg" alt=""/>
-           </span>
-           <span class="hd-hero-avatar hd-hero-avatar-warm">
-            <img src="/img/index/hero/avatar-04.jpg" alt=""/>
-           </span>
-          </span>
-          <span class="hd-hero-stat-label">بهترین اساتید ایران در هر حوزه</span>
+         <div class="hd-index-featured-camp">
+          <div>
+           <p>کمپ فعلی</p>
+           <h2>کمپ توسعه عامل‌های هوش مصنوعی</h2>
+          </div>
+          <span data-status="in-progress">در حال برگزاری</span>
          </div>
-         <span class="hd-hero-icon hd-hero-icon-video" aria-hidden="true">
-          <img class="hd-hero-camera-img hd-hero-camera-img-default" src="/img/index/hero/camera-1.png" alt="" width="268" height="320"/>
-          <img class="hd-hero-camera-img hd-hero-camera-img-hover" src="/img/index/hero/camera-2.png" alt="" width="268" height="320"/>
+         <picture><source type="image/avif" srcset="/img/campcards/agentic-ai_hu_5739d923f473a726.avif 480w, /img/campcards/agentic-ai_hu_1a9ca02054cc77f4.avif 960w" sizes="(min-width: 1000px) 480px, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/agentic-ai_hu_d4161fba3d770646.webp 480w, /img/campcards/agentic-ai_hu_b858406491259a87.webp 960w" sizes="(min-width: 1000px) 480px, calc(100vw - 32px)"><img src="/img/campcards/agentic-ai_hu_c3bace57119992df.jpg" alt="مدرسان کمپ توسعه عامل‌های هوش مصنوعی وی‌کمپ" width="1200" height="750" fetchpriority="high" decoding="async"></picture>
+         <div class="hd-index-proof-list" aria-label="نشانه‌های اعتماد">
+          <span>پروژه نهایی</span>
+          <span>مسیر ۱۲ هفته‌ای</span>
+          <span>منتورینگ تخصصی</span>
+         </div>
+         <span class="hd-index-proof-cta" aria-hidden="true">
+          مشاهده کمپ
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5l-7 7 7 7"/></svg>
          </span>
-         <span class="hd-hero-icon hd-hero-icon-cap" aria-hidden="true">
-          <img class="hd-hero-mortarboard-img hd-hero-mortarboard-img-default" src="/img/index/hero/mortarboard-1.png" alt="" width="404" height="445"/>
-          <img class="hd-hero-mortarboard-img hd-hero-mortarboard-img-hover" src="/img/index/hero/mortarboard-2.png" alt="" width="404" height="445"/>
+        </a>
+        <div class="hd-index-proof-certificate">
+         <span class="hd-index-proof-mark" aria-hidden="true">
+          <picture><source type="image/avif" srcset="/img/brand/logo-wecamp-mark-blue_hu_7223195db4a19107.avif 1x, /img/brand/logo-wecamp-mark-blue_hu_dbae8e935b3cc7b7.avif 2x, /img/brand/logo-wecamp-mark-blue_hu_2ca53718e405272a.avif 3x"><source type="image/webp" srcset="/img/brand/logo-wecamp-mark-blue_hu_d981cf1112013ae5.webp 1x, /img/brand/logo-wecamp-mark-blue_hu_49b03ecec9416a1c.webp 2x, /img/brand/logo-wecamp-mark-blue_hu_77e9fad604a854e9.webp 3x"><img src="/img/brand/logo-wecamp-mark-blue_hu_d69728fc92b7b18b.png" alt="" width="309" height="318" loading="eager" decoding="async"></picture>
          </span>
-        </div>
-       </div>
-
-       <div class="hd-hero-companies" aria-label="شرکت‌هایی که دانشجویان وی‌کمپ در آنها کار می‌کنند">
-        <p>دانشجویان ما در این شرکت‌ها کار می‌کنند</p>
-        <span class="hd-hero-company-divider" aria-hidden="true"></span>
-        <div class="hd-hero-company-logos" aria-hidden="true">
-         <img src="/img/companies/logo-company-01.png" alt="" loading="eager"/>
-         <img src="/img/index/hero/company-tapsi.png" alt="" loading="eager"/>
-         <img src="/img/index/hero/company-snapp.svg" alt="" loading="eager"/>
-         <img src="/img/index/hero/company-digikala.png" alt="" loading="eager"/>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <div data-hd-animate="fade-up" class="hd-section hd-about">
-    <div class="hd-container hd-clearfix">
-     <div class="hd-about-wrapper">
-      <img data-hd-animate="fade-in-scale" alt="Course Team" class="hd-about-img hd-delay-300" sizes="(max-width: 479px) 93vw, (max-width: 767px) 94vw, (max-width: 991px) 95vw, (max-width: 1439px) 54vw, 725.03125px" src="/img/index/about.jpg" srcset="/img/index/about-p500.jpeg 500w, /img/index/about.jpg 1328w"/>
-      <div data-hd-animate="fade-in-scale" class="hd-about-content hd-delay-500">
-       <h2 class="hd-h2">
-        درباره وی‌کمپ
-       </h2>
-       <p class="hd-text-body hd-about-text">
-        در وی‌کمپ، یادگیری را یک سفر عمیق و کاربردی می‌دانیم. ما با آموزش گام‌به‌گام مهارت‌های عملی و پروژه‌محور، به فراگیران کمک می‌کنیم تا مسائل واقعی را حل کنند و با اعتمادبه‌نفس وارد بازار کار شوند.
-        <br/>
-        <br/>
-        ما با برگزاری کمپ‌های تخصصی در حوزه‌های محصول و فنی می‌کوشیم فرصتی را فراهم کنیم تا فراگیران با ارتقای مهارت‌هایشان در مسیر حرفه‌ای موفق‌تر باشند.
-       </p>
-       <a class="hd-button hd-button-secondary" href="/about">
-        بیشتر بدانید
-       </a>
-      </div>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-about-section _1 hd-delay-600" src="/img/shapes/index_circle-shape-about-01.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-about-section _2 hd-delay-800" src="/img/shapes/index_circle-shape-about-02.svg"/>
-     </div>
-    </div>
-   </div>
-   <div class="hd-container hd-clearfix">
-    <div data-hd-animate="fade-up" class="hd-home-divider">
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" class="hd-section">
-    <div class="hd-container hd-clearfix">
-     <div data-hd-animate="fade-in-scale" class="hd-top-content hd-delay-300">
-      <div class="hd-split-content-courses">
-       <h2>
-        کمپ‌های فعال
-       </h2>
-       <p class="hd-text-body">
-         در حال ثبت‌نام ...
-       </p>
-      </div>
-      <a class="hd-button hd-button-secondary hd-inline-block" href="/camps">
-       همه کمپ‌ها
-      </a>
-     </div>
-     <div>
-      <div class="hd-courses-section-grid" role="list">
-       <div data-hd-animate="fade-in-scale" class="hd-course-card-wrapper hd-delay-500" role="listitem">
-        <div class="hd-card">
-         <a class="hd-card-image-link hd-inline-block" href="/camps/agentic-ai">
-          <img alt="IaaS Course" class="hd-card-image" sizes="(max-width: 479px) 100vw, (max-width: 767px) 90vw, (max-width: 991px) 72vw, (max-width: 1439px) 30vw, 406px" src="/img/campcards/agentic-ai.png" srcset="/img/campcards/agentic-ai-p500.png 500w, /img/campcards/agentic-ai.png 738w"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="/camps/agentic-ai">
-           <h3 class="hd-h3 hd-course-card-title">
-            توسعه عامل‌های هوش مصنوعی
-           </h3>
-          </a>
-          <p>
-           پیش‌نیاز این کمپ تجربه برنامه‌نویسی پایه در پایتون و آشنایی با شئ‌گرایی است.
-          </p>
-          <div class="hd-divider hd-divider-course-card">
-          </div>
-          <div class="hd-course-card-details">
-           <div class="hd-level-wrapper">
-            <img alt="Beginners" class="hd-level-icon hd-hidden" src="/img/icons/level-01.svg"/>
-            <img alt="Medium Icon" class="hd-level-icon" src="/img/icons/level-02.svg"/>
-            <img alt="Experts Icon" class="hd-level-icon hd-hidden" src="/img/icons/level-03.svg"/>
-            <div >
-             <div class="hd-levels-list" role="list">
-              <div class="hd-level-text-wrapper" role="listitem">
-
-                ارتقای مهارت
-
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="hd-course-price">
-            <a href="/camps/agentic-ai">
-            در حال برگزاری
-            </a>
-           </div>
-          </div>
-         </div>
-
-        </div>
-       </div>
-       <div data-hd-animate="fade-in-scale" class="hd-course-card-wrapper hd-delay-500" role="listitem">
-        <div class="hd-card">
-         <a class="hd-card-image-link hd-inline-block" href="/camps/product-design">
-          <img alt="Design Course" class="hd-card-image" sizes="(max-width: 479px) 100vw, (max-width: 767px) 90vw, (max-width: 991px) 72vw, (max-width: 1439px) 30vw, 406px" src="/img/campcards/product-design-1.png" srcset="/img/campcards/product-design-1-p500.png 500w, /img/campcards/product-design-1.png 738w"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="/camps/product-design">
-           <h3 class="hd-h3 hd-course-card-title">
-            دیزاین محصول
-           </h3>
-          </a>
-          <p>
-           این کمپ پیش‌نیاز ندارد. دانش در روان‌شناسی، گرافیک، تحلیل داده و مارکتینگ کمک‌کننده است.
-
-          </p>
-          <div class="hd-divider hd-divider-course-card">
-          </div>
-          <div class="hd-course-card-details">
-           <div class="hd-level-wrapper">
-            <img alt="Beginners" class="hd-level-icon" src="/img/icons/level-01.svg"/>
-            <img alt="Medium Icon" class="hd-level-icon hd-hidden" src="/img/icons/level-02.svg"/>
-            <img alt="Experts Icon" class="hd-level-icon hd-hidden" src="/img/icons/level-03.svg"/>
-            <div >
-             <div class="hd-levels-list" role="list">
-              <div class="hd-level-text-wrapper" role="listitem">
-
-                ورود به بازار کار
-
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="hd-course-price">
-            <a href="/camps/product-design">
-            در حال برگزاری
-            </a>
-           </div>
-          </div>
-         </div>
-
-        </div>
-       </div>
-       <div data-hd-animate="fade-in-scale" class="hd-course-card-wrapper hd-delay-500" role="listitem">
-        <div class="hd-card">
-         <a class="hd-card-image-link hd-inline-block" href="/camps/cloud-infra-management">
-          <img alt="IaaS Course" class="hd-card-image" sizes="(max-width: 479px) 100vw, (max-width: 767px) 90vw, (max-width: 991px) 72vw, (max-width: 1439px) 30vw, 406px" src="/img/campcards/cloud-infra-1.png" srcset="/img/campcards/cloud-infra-1-p500.png 500w, /img/campcards/cloud-infra-1.png 738w"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="/camps/cloud-infra-management">
-           <h3 class="hd-h3 hd-course-card-title">
-            مدیریت کلود با اپن‌استک
-           </h3>
-          </a>
-          <p>
-           پیش‌نیاز این کمپ آشنایی کافی با لینوکس و شبکه یا حداقل یک سال تجربه کار در حوزه زیرساخت است.
-          </p>
-          <div class="hd-divider hd-divider-course-card">
-          </div>
-          <div class="hd-course-card-details">
-           <div class="hd-level-wrapper">
-            <img alt="Beginners" class="hd-level-icon hd-hidden" src="/img/icons/level-01.svg"/>
-            <img alt="Medium Icon" class="hd-level-icon" src="/img/icons/level-02.svg"/>
-            <img alt="Experts Icon" class="hd-level-icon hd-hidden" src="/img/icons/level-03.svg"/>
-            <div >
-             <div class="hd-levels-list" role="list">
-              <div class="hd-level-text-wrapper" role="listitem">
-
-                ارتقای شغلی
-              </div>
-             </div>
-            </div>
-           </div>
-           <div class="hd-course-price">
-            به‌زودی اعلام می‌شود.
-           </div>
-          </div>
-         </div>
-
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-
-   <div class="hd-container hd-clearfix">
-    <div data-hd-animate="fade-up" class="hd-home-divider">
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" class="hd-section">
-    <div data-hd-animate="fade-in-scale" class="hd-container-narrow hd-text-center hd-clearfix hd-delay-300">
-     <h2 class="hd-h2">
-       راهت رو انتخاب کن
-     </h2>
-     <p class="hd-text-body">
-      انتخاب کن چطوری دوست داری توی آکادمی یاد بگیری. می‌تونی به صورت تمام‌وقت یا نیمه‌وقت توی برنامه‌های حضوری ما شرکت کنی، یا از راه دور با دوره‌های آنلاین ما همراه باشی.
-     </p>
-    </div>
-    <div class="hd-container hd-clearfix">
-     <div class="hd-choose-grid">
-      <div data-hd-animate="fade-in-scale" class="hd-choose-item hd-delay-500">
-       <img alt="Full Time" src="/img/index/full-time.svg"/>
-       <h3 class="hd-h3 hd-choose-title">
-        غرق در یادگیری
-       </h3>
-       <p class="hd-text-body hd-choose-text">
-        کمپ‌های جامع و پرانرژی؛ هر روز در کنار هم، با تمرکز کامل روی یادگیری و رشد
-       </p>
-
-      </div>
-      <div data-hd-animate="fade-in-scale" class="hd-choose-item hd-delay-700">
-       <img alt="Part Time Icon" src="/img/index/part-time.svg"/>
-       <h3 class="hd-h3 hd-choose-title">
-        یادگیری در کنار کار و زندگی
-       </h3>
-       <p class="hd-text-body hd-choose-text">
-        اگر کار یا درس داری، می‌تونی انعطاف‌پذیرتر یاد بگیری و همچنان بخشی از تجربه یادگیری باشی
-       </p>
-
-      </div>
-      <div data-hd-animate="fade-in-scale" class="hd-choose-item hd-delay-900">
-       <img alt="Online Icon" src="/img/index/online.svg"/>
-       <h3 class="hd-h3 hd-choose-title">
-        بدون مرز و فاصله
-       </h3>
-       <p class="hd-text-body hd-choose-text">
-        از هر کجا که هستی، با برنامه آنلاین ما قدم به قدم همراه شو و مهارت‌های واقعی به دست بیار
-       </p>
-
-      </div>
-     </div>
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" class="hd-section-testimonial">
-    <div class="hd-container hd-clearfix">
-     <div class="hd-testimonial-wrapper">
-      <div data-hd-animate="fade-in-scale" class="hd-testimonial-left hd-delay-300">
-       <h2 class="hd-h2 hd-testimonial-title">
-        وی‌کمپ به شما کمک می‌کند بتوانید در مسیر شغل رویایی‌تان قرار بگیرید.
-       </h2>
-       <p class="hd-text-body hd-testimonial-text">
-        این همراهی باعث می‌شود سریع‌تر به هدف‌های حرفه‌ای خود برسید. اینجا هر چیزی که برای رسیدن به شغل رویایی‌تان نیاز دارید، از آموزش تا راهنمایی، در اختیارتان قرار می‌گیره.
-       </p>
-       <div class="hd-testimonial-meta">
-        <div class="hd-testimonial-name">
-         همراه شو
-        </div>
-        <div class="hd-testimonial-dash">
-        </div>
-        <div class="hd-testimonial-work">
-         قدم‌به‌قدم پیش می‌رویم.
-        </div>
-       </div>
-       <a class="hd-button hd-button-secondary hd-button-cta" href="/school">
-        مسیرهای شغلی
-       </a>
-      </div>
-      <div data-hd-animate="fade-in-scale" class="hd-testimonial-media hd-delay-500">
-       <img data-hd-animate="fade-in-scale" alt="Advanced Skills" class="hd-testimonial-img hd-delay-500" src="/img/index/banner.png"/>
-      </div>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-testimonial _4 hd-delay-600" src="/img/shapes/index_circle-shape-testimonial-04.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-testimonial _3 hd-delay-800" src="/img/shapes/index_circle-shape-testimonial-03.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-testimonial _2 hd-delay-800" src="/img/shapes/index_circle-shape-testimonial-02.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="hd-shape-testimonial _1 hd-delay-600" src="/img/shapes/index_circle-shape-testimonial-01.svg"/>
-     </div>
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" class="hd-section hd-why-us">
-    <div class="hd-container hd-clearfix">
-     <div data-hd-animate="fade-in-scale" class="hd-why-us-top hd-delay-300">
-      <h2 class="hd-h2 hd-why-us-title">
-       چرا با ما یاد بگیرید؟
-      </h2>
-      <a class="hd-button" href="/camps">
-       کمپ‌های ما
-      </a>
-     </div>
-     <div data-hd-animate="fade-in-scale" class="hd-why-us-grid hd-delay-500">
-      <div class="hd-why-us-col">
-       <div class="hd-why-us-item">
-        <img alt="Community" class="hd-why-us-icon" src="/img/icons/why-us-01.svg"/>
-        <div class="hd-why-us-content">
-         <h3 class="hd-h3 hd-why-us-item-title">
-          آموزش با مربیان ارشد صنعت
-         </h3>
-         <p class="hd-text-body hd-why-us-text">
-          در WECAMP، مسیر یادگیری شما با پشتیبانی مربیان ارشد و متخصص صنعت آغاز می‌شود تا هر گام شما هدایت‌شده و استراتژیک پیش رود.
-         </p>
-        </div>
-       </div>
-       <div class="hd-why-us-spacer">
-       </div>
-       <div class="hd-why-us-item">
-        <img alt="Top Notch" class="hd-why-us-icon" src="/img/icons/why-us-02.svg"/>
-        <div class="hd-why-us-content">
-         <h3 class="hd-h3 hd-why-us-item-title">
-          کمپ‌های تخصصی سطح اول
-         </h3>
-         <p class="hd-text-body hd-why-us-text">
-          همه دوره‌ها با ساختار سه‌مرحله‌ای و پروژه‌محور، اجرای عملی و تمرکز بر کاربرد واقعی طراحی شده‌اند تا شما را برای بازار کار آماده کنند.
-         </p>
-        </div>
-       </div>
-      </div>
-      <div class="hd-why-us-divider">
-      </div>
-      <div class="hd-why-us-col">
-       <div class="hd-why-us-item">
-        <img alt="Students Community" class="hd-why-us-icon" src="/img/icons/why-us-03.svg"/>
-        <div class="hd-why-us-content">
-         <h3 class="hd-h3 hd-why-us-item-title">
-          باشگاه حرفه‌ای WECAMP
-         </h3>
-         <p class="hd-text-body hd-why-us-text">
-          عضویت در باشگاه ویژه ما به شما امکان دسترسی به منابع اختصاصی، شبکه‌سازی با همکاران هدفمند و فرصت‌های ویژه برای پیشرفت حرفه‌ای می‌دهد.
-         </p>
-        </div>
-       </div>
-       <div class="hd-why-us-spacer">
-       </div>
-       <div class="hd-why-us-item">
-        <img alt="Mentorship" class="hd-why-us-icon" src="/img/icons/why-us-04.svg"/>
-        <div class="hd-why-us-content">
-         <h3 class="hd-h3 hd-why-us-item-title">
-          منتورینگ شخصی‌سازی‌شده
-         </h3>
-         <p class="hd-text-body hd-why-us-text">
-          در هر مرحله، منتورها با راهنمایی‌های فردی و حرفه‌ای، مسیر یادگیری شما را منطبق بر نیازها و هدف‌هایتان شکل می‌دهند.
-         </p>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="hd-container hd-clearfix">
-    <div data-hd-animate="fade-up" class="hd-home-divider">
-    </div>
-   </div>
-
-   <div data-hd-animate="fade-up" data-hd-cta-parallax class="hd-section hd-section-cta">
-    <div class="hd-container hd-clearfix">
-     <div class="hd-cta-wrapper">
-      <div data-hd-animate="fade-in-scale" class="hd-cta-left hd-delay-300">
-       <h2 class="hd-h2 hd-cta-title">
-        رشد شغلی خود را آغاز کنید!
-        <br/>
-        یادگیری از همین امروز...
-       </h2>
-       <p class="hd-text-body hd-cta-paragraph">
-        مهارت‌های کاربردی را از متخصصان می‌آموزید، تجربه‌های واقعی را تمرین می‌کنید و برای رسیدن به اهداف حرفه‌ای‌تان یک قدم بزرگ برمی‌دارید.
-       </p>
-       <a class="hd-button hd-button-cta hd-inline-block" href="/camps">
-        همه کمپ‌ها
-       </a>
-      </div>
-      <div data-hd-animate="fade-in-scale" data-hd-animate-eager="" class="hd-cta-right hd-delay-500">
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-main _1" src="/img/na/banner-main.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _4" data-hd-cta-y="0:50,85:-20" src="/img/na/banner-right-down.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _3" data-hd-cta-y="0:40,85:-40" src="/img/na/banner-right-up.svg"/>
-       <img alt="Career Path" class="hd-banner-img hd-banner-img-overlay _2" data-hd-cta-y="0:100,90:-80" src="/img/na/banner-left.svg"/>
-      </div>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _4 hd-delay-600" src="/img/shapes/circle-shape-cta-04.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _3 hd-delay-800" src="/img/shapes/circle-shape-cta-03.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _2 hd-delay-800" src="/img/shapes/circle-shape-cta-02.svg"/>
-      <img data-hd-animate="fade-in-scale" data-hd-animate-eager="" alt="" class="hd-shape-cta _1 hd-delay-600" src="/img/shapes/circle-shape-cta-01.svg"/>
-     </div>
-    </div>
-   </div>
-
-   <div data-hd-animate="fade-up" class="hd-section hd-section-events">
-    <div class="hd-container hd-clearfix">
-     <div data-hd-animate="fade-in-scale" class="hd-top-content hd-delay-300">
-      <div class="hd-split-content-events">
-       <h2>
-        رویدادها
-       </h2>
-       <p class="hd-text-body">
-        فرصت‌های تازه برای یادگیری و رشد، جلوتر منتظرت هستند.
-       </p>
-      </div>
-      <a class="hd-button hd-button-secondary hd-inline-block" href="/events">
-       همه رویدادها
-      </a>
-     </div>
-     <div>
-      <div class="hd-events-section-grid" role="list">
-       <div data-hd-animate="fade-in-scale" class="hd-delay-500" role="listitem">
-        <div class="hd-card hd-card-event">
-         <a class="hd-card-image-link hd-inline-block" href="https://eseminar.tv/wb168365">
-          <img alt="alt text" class="hd-card-image" src="/img/events/1404/agentic-ai-2.jpg"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="https://eseminar.tv/wb168365">
-           <h3 class="hd-h3 hd-card-event-title">
-
-            <span class="hd-event-status-held">[برگزار شده]</span>
-            رویداد مسیر شغلی هوش مصنوعی
-           </h3>
-          </a>
-          <p>
-            کدام نقش‌های هوش مصنوعی بیشترین تقاضا را دارند و چطور می‌توانید با مهارت‌های درست وارد این بازار شوید
-          </p>
-          <div class="hd-divider hd-divider-card-events">
-          </div>
-          <div class="hd-card-event-details">
-           <div class="hd-event-date-wrapper">
-            <div class="hd-event-date">
-             <img alt="Calendar Icon" class="hd-event-icon" src="/img/icons/event-calendar.svg"/>
-             <div class="hd-event-details-text">
-              ۲۰ آذر ۱۴۰۴
-             </div>
-            </div>
-            <div class="hd-event-time">
-             <img alt="Clock Icon" class="hd-event-icon" src="/img/icons/event-clock.svg"/>
-             <div class="hd-event-details-text">
-              ۳:۳۰ بعدازظهر
-             </div>
-            </div>
-           </div>
-           <a class="hd-card-title-link hd-inline-block" href="https://eseminar.tv/wb168365">
-            <div class="hd-event-location-wrapper">
-             <img alt="Location Icon" class="hd-event-icon hd-event-icon-location" src="/img/icons/event-location.svg"/>
-             <div class="hd-event-location-text">
-             آنلاین و حضوری
-             </div>
-            </div>
-           </a>
-          </div>
+         <div>
+          <strong>گواهی وی‌کمپ</strong>
+          <p>متصل به پروژه، قابل استعلام و قابل ارائه در مسیر حرفه‌ای.</p>
          </div>
         </div>
-
        </div>
-       <div data-hd-animate="fade-in-scale" class="hd-delay-500" role="listitem">
-        <div class="hd-card hd-card-event">
-         <a class="hd-card-image-link hd-inline-block" href="https://youtu.be/Z3uMYQSrLsE">
-          <img alt="alt text" class="hd-card-image" src="/img/events/1404/agentic-ai.jpg"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="https://youtu.be/Z3uMYQSrLsE">
-           <h3 class="hd-h3 hd-card-event-title">
-            <span class="hd-event-status-held">ویدیوی</span>
-            وبینار عامل‌های هوش مصنوعی
-           </h3>
-          </a>
-          <p>
-            مسیری از مفهوم تا ساختارهای پیشرفته عامل‌های هوش مصنوعی؛ افقی گسترده از توان خودمختاری، هماهنگی و قدرت Agentic AI
-          </p>
-          <div class="hd-divider hd-divider-card-events">
-          </div>
-          <div class="hd-card-event-details">
-           <div class="hd-event-date-wrapper">
-            <div class="hd-event-date">
-             <img alt="Calendar Icon" class="hd-event-icon" src="/img/icons/event-calendar.svg"/>
-             <div class="hd-event-details-text">
-              ۲۷ آبان ۱۴۰۴ - برگزار شده
-             </div>
-            </div>
-            <div class="hd-event-time">
-             <img alt="Clock Icon" class="hd-event-icon" src="/img/icons/event-clock.svg"/>
-             <div class="hd-event-details-text">
-              ۸:۰۰ شب
-             </div>
-            </div>
-           </div>
-           <a class="hd-card-title-link hd-inline-block" href="https://youtu.be/Z3uMYQSrLsE">
-            <div class="hd-event-location-wrapper">
-             <img alt="Location Icon" class="hd-event-icon hd-event-icon-location" src="/img/icons/play-laptop.svg"/>
-             <div class="hd-event-location-text">
-             تماشا در یوتوب
-             </div>
-            </div>
-           </a>
-          </div>
-         </div>
-        </div>
+      </div>
 
+      
+      <div class="hd-index-company-strip" aria-label="شرکت‌هایی که دانش‌آموختگان وی‌کمپ در آنها استخدام شده‌اند">
+       <p>دانش‌آموختگان ما در این شرکت‌ها استخدام شده‌اند</p>
+       <div>
+        <picture><source type="image/avif" srcset="/img/companies/logo-company-01_hu_76ca2e1139a106e6.avif 160w" sizes="(max-width: 479px) 74px, 122px"><source type="image/webp" srcset="/img/companies/logo-company-01_hu_c2d855a8bbe6af24.webp 160w" sizes="(max-width: 479px) 74px, 122px"><img src="/img/companies/logo-company-01_hu_d7c36c61caf64dc7.png" alt="لوگوی جاباما" loading="eager"></picture>
+        <picture><source type="image/avif" srcset="/img/index/hero/company-tapsi_hu_efce870efbc913c8.avif 112w, /img/index/hero/company-tapsi_hu_56d647794c397740.avif 224w, /img/index/hero/company-tapsi_hu_3add5d0c3934c28d.avif 336w" sizes="(max-width: 479px) 66px, 112px"><source type="image/webp" srcset="/img/index/hero/company-tapsi_hu_e4dba882ee9b9c7b.webp 112w, /img/index/hero/company-tapsi_hu_30d9f1e540091653.webp 224w, /img/index/hero/company-tapsi_hu_fcf7e6870072a754.webp 336w" sizes="(max-width: 479px) 66px, 112px"><img src="/img/index/hero/company-tapsi_hu_774f910dd0f3b37c.png" alt="لوگوی تپسی" loading="eager"></picture>
+        <img src="/img/index/hero/company-snapp.svg" alt="لوگوی اسنپ" loading="eager">
+        <picture><source type="image/avif" srcset="/img/index/hero/company-digikala_hu_7c6fb1237cbccecf.avif 109w, /img/index/hero/company-digikala_hu_1577d81d61dc1bba.avif 218w, /img/index/hero/company-digikala_hu_5ee943f9e4379f34.avif 327w" sizes="(max-width: 479px) 66px, 109px"><source type="image/webp" srcset="/img/index/hero/company-digikala_hu_bf55b3ed2cb88410.webp 109w, /img/index/hero/company-digikala_hu_f8edc0b4a9cf0e51.webp 218w, /img/index/hero/company-digikala_hu_7b03cca42ebf9a17.webp 327w" sizes="(max-width: 479px) 66px, 109px"><img src="/img/index/hero/company-digikala_hu_4e8ef6a581a8e235.png" alt="لوگوی دیجی‌کالا" loading="eager"></picture>
        </div>
       </div>
      </div>
-    </div>
-   </div>
+    </section>
 
-   <div class="hd-container hd-clearfix">
-    <div data-hd-animate="fade-up" class="hd-home-divider">
-    </div>
-   </div>
+    <section class="hd-index-stats" aria-label="وی‌کمپ در یک نگاه">
+     <div class="hd-container">
+      
+      
+<dl class="hd-index-stats-row" data-hd-animate="fade-up">
+ <div>
+  <dt><span class="hd-index-stat-num">۲۰</span><span class="hd-index-stat-plus">+</span></dt>
+  <dd>مدرس و منتور صنعت</dd>
+ </div>
+ <div>
+  <dt><span class="hd-index-stat-num">۸</span></dt>
+  <dd>کمپ تخصصی</dd>
+ </div>
+ <div>
+  <dt><span class="hd-index-stat-num">۵۰</span><span class="hd-index-stat-plus">+</span></dt>
+  <dd>دانشجو</dd>
+ </div>
+ <div>
+  <dt><span class="hd-index-stat-num">۳۰۰</span><span class="hd-index-stat-plus">+</span></dt>
+  <dd>متقاضی</dd>
+ </div>
+</dl>
+
+     </div>
+    </section>
+
+    <section class="hd-index-section hd-index-camps" id="camps" aria-labelledby="home-camps-title">
+     <div class="hd-container">
+      <div class="hd-index-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">انتخاب مسیر</p>
+       <h2 id="home-camps-title">کمپ مناسب‌تان را همین‌جا پیدا کنید.</h2>
+       <p>مسیرهای فعال و آینده وی‌کمپ را بر اساس حوزه، وضعیت و علاقه‌تان انتخاب کنید.</p>
+      </div>
+      <div class="hd-ds-chip-row hd-index-topic-row" aria-label="حوزه‌های آموزشی وی‌کمپ" data-hd-animate="fade-up">
+       <a class="hd-ds-chip" href="/school/ai-engineering">هوش مصنوعی</a>
+       <a class="hd-ds-chip" href="/school/product-design">دیزاین محصول</a>
+       <a class="hd-ds-chip" href="/school/cloud-engineering">کلود</a>
+       <a class="hd-ds-chip" href="/camps/user-research/">پژوهش کاربر</a>
+      </div>
+      <div class="hd-ds-camp-grid">
+       
+        
+<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+ <a class="hd-ds-camp-media" href="/camps/agentic-ai/" aria-label="کمپ توسعه عامل‌های هوش مصنوعی"><picture><source type="image/avif" srcset="/img/campcards/agentic-ai_hu_1dfbca5bbe6e89c0.avif 360w, /img/campcards/agentic-ai_hu_5739d923f473a726.avif 480w, /img/campcards/agentic-ai_hu_76d61335566df9ac.avif 720w, /img/campcards/agentic-ai_hu_70fe99a935fc57c7.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/agentic-ai_hu_8bf7ee164ddeb235.webp 360w, /img/campcards/agentic-ai_hu_d4161fba3d770646.webp 480w, /img/campcards/agentic-ai_hu_5059a4470f4c4efb.webp 720w, /img/campcards/agentic-ai_hu_e849e92f0b5e77e4.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/agentic-ai_hu_4dc710515af92695.jpg" alt="مدرسان کمپ توسعه عامل‌های هوش مصنوعی وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+ <div class="hd-ds-camp-body">
+  <div class="hd-ds-camp-top">
+   <span>مدرسه هوش مصنوعی وی‌کمپ</span>
+   <span class="hd-ds-camp-status" data-status="in-progress">در حال برگزاری</span>
+  </div>
+  <h3><a href="/camps/agentic-ai/">کمپ توسعه عامل‌های هوش مصنوعی</a></h3>
+  <p>از برنامه‌نویسی پایتون به ساخت سیستم‌های Agentic AI برسید؛ با طراحی عامل‌ها، ابزارها، workflowها و همکاری چندعاملی در پروژه‌های واقعی.</p>
+  <dl class="hd-ds-camp-facts">
+   <div><dt>وضعیت</dt><dd>در حال برگزاری</dd></div><div><dt>شروع</dt><dd>۹ دی ۱۴۰۴</dd></div><div><dt>مدت</dt><dd>۱۲ هفته</dd></div>
+  </dl>
+  <a class="hd-ds-camp-link" href="/camps/agentic-ai/">مشاهده جزئیات</a>
+ </div>
+</article>
+
+       
+        
+<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+ <a class="hd-ds-camp-media" href="/camps/product-design/" aria-label="کمپ دیزاین محصول"><picture><source type="image/avif" srcset="/img/campcards/product-design_hu_4c48de47ed0bb48a.avif 360w, /img/campcards/product-design_hu_50fc854ecc9a2aea.avif 480w, /img/campcards/product-design_hu_de0b66f3ca45cc82.avif 720w, /img/campcards/product-design_hu_775909b6bc42fa11.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/product-design_hu_a26b3194b2473c0a.webp 360w, /img/campcards/product-design_hu_76aa004bc85c3251.webp 480w, /img/campcards/product-design_hu_e87ef1a803625798.webp 720w, /img/campcards/product-design_hu_c9eb04d9b6c7089f.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/product-design_hu_12c5414a9a761be9.jpg" alt="مدرسان کمپ دیزاین محصول وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+ <div class="hd-ds-camp-body">
+  <div class="hd-ds-camp-top">
+   <span>مدرسه دیزاین محصول وی‌کمپ</span>
+   <span class="hd-ds-camp-status" data-status="waitlist">پیش‌ثبت‌نام دوره آتی</span>
+  </div>
+  <h3><a href="/camps/product-design/">کمپ دیزاین محصول</a></h3>
+  <p>مسیر پروژه‌محور برای ورود جدی به UX/UI و دیزاین محصول؛ با منتورینگ، ورکشاپ‌های عملی و تمرکز بر پورتفولیو.</p>
+  <dl class="hd-ds-camp-facts">
+   <div><dt>وضعیت</dt><dd>پیش‌ثبت‌نام دوره آتی</dd></div><div><dt>مدت نمونه</dt><dd>حدود ۳ ماه</dd></div><div><dt>فرمت</dt><dd>هیبرید</dd></div>
+  </dl>
+  <a class="hd-ds-camp-link" href="/camps/product-design/">مشاهده جزئیات</a>
+ </div>
+</article>
+
+       
+        
+<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+ <a class="hd-ds-camp-media" href="/camps/cloud-infra-management/" aria-label="کمپ مدیریت کلود"><picture><source type="image/avif" srcset="/img/campcards/cloud-infra-management_hu_44bf10f9f9998bf5.avif 360w, /img/campcards/cloud-infra-management_hu_1b3c4a01ed971e2f.avif 480w, /img/campcards/cloud-infra-management_hu_6d283410c20b4073.avif 720w, /img/campcards/cloud-infra-management_hu_9aba660b9de80ec5.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/cloud-infra-management_hu_639a890bc9b4b2ba.webp 360w, /img/campcards/cloud-infra-management_hu_d1e42364b3e59e71.webp 480w, /img/campcards/cloud-infra-management_hu_896e8ceb39920257.webp 720w, /img/campcards/cloud-infra-management_hu_251ade74a6c5f856.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/cloud-infra-management_hu_eebe1e230d55d32c.jpg" alt="مدرسان کمپ مدیریت زیرساخت ابری وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+ <div class="hd-ds-camp-body">
+  <div class="hd-ds-camp-top">
+   <span>مدرسه مهندسی ابر وی‌کمپ</span>
+   <span class="hd-ds-camp-status" data-status="upcoming">در حال برنامه‌ریزی برای ۱۴۰۵</span>
+  </div>
+  <h3><a href="/camps/cloud-infra-management/">کمپ مدیریت کلود</a></h3>
+  <p>مسیر عملی برای ورود به مدیریت زیرساخت ابری؛ از لینوکس و شبکه تا OpenStack، Docker، Terraform و نگه‌داری سرویس‌های ابری.</p>
+  <dl class="hd-ds-camp-facts">
+   <div><dt>شروع</dt><dd>در ۱۴۰۵</dd></div><div><dt>مدت</dt><dd>حدود ۳ ماه</dd></div><div><dt>فرمت</dt><dd>تمرین‌محور با لابراتوار</dd></div>
+  </dl>
+  <a class="hd-ds-camp-link" href="/camps/cloud-infra-management/">مشاهده جزئیات</a>
+ </div>
+</article>
+
+       
+        
+<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+ <a class="hd-ds-camp-media" href="/camps/user-research/" aria-label="کمپ کاربرپژوهی"><picture><source type="image/avif" srcset="/img/campcards/user-research_hu_88323c60072a0f61.avif 360w, /img/campcards/user-research_hu_d8ccac53b33fd738.avif 480w, /img/campcards/user-research_hu_83888f8e2e8d3d40.avif 720w, /img/campcards/user-research_hu_857323a1a5e7d61b.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/user-research_hu_1c3c45058cb7f05f.webp 360w, /img/campcards/user-research_hu_a845f4604bce4922.webp 480w, /img/campcards/user-research_hu_522a7c03e4fb2aa2.webp 720w, /img/campcards/user-research_hu_822852dc70fabf89.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/user-research_hu_bd3636d3890850b1.jpg" alt="نشان تصویری کمپ کاربرپژوهی وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+ <div class="hd-ds-camp-body">
+  <div class="hd-ds-camp-top">
+   <span>مدرسه دیزاین محصول وی‌کمپ</span>
+   <span class="hd-ds-camp-status" data-status="coming-soon">به‌زودی</span>
+  </div>
+  <h3><a href="/camps/user-research/">کمپ کاربرپژوهی</a></h3>
+  <p>کمپ پیشرفته برای عمیق‌تر شدن در پژوهش کاربر، مصاحبه، تست کاربردپذیری و تبدیل داده‌های کیفی و کمی به تصمیم‌های محصول.</p>
+  <dl class="hd-ds-camp-facts">
+   <div><dt>وضعیت</dt><dd>به‌زودی</dd></div><div><dt>سطح</dt><dd>پیشرفته</dd></div><div><dt>پیش‌نیاز</dt><dd>تجربه UX یا دیزاین محصول</dd></div>
+  </dl>
+  <a class="hd-ds-camp-link" href="/camps/user-research/">مشاهده جزئیات</a>
+ </div>
+</article>
+
+       
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-index-section hd-index-story" aria-labelledby="home-story-title">
+     <div class="hd-container">
+      <div class="hd-index-story-grid">
+       <div class="hd-index-story-copy" data-hd-animate="fade-up">
+        <p class="hd-ds-eyebrow">مزیت وی‌کمپ</p>
+        <h2 id="home-story-title">ما فقط نقطه شروع نیستیم؛ همراه مسیر یادگیری هستیم.</h2>
+        <p>
+         یادگیری جدی به مسیر، تمرین، بازخورد و سند قابل ارائه نیاز دارد. وی‌کمپ این اجزا را در قالب کمپ‌های تخصصی کنار هم می‌گذارد تا خروجی یادگیری شما قابل دیدن، قابل دفاع و قابل ادامه باشد.
+        </p>
+       </div>
+       <div class="hd-index-value-list">
+        <article data-hd-animate="fade-in-scale">
+         <span>۱</span>
+         <h3>عمق هدایت‌شده</h3>
+         <p>مسیر هر کمپ با نقشه راه، تمرین و همراهی مدرس و منتور پیش می‌رود.</p>
+        </article>
+        <article data-hd-animate="fade-in-scale">
+         <span>۲</span>
+         <h3>کار واقعی</h3>
+         <p>تمرکز روی پروژه و تصمیم‌های عملی است، نه مصرف منفعل محتوای آموزشی.</p>
+        </article>
+        <article data-hd-animate="fade-in-scale">
+         <span>۳</span>
+         <h3>اثبات مهارت</h3>
+         <p>پروژه، ارائه و گواهی وی‌کمپ کنار هم نشانه‌ای حرفه‌ای از مهارت شما می‌سازند.</p>
+        </article>
+       </div>
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-index-section hd-index-method" id="method" aria-labelledby="home-method-title">
+     <div class="hd-container">
+      <div class="hd-index-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">روش یادگیری</p>
+       <h2 id="home-method-title">از انتخاب مسیر تا ارائه خروجی.</h2>
+       <p>ساختار وی‌کمپ برای کاهش ابهام طراحی شده است: بدانید کجا هستید، چه می‌سازید و چطور پیشرفت‌تان دیده می‌شود.</p>
+      </div>
+      <ol class="hd-index-method-rail">
+       <li data-hd-animate="fade-in-scale">
+        <span>۱</span>
+        <h3>انتخاب مسیر</h3>
+        <p>کمپ را بر اساس هدف، سطح و حوزه کاری انتخاب می‌کنید.</p>
+       </li>
+       <li data-hd-animate="fade-in-scale">
+        <span>۲</span>
+        <h3>یادگیری زنده</h3>
+        <p>جلسه، تمرین و گفت‌وگوی مستقیم جایگزین یادگیری تنها می‌شود.</p>
+       </li>
+       <li data-hd-animate="fade-in-scale">
+        <span>۳</span>
+        <h3>تمرین و پروژه</h3>
+        <p>هر مسیر به خروجی عملی و تصمیم‌های قابل توضیح متصل است.</p>
+       </li>
+       <li data-hd-animate="fade-in-scale">
+        <span>۴</span>
+        <h3>بازخورد منتور</h3>
+        <p>تصمیم‌ها، مسیر اجرا و ارائه پروژه با بازخورد اصلاح می‌شود.</p>
+       </li>
+       <li data-hd-animate="fade-in-scale">
+        <span>۵</span>
+        <h3>ارائه و گواهی</h3>
+        <p>مسیر با پروژه نهایی و گواهی قابل استعلام تکمیل می‌شود.</p>
+       </li>
+      </ol>
+     </div>
+    </section>
+
+    <section class="hd-index-proof hd-ds-on-dark" id="proof" aria-labelledby="home-proof-title">
+     <div class="hd-container">
+      <div class="hd-index-proof-grid">
+       <div class="hd-index-proof-copy" data-hd-animate="fade-up">
+        <p class="hd-ds-eyebrow">اعتماد و خروجی</p>
+        <h2 id="home-proof-title">هر ادعا باید به یک نشانه قابل مشاهده وصل باشد.</h2>
+        <p>
+         هر چیزی که این‌جا می‌بینید — پروژه، منتور، گواهی، جامعه یادگیری — همان چیزی است که در کمپ تجربه می‌کنید.
+        </p>
+       </div>
+       <div class="hd-index-proof-metrics" data-hd-animate="fade-in-scale">
+        <article>
+         <strong>۴ مسیر</strong>
+         <span>AI، محصول، کلود و پژوهش کاربر</span>
+        </article>
+        <article>
+         <strong>پروژه</strong>
+         <span>خروجی قابل ارائه در پایان مسیر</span>
+        </article>
+        <article>
+         <strong>گواهی</strong>
+         <span>متصل به معیار آموزشی و پروژه</span>
+        </article>
+        <article>
+         <strong>منتور</strong>
+         <span>بازخورد انسانی در مسیر یادگیری</span>
+        </article>
+       </div>
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-index-section hd-index-mentors" aria-labelledby="home-mentors-title">
+     <div class="hd-container">
+      <div class="hd-index-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">آدم‌های پشت مسیر</p>
+       <h2 id="home-mentors-title">کنار مدرس‌ها و منتورهای صنعت یاد می‌گیرید.</h2>
+      </div>
+      <div class="hd-ds-people-grid" data-hd-animate="fade-up">
+       
+        
+<a class="hd-ds-person-card" href="/camps/agentic-ai/">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_cc3fc5b461776bc2.avif 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_9eefb213cbd68edd.avif 230w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_da0e21a7a53d0b15.webp 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_a560437ac8dec748.webp 230w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_ff534fba96119a23.jpg" alt="مهدی بهاری" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>مهدی بهاری</strong>
+  <small>هوش مصنوعی و توسعه نرم‌افزار</small>
+ </div>
+</a>
+
+       
+        
+<a class="hd-ds-person-card" href="/camps/product-design/">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_b1fa61c49a4fa355.avif 200w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_e9f0e547ade3df1b.avif 360w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_a730f5fd447dd302.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c354aac9ac28c0fa.webp 200w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_8f6c80fd53d7eb72.webp 360w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c0891c0346970974.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c3572260dd07fa63.jpg" alt="آرمین عباسی" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>آرمین عباسی</strong>
+  <small>مشاور دیزاین محصول</small>
+ </div>
+</a>
+
+       
+        
+<a class="hd-ds-person-card" href="/camps/cloud-infra-management/">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_6810a3fee8e03111.avif 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_34b315de96d2344e.avif 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_8e2283f48e81ba7a.webp 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_b482eeb8b6473b8f.webp 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_a2c1367f3abd1be2.jpg" alt="مرتضی فرخنده‌پور" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>مرتضی فرخنده‌پور</strong>
+  <small>رایانش ابری و OpenStack</small>
+ </div>
+</a>
+
+       
+        
+<a class="hd-ds-person-card" href="/camps/user-research/">
+ <picture><source type="image/avif" srcset="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_3dc2a0da03afd4ea.avif 200w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_41684ec47b607ef8.avif 360w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_c4c0ea2b8f05ff00.avif 381w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_89814a0cbb3e0062.webp 200w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_1275be3183e381b8.webp 360w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_fe9550464e310dcb.webp 381w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_4d8ae295a8e3c810.jpg" alt="فاطمه چهرگان" width="320" height="320" loading="lazy" decoding="async"></picture>
+ <div>
+  <strong>فاطمه چهرگان</strong>
+  <small>پژوهش تجربه کاربر</small>
+ </div>
+</a>
+
+       
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-index-section hd-index-certificate" aria-labelledby="home-certificate-title">
+     <div class="hd-container">
+      <div class="hd-index-cert-grid">
+       <div class="hd-index-cert-card" data-hd-animate="fade-in-scale">
+        <div class="hd-index-cert-chrome" aria-hidden="true">
+         <span></span>
+         <span></span>
+         <span></span>
+         <em>wecamp.pro/cert/...</em>
+        </div>
+        <div class="hd-index-cert-body">
+         <picture><source type="image/avif" srcset="/img/brand/logo-wecamp-mark-blue_hu_e788ee2c30f8300e.avif 1x, /img/brand/logo-wecamp-mark-blue_hu_18f1a4daf53895a1.avif 2x, /img/brand/logo-wecamp-mark-blue_hu_8ba7b3495a5b86c8.avif 3x"><source type="image/webp" srcset="/img/brand/logo-wecamp-mark-blue_hu_6ca595087f9bf06b.webp 1x, /img/brand/logo-wecamp-mark-blue_hu_d588ba8e48718cb0.webp 2x, /img/brand/logo-wecamp-mark-blue_hu_e14aee9748511ae7.webp 3x"><img src="/img/brand/logo-wecamp-mark-blue_hu_dd8365a0f44c042a.png" alt="" width="309" height="318" loading="lazy" decoding="async"></picture>
+         <p>Verified WECAMP Certificate</p>
+         <h3>گواهی قابل اعتبارسنجی</h3>
+         <dl>
+          <div>
+           <dt>وابسته به</dt>
+           <dd>پروژه نهایی</dd>
+          </div>
+          <div>
+           <dt>کاربرد</dt>
+           <dd>پورتفولیو و رزومه</dd>
+          </div>
+         </dl>
+        </div>
+       </div>
+       <div class="hd-index-cert-copy" data-hd-animate="fade-up">
+        <p class="hd-ds-eyebrow">از یادگیری تا اثبات مهارت</p>
+        <h2 id="home-certificate-title">خروجی شما باید قابل ارائه باشد.</h2>
+        <p>
+         در کمپ‌های وی‌کمپ، گواهی پایان مسیر از پروژه جدا نیست. هدف این است که یادگیری به چیزی تبدیل شود که بتوانید آن را توضیح دهید، نشان دهید و در مسیر حرفه‌ای خود ادامه دهید.
+        </p>
+        
+        <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps">مشاهده کمپ‌ها</a>
+       </div>
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-index-section hd-index-events" aria-labelledby="home-events-title">
+     <div class="hd-container">
+      <div class="hd-index-section-head" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">شروع کم‌ریسک‌تر</p>
+       <h2 id="home-events-title">اگر هنوز آماده کمپ نیستید، از رویدادها شروع کنید.</h2>
+      </div>
+      <div class="hd-ds-event-grid" role="list">
+       
+       <article class="hd-ds-event-card" data-hd-animate="fade-in-scale" role="listitem">
+        <a class="hd-ds-event-media" href="/events/ai/" aria-label="مسیر شغلی هوش مصنوعی">
+         <picture><source type="image/avif" srcset="/img/events/1404/agentic-ai-2_hu_c1caa6a6a14f467.avif 240w, /img/events/1404/agentic-ai-2_hu_fcc7c1fdb03c37ab.avif 480w, /img/events/1404/agentic-ai-2_hu_1d87b7eba09f5a17.avif 720w, /img/events/1404/agentic-ai-2_hu_81e3581c884e3496.avif 992w" sizes="200px"><source type="image/webp" srcset="/img/events/1404/agentic-ai-2_hu_b6c743357394e7c7.webp 240w, /img/events/1404/agentic-ai-2_hu_4312ad25172df089.webp 480w, /img/events/1404/agentic-ai-2_hu_c6c118110fe8fc2e.webp 720w, /img/events/1404/agentic-ai-2_hu_87198017ea9daceb.webp 992w" sizes="200px"><img src="/img/events/1404/agentic-ai-2_hu_2c97bb18d2d40c41.jpg" alt="رویداد مسیر شغلی هوش مصنوعی" width="992" height="640" loading="lazy" decoding="async"></picture>
+        </a>
+        <div class="hd-ds-event-body">
+         <span class="hd-ds-event-status" data-status="held">برگزار شده</span>
+         <h3><a href="/events/ai/">مسیر شغلی هوش مصنوعی</a></h3>
+         <p>نقش‌های پرتقاضای AI و مهارت‌هایی که برای ورود به این بازار نیاز دارید.</p>
+         <a class="hd-ds-event-action" href="/events/ai/">جزئیات رویداد</a>
+        </div>
+       </article>
+       <article class="hd-ds-event-card" data-hd-animate="fade-in-scale" role="listitem">
+        <a class="hd-ds-event-media" href="/events/" aria-label="وبینار عامل‌های هوش مصنوعی">
+         <picture><source type="image/avif" srcset="/img/events/1404/agentic-ai_hu_c54ea2c66da1d49c.avif 240w, /img/events/1404/agentic-ai_hu_cc35192f27e4a98a.avif 480w, /img/events/1404/agentic-ai_hu_7eb56721cc6c12d2.avif 720w, /img/events/1404/agentic-ai_hu_e9ca93909d2c1d26.avif 992w" sizes="200px"><source type="image/webp" srcset="/img/events/1404/agentic-ai_hu_af14e0e880ddcffb.webp 240w, /img/events/1404/agentic-ai_hu_88149a0a631d7769.webp 480w, /img/events/1404/agentic-ai_hu_c1f9d2f420699a9b.webp 720w, /img/events/1404/agentic-ai_hu_d72bf8ccde60f48b.webp 992w" sizes="200px"><img src="/img/events/1404/agentic-ai_hu_9bf24bb9a540f0f7.jpg" alt="وبینار عامل‌های هوش مصنوعی" width="992" height="640" loading="lazy" decoding="async"></picture>
+        </a>
+        <div class="hd-ds-event-body">
+         <span class="hd-ds-event-status" data-status="video">ویدیو</span>
+         <h3><a href="/events/">وبینار عامل‌های هوش مصنوعی</a></h3>
+         <p>از مفهوم تا ساختارهای پیشرفته Agentic AI و افق سیستم‌های خودمختار.</p>
+         <a class="hd-ds-event-action" href="/events/">مشاهده در صفحه رویدادها</a>
+        </div>
+       </article>
+      </div>
+      <div class="hd-ds-actions hd-ds-actions--follow" data-hd-animate="fade-up">
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="/events/">همه رویدادها</a>
+      </div>
+     </div>
+    </section>
+
+    <section class="hd-index-final" aria-labelledby="home-final-title">
+     <div class="hd-container">
+      <div class="hd-index-final-box hd-ds-on-dark" data-hd-animate="fade-up">
+       <p class="hd-ds-kicker">تصمیم بعدی</p>
+       <h2 id="home-final-title">مسیر یادگیری بعدی‌تان را انتخاب کنید.</h2>
+       <p>کمپ‌های وی‌کمپ را ببینید و برای انتخاب مسیر مناسب با تیم وی‌کمپ صحبت کنید.</p>
+       <div class="hd-ds-actions">
+        
+        <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps/">مشاهده کمپ‌ها</a>
+        <a class="hd-ds-cta hd-ds-cta-secondary" href="/request">درخواست مشاوره</a>
+       </div>
+      </div>
+     </div>
+    </section>
    </main>
    <footer data-hd-animate="fade-up" class="hd-footer">
     <div class="hd-container hd-clearfix">
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -815,6 +757,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -822,23 +765,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -886,14 +824,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -919,7 +870,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -947,7 +900,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -978,6 +931,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 

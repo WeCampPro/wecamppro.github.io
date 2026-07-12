@@ -1,234 +1,175 @@
 /* ==========================================================================
-   hd-tokens.css — WECAMP HD design tokens
+   hd-tokens.css — WECAMP design tokens (single source of truth)
    --------------------------------------------------------------------------
-   Standalone design-token layer for the Webflow → HD migration (task W0.2).
+   The one authoritative token file for the site. Brand color, radius, shadow
+   and transition values live ONLY here, under the `--wc-*` namespace; the
+   per-page namespaces (--hd-index-*, --hd-camp-*, --hd-ds-*, --hd-footer-*)
+   are thin var(--wc-…) aliases declared in their own files. Structural tokens
+   (type scale, spacing, layout, nav geometry, animation) keep the historical
+   `--hd-*` prefix and are consumed by hd.css.
 
-   Structure reused from the WECORE hd-tokens.css; VALUES are WECAMP's brand,
-   extracted from the legacy Webflow export (`static/css/academy.css`) :root +
-   responsive blocks and verified byte-for-byte against the rendered site.
-   WECAMP is Persian / RTL-first, so the body font token is Vazirmatn-first.
-
-   This file has ZERO dependency on Webflow CSS. It only DEFINES --hd-* custom
-   properties; it consumes nothing and styles no selectors. At W0.2 it is linked
-   ahead of academy.css but UNCONSUMED — rendering is unchanged. The hand-authored
-   hd.css consumes these tokens via var() from W1.1 onward (no framework/build step).
-
-   Source of truth: AI/tasks/inventory.md (W0.1) + academy.css :root (line 2052)
-   and its responsive @media blocks. file:line refs are noted per token.
+   This file only DEFINES custom properties; it consumes nothing and styles
+   no selectors. Persian / RTL-first: the body font stack is Vazirmatn-first.
    ========================================================================== */
 
 :root {
-  /* ----- Brand colors --------------------------------------------------- */
-  /* Ported from academy.css :root (line 2052-2064) per the
-     NAMING_CONVENTION mapping table, then migrated to WECAMP's cobalt brand. */
-  --hd-color-accent: #0b2f9f;            /* brand cobalt */
-  --hd-color-accent-2: #2c23d2;          /* was --secondary-2  (academy.css:2056) — link/CTA hover */
-  --hd-color-title: #0b0b2c;             /* was --titles       (academy.css:2054) */
-  --hd-color-body: #69697b;              /* was --paragraphs   (academy.css:2053) */
-  --hd-color-surface: #f5f7ff;           /* was --secondary-1  (academy.css:2061) */
-  --hd-color-icon-border: #202058;       /* was --icons-border (academy.css:2062) */
+  /* ----- Brand palette --------------------------------------------------- */
+  --wc-ink: #101010;            /* rich-black text — never pure black */
+  --wc-paper: #f2f2f0;          /* warm off-white page/band background */
+  --wc-cobalt: #0b2f9f;         /* dominant brand blue / dark surfaces */
+  --wc-cobalt-deep: #06184e;    /* cobalt gradient floor + cobalt-fill hover */
+  --wc-accent: #ff6a2b;         /* warm orange — SINGLE primary CTA per view + headline stat numbers ONLY; on ink/cobalt surfaces */
+  --wc-accent-deep: #e85719;    /* accent hover */
+  --wc-accent-on-light: #e85719;/* accent TEXT on paper/tinted-light surfaces — 3.09:1 on the stat cell (large-text AA); same hue, one step deeper (uiux-7.1) */
+  --wc-accent-ink: #2a0f00;     /* AA-legible text on accent fill */
+  --wc-muted: #62646f;          /* secondary text on light surfaces */
+  --wc-cyan: #31c8d9;           /* functional status/proof accent, sparingly */
+  --wc-green: #19ad69;          /* functional status/proof accent, sparingly */
+  --wc-green-ink: #05281a;      /* AA-legible text on solid green fill (dark-band status pill) — 5.45:1 (uiux-7.1) */
+  --wc-white: #ffffff;          /* text/icons on cobalt + white fills */
 
-  /* ----- Neutral scale (100 = lightest … 500 = darkest) ----------------- */
-  /* academy.css :root literal for --neutral-100 is `white`; emitted as #fff
-     here per the NAMING_CONVENTION table (identical render). */
-  --hd-color-neutral-100: #fff;          /* was --neutral-100  (academy.css:2057, literal `white`) */
-  --hd-color-neutral-200: #fafafa;       /* was --neutral-200  (academy.css:2060) */
-  --hd-color-neutral-300: #ececf4;       /* was --neutral-300  (academy.css:2059) */
-  --hd-color-neutral-400: #cfcfdb;       /* was --neutral-400  (academy.css:2058) */
-  --hd-color-neutral-500: #4e4e65;       /* was --neutral-500  (academy.css:2063) */
+  /* ----- Geometry --------------------------------------------------------- */
+  --wc-radius: 8px;             /* the ONE corner radius for controls, cards, panels */
+  --wc-radius-pill: 999px;      /* pills, chips, round avatars */
 
-  /* ----- Typography ----------------------------------------------------- */
-  /* RTL-first: Persian Vazirmatn leads, Noto Naskh Arabic backstops Arabic
-     glyphs, Jakarta Display covers Latin (academy.css body = Jakarta Display,
-     rtl.css:43 body = Vazirmatn, Noto Naskh Arabic). Localized in W0.3. */
+  /* ----- Shadows (one ink-tinted voice) ------------------------------------ */
+  --wc-shadow-card: 0 24px 60px rgba(16, 16, 16, 0.07);        /* resting card */
+  --wc-shadow-card-hover: 0 8px 20px rgba(16, 16, 16, 0.08);   /* pressed/hover card */
+  --wc-shadow-pop: 0 24px 60px rgba(0, 0, 0, 0.14);            /* mega-menu / drawer */
+  --wc-shadow-button-hover: 0 4px 10px rgba(16, 16, 16, 0.15); /* button lift */
+
+  /* ----- Transitions ------------------------------------------------------- */
+  --wc-transition-fast: 0.2s ease;
+  --wc-transition: 0.35s ease;
+  /* Compatibility values for the FROZEN certificate surface (/cert/*) only;
+     do not use elsewhere. Removed when the cert stylesheet is re-issued.
+     --hd-transition-duration-fast is consumed by certificates.css itself;
+     --wc-cert-frozen-corner keeps the issued cert buttons' corner as-shipped
+     (certificates.css overrides button colors but not radius). */
+  --hd-transition-duration-fast: 0.3s;
+  --wc-cert-frozen-corner: 18px;
+
+  /* ----- Hairlines --------------------------------------------------------- */
+  /* Translucent tints, shared with the page namespaces (render correctly on
+     paper, white and — near-invisibly — on cobalt, which the stat/fact strips
+     rely on). Opaque equivalents below are exact composites over their host
+     background for surfaces that must not stack tints. */
+  --wc-line: rgba(11, 47, 159, 0.16);        /* cobalt hairline on light surfaces */
+  --wc-line-dark: rgba(242, 242, 240, 0.18); /* paper hairline on cobalt/dark bands */
+  --wc-line-strong: #7583a6;                 /* form-control boundary on light surfaces — ≥3:1 on white AND paper (SC 1.4.11, uiux-7.1) */
+
+  /* ----- Opaque surfaces (no rgba tint stacking) --------------------------- */
+  --wc-surface-1: #ffffff;      /* card on paper */
+  --wc-surface-2: #e9e9e5;      /* recessed panel on paper */
+  --wc-line-on-paper: #cdd3e3;  /* = rgba(11,47,159,.16) composited over #f2f2f0 */
+  --wc-line-on-cobalt: #3552ae; /* = rgba(242,242,240,.18) composited over #0b2f9f */
+  --wc-chip-on-paper: #e0e2ea;  /* = rgba(11,47,159,.08) composited over #f2f2f0 */
+  --wc-chip-on-cobalt: #2242a7; /* = rgba(242,242,240,.10) composited over #0b2f9f */
+  --wc-chip-on-white: #eceff7;  /* = 8% cobalt composited over #ffffff (menu hover/special fills) */
+  --wc-stat-cell: #ebedf4;      /* = rgba(255,255,255,.6) over --wc-line-on-paper — opaque stat-band cell, keeps the
+                                   accent-on-light stat numbers at a deterministic 3.09:1 on EVERY host band (uiux-7.1) */
+
+  /* ----- Typography -------------------------------------------------------- */
+  /* RTL-first: Vazirmatn leads, Noto Naskh Arabic backstops Arabic glyphs,
+     Jakarta Display covers Latin-only contexts. All fonts local. */
   --hd-font-body: Vazirmatn, "Noto Naskh Arabic", "Jakarta Display", sans-serif;
   --hd-font-heading: Vazirmatn, "Noto Naskh Arabic", "Jakarta Display", sans-serif;
-  --hd-font-latin: "Jakarta Display", sans-serif;  /* latin-only contexts */
+  --hd-font-latin: "Jakarta Display", sans-serif;
 
-  /* Base body type (academy.css:3232-3238). */
-  --hd-text-base: 18px;                  /* body font-size      */
-  --hd-line-body: 1.667;                 /* body line-height (1.667em) */
-  --hd-weight-regular: 400;              /* body font-weight    */
-  --hd-weight-medium: 500;               /* buttons / medium UI labels (W1.2) */
-  --hd-weight-heading: 500;              /* h1-h6 font-weight   */
-  --hd-weight-bold: 700;                 /* form labels (academy.css:505 label) (W1.3) */
+  /* Base body type. */
+  --hd-text-base: 18px;                  /* body font-size */
+  --hd-line-body: 1.667;                 /* body line-height */
+  --hd-weight-regular: 400;              /* body */
+  --hd-weight-medium: 500;               /* buttons / medium UI labels */
+  --hd-weight-heading: 500;              /* h1-h6 */
+  --hd-weight-bold: 700;                 /* form labels */
 
-  /* Heading scale — desktop (academy.css:3240-3296). size + line-height. */
-  --hd-h1-size: 60px;     --hd-h1-line: 1.133;   /* h1 (academy.css:3244) */
-  --hd-h2-size: 40px;     --hd-h2-line: 1.2;     /* h2 (academy.css:3254) */
-  --hd-h3-size: 25px;     --hd-h3-line: 1.36;    /* h3 (academy.css:3264) */
-  --hd-h4-size: 23px;     --hd-h4-line: 1.36;    /* h4 (academy.css:3274) */
-  --hd-h5-size: 18px;     --hd-h5-line: 1.222;   /* h5 (academy.css:3283) */
-  --hd-h6-size: 16px;     --hd-h6-line: 1.25;    /* h6 (academy.css:3293) — no
-     responsive step in academy.css (h6 size is fixed at 16px across 991/767/479);
-     the absence of @media overrides below is intentional parity, not an omission. */
+  /* Heading scale — desktop; responsive steps in the @media blocks below.
+     (h6 has no responsive step by design.) */
+  --hd-h1-size: 60px;     --hd-h1-line: 1.133;
+  --hd-h2-size: 40px;     --hd-h2-line: 1.2;
+  --hd-h3-size: 25px;     --hd-h3-line: 1.36;
+  --hd-h4-size: 23px;     --hd-h4-line: 1.36;
+  --hd-h5-size: 18px;     --hd-h5-line: 1.222;
+  --hd-h6-size: 16px;     --hd-h6-line: 1.25;
 
-  /* Hero display heading .special-2 — 74/700/1.115/.01em (academy.css:7025-7030).
-     Responsive ramp 74 → 46 (@767) → 37 (@479); added in W1.1 (W0.2 omitted it). */
-  --hd-special-size: 74px;     --hd-special-line: 1.115;  /* .special-2 (academy.css:7025) */
+  /* Hero display heading (.hd-special) — ramps 74 → 46 (@767) → 37 (@479). */
+  --hd-special-size: 74px;     --hd-special-line: 1.115;
 
-  /* ----- Layout widths -------------------------------------------------- */
-  /* Primary content container .container-default-1209px (academy.css:4221). */
-  --hd-width-container: 1209px;          /* max-width (academy.css:4222)    */
-  --hd-width-container-wide: 1320px;     /* @min-1440 override (academy.css:8231) */
-  --hd-gutter: 24px;                     /* container padding-inline (academy.css:4225-4226) */
+  /* ----- Layout widths ------------------------------------------------------ */
+  --hd-width-container: 1209px;          /* primary content container */
+  --hd-width-container-wide: 1320px;     /* ≥1440px override */
+  --hd-gutter: 24px;                     /* container padding-inline (16px @479) */
 
-  /* ----- Section vertical rhythm ---------------------------------------- */
-  /* Base .section padding-block (academy.css:4771-4772). Responsive ramp in
-     the @media blocks below (@991 80px, @479 50px). */
-  --hd-section-pad: 140px;
+  /* ----- Section vertical rhythm -------------------------------------------- */
+  --hd-section-pad: 140px;               /* 80 @991, 50 @479 (below) */
 
-  /* ----- Radius scale --------------------------------------------------- */
-  /* Frequency-ranked from academy.css border-radius usage (3px ×25, 4px ×11,
-     18px ×9, 24px ×18, 100px pills ×14). */
-  --hd-radius: 3px;                      /* default / small controls */
-  --hd-radius-sm: 4px;
-  --hd-radius-md: 18px;
-  --hd-radius-lg: 24px;                  /* cards, blockquote */
-  --hd-radius-pill: 100px;               /* pill buttons / chips */
-  --hd-radius-circle: 50%;
-
-  /* ----- Spacing scale -------------------------------------------------- */
-  /* WECAMP's Webflow export uses bespoke per-component spacers (.spacer.hero,
-     .spacer.faq …) rather than a systematic ramp, so this is a clean px scale
-     for the W1.1 utility layer, anchored to the increments those spacers and
-     the grid gaps (16px grid-gap, academy.css:2067) actually use. */
+  /* ----- Spacing scale ------------------------------------------------------- */
   --hd-space-xxs: 4px;
   --hd-space-xs: 8px;
-  --hd-space-sm: 16px;                   /* grid gap (academy.css:2067-2068) */
+  --hd-space-sm: 16px;                   /* default grid gap */
   --hd-space-md: 24px;                   /* = container gutter */
   --hd-space-lg: 32px;
   --hd-space-xl: 48px;
   --hd-space-xxl: 64px;
 
-  /* ----- Buttons (W1.2) -------------------------------------------------
-     Sizing + typography for the .hd-button system, extracted byte-for-byte
-     from academy.css .button-primary (4337-4350), .button-secondary
-     (6621-6633) and the .large modifier (4402-4406), RECONCILED with the
-     rtl.css overrides that win on the live Persian site (rtl.css loads AFTER
-     academy): radius 18px (rtl.css:127, NOT academy's 4px) and the per-variant
-     letter-spacing (rtl.css:123/225, NOT academy's .08em). These are the values
-     the site renders today; folding them into the tokens keeps the look
-     identical once W5 drops the Webflow classes the rtl rules target.
-     W0.2 created the COLOR / radius / transition tokens these compose with
-     (--hd-color-accent fill, --hd-color-accent-2 = #2c23d2 primary :hover,
-     --hd-radius-md = 18px corner, --hd-transition-duration* for .3s/.35s);
-     only the button-specific sizing/typography below is added here, since W0.2
-     omitted it (same pattern as W1.1's --hd-special-* tokens). The hover-shadow
-     tint #4a3aff26 is the exact literal academy uses (academy.css:4356) — it is
-     NOT the brand accent, so it lives here as a token rather than in the rules. */
-  --hd-button-pad-y: 18px;               /* .button-primary padding-block  (academy.css:4345) */
-  --hd-button-pad-x: 24px;               /* .button-primary padding-inline (academy.css:4345) */
-  --hd-button-pad-y-lg: 22px;            /* .large padding-block  (academy.css:4404) */
-  --hd-button-pad-x-lg: 32px;            /* .large padding-inline (academy.css:4404) */
-  --hd-button-font: 16px;                /* base font-size   (academy.css:4346) */
-  --hd-button-line: 18px;                /* base line-height (academy.css:4348) */
-  --hd-button-font-lg: 18px;             /* .large font-size   (academy.css:4405) — ramps →16 @479 */
-  --hd-button-line-lg: 20px;             /* .large line-height (academy.css:4406) */
-  --hd-button-tracking: .02em;           /* .button-secondary live letter-spacing (rtl.css:225 overrides academy .08em). Primary is 0 (rtl.css:123) — a constant in the base rule. */
-  --hd-button-border: 1px;               /* .button-secondary border width (academy.css:6622) */
-  --hd-button-group-gap: 27px;           /* .spacer._2-buttons hero gap (academy.css:4265) */
-  --hd-button-hover-lift: -2px;          /* :hover translate3d Y (academy.css:4355 / 6639) */
-  --hd-button-hover-shadow: 0 4px 10px #4a3aff26; /* :hover box-shadow (academy.css:4356 / 6640) */
-  --hd-button-focus-width: 2px;          /* NEW (W1.2): :focus-visible outline — Webflow shipped none */
-  --hd-button-focus-offset: 2px;         /* NEW (W1.2): :focus-visible offset */
+  /* ----- Buttons — sizing & typography for the .hd-button system ----------- */
+  --hd-button-pad-y: 18px;
+  --hd-button-pad-x: 24px;
+  --hd-button-pad-y-lg: 22px;            /* .hd-button-lg */
+  --hd-button-pad-x-lg: 32px;
+  --hd-button-font: 16px;
+  --hd-button-line: 18px;
+  --hd-button-font-lg: 18px;             /* ramps → 16 @479 */
+  --hd-button-line-lg: 20px;
+  --hd-button-tracking: .02em;           /* secondary-variant letter-spacing; primary is 0 */
+  --hd-button-border: 1px;               /* secondary outline width */
+  --hd-button-group-gap: 27px;           /* .hd-button-group row gap */
+  --hd-button-hover-lift: -2px;          /* :hover translate3d Y */
+  --hd-button-focus-width: 2px;          /* :focus-visible outline */
+  --hd-button-focus-offset: 2px;
 
-  /* ----- Forms (W1.3) ---------------------------------------------------
-     Control sizing/typography for the .hd-input / .hd-select / .hd-textarea /
-     .hd-label system, extracted byte-for-byte from academy.css .input
-     (6283-6313), .select (3752-3780) and the .input.checkout combo (6369-6372),
-     RECONCILED with rtl.css (which wins live): the INPUT corner is 18px
-     (rtl.css:126, not academy's 4px) and the textarea is defined entirely in
-     rtl.css:696. The SELECT corner stays 4px (--hd-radius-sm) — rtl.css:126
-     rounds .input/.button but NOT .select; that asymmetry is reproduced for
-     parity (a candidate W5 cleanup). Colors reuse the W0.2 neutral/body/accent
-     tokens; only the form-specific lengths and the success/error/required reds
-     (academy.css:491/497/7763 literals) are new here. Inputs are 18px (= body
-     base, --hd-text-base) so they clear the 16px iOS-zoom floor with no @media. */
-  --hd-input-height: 70px;          /* .input height (academy.css:6288) */
-  --hd-input-pad: 20px;             /* .input padding (academy.css:6290) */
-  --hd-input-gap: 20px;             /* .input.checkout margin-bottom (academy.css:6371) */
-  --hd-input-line: 1.1;             /* .input line-height 1.1em (academy.css:6292) */
-  --hd-input-border: 1px;           /* .input border width (academy.css:6284) */
-  --hd-placeholder-line: 1.5;       /* .input::placeholder line-height 1.5em (academy.css:6310) */
-  --hd-select-min-height: 60px;     /* .select min-height (academy.css:3758) */
-  --hd-select-line: 1.111;          /* .select line-height 1.111em (academy.css:3762) */
-  --hd-textarea-min-height: 100px;  /* .textarea min-height (rtl.css:698) */
-  --hd-label-gap: 8px;              /* .w-commerce-commercecheckoutlabel margin-bottom (academy.css:2500) */
-  --hd-select-chevron-size: 16px;   /* NEW (W1.3): custom dropdown chevron glyph box */
-  --hd-select-chevron-inset: 20px;  /* NEW: chevron distance from the inline-start edge (= .select inline padding) */
-  --hd-select-chevron-pad: 48px;    /* NEW: inline-start padding that clears the chevron */
-  --hd-color-error: #ff1c1c;        /* .color-red required asterisk / error accent (academy.css:7763) */
-  --hd-form-success-bg: #ddd;       /* .w-form-done background (academy.css:491) */
-  --hd-form-success-pad: 20px;      /* .w-form-done padding (academy.css:492) */
-  --hd-form-error-bg: #ffdede;      /* .w-form-fail background (academy.css:497) */
-  --hd-form-error-pad: 10px;        /* .w-form-fail padding (academy.css:499) */
-  --hd-form-error-gap: 10px;        /* .w-form-fail margin-top (academy.css:498) */
-  --hd-form-block-radius: 8px;      /* .block-header/.block-content corner (academy.css:7681/7691) */
+  /* ----- Forms — control sizing for .hd-input/.hd-select/.hd-textarea ------- */
+  /* Inputs are 18px (= body base) so they clear the 16px iOS-zoom floor. */
+  --hd-input-height: 70px;
+  --hd-input-pad: 20px;
+  --hd-input-gap: 20px;             /* field margin-bottom rhythm */
+  --hd-input-line: 1.1;
+  --hd-input-border: 1px;
+  --hd-placeholder-line: 1.5;
+  --hd-select-min-height: 60px;
+  --hd-select-line: 1.111;
+  --hd-textarea-min-height: 100px;
+  --hd-label-gap: 8px;
+  --hd-select-chevron-size: 16px;   /* custom dropdown chevron glyph box */
+  --hd-select-chevron-inset: 20px;  /* chevron distance from the inline-start edge */
+  --hd-select-chevron-pad: 48px;    /* inline-start padding that clears the chevron */
+  --hd-color-error: #c21d1d;        /* functional: required asterisk / error text / invalid border —
+                                       ≥4.5:1 on the #ffdede wash, #fff9f9, paper and white (uiux-7.1; old bright red measured ~3.3:1) */
+  --hd-form-success-bg: #ddd;       /* functional: submit-success banner */
+  --hd-form-success-pad: 20px;
+  --hd-form-error-bg: #ffdede;      /* functional: submit-error banner */
+  --hd-form-error-pad: 10px;
+  --hd-form-error-gap: 10px;
 
-  /* ======================================================================
-     NEW TOKENS — not present in Webflow; added per W0.2 §3 & §5.
-     ====================================================================== */
+  /* ----- Z-index scale: dropdown < nav < modal ------------------------------- */
+  --hd-z-dropdown: 100;
+  --hd-z-nav: 1000;
+  --hd-z-modal: 2000;
 
-  /* Accent hover: legacy lifted-state blue retained separately from the primary
-     brand accent. (Distinct from --hd-color-accent-2, the darker link/CTA hover
-     the site already uses via a:hover, academy.css:3310.) */
-  --hd-color-accent-hover: #4a4aff;      /* NEW */
+  /* ----- Entrance animations (hd-animations.js + hd.css keyframes) ----------
+     Two reveal variants: fade-up (translateY) and fade-in-scale. Per-element
+     delays compose via the .hd-delay-* ladder in hd.css. */
+  --hd-fade-up-distance: 48px;
+  --hd-fade-scale: 0.97;
+  --hd-fade-duration: 700ms;
+  --hd-fade-easing: ease;
+  --hd-fade-stagger: 300ms;              /* common heading → content stagger */
 
-  /* White/black helpers used across components. */
-  --hd-color-white: #fff;                /* NEW */
-  --hd-color-black: #000;                /* NEW */
-
-  /* Transitions. Dominant Webflow transition is `color .35s`; transforms use
-     `.3s` (academy.css transition audit). */
-  --hd-transition-duration: 0.35s;       /* NEW (matches .35s color transitions) */
-  --hd-transition-duration-fast: 0.3s;   /* NEW (matches transform transitions) */
-  --hd-transition-easing: ease;          /* NEW (Webflow default) */
-  --hd-transition: var(--hd-transition-duration) var(--hd-transition-easing);
-
-  /* Elevation / shadows — real accent-tinted composites from academy.css. */
-  --hd-shadow-sm: 0 4px 8px #0b0b2c05;                          /* academy.css box-shadow */
-  --hd-shadow-md: 0 4px 8px #0b0b2c05, 0 10px 34px #0b2f9f0d;   /* academy.css composite */
-  --hd-shadow-lg: 0 16px 34px #0b2f9f1f, 0 14px 44px #0b0b2c2e; /* academy.css composite */
-  --hd-shadow-card: 0 20px 34px #0b0b2c0a, 0 4px 8px #0b0b2c05, 0 10px 34px #0b2f9f0d;       /* .card (academy.css:3405) */
-  --hd-shadow-card-hover: 0 5px 18px #0b0b2c0a, 0 1px 2px #0b0b2c05, 0 3px 15px #0b2f9f0d; /* .card:hover (academy.css:3410) */
-
-  /* Z-index scale: dropdown < nav < modal (cart wrapper ran at 1001). */
-  --hd-z-dropdown: 100;                  /* NEW */
-  --hd-z-nav: 1000;                      /* NEW */
-  --hd-z-modal: 2000;                    /* NEW */
-
-  /* ======================================================================
-     ENTRANCE ANIMATIONS — added per W0.2 §5. WECAMP has TWO IX2 entrance
-     variants (vs WECORE's single 24px fade-up); both captured here. Ground
-     truth: 188 inline `translate3d(0, 48px, 0);opacity:0` (fade-up) and 716
-     inline `scale3d(0.97, 0.97, 1);opacity:0` (fade-in-scale) — see
-     inventory.md §3. The inline template styles only set the INITIAL hide state;
-     the reveal timing lives in the archived IX2 action lists. Ground
-     truth: reveal steps run "easing":"ease","duration":700 (×31); the
-     pre-scroll hide state is "easing":"","duration":500. (NB: data-duration="1000"
-     in the templates is the sticky-nav interaction, NOT the fade entrances.)
-     Per-element delays/eager flags are finalized in W4.1 (animation-audit).
-     ====================================================================== */
-  --hd-fade-up-distance: 48px;           /* inline translate3d(0, 48px, 0) — fade-up variant */
-  --hd-fade-scale: 0.97;                 /* inline scale3d(0.97, 0.97, 1) — fade-in-scale variant */
-  --hd-fade-duration: 700ms;             /* IX2 reveal: "easing":"ease","duration":700 */
-  --hd-fade-easing: ease;                /* IX2 reveal easing */
-  --hd-fade-stagger: 300ms;              /* most common non-zero IX2 delay (×6); full per-element map in W4.1 */
-
-  /* ======================================================================
-     NAVIGATION (W2.1) — header bar, mega-menu dropdown, mobile drawer and
-     the static hamburger. The Webflow w-nav/w-dropdown runtime + the Lottie
-     hamburger are replaced by AlpineJS + CSS; these tokens carry the bar's
-     visual design. Values reconciled from academy.css (.header / .nav-* /
-     .header-dropdown / .mega-menu-* / .menu-*) with the rtl.css overrides
-     that WIN on the live Persian site (rtl loads after academy): the
-     mega-menu grid is content-width in RTL (rtl.css:96 width:auto), the
-     nav-link inline-end gap is 28px (rtl.css:56), buttons keep the .hd-button
-     radius/tracking. academy/rtl line refs per token. Responsive sizes
-     (link 33→32→28, mega-link 22→18, header padding 28→24→20→18, drawer
-     offset) live inline in the nav @media blocks of hd.css, mirroring the
-     §12 .hd-button-header pattern. */
+  /* ----- Navigation geometry — header bar, mega-menu, mobile drawer ---------
+     Visual color/shadow values come from the --wc-* tokens above; only the
+     nav-specific dimensions live here. Responsive sizes are inline in the nav
+     @media blocks of hd.css. */
   --hd-nav-logo-width: 142px;
   --hd-nav-menu-gap: 16px;
   --hd-nav-link-margin: 0px;
@@ -236,88 +177,72 @@
   --hd-nav-link-line: 1.4;
   --hd-nav-caret-size: 16px;
 
-  /* Mega-menu desktop card — the floating white panel (.menu-grid-wrapper, academy.css:7735-7743). */
+  /* Mega-menu desktop card (the floating white panel). */
   --hd-mega-card-pad-y: 12px;
   --hd-mega-card-pad-x: 12px;
-  --hd-mega-card-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
-  --hd-mega-grid-gap: 0px;               /* .menu-grid grid gap (academy.css:5356-5357) */
-  --hd-mega-col-gap: 0px;                /* .menu-2-columns is a flush flex row (academy.css:5323) */
+  --hd-mega-grid-gap: 0px;
   --hd-mega-title-size: 15px;
   --hd-mega-title-pad-y: 8px;
   --hd-mega-title-pad-x: 12px;
-  --hd-mega-link-radius: 10px;           /* .mega-menu-link radius (academy.css:4739) */
-  --hd-mega-link-pad-y: 10px;            /* .mega-menu-link padding-block (academy.css:4740) */
+  --hd-mega-link-pad-y: 10px;
   --hd-mega-link-pad-x: 12px;
   --hd-mega-link-size: 14px;
   --hd-mega-link-line: 1.5;
   --hd-mega-link-special-pad-y: 10px;
-  --hd-mega-link-special-bg: #0b2f9f14;  /* .special faint-accent fill, ~8% (academy.css:4760) */
 
   /* Mobile drawer (≤1120) — the compact dark menu used by the shared nav. */
-  --hd-nav-drawer-shadow: 0 30px 70px rgba(0, 0, 0, 0.24);
   --hd-nav-drawer-pad-y: 18px;
   --hd-nav-drawer-pad-x: 18px;
-  --hd-nav-menu-duration: 0.4s;          /* drawer open/close transition (≈ Webflow data-duration ease-out feel) */
-  --hd-nav-link-mobile-color: #ffffff85; /* .nav-link @991 translucent white on dark drawer (academy.css:8777) */
-  --hd-mega-link-mobile-color: #ffffffa6;/* .mega-menu-link @991 translucent white (academy.css:8541) */
-  --hd-mega-link-mobile-hover-bg: #1b1b55;/* .mega-menu-link:hover @991 deep navy (academy.css:8550) */
+  --hd-nav-menu-duration: 0.4s;          /* drawer open/close transition */
+  --hd-nav-link-mobile-color: #ffffff85; /* translucent white link on the dark drawer */
   --hd-mega-link-mobile-pad: 10px 12px;
 
-  /* Static hamburger (replaces the Lottie icon) — box from .menu-button @991 (academy.css:9293-9309). */
+  /* Static hamburger button. */
   --hd-nav-toggle-size: 46px;
-  --hd-nav-toggle-radius: 14px;
   --hd-nav-bar-icon: 22px;
-  --hd-nav-bar-line: 2px;                /* hamburger bar thickness (static SVG/CSS replacement) */
+  --hd-nav-bar-line: 2px;                /* hamburger bar thickness */
 
   /* Drawer top offset = measured header-bar height at the collapse breakpoints
-     (the fixed drawer starts flush below the bar). Verified by CDP getBoundingClientRect. */
+     (the fixed drawer starts flush below the bar). */
   --hd-nav-bar-h: 86px;
 }
 
 /* ==========================================================================
-   Responsive token overrides
-   Mirrors academy.css's three Webflow breakpoints: @991 (tablet), @767
-   (mobile) and @479 (small mobile). Each lower block supersedes the ones above
-   where they set the same token. Declared on :root so the tokens cascade
-   identically to Webflow's responsive heading / .section / .container rules.
+   Responsive token overrides — three tiers: @991 (tablet), @767 (mobile),
+   @479 (small mobile). Each lower block supersedes the ones above where it
+   sets the same token. Declared on :root so the tokens cascade globally.
    ========================================================================== */
 @media screen and (max-width: 991px) {
   :root {
-    /* .section padding-block @991 (academy.css:8571-8572) */
     --hd-section-pad: 80px;
   }
 }
 
 @media screen and (max-width: 767px) {
   :root {
-    /* heading scale-down @767 (academy.css:9409-9427) */
-    --hd-h1-size: 48px;                  /* academy.css:9410 */
-    --hd-h2-size: 32px;                  /* academy.css:9414 */
-    --hd-h3-size: 21px;                  /* academy.css:9418 */
-    --hd-h4-size: 18px;                  /* academy.css:9422 */
-    --hd-h5-size: 17px;                  /* academy.css:9426 */
-    --hd-special-size: 46px;             /* .special-2 @767 (academy.css:10256) */
+    /* heading scale-down */
+    --hd-h1-size: 48px;
+    --hd-h2-size: 32px;
+    --hd-h3-size: 21px;
+    --hd-h4-size: 18px;
+    --hd-h5-size: 17px;
+    --hd-special-size: 46px;
     --hd-nav-bar-h: 74px;
   }
 }
 
 @media screen and (max-width: 479px) {
   :root {
-    /* heading scale-down @479 (academy.css:10456-10462) */
-    --hd-h1-size: 38px;                  /* academy.css:10457 */
-    --hd-h2-size: 28px;                  /* academy.css:10461 */
-    --hd-special-size: 37px;             /* .special-2 @479 (academy.css:11361) */
+    /* heading scale-down */
+    --hd-h1-size: 38px;
+    --hd-h2-size: 28px;
+    --hd-special-size: 37px;
 
-    /* .section padding-block @479 (academy.css:10762-10763) */
     --hd-section-pad: 50px;
-
-    /* container padding-inline @479 (academy.css:10615-10616) */
     --hd-gutter: 16px;
-
-    /* .button .large font-size @479 (academy.css:10644 / 11222) */
     --hd-button-font-lg: 16px;
 
-    /* nav @479: header padding 18×2 + hamburger 45 = ~81; drawer side padding 28→18 (academy.css:10543-10544) */
+    /* nav: shorter bar; tighter drawer padding */
     --hd-nav-bar-h: 64px;
     --hd-nav-drawer-pad-y: 14px;
     --hd-nav-drawer-pad-x: 14px;

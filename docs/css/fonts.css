@@ -1,5 +1,5 @@
 /* ==========================================================================
-   fonts.css — WECAMP local @font-face declarations (task W0.3)
+   fonts.css — WECAMP local @font-face declarations
    --------------------------------------------------------------------------
    Replaces the two CDN font links previously in head.html
    (cdn.jsdelivr.net Vazirmatn + @fontsource/noto-naskh-arabic), per the
@@ -16,11 +16,9 @@
    variant used by WECORE. Swapping to FD would change digit glyphs and break
    visual parity with the current site.
 
-   Font stack (rtl.css:43 / hd-tokens.css): Vazirmatn, "Noto Naskh Arabic",
-   sans-serif. Vazirmatn is the Persian/Latin primary; Noto Naskh Arabic is the
+   Font stack (hd-tokens.css): Vazirmatn, "Noto Naskh Arabic", sans-serif.
+   Vazirmatn is the Persian/Latin primary; Noto Naskh Arabic is the
    Arabic-glyph backstop. Jakarta Display covers Latin display contexts.
-   academy.css still ships its own Jakarta + icon @font-face blocks; those are
-   removed in W6.1 (this file supersedes them).
    ========================================================================== */
 
 /* ==========================================================================
@@ -142,9 +140,8 @@
 }
 
 /* ==========================================================================
-   Jakarta Display — Latin display face (already in static/fonts/ as OTF).
-   Mirrors academy.css's blocks (Regular/Medium/Bold); declared here so this
-   file is the single source once academy.css is removed (W6.1).
+   Jakarta Display — Latin display face (static/fonts/, OTF).
+   Regular/Medium/Bold; this file is the single @font-face source.
    ========================================================================== */
 @font-face {
   font-family: 'Jakarta Display';

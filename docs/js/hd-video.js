@@ -97,3 +97,26 @@ document.addEventListener('click', (e) => {
     },
   }));
 });
+
+/* Ambient hero loops (uiux): a short, muted design B-roll clip replaces the static
+   poster on camps that ship hero.video_loop. It is deliberately NOT `autoplay` in
+   markup — playback is gated on prefers-reduced-motion here so motion-sensitive
+   visitors keep the still poster (WCAG 2.2.2, Pause/Stop/Hide). The overlay play
+   button opens the full narrated intro (with sound) through the modal above. */
+(function () {
+  var loops = document.querySelectorAll('video.hd-camp-loop');
+  if (!loops.length || !window.matchMedia) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  loops.forEach(function (v) {
+    var play = function () {
+      if (reduce.matches) return;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    if (v.readyState >= 2) play();
+    else v.addEventListener('loadeddata', play, { once: true });
+    if (reduce.addEventListener) {
+      reduce.addEventListener('change', function (e) { e.matches ? v.pause() : play(); });
+    }
+  });
+})();

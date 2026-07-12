@@ -1,0 +1,1453 @@
+/* ==========================================================================
+   hd-page.css — WECAMP shared design-system layer
+   --------------------------------------------------------------------------
+   Page-agnostic primitives extracted from the implemented homepage (home.css,
+   .hd-index-*) and camp pages (camps-redesign.css, .hd-camp-*) so that every
+   REMAINING page migration (schools, camps list, about, contact, teachers,
+   events, partnership, …) reuses ONE vocabulary instead of re-authoring cobalt
+   per page. Implements redesign-foundation-site-consistency.
+
+   Namespacing: everything is prefixed `hd-ds-` (design system). This namespace
+   is unused elsewhere, so loading this file globally has ZERO effect on the
+   already-done pages (home/camps/cert/register) — they don't use hd-ds-*.
+   Width containers reuse the existing shared `.hd-container`.
+
+   Contract (see foundation task `cta_and_accent_contract`):
+     cobalt  #0B2F9F  dominant brand / dark surfaces
+     ink     #101010  rich-black text (not pure black)
+     paper   #F2F2F0  warm off-white bands (not pure white)
+     accent  #ff6a2b  warm orange — SINGLE primary action + stat numbers ONLY
+     cyan/green        functional status/proof accents, sparingly
+   RTL-first: logical properties throughout (inline/block, start/end).
+   ========================================================================== */
+
+:root {
+  /* Thin aliases onto the --wc-* brand tokens (hd-tokens.css) — edit values there. */
+  --hd-ds-cobalt: var(--wc-cobalt);
+  --hd-ds-cobalt-deep: var(--wc-cobalt-deep);
+  --hd-ds-ink: var(--wc-ink);
+  --hd-ds-paper: var(--wc-paper);
+  --hd-ds-muted: var(--wc-muted);
+  --hd-ds-line: var(--wc-line);
+  --hd-ds-line-on-dark: var(--wc-line-dark);
+  --hd-ds-accent: var(--wc-accent);
+  --hd-ds-accent-strong: var(--wc-accent-deep);
+  --hd-ds-accent-on-light: var(--wc-accent-on-light);
+  --hd-ds-accent-ink: var(--wc-accent-ink);
+  --hd-ds-stat-cell: var(--wc-stat-cell);
+  --hd-ds-cyan: var(--wc-cyan);
+  --hd-ds-green: var(--wc-green);
+  --hd-ds-radius: var(--wc-radius);
+  --hd-ds-radius-pill: var(--wc-radius-pill);
+  --hd-ds-shadow-card: var(--wc-shadow-card);
+}
+
+/* ----- Section rhythm ---------------------------------------------------- */
+.hd-ds-section {
+  padding-block: clamp(72px, 9vw, 124px);
+}
+
+/* Tighter band rhythm for compact openers (uiux-2.1). */
+.hd-ds-section-tight {
+  padding-block: clamp(48px, 6vw, 84px);
+}
+
+/* ----- Bands ------------------------------------------------------------- */
+/* A band is a full-bleed horizontal region. Compose with .hd-container inside. */
+.hd-ds-band {
+  position: relative;
+  isolation: isolate;
+}
+
+.hd-ds-band-paper {
+  background: var(--hd-ds-paper);
+  color: var(--hd-ds-ink);
+}
+
+.hd-ds-band-cobalt,
+.hd-ds-band-proof {
+  color: var(--hd-ds-paper);
+}
+
+.hd-ds-band-cobalt {
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(242, 242, 240, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 242, 240, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(11, 47, 159, 0.98), rgba(6, 24, 82, 0.98));
+  background-size: 80px 80px, 80px 80px, auto;
+}
+
+/* Deeper proof band for certificate/proof-style contrast. */
+.hd-ds-band-proof {
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(242, 242, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 242, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, #0b2f9f, #06184e);
+  background-size: 80px 80px, 80px 80px, auto;
+}
+
+/* Compact closing strip (uiux-2.1) — texture-free cobalt fill (down-payment
+   on uiux-2.3's one-surface rule), single-row content, ONE CTA. Its CTA is
+   primary only when the page has no other orange (teachers, events/ai);
+   otherwise it steps down to the ghost secondary (school detail — the hero
+   holds the page's single orange, uiux-3.2). Breaks the tall mirrored
+   proof-band closer on pages that opt in. */
+.hd-ds-band-strip {
+  padding-block: clamp(40px, 5vw, 64px);
+  background: linear-gradient(180deg, var(--hd-ds-cobalt), var(--hd-ds-cobalt-deep));
+  color: var(--hd-ds-paper);
+}
+
+.hd-ds-strip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.hd-ds-strip-copy {
+  display: grid;
+  gap: 8px;
+  max-width: 680px;
+}
+
+.hd-ds-band-strip h2 {
+  margin: 0;
+  color: var(--hd-ds-paper);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.hd-ds-band-strip p:not(.hd-ds-kicker) {
+  margin: 0;
+  color: rgba(242, 242, 240, 0.78);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Restrained chevron/monogram motif — opt in with .hd-ds-band-motif. */
+.hd-ds-band-motif::after {
+  content: "";
+  position: absolute;
+  inset-block-start: clamp(32px, 6vw, 80px);
+  inset-inline-start: clamp(24px, 8vw, 130px);
+  width: clamp(120px, 15vw, 230px);
+  aspect-ratio: 1;
+  border: 2px solid rgba(242, 242, 240, 0.12);
+  border-radius: var(--hd-ds-radius);
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hd-ds-band > .hd-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- Eyebrow / kicker pill --------------------------------------------- */
+.hd-ds-eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius-pill);
+  background: rgba(11, 47, 159, 0.08);
+  color: var(--hd-ds-cobalt);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+/* On dark surfaces the eyebrow flips to translucent paper.
+   `.hd-ds-on-dark` is the opt-in surface marker for dark, NON-band surfaces
+   (page heroes with their own bespoke background: homepage hero shell, camp
+   hero, homepage proof/final fills). It reuses these flips so pages never
+   re-implement them by hand (uiux-0.2). */
+.hd-ds-band-cobalt .hd-ds-eyebrow,
+.hd-ds-band-proof .hd-ds-eyebrow,
+.hd-ds-on-dark .hd-ds-eyebrow {
+  border-color: rgba(242, 242, 240, 0.24);
+  background: rgba(242, 242, 240, 0.1);
+  color: var(--hd-ds-paper);
+}
+
+/* ----- Plain text kicker — the demoted, non-pill eyebrow (uiux-2.1) ------- */
+/* Quiet label: no border, no background, no radius. Vazirmatn joins Persian
+   letters, so differentiation comes from weight + size + color, not
+   letter-spacing (tracking breaks glyph joins in Arabic-script text). */
+.hd-ds-kicker {
+  margin: 0;
+  color: var(--hd-ds-cobalt);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.hd-ds-band-cobalt .hd-ds-kicker,
+.hd-ds-band-proof .hd-ds-kicker,
+.hd-ds-band-strip .hd-ds-kicker,
+.hd-ds-on-dark .hd-ds-kicker {
+  color: rgba(242, 242, 240, 0.86); /* 5.4:1 worst-case on the glow-lightened cobalt (uiux-7.1; 0.7 measured 4.17) */
+}
+
+/* ----- Section head (kicker + heading + lede) ---------------------------- */
+.hd-ds-section-head {
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+  margin-block-end: 34px;
+}
+
+.hd-ds-section-head h2 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(34px, 4.8vw, 64px);
+  font-weight: 900;
+  line-height: 1.14;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+/* :not() guards keep the lede recipe off the kicker/eyebrow primitives that
+   share the section head (uiux-0.2 — they were being inflated to 17px). */
+.hd-ds-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow) {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.hd-ds-band-cobalt .hd-ds-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow),
+.hd-ds-band-proof .hd-ds-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow) {
+  color: rgba(242, 242, 240, 0.82);
+}
+
+/* Opt-in centered "thesis" head — at most ONE per page (uiux-2.1); every
+   other section head stays start-aligned. */
+.hd-ds-section-head--center {
+  justify-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Opt-in reading-measure clamps and centered action rows — replace the
+   per-template inline max-width/justify-content hints (uiux-8.1). */
+.hd-ds-hero-copy--measure,
+.hd-ds-section-head--measure {
+  max-inline-size: 820px;
+}
+
+.hd-ds-actions--center {
+  justify-content: center;
+  margin-block-start: 8px;
+}
+
+.hd-ds-actions--follow {           /* actions row following a grid/list in the same section */
+  margin-block-start: 26px;
+}
+
+/* ----- Title row (uiux-2.1) ----------------------------------------------- */
+/* Compact start-aligned page opener on paper — replaces the cobalt hero for
+   families whose content should lead (e.g. /teachers/ people wall). */
+.hd-ds-title-row {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  max-width: 820px;
+  margin-block-end: clamp(28px, 4vw, 44px);
+}
+
+.hd-ds-title-row h1 {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-size: clamp(32px, 4.4vw, 56px);
+  font-weight: 900;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+.hd-ds-title-row p {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.9;
+}
+
+.hd-ds-title-row .hd-ds-title-hint {
+  font-size: 14px;
+}
+
+/* ----- Hero (two-column copy + media; stacks on mobile) ------------------ */
+.hd-ds-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.hd-ds-hero-copy {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+  min-width: 0;
+}
+
+.hd-ds-hero-copy h1 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(38px, 5.6vw, 72px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.hd-ds-band-cobalt .hd-ds-hero-copy h1,
+.hd-ds-band-proof .hd-ds-hero-copy h1 {
+  color: var(--hd-ds-paper);
+}
+
+.hd-ds-hero-lede {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.9;
+}
+
+.hd-ds-band-cobalt .hd-ds-hero-lede,
+.hd-ds-band-proof .hd-ds-hero-lede {
+  color: rgba(242, 242, 240, 0.84);
+}
+
+.hd-ds-hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--hd-ds-radius);
+}
+
+/* House frame for hero media (uiux-4.2) — the homepage proof-window device
+   (home.css .hd-index-proof-window / .hd-index-window-bar) ported into hd-ds
+   vocabulary. One rule set for all school pages; no per-school overrides. */
+.hd-ds-frame {
+  overflow: hidden;
+  border: 1px solid var(--hd-ds-line-on-dark);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(16, 16, 16, 0.22);
+  box-shadow: 0 30px 90px rgba(3, 11, 41, 0.28);
+}
+
+.hd-ds-frame-bar {
+  direction: ltr; /* window chrome stays LTR by convention (cf. cert chrome) */
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(242, 242, 240, 0.16);
+}
+
+.hd-ds-frame-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(242, 242, 240, 0.5);
+}
+
+.hd-ds-frame-bar em {
+  margin-left: auto; /* bar is LTR: the chip sits at the far end */
+  padding: 6px 12px;
+  border-radius: var(--hd-ds-radius-pill);
+  background: rgba(242, 242, 240, 0.14);
+  color: rgba(242, 242, 240, 0.82);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hd-ds-frame img {
+  display: block;
+  width: 100%;
+  height: auto; /* keep auto so aspect-ratio wins over the height attr */
+  border-radius: 0; /* the frame clips via overflow; no inner rounding */
+  aspect-ratio: 1272 / 720;
+  object-fit: cover;
+}
+
+.hd-ds-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ----- Cards ------------------------------------------------------------- */
+.hd-ds-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.hd-ds-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+.hd-ds-band-cobalt .hd-ds-card,
+.hd-ds-band-proof .hd-ds-card {
+  border-color: var(--hd-ds-line-on-dark);
+  background: rgba(242, 242, 240, 0.08);
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+/* ----- CTAs -------------------------------------------------------------- */
+.hd-ds-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  min-width: 154px;
+  padding: 16px 24px;
+  border: 1px solid transparent;
+  border-radius: var(--hd-ds-radius);
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease,
+    border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.hd-ds-cta:hover {
+  transform: translateY(-1px);
+}
+
+.hd-ds-cta:focus-visible {
+  outline: 3px solid rgba(49, 200, 217, 0.78);
+  outline-offset: 3px;
+}
+
+/* Orange accent contract (uiux-3.2): exactly ONE accent-background action per
+   page — that page's conversion. Camp detail pages may mirror the single
+   #register action (hero CTA / register submit / sticky bar, arbitrated at
+   runtime by the uiux-6.3 scroll machinery in camps-redesign.css). The only
+   non-CTA orange is headline stat numbers (--wc-accent-on-light text on
+   .hd-ds-stat-band dt / .hd-index-stats-row dt). Enforced by
+   scripts/audit/orange-census.cjs. */
+.hd-ds-cta-primary {
+  border-color: var(--hd-ds-accent);
+  background: var(--hd-ds-accent);
+  color: var(--hd-ds-accent-ink);
+  box-shadow: 0 20px 44px rgba(255, 106, 43, 0.32);
+}
+
+.hd-ds-cta-primary:hover {
+  border-color: var(--hd-ds-accent-strong);
+  background: var(--hd-ds-accent-strong);
+  color: var(--hd-ds-accent-ink);
+}
+
+/* Secondary = ghost; adapts to the band it sits on. */
+.hd-ds-cta-secondary {
+  border-color: var(--hd-ds-cobalt);
+  background: transparent;
+  color: var(--hd-ds-cobalt);
+}
+
+.hd-ds-cta-secondary:hover {
+  background: rgba(11, 47, 159, 0.06);
+}
+
+.hd-ds-band-cobalt .hd-ds-cta-secondary,
+.hd-ds-band-proof .hd-ds-cta-secondary,
+.hd-ds-band-strip .hd-ds-cta-secondary,
+.hd-ds-on-dark .hd-ds-cta-secondary {
+  border-color: rgba(242, 242, 240, 0.5);
+  background: rgba(242, 242, 240, 0.1);
+  color: var(--hd-ds-paper);
+}
+
+.hd-ds-band-cobalt .hd-ds-cta-secondary:hover,
+.hd-ds-band-proof .hd-ds-cta-secondary:hover,
+.hd-ds-band-strip .hd-ds-cta-secondary:hover,
+.hd-ds-on-dark .hd-ds-cta-secondary:hover {
+  border-color: var(--hd-ds-paper);
+  background: rgba(242, 242, 240, 0.16);
+}
+
+/* Full-width CTA (uiux-3.2) — the /request submit spans its form column.
+   Single-purpose so uiux-0.2's grammar consolidation can absorb it; the
+   legacy .hd-button-full (hd.css §12) stays for camp forms. */
+.hd-ds-cta-full {
+  width: 100%;
+}
+
+/* ----- Chips (topic / trust) --------------------------------------------- */
+.hd-ds-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hd-ds-chip {
+  display: inline-flex;
+  padding: 9px 12px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius-pill);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--hd-ds-cobalt);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+a.hd-ds-chip:hover {
+  background: var(--hd-ds-cobalt);
+  color: var(--hd-ds-paper);
+}
+
+.hd-ds-band-cobalt .hd-ds-chip,
+.hd-ds-band-proof .hd-ds-chip,
+.hd-ds-on-dark .hd-ds-chip {
+  border-color: rgba(242, 242, 240, 0.18);
+  background: rgba(242, 242, 240, 0.1);
+  color: var(--hd-ds-paper);
+}
+
+button.hd-ds-chip {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.hd-ds-chip:focus-visible {
+  outline: 3px solid rgba(49, 200, 217, 0.78);
+  outline-offset: 2px;
+}
+
+.hd-ds-chip[aria-pressed="true"] {
+  background: var(--hd-ds-cobalt);
+  border-color: var(--hd-ds-cobalt);
+  color: var(--hd-ds-paper);
+}
+
+.hd-ds-band-cobalt .hd-ds-chip[aria-pressed="true"],
+.hd-ds-band-proof .hd-ds-chip[aria-pressed="true"] {
+  background: var(--hd-ds-paper);
+  border-color: var(--hd-ds-paper);
+  color: var(--hd-ds-cobalt);
+}
+
+/* Filter cell wrapper so cards keep equal heights when wrapped for x-show. */
+.hd-ds-camp-cell {
+  display: grid;
+  min-width: 0;
+}
+
+/* ----- Fact / spec strip (from camp pages) ------------------------------- */
+.hd-ds-fact-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: var(--hd-ds-line);
+}
+
+.hd-ds-fact-strip > div {
+  display: grid;
+  gap: 6px;
+  padding: 18px 20px;
+  background: var(--hd-ds-paper);
+}
+
+.hd-ds-fact-strip dt {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hd-ds-fact-strip dd {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* ----- Stat band (from homepage outcomes band) --------------------------- */
+.hd-ds-stat-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: var(--hd-ds-line);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+.hd-ds-stat-band > div {
+  display: grid;
+  gap: 6px;
+  padding: 24px 20px;
+  /* Opaque cell (uiux-7.1): pixel-identical to the old rgba(255,255,255,.6)
+     tint on paper hosts, and keeps the cells LIGHT on cobalt/proof bands —
+     the tint over cobalt composited to a murky #9ba5c3 where the accent stat
+     numbers measured 1.17:1. */
+  background: var(--hd-ds-stat-cell);
+  text-align: center;
+}
+
+.hd-ds-stat-band dt {
+  margin: 0;
+  color: var(--hd-ds-accent-on-light); /* on-light accent shade — 3.09:1 large-text AA (uiux-7.1) */
+  font-size: clamp(34px, 4.6vw, 52px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.hd-ds-stat-band dd {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* ----- Accordion (accessible) -------------------------------------------- */
+.hd-ds-accordion {
+  display: grid;
+  gap: 0;
+}
+
+.hd-ds-accordion-item {
+  border-block-end: 1px solid var(--hd-ds-line);
+}
+
+.hd-ds-accordion-trigger {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 4px;
+  border: 0;
+  border-radius: var(--hd-ds-radius); /* invisible at rest (transparent bg); rounds the focus ring */
+  background: transparent;
+  color: var(--hd-ds-ink);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 900;
+  text-align: start;
+  cursor: pointer;
+}
+
+.hd-ds-accordion-trigger:focus-visible {
+  outline: 3px solid rgba(49, 200, 217, 0.78);
+  outline-offset: 3px;
+}
+
+.hd-ds-accordion-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--hd-ds-radius-pill);
+  background: rgba(11, 47, 159, 0.08);
+  color: var(--hd-ds-cobalt);
+  transition: transform 180ms ease;
+}
+
+.hd-ds-accordion-trigger[aria-expanded="true"] .hd-ds-accordion-icon {
+  transform: rotate(45deg);
+}
+
+.hd-ds-accordion-panel {
+  padding-block-end: 20px;
+  color: var(--hd-ds-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.hd-ds-accordion-panel[hidden] {
+  display: none;
+}
+
+/* ----- Camp card (shared: schools, camps list, school detail) ------------ */
+.hd-ds-camp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.hd-ds-camp-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  min-width: 0;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+/* Camp card art system (uiux-4.1): all nine card assets in /img/campcards/<slug>.jpg
+   share one pre-baked grade (cobalt-gradient ground, chevron motif, desaturated
+   cobalt-cast instructor tiles). Do NOT add CSS filters here — the grade is baked
+   into the assets so it stays identical on every surface rendering hero.media_src. */
+.hd-ds-camp-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--hd-ds-cobalt);
+}
+
+.hd-ds-camp-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hd-ds-camp-body {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 20px;
+}
+
+.hd-ds-camp-top {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* Guarded so the school label recipe never restyles the status pill that
+   shares the row (uiux-0.2 — it was graying the pill text). */
+.hd-ds-camp-top > span:not(.hd-ds-camp-status) {
+  color: var(--hd-ds-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ----- Status pill: ONE metric spec + ONE color map (uiux-0.2) ------------
+   Applies to camp cards, the register panel and event cards alike. Colors key
+   off machine-readable data-status (never the Persian label):
+     (default / "active")                → green  «ثبت‌نام فعال»
+     in-progress | upcoming | planned |
+     waitlist | coming-soon | held      → cobalt «در حال برگزاری» «پیش‌ثبت‌نام» «به‌زودی» «برگزار شده»
+     video                              → cyan   «ویدیو» */
+.hd-ds-camp-status,
+.hd-ds-event-status {
+  flex: none;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: var(--hd-ds-radius-pill);
+  background: rgba(25, 173, 105, 0.14);
+  color: #0d6f43; /* 4.86:1 worst-case on the tinted card/panel cells (uiux-7.1; #0f7a4a measured 4.20–4.48) */
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.hd-ds-camp-status[data-status="in-progress"],
+.hd-ds-camp-status[data-status="upcoming"],
+.hd-ds-camp-status[data-status="planned"],
+.hd-ds-camp-status[data-status="waitlist"],
+.hd-ds-camp-status[data-status="coming-soon"],
+.hd-ds-event-status[data-status="upcoming"],
+.hd-ds-event-status[data-status="planned"],
+.hd-ds-event-status[data-status="held"] {
+  background: rgba(11, 47, 159, 0.1);
+  color: var(--hd-ds-cobalt);
+}
+
+.hd-ds-camp-card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.hd-ds-camp-card h3 a {
+  color: var(--hd-ds-ink);
+  text-decoration: none;
+}
+
+.hd-ds-camp-card h3 a:hover {
+  color: var(--hd-ds-cobalt);
+}
+
+.hd-ds-camp-card > .hd-ds-camp-body > p {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.hd-ds-camp-facts {
+  display: grid;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding-block-start: 12px;
+  border-block-start: 1px solid var(--hd-ds-line);
+}
+
+.hd-ds-camp-facts > div {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.hd-ds-camp-facts dt {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-weight: 700;
+}
+
+.hd-ds-camp-facts dd {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-weight: 900;
+  text-align: start;
+}
+
+.hd-ds-camp-link {
+  margin-block-start: 4px;
+  color: var(--hd-ds-cobalt);
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.hd-ds-camp-link:hover {
+  text-decoration: underline;
+}
+
+/* ----- Person / mentor card (shared: about, teachers, schools) ----------- */
+.hd-ds-people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.hd-ds-person-card {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+  text-decoration: none;
+}
+
+/* uiux-4.3: portrait treatment (face-weighted 1:1 crop + cobalt tonal grade)
+   is baked into the assets by the grade pipeline — one recipe for every
+   surface. Hover grade-to-color is deferred to uiux-3.1's card grammar. */
+.hd-ds-person-card img {
+  width: 100%;
+  height: auto; /* the height attr would defeat aspect-ratio (cf. 5286499) */
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: calc(var(--hd-ds-radius) - 2px);
+  background: var(--hd-ds-stat-cell);
+}
+
+/* uiux-4.3: honest fallback for a person without an approved photo —
+   initial monogram on cobalt, never a silhouette or generated face. */
+.hd-ds-person-monogram {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: calc(var(--hd-ds-radius) - 2px);
+  background: var(--hd-ds-cobalt);
+  color: var(--hd-ds-paper);
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+}
+
+.hd-ds-person-card strong {
+  display: block;
+  color: var(--hd-ds-ink);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.hd-ds-person-card small {
+  display: block;
+  margin-block-start: 4px;
+  color: var(--hd-ds-ink);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.hd-ds-person-card small.hd-ds-person-note {
+  color: var(--hd-ds-muted);
+  font-weight: 600;
+}
+
+/* ----- Event card (shared: events list, events topic, homepage DNA) ------ */
+.hd-ds-event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.hd-ds-event-card {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.44fr) minmax(0, 1fr);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+.hd-ds-event-card > a.hd-ds-event-media {
+  display: block;
+  min-height: 200px;
+}
+
+.hd-ds-event-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+}
+
+.hd-ds-event-body {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  padding: 20px;
+  min-width: 0;
+}
+
+/* Metrics + held/upcoming colors come from the shared status map above. */
+.hd-ds-event-status[data-status="video"] {
+  background: rgba(49, 200, 217, 0.16);
+  color: #0e6b76;
+}
+
+.hd-ds-event-body h3 {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.hd-ds-event-body h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hd-ds-event-body h3 a:hover {
+  color: var(--hd-ds-cobalt);
+}
+
+.hd-ds-event-body > p {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.hd-ds-event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  color: var(--hd-ds-ink);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.hd-ds-event-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hd-ds-event-action {
+  width: fit-content;
+  color: var(--hd-ds-cobalt);
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.hd-ds-event-action:hover {
+  text-decoration: underline;
+}
+
+/* One focus ring for every interactive ds card element (uiux-0.2 — moved up
+   from the homepage-only list in home.css so keyboard focus reads the same
+   on home, catalog, teachers and events). */
+a.hd-ds-chip:focus-visible,
+.hd-ds-camp-media:focus-visible,
+.hd-ds-camp-card h3 a:focus-visible,
+.hd-ds-camp-link:focus-visible,
+a.hd-ds-person-card:focus-visible,
+.hd-ds-event-card a:focus-visible,
+.hd-ds-event-feature a:focus-visible,
+.hd-ds-event-row a:focus-visible {
+  outline: 3px solid rgba(49, 200, 217, 0.78);
+  outline-offset: 3px;
+}
+
+/* ----- Featured event (uiux-2.1: /events/ leads with the latest event) ---- */
+.hd-ds-event-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  overflow: hidden;
+  margin-block-start: 14px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+.hd-ds-event-feature-media {
+  display: block;
+  min-width: 0;
+}
+
+.hd-ds-event-feature-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.hd-ds-event-feature-body {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 14px;
+  min-width: 0;
+  padding: clamp(20px, 3.4vw, 44px);
+}
+
+.hd-ds-event-feature-body h2 {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-size: clamp(26px, 3.4vw, 44px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.hd-ds-event-feature-body h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hd-ds-event-feature-body h2 a:hover {
+  color: var(--hd-ds-cobalt);
+}
+
+.hd-ds-event-feature-body > p {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ----- Compact archive rows for past events (uiux-2.1) -------------------- */
+.hd-ds-event-archive {
+  display: grid;
+  gap: 10px;
+  margin-block-start: clamp(28px, 4vw, 48px);
+}
+
+.hd-ds-event-rows {
+  display: grid;
+}
+
+.hd-ds-event-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-block: 18px;
+  border-block-start: 1px solid var(--hd-ds-line);
+}
+
+.hd-ds-event-row:first-child {
+  padding-block-start: 4px;
+  border-block-start: 0;
+}
+
+.hd-ds-event-row-thumb {
+  flex: none;
+  width: 120px;
+}
+
+.hd-ds-event-row-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: calc(var(--hd-ds-radius) - 2px);
+}
+
+.hd-ds-event-row-body {
+  display: grid;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+}
+
+.hd-ds-event-row h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.hd-ds-event-row h3 a {
+  color: var(--hd-ds-ink);
+  text-decoration: none;
+}
+
+.hd-ds-event-row h3 a:hover {
+  color: var(--hd-ds-cobalt);
+}
+
+.hd-ds-event-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.hd-ds-event-row > .hd-ds-event-action {
+  flex: none;
+}
+
+/* ----- Inline curriculum/proof aside in the school camp grid (uiux-2.1; ---
+   content comes from data/camps/*.yaml; slot enriched later by uiux-6.6). */
+.hd-ds-camp-proof-aside {
+  display: grid;
+  align-content: start;
+  align-self: start;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--hd-ds-line);
+  border-inline-start: 3px solid var(--hd-ds-cobalt);
+  border-radius: var(--hd-ds-radius);
+  background: var(--hd-ds-paper);
+}
+
+.hd-ds-camp-proof-aside h3 {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.hd-ds-camp-proof-aside ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-inline-start: 1.2em;
+  color: var(--hd-ds-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ----- Company / partner logo strip -------------------------------------- */
+.hd-ds-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+  justify-content: center;
+}
+
+.hd-ds-logos img {
+  max-height: 26px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+
+.hd-ds-band-cobalt .hd-ds-logos img,
+.hd-ds-band-proof .hd-ds-logos img {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.72;
+}
+
+/* ----- Numbered value list ----------------------------------------------- */
+.hd-ds-value {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.hd-ds-value > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--hd-ds-radius-pill);
+  background: var(--hd-ds-cobalt);
+  color: var(--hd-ds-paper);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.hd-ds-value h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--hd-ds-ink);
+}
+
+.hd-ds-value p {
+  margin: 0;
+  color: var(--hd-ds-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ----- Utility (success / 404) centered card ----------------------------- */
+.hd-ds-utility {
+  display: grid;
+  place-items: center;
+  min-height: 62vh;
+  text-align: center;
+}
+
+.hd-ds-utility-card {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-width: 620px;
+  padding: clamp(28px, 5vw, 52px);
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+.hd-ds-utility-card h1,
+.hd-ds-utility-card h2 {
+  margin: 0;
+  color: var(--hd-ds-ink);
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 900;
+}
+
+.hd-ds-utility-card p {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--hd-ds-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.hd-ds-utility-card p a {
+  color: var(--hd-ds-cobalt);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.hd-ds-utility-card p a:hover {
+  text-decoration: underline;
+}
+
+.hd-ds-utility-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--hd-ds-radius-pill);
+  background: rgba(11, 47, 159, 0.1);
+  font-size: 30px;
+}
+
+.hd-ds-utility-code {
+  font-size: clamp(64px, 12vw, 132px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--hd-ds-cobalt);
+  letter-spacing: 2px;
+}
+
+/* ----- Long-form reading (terms / default list) -------------------------- */
+.hd-ds-prose {
+  max-width: 72ch;
+  color: var(--hd-ds-ink);
+  font-size: 16px;
+  line-height: 2;
+}
+
+.hd-ds-prose h1 {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 900;
+  margin: 0 0 24px;
+}
+
+.hd-ds-prose h2 {
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 900;
+  margin: 40px 0 12px;
+}
+
+.hd-ds-prose h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 28px 0 10px;
+}
+
+.hd-ds-prose p,
+.hd-ds-prose li {
+  color: var(--hd-ds-muted);
+  margin: 0 0 14px;
+}
+
+.hd-ds-prose ul,
+.hd-ds-prose ol {
+  padding-inline-start: 1.4em;
+  margin: 0 0 16px;
+}
+
+.hd-ds-prose a {
+  color: var(--hd-ds-cobalt);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hd-ds-prose a:hover {
+  text-decoration: underline;
+}
+
+/* ----- Contact channel card ---------------------------------------------- */
+.hd-ds-contact-card {
+  display: grid;
+  gap: 6px;
+  padding: 22px;
+  border: 1px solid var(--hd-ds-line);
+  border-radius: var(--hd-ds-radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--hd-ds-shadow-card);
+}
+
+.hd-ds-contact-card > span {
+  color: var(--hd-ds-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hd-ds-contact-card a,
+.hd-ds-contact-card strong {
+  color: var(--hd-ds-ink);
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.hd-ds-contact-card a:hover {
+  color: var(--hd-ds-cobalt);
+}
+
+/* ----- Responsive -------------------------------------------------------- */
+@media (max-width: 991px) {
+  .hd-ds-hero {
+    grid-template-columns: 1fr;
+  }
+  .hd-ds-hero-media {
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .hd-ds-section {
+    padding-block: 64px;
+  }
+  .hd-ds-actions,
+  .hd-ds-actions .hd-ds-cta {
+    width: 100%;
+  }
+  .hd-ds-section-head h2 {
+    font-size: clamp(30px, 9vw, 44px);
+    line-height: 1.18;
+  }
+  .hd-ds-stat-band {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hd-ds-event-feature {
+    grid-template-columns: 1fr;
+  }
+  .hd-ds-event-feature-media img {
+    height: auto;
+  }
+  .hd-ds-strip-row .hd-ds-cta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .hd-ds-event-row {
+    flex-wrap: wrap;
+  }
+  .hd-ds-event-row-thumb {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hd-ds-cta,
+  .hd-ds-accordion-icon {
+    transition: none;
+  }
+  .hd-ds-cta:hover {
+    transform: none;
+  }
+}

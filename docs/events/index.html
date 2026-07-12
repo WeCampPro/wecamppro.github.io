@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="fa" dir="rtl">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
   <title>
-   وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ
+   رویدادها و وبینارهای تخصصی | وی‌کمپ
   </title>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." name="description"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="og:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="og:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="og:image"/>
-  <meta content="وی‌کمپ | یادگیری عمیق، فراتر از بوت‌کمپ" property="twitter:title"/>
-  <meta content="وی‌کمپ جایی است برای یادگیری مهارت‌های نوین فناوری؛ از دوره‌های تخصصی تا تجربه‌های عملی، فراتر از بوت‌کمپ‌های معمولی." property="twitter:description"/>
-  <meta content="https://wecamp.pro/img/hero/hero-3-img.png" property="twitter:image"/>
+  <meta content="وبینارها و نشست‌های تخصصی وی‌کمپ؛ راهی کم‌ریسک برای آشنایی با مسیرهای شغلی، ابزارها و مهارت‌های روز، پیش از آن‌که کمپ خود را انتخاب کنید." name="description"/>
+  <meta content="رویدادها و وبینارهای تخصصی | وی‌کمپ" property="og:title"/>
+  <meta content="وبینارها و نشست‌های تخصصی وی‌کمپ؛ راهی کم‌ریسک برای آشنایی با مسیرهای شغلی، ابزارها و مهارت‌های روز، پیش از آن‌که کمپ خود را انتخاب کنید." property="og:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="og:image"/>
+  <meta content="رویدادها و وبینارهای تخصصی | وی‌کمپ" property="twitter:title"/>
+  <meta content="وبینارها و نشست‌های تخصصی وی‌کمپ؛ راهی کم‌ریسک برای آشنایی با مسیرهای شغلی، ابزارها و مهارت‌های روز، پیش از آن‌که کمپ خود را انتخاب کنید." property="twitter:description"/>
+  <meta content="https://wecamp.pro/img/brand/og-default.jpg" property="twitter:image"/>
   <meta content="website" property="og:type"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -28,34 +27,23 @@
   
   <link href="/css/hd.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/hd-shapes.css" rel="stylesheet" type="text/css"/>
   
   
   
   
+  <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
-  <link href="/css/site.css" rel="stylesheet" type="text/css"/>
-  
+  <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
   <script defer src="/js/hd-forms.js" type="text/javascript"></script>
-  <script type="text/javascript">
-   (function () {
-    var s = document.createElement("script");
-    s.defer = true;
-    s.src = "\/js\/hd-cta-parallax.js";
-    document.head.appendChild(s);
-   })();
-  </script>
-  <script defer src="/js/hd-snap-slider.js" type="text/javascript"></script>
   <link href="/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="/img/favicon.png" rel="apple-touch-icon"/>
  </head>
 
  <body>
   <div class="page-wrapper">
-
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('nav', () => ({
@@ -72,6 +60,12 @@
       },
       toggleServices() {
         this.servicesOpen = !this.servicesOpen;
+      },
+      
+      
+      
+      onNavigate() {
+        if (window.innerWidth <= 1120) this.closeMenu();
       },
       closeServices(restoreFocus) {
         this.servicesOpen = false;
@@ -143,7 +137,7 @@
             x-ref="navMenu"
             :class="{ 'hd-nav-menu-open': menuOpen }"
             @click.outside="menuOpen && closeMenu()">
-       <a class="hd-nav-link" href="/">
+       <a class="hd-nav-link" href="/" @click="onNavigate()">
          خانه
         </a>
 
@@ -173,33 +167,38 @@
              <h4 class="hd-mega-title">
               کمپ‌ها
              </h4>
-             <a class="hd-mega-link" href="/camps/agentic-ai">
-              توسعه عامل‌های هوش مصنوعی
+             
+             
+             <a class="hd-mega-link" href="/camps/agentic-ai" @click="onNavigate()">
+              کمپ توسعه عامل‌های هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/camps/cloud-infra-management">
-              مدیریت کلود با اپن‌استک
+             
+             <a class="hd-mega-link" href="/camps/product-design" @click="onNavigate()">
+              کمپ دیزاین محصول
              </a>
-             <a class="hd-mega-link" href="/camps/product-design">
-              دیزاین محصول
+             
+             <a class="hd-mega-link" href="/camps/cloud-infra-management" @click="onNavigate()">
+              کمپ مدیریت کلود
              </a>
-             <a class="hd-mega-link" href="/camps/user-research">
-              کاربرپژوهی
+             
+             <a class="hd-mega-link hd-mega-link-special" href="/camps" @click="onNavigate()">
+              همه کمپ‌ها
              </a>
             </div>
             <div class="hd-mega-col">
              <h4 class="hd-mega-title">
               مسیرهای شغلی
              </h4>
-             <a class="hd-mega-link" href="/school/ai-engineering">
+             <a class="hd-mega-link" href="/school/ai-engineering" @click="onNavigate()">
               مدرسه هوش مصنوعی
              </a>
-             <a class="hd-mega-link" href="/school/cloud-engineering">
+             <a class="hd-mega-link" href="/school/cloud-engineering" @click="onNavigate()">
               مدرسه مهندسی ابر
              </a>
-             <a class="hd-mega-link" href="/school/product-design">
+             <a class="hd-mega-link" href="/school/product-design" @click="onNavigate()">
               مدرسه دیزاین محصول
              </a>
-             <a class="hd-mega-link hd-mega-link-special" href="/school">
+             <a class="hd-mega-link hd-mega-link-special" href="/school" @click="onNavigate()">
               همه برنامه‌های آموزشی
              </a>
             </div>
@@ -208,11 +207,20 @@
          </div>
         </div>
 
-        <a class="hd-nav-link" href="/about">
-         درباره
+        
+        <a class="hd-nav-link" href="/events" aria-current="page" @click="onNavigate()">
+         رویدادها
         </a>
-        <a class="hd-nav-link" href="/partnership">
+        
+        <a class="hd-nav-link" href="/about" @click="onNavigate()">
+         درباره ما
+        </a>
+        <a class="hd-nav-link" href="/partnership" @click="onNavigate()">
          همکاری سازمانی
+        </a>
+        
+        <a class="hd-nav-link hd-nav-link-account" href="/register" @click="onNavigate()">
+         ورود / حساب کاربری
         </a>
        </nav>
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
@@ -235,270 +243,141 @@
 
       
       <div class="hd-nav-end">
+       
+       <a class="hd-nav-account" href="/register" aria-label="ورود به حساب کاربری وی‌کمپ">
+        <svg class="hd-nav-account-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+         <circle cx="12" cy="8.5" r="3.75"/>
+         <path d="M5 20.5c0-3.9 3.2-6.5 7-6.5s7 2.6 7 6.5"/>
+        </svg>
+        <span class="hd-nav-account-label">ورود</span>
+       </a>
        <a class="hd-button hd-button-header" href="/camps">
         <span>همه کمپ‌ها</span>
         <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
          <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
        </a>
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/register/">
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-         <path d="M3.8 17c.8-3 3-4.5 6.2-4.5S15.4 14 16.2 17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>ورود / ثبت نام</span>
+       
+       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+        <span>کمپ هوش مصنوعی</span>
        </a>
+       
       </div>
 
      </div>
     </div>
    </header>
+<main id="hd-main">
+    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section-tight" aria-labelledby="events-hero-title">
+     <div class="hd-container">
+      <div class="hd-ds-hero-copy hd-measure-xl" data-hd-animate="fade-up" data-hd-animate-eager>
+       <h1 id="events-hero-title">اگر هنوز آماده کمپ نیستید، از رویدادها شروع کنید.</h1>
+       <p class="hd-ds-hero-lede">آرشیو وبینارها و نشست‌های تخصصی برگزارشده وی‌کمپ؛ راهی کم‌ریسک برای آشنایی با مسیرهای شغلی، ابزارها و مهارت‌های روز پیش از انتخاب کمپ.</p>
+      </div>
+     </div>
+    </section>
 
-   <main id="hd-main">
-   <div class="hd-section events">
-    <div data-hd-animate="fade-in-scale" data-hd-animate-eager class="hd-container-medium-727 text-center hd-clearfix hd-delay-500">
-     <h1 class="special-2">
-      همه
-      <span class="font-color-primary">
-       رویدادها
-      </span>
-     </h1>
-     <p class="paragraph events">
-      رویدادهای تخصصی شغلی، کارآفرینی، توسعه فردی و فرصت‌های همکاری در استارتاپ‌ها – همراه شما در مسیر رشدتان هستیم.
-     </p>
-    </div>
-    <div class="hd-container hd-clearfix">
-     <div >
-      <div class="events-grid" role="list">
-       <div data-hd-animate="fade-in-scale" class="hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-event">
-         <a class="hd-card-image-link hd-inline-block" href="https://eseminar.tv/wb168365">
-          <img alt="alt text" class="hd-card-image" src="/img/events/1404/agentic-ai-2.jpg"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="https://eseminar.tv/wb168365">
-           <h3 class="hd-h3 hd-card-event-title">
-
-            <span class="hd-event-status-held">[برگزار شده]</span>
-            رویداد مسیر شغلی هوش مصنوعی
-           </h3>
-          </a>
-          <p>
-            کدام نقش‌های هوش مصنوعی بیشترین تقاضا را دارند و چطور می‌توانید با مهارت‌های درست وارد این بازار شوید
-          </p>
-          <div class="hd-divider hd-divider-card-events">
-          </div>
-          <div class="hd-card-event-details">
-           <div class="hd-event-date-wrapper">
-            <div class="hd-event-date">
-             <img alt="Calendar Icon" class="hd-event-icon" src="/img/icons/event-calendar.svg"/>
-             <div class="hd-event-details-text">
-              ۲۰ آذر ۱۴۰۴
-             </div>
-            </div>
-            <div class="hd-event-time">
-             <img alt="Clock Icon" class="hd-event-icon" src="/img/icons/event-clock.svg"/>
-             <div class="hd-event-details-text">
-              ۳:۳۰ بعدازظهر
-             </div>
-            </div>
-           </div>
-           <a class="hd-card-title-link hd-inline-block" href="https://eseminar.tv/wb168365">
-            <div class="hd-event-location-wrapper">
-             <img alt="Location Icon" class="hd-event-icon hd-event-icon-location" src="/img/icons/event-location.svg"/>
-             <div class="hd-event-location-text">
-             آنلاین و حضوری
-             </div>
-            </div>
-           </a>
-          </div>
-         </div>
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="events-feature-title">
+     <div class="hd-container">
+      <p class="hd-ds-kicker" data-hd-animate="fade-up">آخرین رویداد</p>
+      <article class="hd-ds-event-feature" data-hd-animate="fade-up">
+       <a class="hd-ds-event-feature-media" href="/events/ai/" aria-label="مسیر شغلی هوش مصنوعی">
+        <picture><source type="image/avif" srcset="/img/events/1404/agentic-ai-2_hu_f0886ae5959cf721.avif 360w, /img/events/1404/agentic-ai-2_hu_1d87b7eba09f5a17.avif 720w, /img/events/1404/agentic-ai-2_hu_81e3581c884e3496.avif 992w" sizes="(min-width: 1000px) 640px, calc(100vw - 32px)"><source type="image/webp" srcset="/img/events/1404/agentic-ai-2_hu_21d76fd79ce17072.webp 360w, /img/events/1404/agentic-ai-2_hu_c6c118110fe8fc2e.webp 720w, /img/events/1404/agentic-ai-2_hu_87198017ea9daceb.webp 992w" sizes="(min-width: 1000px) 640px, calc(100vw - 32px)"><img src="/img/events/1404/agentic-ai-2_hu_2c97bb18d2d40c41.jpg" alt="مسیر شغلی هوش مصنوعی" width="992" height="640" loading="lazy" decoding="async"></picture>
+       </a>
+       <div class="hd-ds-event-feature-body">
+        <div class="hd-ds-event-meta"><span>۲۰ آذر ۱۴۰۴</span><span>آنلاین و حضوری</span><span>برگزار شده</span>
         </div>
-
+        <h2 id="events-feature-title"><a href="/events/ai/">مسیر شغلی هوش مصنوعی</a></h2>
+        <p>نقش‌های پرتقاضای AI و مهارت‌هایی که برای ورود به این بازار نیاز دارید.</p>
+        <a class="hd-ds-event-action" href="/events/ai/">جزئیات رویداد</a>
        </div>
-       <div data-hd-animate="fade-in-scale" class="hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-event">
-         <a class="hd-card-image-link hd-inline-block" href="https://youtu.be/Z3uMYQSrLsE">
-          <img alt="alt text" class="hd-card-image" src="/img/events/1404/agentic-ai.jpg"/>
-         </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="https://youtu.be/Z3uMYQSrLsE">
-           <h3 class="hd-h3 hd-card-event-title">
-            <span class="hd-event-status-held">ویدیوی</span>
-            وبینار عامل‌های هوش مصنوعی
-           </h3>
-          </a>
-          <p>
-            مسیری از مفهوم تا ساختارهای پیشرفته عامل‌های هوش مصنوعی؛ افقی گسترده از توان خودمختاری، هماهنگی و قدرت Agentic AI
-          </p>
-          <div class="hd-divider hd-divider-card-events">
-          </div>
-          <div class="hd-card-event-details">
-           <div class="hd-event-date-wrapper">
-            <div class="hd-event-date">
-             <img alt="Calendar Icon" class="hd-event-icon" src="/img/icons/event-calendar.svg"/>
-             <div class="hd-event-details-text">
-              ۲۷ آبان ۱۴۰۴ - برگزار شده
-             </div>
-            </div>
-            <div class="hd-event-time">
-             <img alt="Clock Icon" class="hd-event-icon" src="/img/icons/event-clock.svg"/>
-             <div class="hd-event-details-text">
-              ۸:۰۰ شب
-             </div>
-            </div>
-           </div>
-           <a class="hd-card-title-link hd-inline-block" href="https://youtu.be/Z3uMYQSrLsE">
-            <div class="hd-event-location-wrapper">
-             <img alt="Location Icon" class="hd-event-icon hd-event-icon-location" src="/img/icons/play-laptop.svg"/>
-             <div class="hd-event-location-text">
-             تماشا در یوتوب
-             </div>
-            </div>
-           </a>
-          </div>
-         </div>
-        </div>
+      </article>
 
-       </div>
-       <div data-hd-animate="fade-in-scale" class="hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-event">
-         <a class="hd-card-image-link hd-inline-block" href="https://youtu.be/IlGXEDMx_VM">
-          <img alt="alt text" class="hd-card-image" src="/img/events/1404/product-design.jpg"/>
+      <div class="hd-ds-event-archive" data-hd-animate="fade-up">
+       <h2 class="hd-ds-kicker" id="events-archive-title">آرشیو رویدادها</h2>
+       <div class="hd-ds-event-rows" role="list" aria-labelledby="events-archive-title">
+        <article class="hd-ds-event-row" role="listitem">
+         <a class="hd-ds-event-row-thumb" href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+          <picture><source type="image/avif" srcset="/img/events/1404/agentic-ai_hu_b6863c02cf584831.avif 1x, /img/events/1404/agentic-ai_hu_8cda264ed56d191e.avif 2x"><source type="image/webp" srcset="/img/events/1404/agentic-ai_hu_ef6cfd32abbb1b6b.webp 1x, /img/events/1404/agentic-ai_hu_5b23706951bcca56.webp 2x"><img src="/img/events/1404/agentic-ai_hu_1103903be1a7b2d4.jpg" alt="" width="240" height="150" loading="lazy" decoding="async"></picture>
          </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="https://youtu.be/IlGXEDMx_VM">
-           <h3 class="hd-h3 hd-card-event-title">
-            <span class="hd-event-status-held">ویدیوی</span>
-            وبینار مسیر شغلی دیزاین محصول
-           </h3>
-          </a>
-          <p>
-           یک معرفی کامل و جذاب از دنیای دیزاین محصول؛ مخصوص کسایی که می‌خوان وارد این مسیر بشن.
+         <div class="hd-ds-event-row-body">
+          <h3><a href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer">وبینار عامل‌های هوش مصنوعی</a></h3>
+          <p class="hd-ds-event-row-meta"><span>۲۷ آبان ۱۴۰۴</span><span>ویدیو</span>
           </p>
-          <div class="hd-divider hd-divider-card-events">
-          </div>
-          <div class="hd-card-event-details">
-           <div class="hd-event-date-wrapper">
-            <div class="hd-event-date">
-             <img alt="Calendar Icon" class="hd-event-icon" src="/img/icons/event-calendar.svg"/>
-             <div class="hd-event-details-text">
-              ۱۰ مهر ۱۴۰۴ - برگزار شده
-             </div>
-            </div>
-            <div class="hd-event-time">
-             <img alt="Clock Icon" class="hd-event-icon" src="/img/icons/event-clock.svg"/>
-             <div class="hd-event-details-text">
-              ۵:۰۰ عصر
-             </div>
-            </div>
-           </div>
-           <a class="hd-red" href="https://youtu.be/IlGXEDMx_VM">
-            <div class="hd-event-location-wrapper">
-             <img alt="Location Icon" class="hd-event-icon hd-event-icon-location" src="/img/icons/play-laptop.svg"/>
-             <div class="hd-event-location-text">
-             تماشا در یوتوب
-             </div>
-            </div>
-           </a>
-          </div>
          </div>
-        </div>
-
-       </div>
-       <div data-hd-animate="fade-in-scale" class="hd-delay-700" role="listitem">
-        <div class="hd-card hd-card-event">
-         <a class="hd-card-image-link hd-inline-block" href="https://eseminar.tv/wb158310">
-          <img alt="alt text" class="hd-card-image" src="/img/events/1404/cloud-management.jpg"/>
+         <a class="hd-ds-event-action" href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب</a>
+        </article>
+        <article class="hd-ds-event-row" role="listitem">
+         <a class="hd-ds-event-row-thumb" href="https://youtu.be/IlGXEDMx_VM" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+          <picture><source type="image/avif" srcset="/img/events/1404/product-design_hu_607ecf3c6eb83c7e.avif 1x, /img/events/1404/product-design_hu_579d02fac9881df9.avif 2x"><source type="image/webp" srcset="/img/events/1404/product-design_hu_69c65ed29855a095.webp 1x, /img/events/1404/product-design_hu_448927c575befdd9.webp 2x"><img src="/img/events/1404/product-design_hu_e10a2d5b72e74808.jpg" alt="" width="240" height="150" loading="lazy" decoding="async"></picture>
          </a>
-         <div class="hd-card-content">
-          <a class="hd-card-title-link hd-inline-block" href="https://eseminar.tv/wb158310">
-           <h3 class="hd-h3 hd-card-event-title">
-            <span class="hd-event-status-held">[برگزار شده]</span>
-            وبینار مسیر شغلی مهندسی کلاد
-           </h3>
-          </a>
-          <p>
-           آشنایی با مهندسی کلود، IaaS و فناوری‌هایی که ستون فقرات زیرساخت ابری هستند.
+         <div class="hd-ds-event-row-body">
+          <h3><a href="https://youtu.be/IlGXEDMx_VM" target="_blank" rel="noopener noreferrer">وبینار مسیر شغلی دیزاین محصول</a></h3>
+          <p class="hd-ds-event-row-meta"><span>۱۰ مهر ۱۴۰۴</span><span>ویدیو</span>
           </p>
-          <div class="hd-divider hd-divider-card-events">
-          </div>
-          <div class="hd-card-event-details">
-           <div class="hd-event-date-wrapper">
-            <div class="hd-event-date">
-             <img alt="Calendar Icon" class="hd-event-icon" src="/img/icons/event-calendar.svg"/>
-             <div class="hd-event-details-text">
-              ۲۴ اردیبهشت ۱۴۰۴
-             </div>
-            </div>
-            <div class="hd-event-time">
-             <img alt="Clock Icon" class="hd-event-icon" src="/img/icons/event-clock.svg"/>
-             <div class="hd-event-details-text">
-              ۶:۳۰ عصر
-             </div>
-            </div>
-           </div>
-           <div class="hd-event-location-wrapper">
-            <img alt="Location Icon" class="hd-event-icon hd-event-icon-location" src="/img/icons/event-location.svg"/>
-            <div class="hd-event-location-text">
-             آنلاین در پلتفرم ایسمینار
-            </div>
-           </div>
-          </div>
          </div>
-        </div>
-
+         <a class="hd-ds-event-action" href="https://youtu.be/IlGXEDMx_VM" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب</a>
+        </article>
+        <article class="hd-ds-event-row" role="listitem">
+         <a class="hd-ds-event-row-thumb" href="https://eseminar.tv/wb158310" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+          <picture><source type="image/avif" srcset="/img/events/1404/cloud-management_hu_2130bcfdd298e6ce.avif 1x, /img/events/1404/cloud-management_hu_6f40faec13eed506.avif 2x"><source type="image/webp" srcset="/img/events/1404/cloud-management_hu_baecbf1bcc58d548.webp 1x, /img/events/1404/cloud-management_hu_f7c2b5b37b7d678c.webp 2x"><img src="/img/events/1404/cloud-management_hu_265803f21cb70170.jpg" alt="" width="240" height="150" loading="lazy" decoding="async"></picture>
+         </a>
+         <div class="hd-ds-event-row-body">
+          <h3><a href="https://eseminar.tv/wb158310" target="_blank" rel="noopener noreferrer">وبینار مسیر شغلی مهندسی کلاد</a></h3>
+          <p class="hd-ds-event-row-meta"><span>۲۴ اردیبهشت ۱۴۰۴</span><span>برگزار شده</span>
+          </p>
+         </div>
+         <a class="hd-ds-event-action" href="https://eseminar.tv/wb158310" target="_blank" rel="noopener noreferrer">مشاهده رویداد</a>
+        </article>
        </div>
       </div>
      </div>
-    </div>
-   </div>
-   <div data-hd-animate="fade-up" class="hd-section newsletter-events">
-    <div class="hd-container hd-clearfix">
-     <div class="newsletter-events-wrapper">
-      <div data-hd-animate="fade-in-scale" class="hd-split-content newsletter-events-left hd-delay-300">
-       <h2 class="title newsletter-events">
-        هیچ رویدادی را از دست ندهید!
-       </h2>
-       <p class="paragraph newsletter-events">
-        📨 ساده‌ترین راه برای اینکه همیشه در جریان باشید
-       </p>
-      </div>
-      <div data-hd-animate="fade-in-scale" class="hd-split-content newsletter-events-right hd-delay-500">
-       <div class="form-block newsletter hd-form-wrap">
-        <form action="https://formspree.io/f/mjkvpvqz" class="hd-form-newsletter" id="event-newsletter-form" method="POST" name="event-newsletter-form">
-         <input dir="ltr" aria-label="ایمیل خبرنامه رویدادها" autocomplete="email" class="input newsletter-events hd-field" id="Email" inputmode="email" maxlength="256" name="Email" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-         <input class="hd-button hd-button-secondary cta newsletter hd-inline-block" type="submit" value="اشتراک"/>
+    </section>
+    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" id="newsletter" aria-labelledby="events-news-title">
+     <div class="hd-container">
+      <div class="hd-ds-card hd-events-news-card" data-hd-animate="fade-up">
+       <div class="hd-ds-section-head hd-m-0">
+        <p class="hd-ds-kicker">خبرنامه رویدادها</p>
+        <h2 id="events-news-title" class="hd-h2-fluid-sm">هیچ رویدادی را از دست ندهید.</h2>
+        <p>ساده‌ترین راه برای اینکه همیشه در جریان رویدادهای تازه باشید.</p>
+       </div>
+       <div class="hd-form-wrap">
+        <form action="https://formspree.io/f/mjkvpvqz" class="hd-events-news-form" id="event-newsletter-form" method="POST" name="event-newsletter-form">
+         <input dir="ltr" aria-label="ایمیل خبرنامه رویدادها" autocomplete="email" class="input newsletter-events hd-field hd-events-news-field" id="Email" inputmode="email" maxlength="256" name="Email" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+         <button class="hd-ds-cta hd-ds-cta-primary" type="submit">اشتراک</button>
         </form>
         <div class="success-message newsletter hd-form-success" aria-live="polite" aria-hidden="true">
-         <div>
-          متشکریم! شما اکنون عضو شدید!
-         </div>
+         <div>متشکریم! عضویت شما در خبرنامه ثبت شد.</div>
         </div>
         <div class="error-message hd-form-error" aria-live="polite" aria-hidden="true">
-         <div>
-          خطایی رخ داد. لطفاً دوباره تلاش کنید.
-         </div>
+         <div>خطایی رخ داد. لطفاً دوباره تلاش کنید.</div>
         </div>
-       </div>
-       <div class="newsletter-events-text">
-        ما هرگز برایتان  اسپم ارسال نمی‌کنیم.
+        <p class="hd-events-news-note">ما هرگز برایتان اسپم ارسال نمی‌کنیم.</p>
        </div>
       </div>
-      <img data-hd-animate="fade-in-scale" alt="" class="circle-shape-newsletter-events _4 hd-delay-600" src="/img/shapes/circle-shape-newsletter-events-04.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="circle-shape-newsletter-events _3 hd-delay-800" src="/img/shapes/circle-shape-newsletter-events-03.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="circle-shape-newsletter-events _2 hd-delay-600" src="/img/shapes/circle-shape-newsletter-events-02.svg"/>
-      <img data-hd-animate="fade-in-scale" alt="" class="circle-shape-newsletter-events _1 hd-delay-800" src="/img/shapes/circle-shape-newsletter-events-01.svg"/>
      </div>
-    </div>
-   </div>
+    </section>
+
+    <section class="hd-ds-band hd-ds-band-proof hd-ds-section" aria-labelledby="events-onward-title">
+     <div class="hd-container">
+      <div class="hd-ds-section-head hd-measure-md" data-hd-animate="fade-up">
+       <h2 id="events-onward-title">رویداد بعدی یا اولین کمپ‌تان؟</h2>
+       <p>عضو خبرنامه شوید تا از رویداد بعدی باخبر شوید؛ یا اگر آماده یادگیری عمیق‌تر هستید، کمپ‌های پروژه‌محور وی‌کمپ را ببینید.</p>
+      </div>
+      <div class="hd-ds-actions" data-hd-animate="fade-up">
+       
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="#newsletter">عضویت در خبرنامه رویدادها</a>
+       <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps">مشاهده کمپ‌ها</a>
+      </div>
+     </div>
+    </section>
    </main>
    <footer data-hd-animate="fade-up" class="hd-footer">
     <div class="hd-container hd-clearfix">
      <div class="hd-footer-links-block">
       <div data-hd-animate="fade-in-scale" class="hd-links-block hd-footer-links hd-delay-300">
        <a class="hd-footer-brand hd-inline-block" href="/">
-        <img alt="Academy Logo" src="/img/logo.png"/>
+        <img alt="WECAMP" src="/img/logo.png"/>
        </a>
        <div class="hd-social-media-wrapper hd-footer-fine-print">
         <a aria-label="Telegram" class="hd-social-media-icon-wrapper hd-inline-block" href="https://t.me/wecamppro">
@@ -548,6 +427,7 @@
        </div>
        <div class="hd-footer-mobile-content">
         <div class="hd-footer-content-links">
+         
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/agentic-ai">
@@ -555,23 +435,18 @@
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/cloud-infra-deployment">
-            کمپ راه‌اندازی کلود با اپن‌استک
+           <a class="hd-footer-link" href="/camps/product-design">
+            کمپ دیزاین محصول
            </a>
           </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/camps/cloud-infra-management">
-            کمپ مدیریت کلود با اپن‌استک
+            کمپ مدیریت کلود
            </a>
           </li>
           <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/user-research">
-            کمپ کاربرپژوهی
-           </a>
-          </li>
-          <li class="hd-footer-list-item">
-           <a class="hd-footer-link" href="/camps/product-design">
-            کمپ دیزاین محصول
+           <a class="hd-footer-link" href="/camps">
+            همه کمپ‌ها
            </a>
           </li>
          </ul>
@@ -619,14 +494,27 @@
             تماس با ما
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/request">
+            درخواست مشاوره
+           </a>
+          </li>
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/teachers">
             مدرسان وی‌کمپ
            </a>
           </li>
+          
+          <li class="hd-footer-list-item">
+           <a class="hd-footer-link" href="/events">
+            رویدادهای وی‌کمپ
+           </a>
+          </li>
+          
           <li class="hd-footer-list-item">
            <a class="hd-footer-link" href="/partnership">
-            همکاری با سازمان‌ها
+            همکاری سازمانی
            </a>
           </li>
           <li class="hd-footer-list-item">
@@ -652,7 +540,9 @@
          <ul class="hd-list-footer hd-list-unstyled" role="list">
           <li class="hd-footer-list-item">
            
-           <img loading="lazy" decoding="async" onclick="window.open('https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv','_newtab')" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" style="cursor:pointer" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           <a href="https://trustseal.enamad.ir/?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" target="_blank" rel="noopener" referrerpolicy="origin" aria-label="نماد اعتماد الکترونیکی">
+            <img loading="lazy" decoding="async" referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=594721&Code=YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv" alt="اینماد" id="YTt8n8SojyJNEyNPNIrOUsiLLwEq0uAv">
+           </a>
           </li>
          </ul>
         </div>
@@ -680,7 +570,7 @@
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
-         متشکریم! شما اکنون عضو شدید!
+         متشکریم! عضویت شما در خبرنامه ثبت شد.
         </div>
        </div>
        <div class="hd-error-message-newsletter hd-form-error" aria-live="polite" aria-hidden="true">
@@ -711,6 +601,43 @@
     
     <script type="text/javascript">
     ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="286jLk",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+    </script>
+    <script type="text/javascript">
+    
+
+    (function () {
+      if (!document.querySelector(".hd-camp-page")) return;  
+      var mq = window.matchMedia("(max-width: 1120px)");
+      var chatOpen = false;
+      var ready = false;
+      function safeAreaBottom() {
+        var probe = document.createElement("div");
+        probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;height:env(safe-area-inset-bottom,0px);";
+        document.body.appendChild(probe);
+        var px = probe.getBoundingClientRect().height || 0;
+        probe.parentNode.removeChild(probe);
+        return Math.round(px);
+      }
+      function apply() {
+        if (!ready || typeof Goftino === "undefined" || typeof Goftino.setWidget !== "function") return;
+        
+
+        var bottom = (mq.matches ? 96 : 20) + safeAreaBottom();
+        Goftino.setWidget({ marginBottom: bottom + 10 });
+        
+
+        var w = document.getElementById("goftino_w");
+        if (w && !chatOpen) w.style.bottom = bottom + "px";
+      }
+      window.addEventListener("goftino_ready", function () { ready = true; apply(); });
+      window.addEventListener("goftino_openWidget", function () { chatOpen = true; });
+      window.addEventListener("goftino_closeWidget", function () { chatOpen = false; });
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(apply, 150);
+      });
+    })();
     </script>
   </div>
 
