@@ -1,0 +1,17 @@
+/* HTS-WECAMP-011: return host label/paragraph reset collisions to the
+   released FormField + Text contracts; product rhythm stays root-owned. */
+:where([data-hts-root]) .hts-field > .hts-text.hts-field-label {
+  color: revert-layer;
+  display: revert-layer;
+  font: revert-layer;
+  font-family: var(--hts-font-family-body);
+  margin: revert-layer;
+}
+
+:where([data-hts-root]) .hts-field > .hts-text:is(.hts-field-help, .hts-field-error) {
+  margin: revert-layer;
+}
+
+:where([data-hts-root]) .wecamp-field-flow {
+  margin-block-end: 20px;
+}

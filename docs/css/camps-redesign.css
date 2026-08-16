@@ -5,17 +5,11 @@
 .hd-camp-page {
   /* Thin aliases onto the --wc-* brand tokens (hd-tokens.css) — edit values there. */
   --hd-camp-blue: var(--wc-cobalt);
-  --hd-camp-blue-deep: var(--wc-cobalt-deep);      /* cobalt hover (sticky pill quiet state) */
-  --hd-camp-ink: var(--wc-ink);
-  --hd-camp-paper: var(--wc-paper);
-  --hd-camp-muted: var(--wc-muted);
-  --hd-camp-line: var(--wc-line);
+  --hd-camp-ink: var(--wecamp-local-ink);
+  --hd-camp-paper: var(--wecamp-local-paper);
+  --hd-camp-muted: var(--wecamp-local-muted);
+  --hd-camp-line: var(--wecamp-local-line);
   --hd-camp-cyan: var(--wc-cyan);
-  --hd-camp-lilac: #a8a7ff;          /* camp-page-only local accent — no --wc-* twin */
-  --hd-camp-green: var(--wc-green);
-  --hd-camp-accent: var(--wc-accent);              /* warm brand accent — register CTAs (matches homepage) */
-  --hd-camp-accent-strong: var(--wc-accent-deep);  /* accent hover */
-  --hd-camp-accent-ink: var(--wc-accent-ink);      /* AA-legible text on accent fill */
   --hd-camp-radius: var(--wc-radius);
 
   background: var(--hd-camp-paper);
@@ -47,12 +41,6 @@
   overflow-wrap: anywhere;
 }
 
-.hd-camp-page .hd-button {
-  border-radius: var(--hd-camp-radius);
-  text-transform: none;
-}
-
-.hd-camp-page .hd-button:focus-visible,
 .hd-camp-page a:focus-visible,
 .hd-camp-page button:focus-visible,
 .hd-camp-page input:focus-visible {
@@ -122,7 +110,7 @@
   width: fit-content;
   margin: 0 0 14px;
   padding: 8px 12px;
-  border: 1px solid var(--wc-line);
+  border: 1px solid var(--wecamp-local-line);
   border-radius: var(--wc-radius-pill);
   background: rgba(11, 47, 159, 0.08);
   color: var(--hd-camp-blue);
@@ -149,11 +137,11 @@
   backdrop-filter: blur(18px);
 }
 
-.hd-camp-hero .hd-ds-chip-row {
+.hd-camp-hero .wecamp-inline-cluster {
   margin-block-start: 24px;
 }
 
-.hd-camp-hero .hd-ds-cta-secondary {
+.hd-camp-hero .hts-button[data-variant="secondary"] {
   backdrop-filter: blur(18px);
 }
 
@@ -175,9 +163,7 @@
   line-height: 1.95;
 }
 
-/* Hero chip + CTA chrome comes from the shared primitives (.hd-ds-chip,
-   .hd-ds-cta*, hd-page.css) with the .hd-ds-on-dark flip; the wrapper only
-   keeps the hero rhythm. */
+/* Badge and Button chrome comes from HTS; the wrapper keeps hero rhythm. */
 .hd-camp-actions {
   margin-top: 30px;
 }
@@ -256,12 +242,30 @@
   background: #fff;
 }
 
-.hd-camp-play span {
+.hd-camp-play-icon {
   width: 0;
   height: 0;
   margin-left: 5px;
   border-block: 12px solid transparent;
   border-left: 18px solid currentColor;
+}
+
+/* The released Dialog requires one visible localized trigger label. Keep the
+   existing circular play affordance intact and place the label immediately
+   below it, inside a compact high-contrast product chip. */
+.hd-camp-play-label {
+  position: absolute;
+  inset-block-start: calc(100% + var(--hd-space-xs));
+  left: 50%;
+  z-index: 2;
+  padding: 3px var(--hd-space-xs);
+  border: 1px solid rgba(242, 242, 240, 0.32);
+  border-radius: var(--wc-radius-pill);
+  background: rgba(16, 16, 16, 0.82);
+  color: var(--wecamp-local-paper);
+  font: 700 13px/1.6 var(--hts-font-family-body);
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 
 /* Loop mode (hero.video_loop): the ambient clip is the star, so the play button
@@ -294,9 +298,13 @@
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.hd-camp-play-overlay span {
+.hd-camp-play-overlay .hd-camp-play-icon {
   position: relative;          /* triangle rides above the frosted chip */
   z-index: 1;
+}
+
+.hd-camp-play-overlay .hd-camp-play-label {
+  inset-block-start: calc(50% - 70px);
 }
 
 .hd-camp-play-overlay:hover {
@@ -653,7 +661,7 @@
   border-radius: 50%;
   background: var(--hd-camp-blue);
   color: var(--hd-camp-paper);
-  font-family: var(--hd-font-latin);
+  font-family: var(--hts-font-family-display);
   font-size: 13px;
   font-weight: 900;
 }
@@ -707,9 +715,8 @@
   height: 18px;
 }
 
-/* Thin camp-family wrapper on the canonical .hd-ds-accordion (hd-page.css):
-   measure + section rhythm only. The old <details>.hd-camp-disclosure chrome
-   was deleted (uiux-0.2 step 5) — chrome now comes from hd-ds-accordion-*. */
+/* Thin camp-family wrapper on the released .hts-accordion:
+   measure + section rhythm only; HTS owns disclosure chrome and state. */
 .hd-camp-details {
   max-width: 900px;
   margin-top: 34px;
@@ -988,19 +995,6 @@
   gap: 12px;
 }
 
-.hd-camp-compact-form .hd-input,
-.hd-camp-email-form .hd-input {
-  margin-bottom: 0;
-  background: #fff;
-}
-
-.hd-camp-compact-form .hd-checkout-label {
-  margin: 0;
-  color: var(--hd-camp-ink);
-  font-size: 13px;
-  font-weight: 900;
-}
-
 .hd-camp-sticky-cta {
   position: fixed;
   z-index: 900;
@@ -1014,7 +1008,7 @@
   backdrop-filter: blur(18px);
 }
 
-.hd-camp-sticky-cta .hd-button {
+.hd-camp-sticky-cta .hts-button {
   width: 100%;
   min-width: 0;
 }
@@ -1023,26 +1017,6 @@
    mobile keeps the short label so the bar never wraps. */
 .hd-camp-sticky-price {
   display: none;
-}
-
-/* Warm accent on the primary register CTA — one consistent "action" colour
-   across the homepage → camp → register funnel. Scoped to camp CTAs only;
-   the ghost secondary (.hd-button-secondary) and global .hd-button are
-   untouched. Orange accent contract (uiux-3.2, see .hd-ds-cta-primary in
-   hd-page.css): every accent element on a camp page targets the single
-   #register flow; enforced by scripts/audit/orange-census.cjs. */
-.hd-camp-register-actions .hd-button:not(.hd-button-secondary),
-.hd-camp-sticky-cta .hd-button:not(.hd-button-secondary) {
-  border-color: var(--hd-camp-accent);
-  background: var(--hd-camp-accent);
-  color: var(--hd-camp-accent-ink);
-}
-
-.hd-camp-register-actions .hd-button:not(.hd-button-secondary):hover,
-.hd-camp-sticky-cta .hd-button:not(.hd-button-secondary):hover {
-  border-color: var(--hd-camp-accent-strong);
-  background: var(--hd-camp-accent-strong);
-  color: var(--hd-camp-accent-ink);
 }
 
 .hd-camp-faq {
@@ -1174,7 +1148,7 @@
     line-height: 1.5;
   }
 
-  .hd-camp-decision-bar .hd-button {
+  .hd-camp-decision-bar .hts-button {
     min-width: 0;
     white-space: nowrap;
   }
@@ -1223,20 +1197,8 @@
     display: inline;
   }
 
-  /* Single-orange contract on desktop: hiding the pill would break register-CTA
-     persistence, so while the registration panel (and its orange primary) is on
-     screen the pill goes quiet cobalt instead. */
-  .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta .hd-button:not(.hd-button-secondary) {
-    border-color: var(--hd-camp-blue);
-    background: var(--hd-camp-blue);
-    color: var(--hd-camp-paper);
-  }
-
-  .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta .hd-button:not(.hd-button-secondary):hover {
-    border-color: var(--hd-camp-blue-deep);
-    background: var(--hd-camp-blue-deep);
-    color: var(--hd-camp-paper);
-  }
+  /* The Button override keeps the persistent pill cobalt while the register
+     panel owns the visible orange action. */
 }
 
 @media screen and (max-width: 479px) {

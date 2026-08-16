@@ -66,7 +66,7 @@
   line-height: 1.111em;
 }
 .hd-footer-link {
-  color: var(--wc-muted);
+  color: var(--wecamp-local-muted);
   white-space: nowrap;
   line-height: 1.222em;
   text-decoration: none;
@@ -88,8 +88,8 @@
   transition: border-color .35s, color .35s;
 }
 .hd-footer-link-special:hover {
-  border-bottom-color: var(--wc-ink);
-  color: var(--wc-ink);
+  border-bottom-color: var(--wecamp-local-ink);
+  color: var(--wecamp-local-ink);
 }
 .hd-footer-mobile-title {
   cursor: pointer;
@@ -113,9 +113,9 @@
   margin-top: 22px;
 }
 .hd-social-media-icon-wrapper {
-  border: 1px solid var(--wc-line);
-  background-color: var(--wc-paper);
-  color: var(--wc-muted);
+  border: 1px solid var(--wecamp-local-line);
+  background-color: var(--wecamp-local-paper);
+  color: var(--wecamp-local-muted);
   border-radius: 100px;
   justify-content: center;
   align-items: center;
@@ -192,7 +192,7 @@
   display: flex;
 }
 .hd-container-newsletter {
-  border-bottom: 1px solid var(--wc-line);
+  border-bottom: 1px solid var(--wecamp-local-line);
   justify-content: space-between;
   align-items: center;
   padding-bottom: 60px;
@@ -219,7 +219,7 @@
   inset-inline-start: 4px;             /* legacy — left:4px (RTL→logical) */
 }
 .hd-newsletter-title {
-  color: var(--wc-ink);        /* var(--wc-ink) → --hd-color-title */
+  color: var(--wecamp-local-ink);        /* var(--wecamp-local-ink) → --hd-color-title */
   margin-bottom: 8px;
   font-size: 24px;
   font-weight: 500;
@@ -278,7 +278,7 @@
     padding: 0;
   }
   .hd-footer .hd-links-block {
-    border-bottom: 1px solid var(--wc-line);
+    border-bottom: 1px solid var(--wecamp-local-line);
     width: 100%;
   }
   .hd-footer .hd-links-block.hd-footer-links {
@@ -377,9 +377,9 @@
 
 
 .page-wrapper .hd-footer {
-  --hd-footer-paper: var(--wc-paper);
+  --hd-footer-paper: var(--wecamp-local-paper);
   --hd-footer-blue: var(--wc-cobalt);
-  --hd-footer-ink: var(--wc-ink);
+  --hd-footer-ink: var(--wecamp-local-ink);
   --hd-footer-radius: var(--wc-radius);
 }
 
@@ -644,6 +644,35 @@
   outline-offset: 3px;
 }
 
+/* HTS-WECAMP-011: the FormField root owns footer layout and dark-context
+   semantics; its direct Input keeps released component chrome and states. */
+.page-wrapper .wecamp-footer-field {
+  --hts-color-text-primary: var(--hd-footer-paper);
+  --hts-color-status-danger-foreground: var(--hts-color-red-300);
+  min-inline-size: 0;
+}
+
+.page-wrapper .wecamp-footer-field > .hts-field-control {
+  --hts-color-surface: rgba(242, 242, 240, 0.95);
+  --hts-color-border-interactive: rgba(242, 242, 240, 0.28);
+  --hts-color-text-primary: var(--hd-footer-ink);
+  --hts-color-text-muted: rgba(16, 16, 16, 0.54);
+  --hts-color-focus-ring: rgba(49, 200, 217, 0.78);
+  block-size: 56px;
+  min-inline-size: 0;
+  margin: 0;
+  font-size: 15px;
+  text-align: left;
+}
+
+.page-wrapper .wecamp-footer-field > .hts-field-control:placeholder-shown {
+  text-align: right;
+}
+
+.page-wrapper .wecamp-footer-field > .hts-field-control::placeholder {
+  direction: rtl;
+}
+
 .page-wrapper .hd-button-newsletter {
   height: 56px;
   min-width: 116px;
@@ -799,6 +828,10 @@
 }
 
 @media (max-width: 479px) {
+  .page-wrapper .wecamp-footer-field > .hts-field-control {
+    text-align: right;
+  }
+
   .page-wrapper .hd-footer .hd-links-block,
   .page-wrapper .hd-container-newsletter {
     padding: 16px;

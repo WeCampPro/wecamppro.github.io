@@ -1,0 +1,14 @@
+{
+  "file": "utilities.css",
+  "mappings": ";AAAA;EACE;;;;;;;;;;;;EAaA;;;;;EAMA;;;;;;;EAQA;;;;;;EAOA",
+  "names": [],
+  "sources": [
+    "packages/css/src/utilities.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.utilities {\n  :where([data-hts-root]).hts-sr-only,\n  :where([data-hts-root]) .hts-sr-only {\n    block-size: 1px !important;\n    border: 0 !important;\n    clip-path: inset(50%) !important;\n    inline-size: 1px !important;\n    margin: -1px !important;\n    overflow: hidden !important;\n    padding: 0 !important;\n    position: absolute !important;\n    white-space: nowrap !important;\n  }\n\n  :where([data-hts-root]).hts-focus-ring:focus-visible,\n  :where([data-hts-root]) .hts-focus-ring:focus-visible {\n    outline: var(--hts-focus-ring-width) solid var(--hts-color-focus-ring);\n    outline-offset: var(--hts-focus-ring-offset);\n  }\n\n  :where([data-hts-root]).hts-container,\n  :where([data-hts-root]) .hts-container {\n    inline-size: 100%;\n    margin-inline: auto;\n    max-inline-size: var(--hts-layout-page-max);\n    padding-inline: var(--hts-layout-gutter);\n  }\n\n  :where([data-hts-root]).hts-stack,\n  :where([data-hts-root]) .hts-stack {\n    display: flex;\n    flex-direction: column;\n    gap: var(--hts-space-layout-block);\n  }\n\n  :where([data-hts-root]).hts-cluster,\n  :where([data-hts-root]) .hts-cluster {\n    align-items: center;\n    display: flex;\n    flex-wrap: wrap;\n    gap: var(--hts-space-layout-inline);\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "6f2977a4b5c9baee302c3e753efa78dd712c96303b48b3963423b69e48e6805d"
+}

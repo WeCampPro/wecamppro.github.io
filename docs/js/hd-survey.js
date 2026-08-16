@@ -46,9 +46,13 @@ document.addEventListener('alpine:init', () => {
       this.active = true;
       this.open = true;
       document.body.style.overflow = 'hidden';
-      this.$nextTick(() => requestAnimationFrame(() => {
-        if (this.$refs.close) this.$refs.close.focus();
-      }));
+      /* The overlay's visibility transition is still `hidden` during the first
+         frame after Alpine applies is-active. A second frame is the earliest
+         measured point at which native focus succeeds; a zero-delay timer is
+         still too early and a fixed millisecond delay would be timing magic. */
+      this.$nextTick(() => requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (this.active && this.open && this.$refs.close) this.$refs.close.focus();
+      })));
     },
 
     /* Slide the panel out (500ms), then hide the overlay and drop the iframe —

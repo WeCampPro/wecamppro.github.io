@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.hudder.tech/design-system/identity-manifest.schema.json",
+  "title": "HTS consumer-owned identity manifest",
+  "type": "object",
+  "required": ["schema", "version", "family", "variants"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "hts-design-system/identity-manifest/v1"
+    },
+    "version": {
+      "$ref": "#/definitions/plainText"
+    },
+    "family": {
+      "enum": ["hts", "wecore", "wecamp", "hudder"]
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/variant"
+      }
+    }
+  },
+  "definitions": {
+    "plainText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^(?=[\\s\\S]*\\S)[^<>\\u0000-\\u001F\\u007F-\\u009F\\u2028\\u2029\\uD800-\\uDFFF]*$"
+    },
+    "accessibleText": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plainText"
+        },
+        {
+          "type": "string",
+          "pattern": "[^\\s\\p{Default_Ignorable_Code_Point}]"
+        }
+      ]
+    },
+    "localPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^(?![A-Za-z][A-Za-z0-9+.-]*:)(?!/)(?!.*(?:^|/) )(?!.*[. ](?:/|$))(?!.*(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Oo][Mm][1-9¹²³]|[Ll][Pp][Tt][1-9¹²³])(?:\\.[^/]*)?(?:/|$))[^/\\\\:*?\"<>|#%\\u0000-\\u001F\\u007F-\\u009F\\u061C\\u200E\\u200F\\u2028\\u2029\\u202A-\\u202E\\u2066-\\u2069\\uD800-\\uDFFF\\uFEFF]+(?:/[^/\\\\:*?\"<>|#%\\u0000-\\u001F\\u007F-\\u009F\\u061C\\u200E\\u200F\\u2028\\u2029\\u202A-\\u202E\\u2066-\\u2069\\uD800-\\uDFFF\\uFEFF]+)*$"
+    },
+    "variant": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "src",
+        "mediaType",
+        "intrinsicWidth",
+        "intrinsicHeight",
+        "colorScheme",
+        "altPolicy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/plainText"
+        },
+        "kind": {
+          "enum": ["logomark", "wordmark", "lockup"]
+        },
+        "src": {
+          "$ref": "#/definitions/localPath"
+        },
+        "mediaType": {
+          "enum": ["image/svg+xml", "image/png", "image/webp"]
+        },
+        "intrinsicWidth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "intrinsicHeight": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "colorScheme": {
+          "enum": ["light", "dark", "any"]
+        },
+        "altPolicy": {
+          "enum": ["decorative", "brand-name", "consumer-label"]
+        },
+        "accessibleName": {
+          "$ref": "#/definitions/accessibleText"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["altPolicy"],
+            "properties": {
+              "altPolicy": {
+                "const": "brand-name"
+              }
+            }
+          },
+          "then": {
+            "required": ["accessibleName"],
+            "properties": {
+              "accessibleName": true
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["altPolicy"],
+            "properties": {
+              "altPolicy": {
+                "enum": ["decorative", "consumer-label"]
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": ["accessibleName"],
+              "properties": {
+                "accessibleName": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

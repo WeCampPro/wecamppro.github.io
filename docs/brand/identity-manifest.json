@@ -1,0 +1,29 @@
+{
+  "schema": "hts-design-system/identity-manifest/v1",
+  "version": "1.0.0",
+  "family": "wecamp",
+  "variants": [
+    {
+      "id": "wecamp-logomark-cobalt",
+      "kind": "logomark",
+      "src": "img/brand/logo-wecamp.svg",
+      "mediaType": "image/svg+xml",
+      "intrinsicWidth": 309,
+      "intrinsicHeight": 318,
+      "colorScheme": "light",
+      "altPolicy": "brand-name",
+      "accessibleName": "WECAMP"
+    },
+    {
+      "id": "wecamp-logomark-tile",
+      "kind": "logomark",
+      "src": "img/brand/logo-wecamp-bg.svg",
+      "mediaType": "image/svg+xml",
+      "intrinsicWidth": 480,
+      "intrinsicHeight": 480,
+      "colorScheme": "any",
+      "altPolicy": "brand-name",
+      "accessibleName": "WECAMP"
+    }
+  ]
+}

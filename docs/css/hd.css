@@ -41,7 +41,10 @@ body {
   margin: 0;
   color: #69697b;                /* legacy --paragraphs */
   background-color: #fff;
-  font-family: Vazirmatn, Noto Naskh Arabic, sans-serif;
+  /* Non-certificate roots resolve the released WECAMP variable stack. Frozen
+     certificates do not load HTS, so the fallback preserves their issued
+     fixed-face metrics exactly. */
+  font-family: var(--hts-font-family-body, Vazirmatn, Noto Naskh Arabic, sans-serif);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.667em;
@@ -77,8 +80,7 @@ template,
 .hidden {                        /* .hidden = the Web3Forms honeypot hook (was an inline style) */
   display: none;
 }
-/* (uiux-3.2) .hd-button-label-row is gone: the /request submit was its only
-   user and lost its icon when it became the page's accent primary. */
+/* The retired request-submit label row was removed with its icon in uiux-3.2. */
 a {
   background-color: #0000;
   color: #0b2f9f;                /* legacy --accent */
@@ -139,7 +141,7 @@ img {
    layout delta against the pre-pipeline markup. The <source> children must
    be hidden explicitly: with the picture box dissolved they would otherwise
    surface as empty grid/flex items (measured: two phantom 0px rows + gaps
-   inside .hd-ds-person-card). */
+   inside .wecamp-person-card). */
 picture {
   display: contents;
 }
@@ -444,20 +446,21 @@ li {
    Sizes / line-heights from hd-tokens.css.
    ========================================================================== */
 .hd-h1 {
-  font-family: var(--hd-font-heading);
+  font-family: var(--hts-font-family-display, var(--hd-font-heading));
   font-weight: var(--hd-weight-heading); /* 500 */
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
   margin: 0 0 24px;
   font-size: var(--hd-h1-size); /* 60 → 48@767 → 38@479 */
   line-height: var(--hd-h1-line); /* 1.133 */
 }
 
-/* Body paragraph — 18px / 1.667 / muted ink, Vazirmatn-first body stack. */
+/* Body paragraph — 18px / 1.667 / muted ink; released WECAMP body stack on
+   product routes, fixed Vazirmatn-first fallback on frozen certificates. */
 .hd-text-body {
-  font-family: var(--hd-font-body);
+  font-family: var(--hts-font-family-body, var(--wecamp-local-font-body));
   font-size: var(--hd-text-base); /* 18px */
   line-height: var(--hd-line-body); /* 1.667 */
-  color: var(--wc-muted); /* #69697b */
+  color: var(--wecamp-local-muted); /* #69697b */
 }
 .hd-inline-block {
   display: inline-block;
@@ -500,12 +503,12 @@ li {
 }
 
 /* ==========================================================================
-   §12 Button system — .hd-button base (filled primary, reset folded in: an
-   <a>/<button>/<input> needs only the one class) + -secondary/-lg/-sm/-full/
-   -header single-class modifiers that win by source order; no !important
-   (the §1 normalize's [type=button]{border:0} sits above, so variant borders
-   win by plain order). :where() keeps the disabled-state guards at zero
-   specificity. RTL flows from `dir` automatically.
+   §12 Frozen certificate Button compatibility
+
+   Certificate templates and their shared nav/footer cannot load HTS. Keep the
+   base, large, header, newsletter (footer.css), and responsive surface exact
+   until HTS-WECAMP-016 addresses certificates. Non-certificate Button styling
+   lives in the released component plus hts-overrides/button.css.
    ========================================================================== */
 
 /* Base = filled primary button. */
@@ -516,7 +519,7 @@ li {
   -webkit-appearance: none;                    /* drop native control theming so <button>/<input>
                                                   render like <a>. The transparent secondary's
                                                   border is restored by the (0,2,0) interop rules below. */
-  font-family: var(--hd-font-body);            /* <a> inherits body; explicit for <button>/<input> */
+  font-family: var(--hts-font-family-body, var(--wecamp-local-font-body)); /* cert fallback */
   font-size: var(--hd-button-font);            /* 16px */
   font-weight: var(--hd-weight-medium);        /* 500 */
   line-height: var(--hd-button-line);          /* 18px */
@@ -554,28 +557,6 @@ li {
   cursor: not-allowed;                         /* NEW: */
 }
 
-/* Secondary — cobalt outline on transparent; body weight 400, .02em tracking. */
-.hd-button-secondary {
-  color: var(--wc-cobalt);
-  background-color: transparent;
-  border: var(--hd-button-border) solid var(--wc-cobalt);
-  font-weight: var(--hd-weight-regular);       /* 400 */
-  letter-spacing: var(--hd-button-tracking);   /* .02em live */
-  transition: box-shadow var(--wc-transition),
-              transform var(--wc-transition),
-              color var(--wc-transition-fast),
-              background-color var(--wc-transition-fast); /* .35s/.35s/.3s/.3s */
-}
-.hd-button-secondary:hover:where(:not(:disabled):not([aria-disabled="true"])) {
-  background-color: var(--wc-cobalt);    /* fill on hover */
-  color: var(--wc-white);
-}
-
-/* (uiux-8.1) The old (0,2,0) `.hd-button.hd-button-secondary` border interop
-   is gone: the `[type=button]/[type=reset]{border:0}` normalize now lives in
-   §1 ABOVE this section, so the single-class variant borders win by plain
-   source order. */
-
 /* Large. font ramps 18→16 @479 via
    the token. */
 .hd-button-lg {
@@ -593,16 +574,6 @@ li {
   border-radius: var(--wc-cert-frozen-corner);
 }
 
-.hd-button-sm {
-  padding: 14px 24px;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-/* Full-width. */
-.hd-button-full {
-  width: 100%;
-}
 .hd-discounts {
   flex-direction: column;
   align-items: center;                         /* w-commerce discountsbutton */
@@ -611,11 +582,7 @@ li {
   margin-inline-start: 0;
   display: flex;
 }
-.hd-button:not(.hd-button-secondary).hd-discounts {
-  height: 100%;                                /* live legacy override */
-}
-
-/* Both primary & secondary go full-width at ≤479. */
+/* Frozen certificate actions go full-width at ≤479. */
 @media screen and (max-width: 479px) {
   .hd-button {
     min-width: 100%;
@@ -646,12 +613,14 @@ li {
 }
 .hd-button-header-ghost {
   background-color: rgba(16, 16, 16, 0.08);
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
 }
 .hd-button-header-ghost:hover:where(:not(:disabled):not([aria-disabled="true"])) {
   background-color: rgba(16, 16, 16, 0.14);
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
 }
+/* HTS-WECAMP-005: certificate-only compatibility. Non-certificate navigation
+   emits .wecamp-nav-button-icon; 016 removes this after certificate reissue. */
 .hd-button-header-icon {
   flex: none;
   inline-size: 20px;
@@ -669,7 +638,7 @@ li {
   gap: var(--hd-space-xs);
   min-block-size: 48px;
   padding-inline: 8px;
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.25;
@@ -686,7 +655,7 @@ li {
 }
 
 /* ==========================================================================
-   §13 Form system — .hd-input/.hd-select/.hd-textarea/.hd-label + form
+   §13 Form system — frozen .hd-input compatibility + form layout/status
    block/row/col + success/error states. Token-driven; flat single-class,
    source-order; RTL by inheritance (dir="ltr" per LTR field in markup).
    *** web3forms WIRING IS FROZEN ***: keep the hidden access_key input, every
@@ -701,10 +670,10 @@ li {
   min-height: auto;
   margin: 0 0 var(--hd-input-gap);              /* mb 20px */
   padding: var(--hd-input-pad);                 /* 20px */
-  font-family: var(--hd-font-body);             /* native controls don't inherit it */
+  font-family: var(--hts-font-family-body, var(--wecamp-local-font-body)); /* cert fallback */
   font-size: var(--hd-text-base);               /* 18px — ≥16px, no iOS zoom */
   line-height: var(--hd-input-line);            /* 1.1 */
-  color: var(--wc-ink);                         /* control text = body ink */
+  color: var(--wecamp-local-ink);                         /* control text = body ink */
   background-color: var(--wc-white);
   border: var(--hd-input-border) solid var(--wc-line-strong); /* control boundary ≥3:1 on white AND paper (SC 1.4.11, uiux-7.1) */
   border-radius: var(--wc-radius);              /* 8px control radius */
@@ -714,7 +683,7 @@ li {
               color var(--wc-transition); /* .35s */
 }
 .hd-input::placeholder {
-  color: var(--wc-muted);
+  color: var(--wecamp-local-muted);
   line-height: var(--hd-placeholder-line);      /* 1.5 */
 }
 .hd-input:hover:where(:not(:disabled):not([readonly])) {
@@ -722,7 +691,7 @@ li {
 }
 .hd-input:focus {
   border-color: var(--wc-cobalt);
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
 }
 .hd-input:focus-visible {
   outline: var(--hd-button-focus-width) solid var(--wc-cobalt); /* NEW: a11y ring */
@@ -730,43 +699,8 @@ li {
 }
 .hd-input:disabled,
 .hd-input[readonly] {
-  background-color: var(--wc-paper);/* #fafafa — muted */
+  background-color: var(--wecamp-local-paper);/* #fafafa — muted */
   cursor: not-allowed;
-}
-
-/* Select — appearance:none + inline-SVG chevron (no CDN per AGENTS.md) on the
-   inline-START side; :dir() (below) tracks each control's own direction, and
-   the base `right` doubles as the no-:dir() fallback. Extra inline-start
-   padding clears the glyph. */
-.hd-select {
-  height: auto;
-  min-height: var(--hd-select-min-height);      /* 60px */
-  padding-block: 0;                             /* .select sets only inline padding */
-  padding-inline-end: var(--hd-input-pad);      /* 20px */
-  padding-inline-start: var(--hd-select-chevron-pad); /* 48px — clears the chevron */
-  line-height: var(--hd-select-line);           /* 1.111 */
-  border-radius: var(--wc-radius);              /* 8px — same corner as every other control */
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2362646f'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--hd-select-chevron-inset) center; /* inline-start in RTL (production default + no-:dir() fallback) */
-  background-size: var(--hd-select-chevron-size);
-}
-.hd-select:dir(ltr) {
-  background-position: left var(--hd-select-chevron-inset) center;  /* inline-start = left in LTR */
-}
-.hd-select:dir(rtl) {
-  background-position: right var(--hd-select-chevron-inset) center; /* inline-start = right in RTL */
-}
-
-/* Textarea — .input visual + the legacy textarea rule (taller, resizable). */
-.hd-textarea {
-  height: auto;
-  min-height: var(--hd-textarea-min-height);    /* 100px */
-  resize: vertical;
-}
-/* Required asterisk — replaces <span class="color-red">. */
-.hd-required {
-  color: var(--hd-color-error);                 /* #c21d1d — 6:1 on white */
 }
 
 /* Form wrapper + card: a white, neutral-300-bordered card
@@ -780,12 +714,12 @@ li {
   align-items: baseline;
   padding: var(--hd-space-xxs) var(--hd-space-md); /* 4px 24px */
   background-color: var(--wc-white);/* #fff */
-  border: var(--hd-input-border) solid var(--wc-line); /* 1px #ececf4 */
+  border: var(--hd-input-border) solid var(--wecamp-local-line); /* 1px #ececf4 */
   border-radius: var(--wc-radius) var(--wc-radius) 0 0; /* 8px top */
 }
 .hd-form-title {
   margin: 0;
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
   font-size: var(--hd-h4-size);
   font-weight: var(--hd-weight-medium);
   line-height: var(--hd-h4-line);
@@ -795,7 +729,7 @@ li {
   min-inline-size: 0;                           /* let the 2-col .hd-form-row shrink inside a <fieldset> (UA default min-inline-size:min-content would block it) */
   padding: var(--hd-input-pad) var(--hd-space-md); /* 20px 24px */
   background-color: var(--wc-white);/* #fff */
-  border: var(--hd-input-border) solid var(--wc-line); /* 1px #ececf4 */
+  border: var(--hd-input-border) solid var(--wecamp-local-line); /* 1px #ececf4 */
   border-top: 0;                                /* header owns the top edge */
   border-radius: 0 0 var(--wc-radius) var(--wc-radius); /* 8px bottom */
 }
@@ -824,7 +758,7 @@ li {
   margin-top: var(--hd-form-error-gap);         /* 10px */
   padding: var(--hd-form-error-pad);            /* 10px */
   background-color: var(--hd-form-error-bg);    /* #ffdede */
-  color: var(--hd-color-error);                 /* 4.8:1 on the wash — the footer banner inherited paper white at 1.1:1 (uiux-7.1) */
+  color: var(--wecamp-local-color-error);                 /* 4.8:1 on the wash — the footer banner inherited paper white at 1.1:1 (uiux-7.1) */
 }
 .hd-form-success[aria-hidden="true"],
 .hd-form-error[aria-hidden="true"] {
@@ -849,11 +783,7 @@ li {
 }
 
 /* Checkout layout shims — the 800px centered form wrappers used by
-   partials/form.html. .hd-checkout-label is the 500-weight / mb-8px label
-   (NOT the §13 bold .hd-label — that font-weight intentionally differs).
-   (uiux-8.1: the old `.hd-checkout-main .input/.select/.hd-discounts` field
-   interop was deleted — /request/, the only .hd-checkout-main host, carries
-   none of those descendant classes in its built HTML.) */
+   partials/form.html. FormField now owns each label/control/help unit. */
 .hd-checkout-layout {
   display: flex;
   justify-content: center;
@@ -863,12 +793,6 @@ li {
   flex: 0 800px;
   margin-inline-end: 20px;        /* logical so the gap mirrors to the form's inline-end under dir=rtl */
 }
-.hd-checkout-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
 /* ==========================================================================
    §14 Navigation — header bar + mega-menu dropdown + mobile drawer + static
    hamburger; AlpineJS-driven, CSS-only. Markup: nav.html (dir="rtl" on the
@@ -880,7 +804,7 @@ li {
 /* ---- Root banner (= .header + .w-nav) ---- */
 .hd-nav {
   position: relative;                          /* positioning context for the absolute drawer + dropdown */
-  z-index: var(--hd-z-nav);                    /* 1000 — above page content */
+  z-index: var(--wecamp-local-z-nav);                    /* 1000 — above page content */
   background-color: transparent;               /* .header bg #0000 */
   padding-block: 30px 8px;
 }
@@ -944,7 +868,7 @@ li {
   margin-inline-end: var(--hd-nav-link-margin-end); /* 28px inline-end gap, live RTL */
   font-size: 16px;
   font-weight: var(--hd-weight-medium);
-  color: var(--wc-ink);                /* --titles */
+  color: var(--wecamp-local-ink);                /* --titles */
   line-height: var(--hd-nav-link-line);        /* 1.111em */
   text-decoration: none;
   white-space: nowrap;
@@ -985,7 +909,7 @@ li {
   font-size: 16px;
   font-weight: var(--hd-weight-medium);
   line-height: var(--hd-nav-link-line);
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
   white-space: nowrap;
   cursor: pointer;
   border-radius: var(--wc-radius); /* invisible at rest (transparent bg); rounds the focus ring */
@@ -1012,7 +936,7 @@ li {
   position: absolute;
   top: calc(100% + 18px);
   inset-inline-start: 0;                       /* anchor to the toggle's inline-start edge */
-  z-index: var(--hd-z-dropdown);               /* 100 (within the z-nav stacking context) */
+  z-index: var(--wecamp-local-z-dropdown);               /* 100 (within the z-nav stacking context) */
   margin: 0;
 }
 
@@ -1052,11 +976,11 @@ li {
 .hd-mega-title {
   margin: 0;
   padding: var(--hd-mega-title-pad-y) var(--hd-mega-title-pad-x) 10px;
-  font-family: var(--hd-font-heading);
+  font-family: var(--hts-font-family-display, var(--hd-font-heading));
   font-weight: var(--hd-weight-bold);
   font-size: var(--hd-mega-title-size);        /* 20px */
   line-height: 1.4;
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
 }
 
 /* Mega links (= .mega-menu-link). */
@@ -1065,7 +989,7 @@ li {
   padding: var(--hd-mega-link-pad-y) var(--hd-mega-link-pad-x); /* 10px 20px */
   border-radius: var(--wc-radius);   /* 10px */
   background-color: var(--wc-white); /* #fff */
-  color: var(--wc-muted);                 /* --paragraphs */
+  color: var(--wecamp-local-muted);                 /* --paragraphs */
   font-size: var(--hd-mega-link-size);         /* 18px */
   line-height: var(--hd-mega-link-line);       /* 20px */
   white-space: nowrap;
@@ -1100,8 +1024,9 @@ li {
   color: var(--wc-white);          /* white */
 }
 
-/* ---- Static hamburger (= .menu-button / .w-nav-button) ---- Hidden on desktop;
-   shown at ≤991. A real <button>; three CSS bars morph to an X when open. */
+/* ---- Frozen certificate hamburger compatibility ---- Non-certificate routes
+   use the released IconButton/Icon contract. These rules and the three-bar
+   child remain only for certificate output until HTS-WECAMP-016. */
 .hd-nav-toggle {
   display: none;                               /* desktop: hidden (.w-nav-button display:none) */
   flex: none;
@@ -1113,7 +1038,7 @@ li {
   appearance: none;
   -webkit-appearance: none;
   background-color: transparent;
-  border: var(--hd-input-border) solid color-mix(in srgb, var(--wc-cobalt) 18%, var(--wc-line)); /* was the (0,1,1) site.css interop bump; the §1 normalize now sits above, so plain order wins (uiux-8.1) */
+  border: var(--hd-input-border) solid color-mix(in srgb, var(--wc-cobalt) 18%, var(--wecamp-local-line)); /* was the (0,1,1) site.css interop bump; the §1 normalize now sits above, so plain order wins (uiux-8.1) */
   border-radius: var(--wc-radius);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -1140,7 +1065,7 @@ li {
   inset-inline: 0;
   height: var(--hd-nav-bar-line);              /* 2px */
   border-radius: var(--wc-radius);             /* 3px (subtle rounding) */
-  background-color: var(--wc-ink);     /* dark bars */
+  background-color: var(--wecamp-local-ink);     /* dark bars */
   transition: transform var(--wc-transition-fast),
               opacity var(--wc-transition-fast),
               top var(--wc-transition-fast);
@@ -1190,7 +1115,7 @@ li {
   }
 
   .hd-nav-end {
-    gap: 10px;
+    display: none;
   }
 
   .hd-nav-logo {
@@ -1225,7 +1150,7 @@ li {
     inset-block-start: var(--hd-nav-bar-h);    /* flush below the bar (measured per breakpoint) */
     inset-block-end: auto;
     inset-inline: 28px;
-    z-index: var(--hd-z-dropdown);             /* below the bar's own content (header stays clickable) */
+    z-index: var(--wecamp-local-z-dropdown);             /* below the bar's own content (header stays clickable) */
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
@@ -1233,7 +1158,7 @@ li {
     padding: var(--hd-nav-drawer-pad-y) var(--hd-nav-drawer-pad-x);
     border: 1px solid color-mix(in srgb, var(--wc-white) 14%, transparent);
     border-radius: var(--wc-radius);
-    background-color: color-mix(in srgb, var(--wc-ink) 96%, var(--wc-cobalt) 4%);
+    background-color: color-mix(in srgb, var(--wecamp-local-ink) 96%, var(--wc-cobalt) 4%);
     box-shadow: var(--wc-shadow-pop);
     overflow-y: visible;
     transform: translateY(-8px);
@@ -1438,68 +1363,49 @@ li {
 }
 /* Account link: paper on the cobalt hero bar. */
 .hd-nav-transparent .hd-nav-account {
-  color: var(--wc-paper);
+  color: var(--wecamp-local-paper);
 }
 .hd-nav-transparent .hd-nav-account:hover,
 .hd-nav-transparent .hd-nav-account[aria-current="page"] {
   color: var(--wc-white);
 }
-/* Bar CTAs: primary = paper fill + cobalt ink; ghost = translucent paper. */
-.hd-nav-transparent .hd-button-header {
-  background-color: var(--wc-paper);
-  color: var(--wc-cobalt);
-}
-.hd-nav-transparent .hd-button-header:hover:where(:not(:disabled):not([aria-disabled="true"])) {
-  background-color: var(--wc-white);
-  color: var(--wc-cobalt);
-}
-.hd-nav-transparent .hd-button-header-ghost {
-  border: 1px solid color-mix(in srgb, var(--wc-paper) 20%, transparent);
-  background-color: color-mix(in srgb, var(--wc-paper) 10%, transparent);
-  color: var(--wc-paper);
-}
-.hd-nav-transparent .hd-button-header-ghost:hover:where(:not(:disabled):not([aria-disabled="true"])) {
-  background-color: color-mix(in srgb, var(--wc-paper) 18%, transparent);
-  color: var(--wc-paper);
-}
 /* Hamburger flips to light bars on cobalt; the drawer it opens stays shared. */
 .hd-nav-transparent .hd-nav-toggle {
-  border-color: color-mix(in srgb, var(--wc-paper) 18%, transparent);
-  background-color: color-mix(in srgb, var(--wc-paper) 10%, transparent);
+  border-color: color-mix(in srgb, var(--wecamp-local-paper) 18%, transparent);
+  background-color: color-mix(in srgb, var(--wecamp-local-paper) 10%, transparent);
 }
 .hd-nav-transparent .hd-nav-toggle:hover,
 .hd-nav-transparent .hd-nav-toggle[aria-expanded="true"] {
-  background-color: color-mix(in srgb, var(--wc-paper) 18%, transparent);
+  background-color: color-mix(in srgb, var(--wecamp-local-paper) 18%, transparent);
 }
 .hd-nav-transparent .hd-nav-toggle-icon span {
-  background-color: var(--wc-paper);
+  background-color: var(--wecamp-local-paper);
 }
 /* Focus rings must stay visible on the cobalt band. */
 .hd-nav-transparent .hd-nav-link:focus-visible,
 .hd-nav-transparent .hd-dropdown-toggle:focus-visible,
 .hd-nav-transparent .hd-nav-toggle:focus-visible,
-.hd-nav-transparent .hd-nav-account:focus-visible,
-.hd-nav-transparent .hd-button-header:focus-visible {
-  outline-color: var(--wc-paper);
+.hd-nav-transparent .hd-nav-account:focus-visible {
+  outline-color: var(--wecamp-local-paper);
 }
 /* Desktop bar ink only — scoped above the collapse breakpoint so the ≤1120px
    drawer keeps the shared translucent-white link treatment in both variants. */
 @media screen and (min-width: 1121px) {
   .hd-nav-transparent .hd-nav-link,
   .hd-nav-transparent .hd-dropdown-toggle {
-    color: var(--wc-paper);
+    color: var(--wecamp-local-paper);
     font-size: 15px;
     font-weight: 800;
   }
   .hd-nav-transparent .hd-nav-link:hover,
   .hd-nav-transparent .hd-dropdown-toggle:hover {
-    color: color-mix(in srgb, var(--wc-paper) 72%, transparent);
+    color: color-mix(in srgb, var(--wecamp-local-paper) 72%, transparent);
   }
   .hd-nav-transparent .hd-nav-link[aria-current="page"] {
     color: var(--wc-white);
   }
   .hd-nav-transparent .hd-dropdown-caret {
-    color: var(--wc-paper);
+    color: var(--wecamp-local-paper);
   }
 }
 
@@ -1514,10 +1420,9 @@ li {
   }
 }
 
-/* x-cloak — hide the Alpine x-show dropdown panel until Alpine boots and strips
-   the attribute, so it never flashes open pre-hydration. Declared LAST (flat
-   0,1,0) and the panel sets no `display`, so this wins by source order without
-   !important. First Alpine component on the site, so it lives here. */
+/* x-cloak — hide Alpine-owned surfaces until Alpine boots and removes the
+   attribute. Component rules later in this file may define their hydrated
+   display mode, so stateful surfaces reinforce this contract at that seam. */
 [x-cloak] {
   display: none;
 }
@@ -1557,30 +1462,6 @@ li {
 .hd-survey--right.is-open .hd-survey-panel { margin: 0 0 0 30%; }
 .hd-survey--left.is-open .hd-survey-panel { margin: 0; }
 .hd-survey-header { position: relative; }
-.hd-survey-close {
-  -webkit-appearance: none;       /* reset native button chrome; same interop
-                                     shim as §12 .hd-button / §14 .hd-nav-toggle */
-  appearance: none;
-  transition: opacity 200ms, background-color 200ms;
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid #f0f2f5;
-  border-radius: 50%;
-  background-color: #3e434d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hd-survey-close:focus-visible {
-  outline: var(--hd-button-focus-width) solid #fff;
-  outline-offset: var(--hd-button-focus-offset);
-}
-.hd-survey--right .hd-survey-close { left: -16px; }
-.hd-survey--left .hd-survey-close { right: -16px; }
 .hd-survey-content { height: 100vh; }
 .hd-survey-embed {             /* direct form embed (uiux-6.4) — was .hd-survey-iframe */
   height: 100%;
@@ -1609,66 +1490,7 @@ li {
   }
   .hd-survey--right.is-open .hd-survey-panel,
   .hd-survey--left.is-open .hd-survey-panel { margin: 0; }
-  .hd-survey--right .hd-survey-close,
-  .hd-survey--left .hd-survey-close { top: -16px; }
-  .hd-survey--right .hd-survey-close { left: 16px; }
-  .hd-survey--left .hd-survey-close { right: 16px; }
   .hd-survey-content .hd-survey-embed { border-radius: 16px 16px 0 0; }
-}
-
-/* ==========================================================================
-   §17 Video modal — accessible player (hd-video.js + partials/video-modal
-   .html): dark centred overlay, inline <video>/<iframe>, logical-property
-   close button (RTL mirrors). The .hd-modal is hidden pre-hydration by the
-   x-cloak attribute ([x-cloak] rule below); Alpine x-show flips it to flex. */
-.hd-modal {
-  display: flex;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  background: rgba(0, 0, 0, .9);          /* ≈ Webflow .w-lightbox-backdrop #000000e6 */
-  overscroll-behavior: contain;
-}
-.hd-modal-content {
-  position: relative;
-  width: 90%;
-  max-width: 940px;                       /* source video width (940 mp4 / 854 yt) */
-}
-.hd-modal-media {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;                   /* stable box before metadata/iframe loads */
-  border: 0;
-  border-radius: 12px;
-  background: #000;
-}
-.hd-modal-close {
-  -webkit-appearance: none;
-  appearance: none;
-  position: absolute;
-  top: -3rem;
-  inset-inline-end: 0;                    /* RTL-aware: right in LTR, left in RTL */
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, .35);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, .75);
-  color: #fff;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-}
-.hd-modal-close:focus-visible {
-  outline: var(--hd-button-focus-width) solid #fff;
-  outline-offset: var(--hd-button-focus-offset);
-}
-
-@media screen and (max-width: 479px) {
-  .hd-modal-content { width: 100%; }
-  .hd-modal-close { top: -2.75rem; }      /* keep the X on-screen on small viewports */
 }
 
 /* ==========================================================================
@@ -1721,7 +1543,7 @@ li {
    .success-message base in the legacy-form section below. */
 .success-message.hd-contact-us {
   border-width: 1px;
-  border-color: var(--wc-line);
+  border-color: var(--wecamp-local-line);
   box-shadow: none;
   color: var(--wc-cobalt);
   font-size: 19px;
@@ -1730,88 +1552,21 @@ li {
 .hd-form-wrap {                 /* .w-form — form block bottom gap */
   margin: 0 0 15px;
 }
-/* .w-input box reset that .input/.text-area don't set. The kept
-   classes override border/bg/height/padding/font; only display:block + width:100%
-   survived from .w-input, so a plain `.input` field (contact, newsletter email)
-   collapses to intrinsic width without this. */
+/* Frozen certificate footer compatibility. Task 016 removes this reader after
+   certificate pages can migrate without changing their pinned output. */
 .hd-field {
   display: block;
   width: 100%;
 }
 
 /* ==========================================================================
-   Legacy contact/events form classes — ported VERBATIM from the retired
-   site.css (uiux-8.1); live only on the /contact/ form and the /events/
-   newsletter. Legacy literals (§1 note); renaming these generic selectors
-   onto .hd-* is uiux-0.2's job, not this port's.
+   Contact/events form layout and remote-submit status presentation.
+   Input, Textarea, label, help, and required-marker chrome is released HTS.
    ========================================================================== */
-.input {
-  border: 1px solid var(--wc-line-strong); /* was legacy #cfcfdb at 1.5:1 — SC 1.4.11 boundary (uiux-7.1) */
-  color: #69697b;                /* legacy --paragraphs */
-  border-radius: 18px;           /* net of the site.css tail override (was 4px, then 18px) */
-  height: 70px;
-  min-height: auto;
-  margin-bottom: 0;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.1em;
-  transition: border-color .35s, color .35s;
+.wecamp-contact-form-card {
+  justify-self: stretch;
 }
-.input:hover {
-  border-color: #0b2f9f;         /* legacy --accent */
-}
-.input:focus {
-  border-color: #0b2f9f;
-  color: #0b0b2c;                /* legacy --titles */
-  font-size: 18px;
-  line-height: 1.111em;
-}
-.input::placeholder {
-  color: #69697b;
-  font-size: 18px;
-  line-height: 1.5em;
-}
-.input.newsletter-events {
-  min-width: 362px;
-  min-height: 64px;
-  margin-right: 16px;
-  font-size: 20px;
-  line-height: 1.1em;
-  box-shadow: 0 6px 24px #00000029;
-  direction: ltr;                /* net of the site.css RTL tail */
-  text-align: right;
-}
-.input.newsletter-events::placeholder {
-  font-size: 20px;
-}
-.text-area {
-  border: 1px solid var(--wc-line-strong); /* was legacy #cfcfdb at 1.5:1 — SC 1.4.11 boundary (uiux-7.1) */
-  color: #69697b;
-  border-radius: 4px;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 136px;
-  margin-bottom: 0;
-  padding: 17px 23px;
-  font-size: 18px;
-  line-height: 1.111em;
-  transition: border-color .35s, color .35s;
-}
-.text-area:hover {
-  border-color: #0b2f9f;
-}
-.text-area:focus {
-  border-color: #0b2f9f;
-  color: #0b0b2c;
-  font-size: 18px;
-  line-height: 1.111em;
-}
-.text-area::placeholder {
-  color: #69697b;
-  font-size: 18px;
-  line-height: 1.6em;
-}
-.input-wrapper.word-area {
+.wecamp-contact-message-field {
   margin-bottom: 26px;
 }
 .success-message {
@@ -1827,11 +1582,11 @@ li {
   /* Only host is the /events/ newsletter, a LIGHT band — the legacy
      white-on-transparent recipe measured 1.04:1 there (uiux-7.1). */
   border-color: var(--wc-line-on-paper);
-  color: var(--wc-ink);
+  color: var(--wecamp-local-ink);
   background-color: #0000;
 }
 .error-message {
-  color: var(--hd-color-error); /* was legacy #ff4245 at 3.3:1 on the wash (uiux-7.1) */
+  color: var(--wecamp-local-color-error); /* was legacy #ff4245 at 3.3:1 on the wash (uiux-7.1) */
   text-align: center;
   background-color: #fff9f9;
   border-radius: 4px;
@@ -1843,43 +1598,14 @@ li {
   grid-row-gap: 32px;
   margin-bottom: 30px;
 }
-@media screen and (min-width: 768px) {
-  .input.newsletter-events {
-    margin-right: 0px;
-    margin-left: 14px;
-  }
-}
 @media screen and (max-width: 767px) {
-  .input {
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
-  .input.newsletter-events {
-    min-width: auto;
-  }
   .contact-us-form-grid {
     grid-template-columns: 1fr;
   }
 }
-@media screen and (max-width: 479px) {
-  .input {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-  .input.newsletter-events {
-    margin-bottom: 20px;
-    margin-right: 0;
-  }
-}
 
-/* Corner interop — the ported legacy `.input{border-radius:18px}` /
-   `.text-area{border-radius:4px}` rules above keep the contact form fields'
-   shipped values; this (0,1,1) rule re-asserts the one 8px control radius on
-   every .hd-field control, winning over those (0,1,0) legacy rules by
-   specificity. Removable once /contact/ migrates off .input (uiux-0.2). */
-input.hd-field,
-textarea.hd-field,
-select.hd-field {
+/* Frozen certificate newsletter corner. Task 016 owns final removal. */
+input.hd-field {
   border-radius: var(--wc-radius);
 }
 
@@ -1895,8 +1621,8 @@ select.hd-field {
 .hd-register-soon-page {
   /* Thin aliases onto the --wc-* brand tokens (hd-tokens.css). */
   --hd-register-blue: var(--wc-cobalt);
-  --hd-register-ink: var(--wc-ink);
-  --hd-register-paper: var(--wc-paper);
+  --hd-register-ink: var(--wecamp-local-ink);
+  --hd-register-paper: var(--wecamp-local-paper);
   background: var(--hd-register-paper);
 }
 
@@ -2002,9 +1728,8 @@ select.hd-field {
   margin-top: 32px;
 }
 
-/* (uiux-3.2) The .hd-button skins that lived here are gone: the actions row
-   now uses the hd-ds CTA pair (accent primary + on-dark ghost secondary from
-   hd-page.css) so the page's escape action carries the single orange. */
+/* The actions row uses the released Button with local accent/on-dark
+   composition, so the page's escape action carries the single orange. */
 
 .hd-register-soon-card {
   position: relative;
@@ -2087,7 +1812,7 @@ select.hd-field {
 }
 
 .hd-register-soon-facts dt {
-  color: var(--wc-muted); /* 5.7:1 on the card (uiux-7.1; was 52% ink at 3.8:1) */
+  color: var(--wecamp-local-muted); /* 5.7:1 on the card (uiux-7.1; was 52% ink at 3.8:1) */
   font-size: 12px;
   font-weight: 900;
 }
@@ -2130,7 +1855,7 @@ select.hd-field {
   }
 
   .hd-register-soon-actions,
-  .hd-register-soon-actions .hd-button {
+  .hd-register-soon-actions .hts-button {
     width: 100%;
   }
 
@@ -2231,9 +1956,4 @@ select.hd-field {
 }
 .hd-events-news-field {
   flex: 1 1 240px;
-}
-.hd-events-news-note {
-  margin: 6px 0 0;
-  color: var(--wc-muted);
-  font-size: 13px;
 }

@@ -1,0 +1,27 @@
+/* HTS-WECAMP-008: return only unlayered host-reset collisions to HTS Input. */
+:where([data-hts-root]) .hts-input {
+  color: revert-layer;
+  font: revert-layer;
+  font-family: var(--hts-font-family-body);
+  margin: revert-layer;
+}
+
+:where([data-hts-root]) input.hts-input[type="search"] {
+  -webkit-appearance: revert-layer;
+  appearance: revert-layer;
+}
+
+:where([data-hts-root]) input.hts-input[type="search"]::-webkit-search-cancel-button,
+:where([data-hts-root]) input.hts-input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: revert-layer;
+  appearance: revert-layer;
+}
+
+:where([data-hts-root]) input.hts-input:disabled {
+  cursor: revert-layer;
+}
+
+:where([data-hts-root]) .hd-camp-page .hts-input:focus-visible {
+  outline: revert-layer;
+  outline-offset: revert-layer;
+}

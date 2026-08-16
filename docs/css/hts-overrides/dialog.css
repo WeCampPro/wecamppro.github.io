@@ -1,0 +1,49 @@
+/* WECAMP interop and product composition for the released native HTS Dialog.
+ * The release is layered beneath the historical unlayered element reset. This
+ * bridge returns only measured reset collisions to HTS and sizes the local
+ * 16:9 camp video without recreating the Dialog surface or backdrop. */
+
+:where([data-hts-root]) .hts-dialog-header {
+  display: revert-layer;
+}
+
+:where([data-hts-root]) .hts-dialog-title {
+  margin: revert-layer;
+  color: revert-layer;
+  font: revert-layer;
+  letter-spacing: revert-layer;
+}
+
+:where([data-hts-root]) .hts-dialog-description {
+  margin: revert-layer;
+}
+
+/* The old player exposed 940px of media at wide viewports and viewport minus
+ * 32px at narrow ones. Account for the released surface's inline padding so
+ * those two media dimensions remain exact while HTS owns the surface itself. */
+:where([data-hts-root]) .wecamp-video-dialog {
+  inline-size: min(
+    calc(940px + (2 * var(--hts-space-layout-inline)) + (2 * var(--hts-border-hairline))),
+    calc(100vi - var(--hts-space-2) + (2 * var(--hts-border-hairline)))
+  );
+  max-inline-size: none;
+}
+
+:where([data-hts-root]) .wecamp-dialog-media {
+  display: block;
+  inline-size: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--hts-radius-md);
+  background-color: var(--wecamp-local-ink);
+}
+
+/* The release's native [open] selector outranks its generic reduced-motion
+ * selector. Match that static-host state at the consumer boundary so both
+ * opacity and scale use the released reduced-duration token. */
+@media (prefers-reduced-motion: reduce) {
+  :where([data-hts-root]) dialog.hts-dialog[open] {
+    transition-duration: var(--hts-motion-duration-reduced);
+  }
+}

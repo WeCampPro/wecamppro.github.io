@@ -1,0 +1,121 @@
+/* WECAMP product composition for the released HTS IconButton/Icon contract.
+ *
+ * The release is intentionally layered below the site's historical unlayered
+ * reset. This bridge returns only reset collisions to HTS, then owns the
+ * navigation visibility and survey positioning/surface that belong to WECAMP.
+ * Certificate routes never load this file. */
+
+:where([data-hts-root]) .hts-icon-button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: revert-layer;
+  background-color: revert-layer;
+  color: revert-layer;
+  overflow: revert-layer;
+  transition: revert-layer;
+}
+
+/* hd.css resets disabled native buttons to the default cursor. Return that
+ * state to the released Icon Button contract as part of the same bridge. */
+:where([data-hts-root]) .hts-icon-button:disabled {
+  cursor: revert-layer;
+}
+
+/* Shared navigation composition. The released md control is 44px: exact
+ * below 768px and 2px smaller than the historical 768–1120px control. */
+:where([data-hts-root]) .wecamp-nav-menu-button {
+  display: none;
+  flex: none;
+}
+
+:where([data-hts-root]) .wecamp-nav-menu-button[aria-expanded="true"] {
+  background-color: var(--hts-color-surface-raised);
+}
+
+/* The transparent header is a product-owned inverse composition. */
+:where([data-hts-root]) .hd-nav-transparent .wecamp-nav-menu-button {
+  border-color: color-mix(in srgb, var(--wecamp-local-paper) 18%, transparent);
+  background-color: color-mix(in srgb, var(--wecamp-local-paper) 10%, transparent);
+  color: var(--wecamp-local-paper);
+}
+
+:where([data-hts-root]) .hd-nav-transparent .wecamp-nav-menu-button:where(:not(:disabled)):is(:hover, :active, [aria-expanded="true"]) {
+  border-color: color-mix(in srgb, var(--wecamp-local-paper) 18%, transparent);
+  background-color: color-mix(in srgb, var(--wecamp-local-paper) 18%, transparent);
+  color: var(--wecamp-local-paper);
+}
+
+/* The consultation Drawer keeps its inverse product surface while HTS owns
+ * IconButton dimensions, glyph sizing, focus geometry, and motion behavior. */
+:where([data-hts-root]) .wecamp-survey-close {
+  position: absolute;
+  border-color: color-mix(in srgb, var(--hts-color-text-inverse) 35%, transparent);
+  border-radius: var(--hts-radius-pill);
+  background-color: var(--hts-color-overlay-background);
+  color: var(--hts-color-text-inverse);
+}
+
+:where([data-hts-root]) .wecamp-survey-close {
+  inset-block-start: var(--hts-space-4);
+  z-index: 1;
+  background-color: var(--hts-color-slate-700);
+}
+
+:where([data-hts-root]) .hd-survey--right .wecamp-survey-close {
+  left: calc(var(--hts-size-control-sm) / -2);
+}
+
+:where([data-hts-root]) .hd-survey--left .wecamp-survey-close {
+  right: calc(var(--hts-size-control-sm) / -2);
+}
+
+@media screen and (max-width: 1120px) {
+  :where([data-hts-root]) .wecamp-nav-menu-button {
+    display: inline-grid;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :where([data-hts-root]) :is(.hd-survey--right, .hd-survey--left) .wecamp-survey-close {
+    inset-block-start: calc(0px - var(--hts-space-4));
+  }
+
+  :where([data-hts-root]) .hd-survey--right .wecamp-survey-close {
+    left: var(--hts-space-4);
+    right: auto;
+  }
+
+  :where([data-hts-root]) .hd-survey--left .wecamp-survey-close {
+    left: auto;
+    right: var(--hts-space-4);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  :where([data-hts-root]) .wecamp-nav-button-icon {
+    display: none;
+  }
+
+}
+
+/* Historical navigation focus and inverse product surfaces must not replace
+ * either band of the released v1.0.1 focus indicator. The repeated class
+ * matches the strongest navigation selector; all three properties still come
+ * from HTS, including the platform Highlight treatment in forced colors. */
+:where([data-hts-root]) .hts-icon-button.hts-icon-button:focus-visible {
+  outline: revert-layer;
+  outline-offset: revert-layer;
+  box-shadow: revert-layer;
+}
+
+@media (forced-colors: active) {
+  :where([data-hts-root]) .wecamp-nav-menu-button.wecamp-nav-menu-button,
+  :where([data-hts-root]) .hd-nav-transparent .wecamp-nav-menu-button.wecamp-nav-menu-button,
+  :where([data-hts-root]) .wecamp-survey-close {
+    border-color: revert-layer;
+    background-color: revert-layer;
+    color: revert-layer;
+    forced-color-adjust: revert-layer;
+    transition: revert-layer;
+  }
+}

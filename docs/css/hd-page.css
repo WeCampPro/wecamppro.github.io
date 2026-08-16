@@ -7,10 +7,10 @@
    events, partnership, …) reuses ONE vocabulary instead of re-authoring cobalt
    per page. Implements redesign-foundation-site-consistency.
 
-   Namespacing: everything is prefixed `hd-ds-` (design system). This namespace
-   is unused elsewhere, so loading this file globally has ZERO effect on the
-   already-done pages (home/camps/cert/register) — they don't use hd-ds-*.
-   Width containers reuse the existing shared `.hd-container`.
+   Namespacing: WECAMP-owned layout and surface classes use `wecamp-`; older
+   page primitives that are not part of an HTS component contract retain the
+   bounded `hd-ds-` namespace until their owning migration. Width containers
+   reuse the existing shared `.hd-container`.
 
    Contract (see foundation task `cta_and_accent_contract`):
      cobalt  #0B2F9F  dominant brand / dark surfaces
@@ -25,51 +25,46 @@
   /* Thin aliases onto the --wc-* brand tokens (hd-tokens.css) — edit values there. */
   --hd-ds-cobalt: var(--wc-cobalt);
   --hd-ds-cobalt-deep: var(--wc-cobalt-deep);
-  --hd-ds-ink: var(--wc-ink);
-  --hd-ds-paper: var(--wc-paper);
-  --hd-ds-muted: var(--wc-muted);
-  --hd-ds-line: var(--wc-line);
+  --hd-ds-ink: var(--wecamp-local-ink);
+  --hd-ds-paper: var(--wecamp-local-paper);
+  --hd-ds-muted: var(--wecamp-local-muted);
+  --hd-ds-line: var(--wecamp-local-line);
   --hd-ds-line-on-dark: var(--wc-line-dark);
-  --hd-ds-accent: var(--wc-accent);
-  --hd-ds-accent-strong: var(--wc-accent-deep);
   --hd-ds-accent-on-light: var(--wc-accent-on-light);
-  --hd-ds-accent-ink: var(--wc-accent-ink);
   --hd-ds-stat-cell: var(--wc-stat-cell);
-  --hd-ds-cyan: var(--wc-cyan);
-  --hd-ds-green: var(--wc-green);
   --hd-ds-radius: var(--wc-radius);
   --hd-ds-radius-pill: var(--wc-radius-pill);
   --hd-ds-shadow-card: var(--wc-shadow-card);
 }
 
 /* ----- Section rhythm ---------------------------------------------------- */
-.hd-ds-section {
+.wecamp-section {
   padding-block: clamp(72px, 9vw, 124px);
 }
 
 /* Tighter band rhythm for compact openers (uiux-2.1). */
-.hd-ds-section-tight {
+.wecamp-section-tight {
   padding-block: clamp(48px, 6vw, 84px);
 }
 
 /* ----- Bands ------------------------------------------------------------- */
 /* A band is a full-bleed horizontal region. Compose with .hd-container inside. */
-.hd-ds-band {
+.wecamp-band {
   position: relative;
   isolation: isolate;
 }
 
-.hd-ds-band-paper {
+.wecamp-band-paper {
   background: var(--hd-ds-paper);
   color: var(--hd-ds-ink);
 }
 
-.hd-ds-band-cobalt,
-.hd-ds-band-proof {
+.wecamp-band-cobalt,
+.wecamp-band-proof {
   color: var(--hd-ds-paper);
 }
 
-.hd-ds-band-cobalt {
+.wecamp-band-cobalt {
   overflow: hidden;
   background:
     linear-gradient(rgba(242, 242, 240, 0.06) 1px, transparent 1px),
@@ -79,7 +74,7 @@
 }
 
 /* Deeper proof band for certificate/proof-style contrast. */
-.hd-ds-band-proof {
+.wecamp-band-proof {
   overflow: hidden;
   background:
     linear-gradient(rgba(242, 242, 240, 0.05) 1px, transparent 1px),
@@ -94,7 +89,7 @@
    otherwise it steps down to the ghost secondary (school detail — the hero
    holds the page's single orange, uiux-3.2). Breaks the tall mirrored
    proof-band closer on pages that opt in. */
-.hd-ds-band-strip {
+.wecamp-band-strip {
   padding-block: clamp(40px, 5vw, 64px);
   background: linear-gradient(180deg, var(--hd-ds-cobalt), var(--hd-ds-cobalt-deep));
   color: var(--hd-ds-paper);
@@ -114,7 +109,7 @@
   max-width: 680px;
 }
 
-.hd-ds-band-strip h2 {
+.wecamp-band-strip h2 {
   margin: 0;
   color: var(--hd-ds-paper);
   font-size: clamp(24px, 3vw, 36px);
@@ -123,15 +118,15 @@
   text-wrap: balance;
 }
 
-.hd-ds-band-strip p:not(.hd-ds-kicker) {
+.wecamp-band-strip p:not(.hd-ds-kicker) {
   margin: 0;
   color: rgba(242, 242, 240, 0.78);
   font-size: 15px;
   line-height: 1.8;
 }
 
-/* Restrained chevron/monogram motif — opt in with .hd-ds-band-motif. */
-.hd-ds-band-motif::after {
+/* Restrained chevron/monogram motif — opt in with .wecamp-band-motif. */
+.wecamp-band-motif::after {
   content: "";
   position: absolute;
   inset-block-start: clamp(32px, 6vw, 80px);
@@ -145,7 +140,7 @@
   z-index: -1;
 }
 
-.hd-ds-band > .hd-container {
+.wecamp-band > .hd-container {
   position: relative;
   z-index: 1;
 }
@@ -170,8 +165,8 @@
    (page heroes with their own bespoke background: homepage hero shell, camp
    hero, homepage proof/final fills). It reuses these flips so pages never
    re-implement them by hand (uiux-0.2). */
-.hd-ds-band-cobalt .hd-ds-eyebrow,
-.hd-ds-band-proof .hd-ds-eyebrow,
+.wecamp-band-cobalt .hd-ds-eyebrow,
+.wecamp-band-proof .hd-ds-eyebrow,
 .hd-ds-on-dark .hd-ds-eyebrow {
   border-color: rgba(242, 242, 240, 0.24);
   background: rgba(242, 242, 240, 0.1);
@@ -190,22 +185,22 @@
   line-height: 1.4;
 }
 
-.hd-ds-band-cobalt .hd-ds-kicker,
-.hd-ds-band-proof .hd-ds-kicker,
-.hd-ds-band-strip .hd-ds-kicker,
+.wecamp-band-cobalt .hd-ds-kicker,
+.wecamp-band-proof .hd-ds-kicker,
+.wecamp-band-strip .hd-ds-kicker,
 .hd-ds-on-dark .hd-ds-kicker {
   color: rgba(242, 242, 240, 0.86); /* 5.4:1 worst-case on the glow-lightened cobalt (uiux-7.1; 0.7 measured 4.17) */
 }
 
 /* ----- Section head (kicker + heading + lede) ---------------------------- */
-.hd-ds-section-head {
+.wecamp-section-head {
   display: grid;
   gap: 14px;
   max-width: 760px;
   margin-block-end: 34px;
 }
 
-.hd-ds-section-head h2 {
+.wecamp-section-head h2 {
   margin: 0;
   color: inherit;
   font-size: clamp(34px, 4.8vw, 64px);
@@ -217,21 +212,21 @@
 
 /* :not() guards keep the lede recipe off the kicker/eyebrow primitives that
    share the section head (uiux-0.2 — they were being inflated to 17px). */
-.hd-ds-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow) {
+.wecamp-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow) {
   margin: 0;
   color: var(--hd-ds-muted);
   font-size: 17px;
   line-height: 1.9;
 }
 
-.hd-ds-band-cobalt .hd-ds-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow),
-.hd-ds-band-proof .hd-ds-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow) {
+.wecamp-band-cobalt .wecamp-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow),
+.wecamp-band-proof .wecamp-section-head p:not(.hd-ds-kicker):not(.hd-ds-eyebrow) {
   color: rgba(242, 242, 240, 0.82);
 }
 
 /* Opt-in centered "thesis" head — at most ONE per page (uiux-2.1); every
    other section head stays start-aligned. */
-.hd-ds-section-head--center {
+.wecamp-section-head--center {
   justify-items: center;
   margin-inline: auto;
   text-align: center;
@@ -240,7 +235,7 @@
 /* Opt-in reading-measure clamps and centered action rows — replace the
    per-template inline max-width/justify-content hints (uiux-8.1). */
 .hd-ds-hero-copy--measure,
-.hd-ds-section-head--measure {
+.wecamp-section-head--measure {
   max-inline-size: 820px;
 }
 
@@ -309,8 +304,8 @@
   text-wrap: balance;
 }
 
-.hd-ds-band-cobalt .hd-ds-hero-copy h1,
-.hd-ds-band-proof .hd-ds-hero-copy h1 {
+.wecamp-band-cobalt .hd-ds-hero-copy h1,
+.wecamp-band-proof .hd-ds-hero-copy h1 {
   color: var(--hd-ds-paper);
 }
 
@@ -321,8 +316,8 @@
   line-height: 1.9;
 }
 
-.hd-ds-band-cobalt .hd-ds-hero-lede,
-.hd-ds-band-proof .hd-ds-hero-lede {
+.wecamp-band-cobalt .hd-ds-hero-lede,
+.wecamp-band-proof .hd-ds-hero-lede {
   color: rgba(242, 242, 240, 0.84);
 }
 
@@ -336,7 +331,7 @@
 /* House frame for hero media (uiux-4.2) — the homepage proof-window device
    (home.css .hd-index-proof-window / .hd-index-window-bar) ported into hd-ds
    vocabulary. One rule set for all school pages; no per-school overrides. */
-.hd-ds-frame {
+.wecamp-media-frame {
   overflow: hidden;
   border: 1px solid var(--hd-ds-line-on-dark);
   border-radius: var(--hd-ds-radius);
@@ -344,7 +339,7 @@
   box-shadow: 0 30px 90px rgba(3, 11, 41, 0.28);
 }
 
-.hd-ds-frame-bar {
+.wecamp-media-frame-bar {
   direction: ltr; /* window chrome stays LTR by convention (cf. cert chrome) */
   display: flex;
   align-items: center;
@@ -353,14 +348,14 @@
   border-bottom: 1px solid rgba(242, 242, 240, 0.16);
 }
 
-.hd-ds-frame-bar span {
+.wecamp-media-frame-bar span {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: rgba(242, 242, 240, 0.5);
 }
 
-.hd-ds-frame-bar em {
+.wecamp-media-frame-bar em {
   margin-left: auto; /* bar is LTR: the chip sits at the far end */
   padding: 6px 12px;
   border-radius: var(--hd-ds-radius-pill);
@@ -372,7 +367,7 @@
   line-height: 1;
 }
 
-.hd-ds-frame img {
+.wecamp-media-frame img {
   display: block;
   width: 100%;
   height: auto; /* keep auto so aspect-ratio wins over the height attr */
@@ -388,167 +383,33 @@
 }
 
 /* ----- Cards ------------------------------------------------------------- */
-.hd-ds-card-grid {
+.wecamp-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 14px;
 }
 
-.hd-ds-card {
-  min-width: 0;
-  padding: 20px;
+.wecamp-surface {
   border: 1px solid var(--hd-ds-line);
   border-radius: var(--hd-ds-radius);
   background: rgba(255, 255, 255, 0.6);
   box-shadow: var(--hd-ds-shadow-card);
 }
 
-.hd-ds-band-cobalt .hd-ds-card,
-.hd-ds-band-proof .hd-ds-card {
-  border-color: var(--hd-ds-line-on-dark);
-  background: rgba(242, 242, 240, 0.08);
-  box-shadow: none;
-  backdrop-filter: blur(16px);
+.wecamp-form-surface {
+  min-width: 0;
+  padding: 20px;
 }
 
-/* ----- CTAs -------------------------------------------------------------- */
-.hd-ds-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  min-width: 154px;
-  padding: 16px 24px;
-  border: 1px solid transparent;
-  border-radius: var(--hd-ds-radius);
-  font-size: 15px;
-  font-weight: 900;
-  line-height: 1.3;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 180ms ease, background-color 180ms ease,
-    border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
-}
+/* Button component styling moved to the released HTS contract in
+   HTS-WECAMP-004. WECAMP-only orange, inverse-band, and layout composition is
+   isolated in hts-overrides/button.css. */
 
-.hd-ds-cta:hover {
-  transform: translateY(-1px);
-}
-
-.hd-ds-cta:focus-visible {
-  outline: 3px solid rgba(49, 200, 217, 0.78);
-  outline-offset: 3px;
-}
-
-/* Orange accent contract (uiux-3.2): exactly ONE accent-background action per
-   page — that page's conversion. Camp detail pages may mirror the single
-   #register action (hero CTA / register submit / sticky bar, arbitrated at
-   runtime by the uiux-6.3 scroll machinery in camps-redesign.css). The only
-   non-CTA orange is headline stat numbers (--wc-accent-on-light text on
-   .hd-ds-stat-band dt / .hd-index-stats-row dt). Enforced by
-   scripts/audit/orange-census.cjs. */
-.hd-ds-cta-primary {
-  border-color: var(--hd-ds-accent);
-  background: var(--hd-ds-accent);
-  color: var(--hd-ds-accent-ink);
-  box-shadow: 0 20px 44px rgba(255, 106, 43, 0.32);
-}
-
-.hd-ds-cta-primary:hover {
-  border-color: var(--hd-ds-accent-strong);
-  background: var(--hd-ds-accent-strong);
-  color: var(--hd-ds-accent-ink);
-}
-
-/* Secondary = ghost; adapts to the band it sits on. */
-.hd-ds-cta-secondary {
-  border-color: var(--hd-ds-cobalt);
-  background: transparent;
-  color: var(--hd-ds-cobalt);
-}
-
-.hd-ds-cta-secondary:hover {
-  background: rgba(11, 47, 159, 0.06);
-}
-
-.hd-ds-band-cobalt .hd-ds-cta-secondary,
-.hd-ds-band-proof .hd-ds-cta-secondary,
-.hd-ds-band-strip .hd-ds-cta-secondary,
-.hd-ds-on-dark .hd-ds-cta-secondary {
-  border-color: rgba(242, 242, 240, 0.5);
-  background: rgba(242, 242, 240, 0.1);
-  color: var(--hd-ds-paper);
-}
-
-.hd-ds-band-cobalt .hd-ds-cta-secondary:hover,
-.hd-ds-band-proof .hd-ds-cta-secondary:hover,
-.hd-ds-band-strip .hd-ds-cta-secondary:hover,
-.hd-ds-on-dark .hd-ds-cta-secondary:hover {
-  border-color: var(--hd-ds-paper);
-  background: rgba(242, 242, 240, 0.16);
-}
-
-/* Full-width CTA (uiux-3.2) — the /request submit spans its form column.
-   Single-purpose so uiux-0.2's grammar consolidation can absorb it; the
-   legacy .hd-button-full (hd.css §12) stays for camp forms. */
-.hd-ds-cta-full {
-  width: 100%;
-}
-
-/* ----- Chips (topic / trust) --------------------------------------------- */
-.hd-ds-chip-row {
+/* Product-owned wrapping layout for mixed HTS Badge, Button and Link rows. */
+.wecamp-inline-cluster {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-}
-
-.hd-ds-chip {
-  display: inline-flex;
-  padding: 9px 12px;
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius-pill);
-  background: rgba(255, 255, 255, 0.5);
-  color: var(--hd-ds-cobalt);
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.25;
-  text-decoration: none;
-}
-
-a.hd-ds-chip:hover {
-  background: var(--hd-ds-cobalt);
-  color: var(--hd-ds-paper);
-}
-
-.hd-ds-band-cobalt .hd-ds-chip,
-.hd-ds-band-proof .hd-ds-chip,
-.hd-ds-on-dark .hd-ds-chip {
-  border-color: rgba(242, 242, 240, 0.18);
-  background: rgba(242, 242, 240, 0.1);
-  color: var(--hd-ds-paper);
-}
-
-button.hd-ds-chip {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-button.hd-ds-chip:focus-visible {
-  outline: 3px solid rgba(49, 200, 217, 0.78);
-  outline-offset: 2px;
-}
-
-.hd-ds-chip[aria-pressed="true"] {
-  background: var(--hd-ds-cobalt);
-  border-color: var(--hd-ds-cobalt);
-  color: var(--hd-ds-paper);
-}
-
-.hd-ds-band-cobalt .hd-ds-chip[aria-pressed="true"],
-.hd-ds-band-proof .hd-ds-chip[aria-pressed="true"] {
-  background: var(--hd-ds-paper);
-  border-color: var(--hd-ds-paper);
-  color: var(--hd-ds-cobalt);
 }
 
 /* Filter cell wrapper so cards keep equal heights when wrapped for x-show. */
@@ -557,43 +418,8 @@ button.hd-ds-chip:focus-visible {
   min-width: 0;
 }
 
-/* ----- Fact / spec strip (from camp pages) ------------------------------- */
-.hd-ds-fact-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  margin: 0;
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius);
-  background: var(--hd-ds-line);
-}
-
-.hd-ds-fact-strip > div {
-  display: grid;
-  gap: 6px;
-  padding: 18px 20px;
-  background: var(--hd-ds-paper);
-}
-
-.hd-ds-fact-strip dt {
-  margin: 0;
-  color: var(--hd-ds-muted);
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.hd-ds-fact-strip dd {
-  margin: 0;
-  color: var(--hd-ds-ink);
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1.4;
-  overflow-wrap: anywhere;
-}
-
 /* ----- Stat band (from homepage outcomes band) --------------------------- */
-.hd-ds-stat-band {
+.wecamp-stat-band {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1px;
@@ -605,7 +431,7 @@ button.hd-ds-chip:focus-visible {
   box-shadow: var(--hd-ds-shadow-card);
 }
 
-.hd-ds-stat-band > div {
+.wecamp-stat-band > div {
   display: grid;
   gap: 6px;
   padding: 24px 20px;
@@ -617,7 +443,7 @@ button.hd-ds-chip:focus-visible {
   text-align: center;
 }
 
-.hd-ds-stat-band dt {
+.wecamp-stat-band dt {
   margin: 0;
   color: var(--hd-ds-accent-on-light); /* on-light accent shade — 3.09:1 large-text AA (uiux-7.1) */
   font-size: clamp(34px, 4.6vw, 52px);
@@ -626,73 +452,12 @@ button.hd-ds-chip:focus-visible {
   letter-spacing: -0.01em;
 }
 
-.hd-ds-stat-band dd {
+.wecamp-stat-band dd {
   margin: 0;
   color: var(--hd-ds-muted);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.5;
-}
-
-/* ----- Accordion (accessible) -------------------------------------------- */
-.hd-ds-accordion {
-  display: grid;
-  gap: 0;
-}
-
-.hd-ds-accordion-item {
-  border-block-end: 1px solid var(--hd-ds-line);
-}
-
-.hd-ds-accordion-trigger {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px 4px;
-  border: 0;
-  border-radius: var(--hd-ds-radius); /* invisible at rest (transparent bg); rounds the focus ring */
-  background: transparent;
-  color: var(--hd-ds-ink);
-  font: inherit;
-  font-size: 17px;
-  font-weight: 900;
-  text-align: start;
-  cursor: pointer;
-}
-
-.hd-ds-accordion-trigger:focus-visible {
-  outline: 3px solid rgba(49, 200, 217, 0.78);
-  outline-offset: 3px;
-}
-
-.hd-ds-accordion-icon {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--hd-ds-radius-pill);
-  background: rgba(11, 47, 159, 0.08);
-  color: var(--hd-ds-cobalt);
-  transition: transform 180ms ease;
-}
-
-.hd-ds-accordion-trigger[aria-expanded="true"] .hd-ds-accordion-icon {
-  transform: rotate(45deg);
-}
-
-.hd-ds-accordion-panel {
-  padding-block-end: 20px;
-  color: var(--hd-ds-muted);
-  font-size: 15px;
-  line-height: 1.9;
-}
-
-.hd-ds-accordion-panel[hidden] {
-  display: none;
 }
 
 /* ----- Camp card (shared: schools, camps list, school detail) ------------ */
@@ -702,15 +467,11 @@ button.hd-ds-chip:focus-visible {
   gap: 14px;
 }
 
-.hd-ds-camp-card {
+.wecamp-camp-card {
   display: grid;
   grid-template-rows: auto 1fr;
   overflow: hidden;
   min-width: 0;
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius);
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: var(--hd-ds-shadow-card);
 }
 
 /* Camp card art system (uiux-4.1): all nine card assets in /img/campcards/<slug>.jpg
@@ -744,64 +505,31 @@ button.hd-ds-chip:focus-visible {
   align-items: baseline;
 }
 
-/* Guarded so the school label recipe never restyles the status pill that
-   shares the row (uiux-0.2 — it was graying the pill text). */
-.hd-ds-camp-top > span:not(.hd-ds-camp-status) {
+/* Explicit school-label hook: negative legacy-class tests would restyle the
+   released Badge that shares this row. */
+.wecamp-camp-school {
   color: var(--hd-ds-muted);
   font-size: 12px;
   font-weight: 800;
 }
 
-/* ----- Status pill: ONE metric spec + ONE color map (uiux-0.2) ------------
-   Applies to camp cards, the register panel and event cards alike. Colors key
-   off machine-readable data-status (never the Persian label):
-     (default / "active")                → green  «ثبت‌نام فعال»
-     in-progress | upcoming | planned |
-     waitlist | coming-soon | held      → cobalt «در حال برگزاری» «پیش‌ثبت‌نام» «به‌زودی» «برگزار شده»
-     video                              → cyan   «ویدیو» */
-.hd-ds-camp-status,
-.hd-ds-event-status {
-  flex: none;
-  width: fit-content;
-  padding: 5px 10px;
-  border-radius: var(--hd-ds-radius-pill);
-  background: rgba(25, 173, 105, 0.14);
-  color: #0d6f43; /* 4.86:1 worst-case on the tinted card/panel cells (uiux-7.1; #0f7a4a measured 4.20–4.48) */
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1.35;
-  white-space: nowrap;
-}
-
-.hd-ds-camp-status[data-status="in-progress"],
-.hd-ds-camp-status[data-status="upcoming"],
-.hd-ds-camp-status[data-status="planned"],
-.hd-ds-camp-status[data-status="waitlist"],
-.hd-ds-camp-status[data-status="coming-soon"],
-.hd-ds-event-status[data-status="upcoming"],
-.hd-ds-event-status[data-status="planned"],
-.hd-ds-event-status[data-status="held"] {
-  background: rgba(11, 47, 159, 0.1);
-  color: var(--hd-ds-cobalt);
-}
-
-.hd-ds-camp-card h3 {
+.wecamp-camp-card h3 {
   margin: 0;
   font-size: 20px;
   font-weight: 900;
   line-height: 1.4;
 }
 
-.hd-ds-camp-card h3 a {
+.wecamp-camp-card h3 a {
   color: var(--hd-ds-ink);
   text-decoration: none;
 }
 
-.hd-ds-camp-card h3 a:hover {
+.wecamp-camp-card h3 a:hover {
   color: var(--hd-ds-cobalt);
 }
 
-.hd-ds-camp-card > .hd-ds-camp-body > p {
+.wecamp-camp-card > .hd-ds-camp-body > p {
   margin: 0;
   color: var(--hd-ds-muted);
   font-size: 14px;
@@ -836,18 +564,6 @@ button.hd-ds-chip:focus-visible {
   text-align: start;
 }
 
-.hd-ds-camp-link {
-  margin-block-start: 4px;
-  color: var(--hd-ds-cobalt);
-  font-size: 14px;
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.hd-ds-camp-link:hover {
-  text-decoration: underline;
-}
-
 /* ----- Person / mentor card (shared: about, teachers, schools) ----------- */
 .hd-ds-people-grid {
   display: grid;
@@ -855,22 +571,18 @@ button.hd-ds-chip:focus-visible {
   gap: 14px;
 }
 
-.hd-ds-person-card {
+.wecamp-person-card {
   display: grid;
   gap: 14px;
   min-width: 0;
   padding: 14px;
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius);
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: var(--hd-ds-shadow-card);
   text-decoration: none;
 }
 
 /* uiux-4.3: portrait treatment (face-weighted 1:1 crop + cobalt tonal grade)
    is baked into the assets by the grade pipeline — one recipe for every
    surface. Hover grade-to-color is deferred to uiux-3.1's card grammar. */
-.hd-ds-person-card img {
+.wecamp-person-card img {
   width: 100%;
   height: auto; /* the height attr would defeat aspect-ratio (cf. 5286499) */
   aspect-ratio: 1;
@@ -895,14 +607,14 @@ button.hd-ds-chip:focus-visible {
   user-select: none;
 }
 
-.hd-ds-person-card strong {
+.wecamp-person-card strong {
   display: block;
   color: var(--hd-ds-ink);
   font-size: 16px;
   font-weight: 900;
 }
 
-.hd-ds-person-card small {
+.wecamp-person-card small {
   display: block;
   margin-block-start: 4px;
   color: var(--hd-ds-ink);
@@ -911,7 +623,7 @@ button.hd-ds-chip:focus-visible {
   line-height: 1.6;
 }
 
-.hd-ds-person-card small.hd-ds-person-note {
+.wecamp-person-card small.hd-ds-person-note {
   color: var(--hd-ds-muted);
   font-weight: 600;
 }
@@ -919,27 +631,23 @@ button.hd-ds-chip:focus-visible {
 /* ----- Event card (shared: events list, events topic, homepage DNA) ------ */
 .hd-ds-event-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 18px;
 }
 
-.hd-ds-event-card {
+.wecamp-event-card {
   display: grid;
   grid-template-columns: minmax(160px, 0.44fr) minmax(0, 1fr);
   min-width: 0;
   overflow: hidden;
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius);
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: var(--hd-ds-shadow-card);
 }
 
-.hd-ds-event-card > a.hd-ds-event-media {
+.wecamp-event-card > a.hd-ds-event-media {
   display: block;
   min-height: 200px;
 }
 
-.hd-ds-event-card img {
+.wecamp-event-card img {
   display: block;
   width: 100%;
   height: 100%;
@@ -953,12 +661,6 @@ button.hd-ds-chip:focus-visible {
   align-content: center;
   padding: 20px;
   min-width: 0;
-}
-
-/* Metrics + held/upcoming colors come from the shared status map above. */
-.hd-ds-event-status[data-status="video"] {
-  background: rgba(49, 200, 217, 0.16);
-  color: #0e6b76;
 }
 
 .hd-ds-event-body h3 {
@@ -1001,27 +703,13 @@ button.hd-ds-chip:focus-visible {
   gap: 6px;
 }
 
-.hd-ds-event-action {
-  width: fit-content;
-  color: var(--hd-ds-cobalt);
-  font-size: 14px;
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.hd-ds-event-action:hover {
-  text-decoration: underline;
-}
-
 /* One focus ring for every interactive ds card element (uiux-0.2 — moved up
    from the homepage-only list in home.css so keyboard focus reads the same
    on home, catalog, teachers and events). */
-a.hd-ds-chip:focus-visible,
 .hd-ds-camp-media:focus-visible,
-.hd-ds-camp-card h3 a:focus-visible,
-.hd-ds-camp-link:focus-visible,
-a.hd-ds-person-card:focus-visible,
-.hd-ds-event-card a:focus-visible,
+.wecamp-camp-card h3 a:focus-visible,
+a.wecamp-person-card:focus-visible,
+.wecamp-event-card a:focus-visible,
 .hd-ds-event-feature a:focus-visible,
 .hd-ds-event-row a:focus-visible {
   outline: 3px solid rgba(49, 200, 217, 0.78);
@@ -1157,10 +845,6 @@ a.hd-ds-person-card:focus-visible,
   font-weight: 700;
 }
 
-.hd-ds-event-row > .hd-ds-event-action {
-  flex: none;
-}
-
 /* ----- Inline curriculum/proof aside in the school camp grid (uiux-2.1; ---
    content comes from data/camps/*.yaml; slot enriched later by uiux-6.6). */
 .hd-ds-camp-proof-aside {
@@ -1210,8 +894,8 @@ a.hd-ds-person-card:focus-visible,
   opacity: 0.7;
 }
 
-.hd-ds-band-cobalt .hd-ds-logos img,
-.hd-ds-band-proof .hd-ds-logos img {
+.wecamp-band-cobalt .hd-ds-logos img,
+.wecamp-band-proof .hd-ds-logos img {
   filter: grayscale(1) brightness(0) invert(1);
   opacity: 0.72;
 }
@@ -1263,27 +947,23 @@ a.hd-ds-person-card:focus-visible,
   text-align: center;
 }
 
-.hd-ds-utility-card {
+.wecamp-utility-card {
   display: grid;
   justify-items: center;
   gap: 14px;
   max-width: 620px;
   padding: clamp(28px, 5vw, 52px);
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius);
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: var(--hd-ds-shadow-card);
 }
 
-.hd-ds-utility-card h1,
-.hd-ds-utility-card h2 {
+.wecamp-utility-card h1,
+.wecamp-utility-card h2 {
   margin: 0;
   color: var(--hd-ds-ink);
   font-size: clamp(26px, 3.4vw, 40px);
   font-weight: 900;
 }
 
-.hd-ds-utility-card p {
+.wecamp-utility-card p {
   margin: 0;
   max-width: 48ch;
   color: var(--hd-ds-muted);
@@ -1291,17 +971,17 @@ a.hd-ds-person-card:focus-visible,
   line-height: 1.9;
 }
 
-.hd-ds-utility-card p a {
+.wecamp-utility-card p a {
   color: var(--hd-ds-cobalt);
   font-weight: 800;
   text-decoration: none;
 }
 
-.hd-ds-utility-card p a:hover {
+.wecamp-utility-card p a:hover {
   text-decoration: underline;
 }
 
-.hd-ds-utility-badge {
+.wecamp-success-mark {
   display: inline-grid;
   place-items: center;
   width: 64px;
@@ -1368,24 +1048,20 @@ a.hd-ds-person-card:focus-visible,
 }
 
 /* ----- Contact channel card ---------------------------------------------- */
-.hd-ds-contact-card {
+.wecamp-contact-card {
   display: grid;
   gap: 6px;
   padding: 22px;
-  border: 1px solid var(--hd-ds-line);
-  border-radius: var(--hd-ds-radius);
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: var(--hd-ds-shadow-card);
 }
 
-.hd-ds-contact-card > span {
+.wecamp-contact-card > span {
   color: var(--hd-ds-muted);
   font-size: 13px;
   font-weight: 800;
 }
 
-.hd-ds-contact-card a,
-.hd-ds-contact-card strong {
+.wecamp-contact-card a,
+.wecamp-contact-card strong {
   color: var(--hd-ds-ink);
   font-size: 18px;
   font-weight: 900;
@@ -1393,7 +1069,7 @@ a.hd-ds-person-card:focus-visible,
   overflow-wrap: anywhere;
 }
 
-.hd-ds-contact-card a:hover {
+.wecamp-contact-card a:hover {
   color: var(--hd-ds-cobalt);
 }
 
@@ -1408,18 +1084,18 @@ a.hd-ds-person-card:focus-visible,
 }
 
 @media (max-width: 767px) {
-  .hd-ds-section {
+  .wecamp-section {
     padding-block: 64px;
   }
   .hd-ds-actions,
-  .hd-ds-actions .hd-ds-cta {
+  .hd-ds-actions .hts-button {
     width: 100%;
   }
-  .hd-ds-section-head h2 {
+  .wecamp-section-head h2 {
     font-size: clamp(30px, 9vw, 44px);
     line-height: 1.18;
   }
-  .hd-ds-stat-band {
+  .wecamp-stat-band {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .hd-ds-event-feature {
@@ -1428,7 +1104,7 @@ a.hd-ds-person-card:focus-visible,
   .hd-ds-event-feature-media img {
     height: auto;
   }
-  .hd-ds-strip-row .hd-ds-cta {
+  .hd-ds-strip-row .hts-button {
     width: 100%;
   }
 }
@@ -1439,15 +1115,5 @@ a.hd-ds-person-card:focus-visible,
   }
   .hd-ds-event-row-thumb {
     display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hd-ds-cta,
-  .hd-ds-accordion-icon {
-    transition: none;
-  }
-  .hd-ds-cta:hover {
-    transform: none;
   }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -268,21 +300,21 @@
     </div>
    </header>
 <main id="hd-main">
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="about-hero-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="about-hero-title">
      <div class="hd-container">
       <div class="hd-ds-hero-copy hd-measure-2xl" data-hd-animate="fade-up" data-hd-animate-eager>
        <p class="hd-ds-eyebrow">درباره وی‌کمپ</p>
        <h1 id="about-hero-title">مأموریت وی‌کمپ</h1>
        <p class="hd-ds-hero-lede">ما با آموزش گام‌به‌گام مهارت‌های پروژه‌محور، به فراگیران کمک می‌کنیم تا مسائل واقعی را حل کنند و با اعتمادبه‌نفس وارد بازار کار شوند.</p>
        <div class="hd-ds-actions">
-        <a class="hd-ds-cta hd-ds-cta-primary" href="/camps">مشاهده کمپ‌ها</a>
-        <a class="hd-ds-cta hd-ds-cta-secondary" href="#our-story">داستان ما</a>
+        <a class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" href="/camps">مشاهده کمپ‌ها</a>
+        <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="#our-story">داستان ما</a>
        </div>
       </div>
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" id="our-story" aria-labelledby="about-story-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" id="our-story" aria-labelledby="about-story-title">
      <div class="hd-container">
       <div class="hd-ds-hero">
        <div class="hd-ds-hero-copy" data-hd-animate="fade-up">
@@ -299,15 +331,15 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-proof hd-ds-section" aria-labelledby="about-proof-title">
+    <section class="wecamp-band wecamp-band-proof wecamp-section" aria-labelledby="about-proof-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+      <div class="wecamp-section-head" data-hd-animate="fade-up">
        <p class="hd-ds-eyebrow">در یک نگاه</p>
        <h2 id="about-proof-title">مسیری که تا امروز ساخته‌ایم.</h2>
       </div>
       
       
-<dl class="hd-ds-stat-band" data-hd-animate="fade-up">
+<dl class="wecamp-stat-band" data-hd-animate="fade-up">
  <div><dt>۲۰&#43;</dt><dd>مدرس و منتور صنعت</dd></div>
  <div><dt>۸</dt><dd>کمپ تخصصی</dd></div>
  <div><dt>۵۰&#43;</dt><dd>دانشجو</dd></div>
@@ -317,14 +349,14 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="about-values-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="about-values-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+      <div class="wecamp-section-head" data-hd-animate="fade-up">
        <p class="hd-ds-kicker">باورهای ما</p>
        <h2 id="about-values-title">چرا وی‌کمپ را این‌گونه ساخته‌ایم.</h2>
        <p>یادگیری زمانی ارزشمند است که مسیر رشد فردی و حرفه‌ای شما را هموار کند.</p>
       </div>
-      <div class="hd-ds-card-grid" data-hd-animate="fade-up">
+      <div class="wecamp-card-grid" data-hd-animate="fade-up">
        <div class="hd-ds-value">
         <span>۱</span>
         <div>
@@ -350,16 +382,16 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="about-mentors-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="about-mentors-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+      <div class="wecamp-section-head" data-hd-animate="fade-up">
        <p class="hd-ds-kicker">تیم آموزشی</p>
        <h2 id="about-mentors-title">آشنایی با مدرسان و منتورها.</h2>
        <p>مدرسان وی‌کمپ ترکیبی از تجربه عملی و دانش تخصصی را به کلاس‌ها می‌آورند.</p>
       </div>
       <div class="hd-ds-people-grid" data-hd-animate="fade-up">
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/irsodeh/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/irsodeh/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_1906507c67497485.avif 200w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_9dba7d84d1f579be.avif 360w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_2bf6c8e161c5259e.avif 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_5c2293c389105e14.webp 200w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_8de068c3f58327d5.webp 360w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_c685108681f6c40d.webp 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_86c58a40d7eec839.jpg" alt="سوده محمدآبادی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>سوده محمدآبادی</strong>
@@ -368,7 +400,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/morteza-farkhondepour" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/morteza-farkhondepour" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_6810a3fee8e03111.avif 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_34b315de96d2344e.avif 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_8e2283f48e81ba7a.webp 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_b482eeb8b6473b8f.webp 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_a2c1367f3abd1be2.jpg" alt="مرتضی فرخنده‌پور" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>مرتضی فرخنده‌پور</strong>
@@ -377,7 +409,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/komeil-roudi-7b62536b/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/komeil-roudi-7b62536b/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_7390bf6a4d4d9de4.avif 200w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_324ff2a4689693e0.avif 360w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_3f1dbce9752ee1fc.avif 420w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_d3902a8306c1d46a.webp 200w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_6df85a9bc9cef3a2.webp 360w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_96697d2f7f81aa0.webp 420w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_fe2050db77eb3798.jpg" alt="کمیل رودی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>کمیل رودی</strong>
@@ -387,22 +419,22 @@
 
       </div>
       <div class="hd-ds-actions hd-mbs-28" data-hd-animate="fade-up">
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="/teachers">همه مدرسان</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/teachers">همه مدرسان</a>
       </div>
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="about-cta-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="about-cta-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head hd-measure-md" data-hd-animate="fade-up">
+      <div class="wecamp-section-head hd-measure-md" data-hd-animate="fade-up">
        <p class="hd-ds-eyebrow">قدم بعدی</p>
        <h2 id="about-cta-title">داستان را خواندید؛ حالا با تیم آموزشی آشنا شوید.</h2>
        <p>کمپ‌های وی‌کمپ را همین مدرسان و منتورها پیش می‌برند؛ با آنها آشنا شوید یا برای انتخاب مسیرتان مشاوره بگیرید.</p>
       </div>
       <div class="hd-ds-actions" data-hd-animate="fade-up">
        
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="/teachers">آشنایی با مدرسان</a>
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="/request">درخواست مشاوره</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/teachers">آشنایی با مدرسان</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/request">درخواست مشاوره</a>
       </div>
      </div>
     </section>
@@ -600,8 +632,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>

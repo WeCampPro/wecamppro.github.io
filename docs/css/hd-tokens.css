@@ -1,31 +1,51 @@
 /* ==========================================================================
    hd-tokens.css — WECAMP design tokens (single source of truth)
    --------------------------------------------------------------------------
-   The one authoritative token file for the site. Brand color, radius, shadow
-   and transition values live ONLY here, under the `--wc-*` namespace; the
+   The authoritative consumer-token file for the site. Brand color, radius,
+   shadow and transition values live here under the `--wc-*` namespace; the
    per-page namespaces (--hd-index-*, --hd-camp-*, --hd-ds-*, --hd-footer-*)
    are thin var(--wc-…) aliases declared in their own files. Structural tokens
    (type scale, spacing, layout, nav geometry, animation) keep the historical
    `--hd-*` prefix and are consumed by hd.css.
 
-   This file only DEFINES custom properties; it consumes nothing and styles
-   no selectors. Persian / RTL-first: the body font stack is Vazirmatn-first.
+   Non-certificate typography is owned by the released HTS WECAMP theme.
+   Product-local properties below preserve WECAMP values and the frozen
+   certificate surface without keeping temporary public aliases.
    ========================================================================== */
 
 :root {
+  /* ----- Product-local token namespace (HTS-WECAMP-003) ------------------
+     Canonical definitions for every legacy token with NO safe mapping to the
+     released HTS semantic layer. Values are BYTE-IDENTICAL to what the legacy
+     names carried before the bridge — only the name changed, per the corpus
+     `unmatched_rule`. Reasons, per COMMON-TOKEN-MAP.yaml:
+       - paper / ink            pinned by name AND value in this task’s contract
+       - muted / line / color-error   released value differs, no mandate
+       - font-body/-heading/-latin   consumed by the FROZEN certificates.css
+                                     (corpus README § CF-1)
+       - z-dropdown/-nav             partial stacking-scale adoption is worse than
+                                     none; the site hard-codes 900/9999/99999/100000
+     HTS-WECAMP-016 removed the temporary aliases after repointing their live
+     readers. Heading/Latin are the two deliberate certificate exceptions. */
+  --wecamp-local-ink: #101010;
+  --wecamp-local-paper: #f2f2f0;
+  --wecamp-local-muted: #62646f;
+  --wecamp-local-line: rgba(11, 47, 159, 0.16);
+  --wecamp-local-color-error: #c21d1d;
+  --wecamp-local-font-body: Vazirmatn, "Noto Naskh Arabic", "Jakarta Display", sans-serif;
+  --wecamp-local-font-heading: Vazirmatn, "Noto Naskh Arabic", "Jakarta Display", sans-serif;
+  --wecamp-local-font-latin: "Jakarta Display", sans-serif;
+  --wecamp-local-z-dropdown: 100;
+  --wecamp-local-z-nav: 1000;
+
   /* ----- Brand palette --------------------------------------------------- */
-  --wc-ink: #101010;            /* rich-black text — never pure black */
-  --wc-paper: #f2f2f0;          /* warm off-white page/band background */
-  --wc-cobalt: #0b2f9f;         /* dominant brand blue / dark surfaces */
-  --wc-cobalt-deep: #06184e;    /* cobalt gradient floor + cobalt-fill hover */
+  --wc-cobalt: var(--hts-color-action-primary-background, #0b2f9f);  /* HTS-WECAMP-003: mapped -> color.action.primary.background. Literal fallback keeps this exact on pages that do not load the theme (certificates). */         /* dominant brand blue / dark surfaces */
+  --wc-cobalt-deep: var(--hts-color-action-primary-background-hover, #06184e);  /* HTS-WECAMP-003: mapped -> color.action.primary.background.hover. Literal fallback keeps this exact on pages that do not load the theme (certificates). */    /* cobalt gradient floor + cobalt-fill hover */
   --wc-accent: #ff6a2b;         /* warm orange — SINGLE primary CTA per view + headline stat numbers ONLY; on ink/cobalt surfaces */
   --wc-accent-deep: #e85719;    /* accent hover */
   --wc-accent-on-light: #e85719;/* accent TEXT on paper/tinted-light surfaces — 3.09:1 on the stat cell (large-text AA); same hue, one step deeper (uiux-7.1) */
   --wc-accent-ink: #2a0f00;     /* AA-legible text on accent fill */
-  --wc-muted: #62646f;          /* secondary text on light surfaces */
   --wc-cyan: #31c8d9;           /* functional status/proof accent, sparingly */
-  --wc-green: #19ad69;          /* functional status/proof accent, sparingly */
-  --wc-green-ink: #05281a;      /* AA-legible text on solid green fill (dark-band status pill) — 5.45:1 (uiux-7.1) */
   --wc-white: #ffffff;          /* text/icons on cobalt + white fills */
 
   /* ----- Geometry --------------------------------------------------------- */
@@ -34,7 +54,6 @@
 
   /* ----- Shadows (one ink-tinted voice) ------------------------------------ */
   --wc-shadow-card: 0 24px 60px rgba(16, 16, 16, 0.07);        /* resting card */
-  --wc-shadow-card-hover: 0 8px 20px rgba(16, 16, 16, 0.08);   /* pressed/hover card */
   --wc-shadow-pop: 0 24px 60px rgba(0, 0, 0, 0.14);            /* mega-menu / drawer */
   --wc-shadow-button-hover: 0 4px 10px rgba(16, 16, 16, 0.15); /* button lift */
 
@@ -54,32 +73,26 @@
      paper, white and — near-invisibly — on cobalt, which the stat/fact strips
      rely on). Opaque equivalents below are exact composites over their host
      background for surfaces that must not stack tints. */
-  --wc-line: rgba(11, 47, 159, 0.16);        /* cobalt hairline on light surfaces */
   --wc-line-dark: rgba(242, 242, 240, 0.18); /* paper hairline on cobalt/dark bands */
   --wc-line-strong: #7583a6;                 /* form-control boundary on light surfaces — ≥3:1 on white AND paper (SC 1.4.11, uiux-7.1) */
 
   /* ----- Opaque surfaces (no rgba tint stacking) --------------------------- */
-  --wc-surface-1: #ffffff;      /* card on paper */
-  --wc-surface-2: #e9e9e5;      /* recessed panel on paper */
+  --wc-surface-1: var(--hts-color-surface, #ffffff);  /* HTS-WECAMP-003: mapped -> color.surface. Literal fallback keeps this exact on pages that do not load the theme (certificates). */      /* card on paper */
   --wc-line-on-paper: #cdd3e3;  /* = rgba(11,47,159,.16) composited over #f2f2f0 */
-  --wc-line-on-cobalt: #3552ae; /* = rgba(242,242,240,.18) composited over #0b2f9f */
-  --wc-chip-on-paper: #e0e2ea;  /* = rgba(11,47,159,.08) composited over #f2f2f0 */
-  --wc-chip-on-cobalt: #2242a7; /* = rgba(242,242,240,.10) composited over #0b2f9f */
   --wc-chip-on-white: #eceff7;  /* = 8% cobalt composited over #ffffff (menu hover/special fills) */
   --wc-stat-cell: #ebedf4;      /* = rgba(255,255,255,.6) over --wc-line-on-paper — opaque stat-band cell, keeps the
                                    accent-on-light stat numbers at a deterministic 3.09:1 on EVERY host band (uiux-7.1) */
 
   /* ----- Typography -------------------------------------------------------- */
-  /* RTL-first: Vazirmatn leads, Noto Naskh Arabic backstops Arabic glyphs,
-     Jakarta Display covers Latin-only contexts. All fonts local. */
-  --hd-font-body: Vazirmatn, "Noto Naskh Arabic", "Jakarta Display", sans-serif;
-  --hd-font-heading: Vazirmatn, "Noto Naskh Arabic", "Jakarta Display", sans-serif;
-  --hd-font-latin: "Jakarta Display", sans-serif;
+  /* Frozen certificate compatibility only. `certificates.css` reads heading
+     twice and Latin eleven times. Non-certificate output uses the released
+     --hts-font-family-* variables and their unicode-range routing. */
+  --hd-font-heading: var(--wecamp-local-font-heading);
+  --hd-font-latin: var(--wecamp-local-font-latin);
 
   /* Base body type. */
   --hd-text-base: 18px;                  /* body font-size */
   --hd-line-body: 1.667;                 /* body line-height */
-  --hd-weight-regular: 400;              /* body */
   --hd-weight-medium: 500;               /* buttons / medium UI labels */
   --hd-weight-heading: 500;              /* h1-h6 */
   --hd-weight-bold: 700;                 /* form labels */
@@ -87,14 +100,7 @@
   /* Heading scale — desktop; responsive steps in the @media blocks below.
      (h6 has no responsive step by design.) */
   --hd-h1-size: 60px;     --hd-h1-line: 1.133;
-  --hd-h2-size: 40px;     --hd-h2-line: 1.2;
-  --hd-h3-size: 25px;     --hd-h3-line: 1.36;
   --hd-h4-size: 23px;     --hd-h4-line: 1.36;
-  --hd-h5-size: 18px;     --hd-h5-line: 1.222;
-  --hd-h6-size: 16px;     --hd-h6-line: 1.25;
-
-  /* Hero display heading (.hd-special) — ramps 74 → 46 (@767) → 37 (@479). */
-  --hd-special-size: 74px;     --hd-special-line: 1.115;
 
   /* ----- Layout widths ------------------------------------------------------ */
   --hd-width-container: 1209px;          /* primary content container */
@@ -109,9 +115,6 @@
   --hd-space-xs: 8px;
   --hd-space-sm: 16px;                   /* default grid gap */
   --hd-space-md: 24px;                   /* = container gutter */
-  --hd-space-lg: 32px;
-  --hd-space-xl: 48px;
-  --hd-space-xxl: 64px;
 
   /* ----- Buttons — sizing & typography for the .hd-button system ----------- */
   --hd-button-pad-y: 18px;
@@ -122,14 +125,11 @@
   --hd-button-line: 18px;
   --hd-button-font-lg: 18px;             /* ramps → 16 @479 */
   --hd-button-line-lg: 20px;
-  --hd-button-tracking: .02em;           /* secondary-variant letter-spacing; primary is 0 */
-  --hd-button-border: 1px;               /* secondary outline width */
-  --hd-button-group-gap: 27px;           /* .hd-button-group row gap */
   --hd-button-hover-lift: -2px;          /* :hover translate3d Y */
   --hd-button-focus-width: 2px;          /* :focus-visible outline */
   --hd-button-focus-offset: 2px;
 
-  /* ----- Forms — control sizing for .hd-input/.hd-select/.hd-textarea ------- */
+  /* ----- Forms — control sizing for .hd-input ------------------------------ */
   /* Inputs are 18px (= body base) so they clear the 16px iOS-zoom floor. */
   --hd-input-height: 70px;
   --hd-input-pad: 20px;
@@ -137,15 +137,6 @@
   --hd-input-line: 1.1;
   --hd-input-border: 1px;
   --hd-placeholder-line: 1.5;
-  --hd-select-min-height: 60px;
-  --hd-select-line: 1.111;
-  --hd-textarea-min-height: 100px;
-  --hd-label-gap: 8px;
-  --hd-select-chevron-size: 16px;   /* custom dropdown chevron glyph box */
-  --hd-select-chevron-inset: 20px;  /* chevron distance from the inline-start edge */
-  --hd-select-chevron-pad: 48px;    /* inline-start padding that clears the chevron */
-  --hd-color-error: #c21d1d;        /* functional: required asterisk / error text / invalid border —
-                                       ≥4.5:1 on the #ffdede wash, #fff9f9, paper and white (uiux-7.1; old bright red measured ~3.3:1) */
   --hd-form-success-bg: #ddd;       /* functional: submit-success banner */
   --hd-form-success-pad: 20px;
   --hd-form-error-bg: #ffdede;      /* functional: submit-error banner */
@@ -153,9 +144,6 @@
   --hd-form-error-gap: 10px;
 
   /* ----- Z-index scale: dropdown < nav < modal ------------------------------- */
-  --hd-z-dropdown: 100;
-  --hd-z-nav: 1000;
-  --hd-z-modal: 2000;
 
   /* ----- Entrance animations (hd-animations.js + hd.css keyframes) ----------
      Two reveal variants: fade-up (translateY) and fade-in-scale. Per-element
@@ -222,11 +210,7 @@
   :root {
     /* heading scale-down */
     --hd-h1-size: 48px;
-    --hd-h2-size: 32px;
-    --hd-h3-size: 21px;
     --hd-h4-size: 18px;
-    --hd-h5-size: 17px;
-    --hd-special-size: 46px;
     --hd-nav-bar-h: 74px;
   }
 }
@@ -235,9 +219,6 @@
   :root {
     /* heading scale-down */
     --hd-h1-size: 38px;
-    --hd-h2-size: 28px;
-    --hd-special-size: 37px;
-
     --hd-section-pad: 50px;
     --hd-gutter: 16px;
     --hd-button-font-lg: 16px;

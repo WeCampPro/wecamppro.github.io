@@ -1,0 +1,19 @@
+/* WECAMP layout composition for the released HTS Badge contract.
+ *
+ * Badge owns typography, spacing, shape, tone, wrapping and forced-colors.
+ * This file only prevents status labels from stretching in product flex/grid
+ * hosts. Certificate routes never load it. */
+
+@layer hts.overrides {
+  :where([data-hts-root]) .wecamp-status-badge {
+    justify-self: start;
+    flex: none;
+    inline-size: fit-content;
+  }
+
+  /* The retired homepage rule explicitly top-aligned this one Badge beside a
+   * taller heading block. Do not disturb the camp-card row's baseline. */
+  :where([data-hts-root]) .hd-index-featured-camp > .wecamp-status-badge {
+    align-self: start;
+  }
+}

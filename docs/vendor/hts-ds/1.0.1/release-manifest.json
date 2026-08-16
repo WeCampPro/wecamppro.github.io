@@ -1,0 +1,107 @@
+{
+  "artifacts": [
+    {
+      "bytes": 435,
+      "path": "CHANGELOG.md",
+      "sha256": "770294d2197a5f4ad9a160ddf81ece7236721cef0f387f6b3e5ac82ff7cd4875"
+    },
+    {
+      "bytes": 317789,
+      "path": "npm/hts-ds-css-1.0.1.tgz",
+      "sha256": "6362ceff8789c961ef252d73e23acef410f01bb98313a8190342fc0686d0d3af"
+    },
+    {
+      "bytes": 123017,
+      "path": "npm/hts-ds-fonts-1.0.1.tgz",
+      "sha256": "493b49e86c54825cb785cb4995b2a466e7319b235f92d6299f803ca32dd4832c"
+    },
+    {
+      "bytes": 10879,
+      "path": "npm/hts-ds-icons-1.0.1.tgz",
+      "sha256": "f95a7f693f490d8f2367994f089dda2ad9025204b2f11428970ed30287be288f"
+    },
+    {
+      "bytes": 472412,
+      "path": "npm/hts-ds-react-1.0.1.tgz",
+      "sha256": "1f59f8a408ece2e79f323de8f7e128ddd71f384458a81069e3a50400cfd572b1"
+    },
+    {
+      "bytes": 5073,
+      "path": "npm/hts-ds-tailwind-1.0.1.tgz",
+      "sha256": "fb14acf89b486155f2f432a906dac438d4d0fee2b63b54ddf11f2ac668498a37"
+    },
+    {
+      "bytes": 15778,
+      "path": "npm/hts-ds-theme-1.0.1.tgz",
+      "sha256": "8873d4ab36bcfb5b46c176e9e81e68d71b8ca6522df45bc440e44fcea6808c0b"
+    },
+    {
+      "bytes": 110502,
+      "path": "npm/hts-ds-tokens-1.0.1.tgz",
+      "sha256": "a89c8ec409333a14dcb3c5742f07572fe8bcdebb3d16a599af8cdda6f4d69ed3"
+    },
+    {
+      "bytes": 12854,
+      "path": "SBOM.cdx.json",
+      "sha256": "78472802be9d719c850dfb3595e6ca1427be2a5707bea55a975f774878a41e66"
+    },
+    {
+      "bytes": 349714,
+      "path": "static/hts-design-system-1.0.1.tar.gz",
+      "sha256": "7764731222442e68782030f8ad88e3d44ab72fbbef48c1915aade56eb104ead9"
+    },
+    {
+      "bytes": 46761,
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "a79fe992c0e1482e2a0007b822afd5c1e1a3b80429f78f918c183fd70cf8df56"
+    }
+  ],
+  "packages": [
+    {
+      "name": "@hts-ds/css",
+      "tarball": "npm/hts-ds-css-1.0.1.tgz",
+      "version": "1.0.1"
+    },
+    {
+      "name": "@hts-ds/fonts",
+      "tarball": "npm/hts-ds-fonts-1.0.1.tgz",
+      "version": "1.0.1"
+    },
+    {
+      "name": "@hts-ds/icons",
+      "tarball": "npm/hts-ds-icons-1.0.1.tgz",
+      "version": "1.0.1"
+    },
+    {
+      "name": "@hts-ds/react",
+      "tarball": "npm/hts-ds-react-1.0.1.tgz",
+      "version": "1.0.1"
+    },
+    {
+      "name": "@hts-ds/tailwind",
+      "tarball": "npm/hts-ds-tailwind-1.0.1.tgz",
+      "version": "1.0.1"
+    },
+    {
+      "name": "@hts-ds/theme",
+      "tarball": "npm/hts-ds-theme-1.0.1.tgz",
+      "version": "1.0.1"
+    },
+    {
+      "name": "@hts-ds/tokens",
+      "tarball": "npm/hts-ds-tokens-1.0.1.tgz",
+      "version": "1.0.1"
+    }
+  ],
+  "schema": "hts-design-system/release-manifest/v1",
+  "source": {
+    "dependencyLockSha256": "7ebcb772e0662fcb38f4d2fef9e5b07d17a08304095815f3a231b8a2d6e83e29",
+    "taskIndexSha256": "2767b53a058c3b6802835ef90fe8a0bb4ec7a283ab13064c6c5d62f562c3c41f"
+  },
+  "toolchain": {
+    "node": "24.18.0",
+    "pnpm": "11.17.0",
+    "typescript": "6.0.3"
+  },
+  "version": "1.0.1"
+}

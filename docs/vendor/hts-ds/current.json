@@ -1,0 +1,605 @@
+{
+  "schema": "wecamp/hts-ds-vendor-pointer/v1",
+  "version": "1.0.1",
+  "generated_by": "HTS-WECAMP-101-002",
+  "generated_at": "2026-08-15T14:24:27+03:30",
+  "vendor_root": "static/vendor/hts-ds/1.0.1",
+  "purpose": "Local verification authority for the active vendored HTS Design System release. The Hugo site never references the central design-system repository at build or run time; integrity is checked against this file by scripts/verify-hts-ds-migration.sh. Immutable v1.0.0 remains beside this release for rollback.",
+  "source": {
+    "release_task": "DS-090",
+    "release_task_sha256": "e96f4a5742135ecc3f6b1301d7f19e6373e128025ea8d76dc833f78fb7ac3d35",
+    "release_completion_sha256": "4d11abdb4a2b259bd88090d3096d4ab666be63ed3277c8c08d0b0a0ce7805b41",
+    "candidate_revision": "r5",
+    "candidate_manifest_sha256": "0f5357e8f352d1907fc61708386d43c126920ce9742864fd5644bbccda8ac034",
+    "release_manifest_path": "release/v1.0.1/release-manifest.json",
+    "release_manifest_sha256": "bb351699a73f93d543c0b36f6a915bf58bec2af223f893a4fe4a698e554d38e1",
+    "checksums_path": "release/v1.0.1/SHA256SUMS",
+    "checksums_sha256": "4eb98c3cb73fbbb354f4d4a817e4241f866a42b579539553650ddde8a0b55470",
+    "static_distribution_artifact": "static/hts-design-system-1.0.1.tar.gz",
+    "static_distribution_sha256": "7764731222442e68782030f8ad88e3d44ab72fbbef48c1915aade56eb104ead9",
+    "qualification_path": "docs/testing/v1.0.1/candidates/r5/qualification.yaml",
+    "qualification_sha256": "a3825f154a81915d95d9f0359ba53ed4c64f118396367a80e52e5fdb65e50311",
+    "exception_id": "RA-1.0.1-R5-A11Y-9",
+    "exception_sha256": "0c1e51eb33f9565b0b8b08ba0124b229372086d84b98debc6809534443a65abf",
+    "central_pointer_sha256": "954a50e2096ea98fde56de49d23dc4edfeb2b0cf4b052a2e2032d8556a361390",
+    "toolchain": {
+      "node": "24.18.0",
+      "pnpm": "11.17.0",
+      "typescript": "6.0.3"
+    }
+  },
+  "release_artifacts": [
+    {
+      "bytes": 435,
+      "path": "CHANGELOG.md",
+      "sha256": "770294d2197a5f4ad9a160ddf81ece7236721cef0f387f6b3e5ac82ff7cd4875"
+    },
+    {
+      "bytes": 317789,
+      "path": "npm/hts-ds-css-1.0.1.tgz",
+      "sha256": "6362ceff8789c961ef252d73e23acef410f01bb98313a8190342fc0686d0d3af"
+    },
+    {
+      "bytes": 123017,
+      "path": "npm/hts-ds-fonts-1.0.1.tgz",
+      "sha256": "493b49e86c54825cb785cb4995b2a466e7319b235f92d6299f803ca32dd4832c"
+    },
+    {
+      "bytes": 10879,
+      "path": "npm/hts-ds-icons-1.0.1.tgz",
+      "sha256": "f95a7f693f490d8f2367994f089dda2ad9025204b2f11428970ed30287be288f"
+    },
+    {
+      "bytes": 472412,
+      "path": "npm/hts-ds-react-1.0.1.tgz",
+      "sha256": "1f59f8a408ece2e79f323de8f7e128ddd71f384458a81069e3a50400cfd572b1"
+    },
+    {
+      "bytes": 5073,
+      "path": "npm/hts-ds-tailwind-1.0.1.tgz",
+      "sha256": "fb14acf89b486155f2f432a906dac438d4d0fee2b63b54ddf11f2ac668498a37"
+    },
+    {
+      "bytes": 15778,
+      "path": "npm/hts-ds-theme-1.0.1.tgz",
+      "sha256": "8873d4ab36bcfb5b46c176e9e81e68d71b8ca6522df45bc440e44fcea6808c0b"
+    },
+    {
+      "bytes": 110502,
+      "path": "npm/hts-ds-tokens-1.0.1.tgz",
+      "sha256": "a89c8ec409333a14dcb3c5742f07572fe8bcdebb3d16a599af8cdda6f4d69ed3"
+    },
+    {
+      "bytes": 12854,
+      "path": "SBOM.cdx.json",
+      "sha256": "78472802be9d719c850dfb3595e6ca1427be2a5707bea55a975f774878a41e66"
+    },
+    {
+      "bytes": 349714,
+      "path": "static/hts-design-system-1.0.1.tar.gz",
+      "sha256": "7764731222442e68782030f8ad88e3d44ab72fbbef48c1915aade56eb104ead9"
+    },
+    {
+      "bytes": 46761,
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "a79fe992c0e1482e2a0007b822afd5c1e1a3b80429f78f918c183fd70cf8df56"
+    }
+  ],
+  "not_vendored": {
+    "paths": [
+      "npm/hts-ds-css-1.0.1.tgz",
+      "npm/hts-ds-fonts-1.0.1.tgz",
+      "npm/hts-ds-icons-1.0.1.tgz",
+      "npm/hts-ds-react-1.0.1.tgz",
+      "npm/hts-ds-tailwind-1.0.1.tgz",
+      "npm/hts-ds-theme-1.0.1.tgz",
+      "npm/hts-ds-tokens-1.0.1.tgz",
+      "static/hts-design-system-1.0.1.tar.gz"
+    ],
+    "reason": "npm packages ship React/Radix and Tailwind sources with no consumer in this Hugo + Alpine runtime, and the migration contract forbids installing React/Radix or browser Tailwind. The static tarball is vendored in extracted form so Hugo can serve it. Manifest hashes remain above for complete release identity."
+  },
+  "vendored_file_count": 100,
+  "vendored_bytes": 2803155,
+  "vendored_files": [
+    {
+      "path": "static/vendor/hts-ds/1.0.1/CHANGELOG.md",
+      "bytes": 435,
+      "sha256": "770294d2197a5f4ad9a160ddf81ece7236721cef0f387f6b3e5ac82ff7cd4875"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/LICENSE",
+      "bytes": 1084,
+      "sha256": "6fea42832f06e27e9830d3cd21fe1f7ab6ef8a81007d8f7bbc6f82bb64ebaba5"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/SBOM.cdx.json",
+      "bytes": 12854,
+      "sha256": "78472802be9d719c850dfb3595e6ca1427be2a5707bea55a975f774878a41e66"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/SHA256SUMS",
+      "bytes": 1094,
+      "sha256": "4eb98c3cb73fbbb354f4d4a817e4241f866a42b579539553650ddde8a0b55470"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/THIRD_PARTY_NOTICES.txt",
+      "bytes": 46761,
+      "sha256": "a79fe992c0e1482e2a0007b822afd5c1e1a3b80429f78f918c183fd70cf8df56"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/THIRD_PARTY_NOTICES.txt",
+      "bytes": 21470,
+      "sha256": "af1e921f4370f5df693c6c9dc9f2ba4a8104c4d9ce381706d7d78702f0939a99"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/base.css",
+      "bytes": 2159,
+      "sha256": "bf8d70f283ab840c01331f889e54040368406c90014b05af268a592b6b33e546"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/base.css.map",
+      "bytes": 2499,
+      "sha256": "8f292b6bde975569de7caa103cfcb1baa6b4745d60ab0162dab610c0d0c520be"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/components.css",
+      "bytes": 146380,
+      "sha256": "3551d32cf2a1bb13529b5314a7ba9efcd7b574babec74efc57361146df608971"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/components.css.map",
+      "bytes": 163757,
+      "sha256": "a812545dbd723bb4eea093ab827becdcb5754354abda9ebd5475849ddce9fd9a"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/fonts/geist-latin-variable.woff2",
+      "bytes": 29400,
+      "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/fonts/ibm-plex-mono-latin-400.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/fonts/plus-jakarta-sans-latin-variable.woff2",
+      "bytes": 27348,
+      "sha256": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/fonts/vazirmatn-arabic-variable.woff2",
+      "bytes": 46308,
+      "sha256": "84a382e46c30fb4f73d0e3800c16d0af15888e2731e57fa5f93e2c29a2c6a957"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/index.css",
+      "bytes": 191652,
+      "sha256": "c6abfdd2dd025f908c6afc49bfda31efda846d1fb985cfaa8a05d673cd6909cd"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/index.css.map",
+      "bytes": 217621,
+      "sha256": "17d83be93986f577a3a2e4eb0888cce43cd57c2c77416ce4f4a82ae7f435ebb7"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/reset.css",
+      "bytes": 743,
+      "sha256": "983a6f7023e4bd6a81042dec36005fa02a0095a22101bc14048b01a91aa1decd"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/reset.css.map",
+      "bytes": 933,
+      "sha256": "d5793a389cac3d463da1a23d23fed9c0e9060f2fdc79c2dd984c3ae1ba5fd33d"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/hts.css",
+      "bytes": 174322,
+      "sha256": "a38f43688a7b49a8bc6e182c9718fc42f0a40c286a931d091f2d5be782edda38"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/hts.css.map",
+      "bytes": 200398,
+      "sha256": "bb4c465293aa7d2e5d4133285178658a21a5ca51600c2474867d647b3a22bda0"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/hudder.css",
+      "bytes": 174331,
+      "sha256": "beae696f10a168eb4af65320ce886987b39ae3468927ab9a114c264278626141"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/hudder.css.map",
+      "bytes": 200437,
+      "sha256": "f9765fd1ee6756769e7e0b48df12cffd09a960e256f0519ec9dbf469296b9cef"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/wecamp.css",
+      "bytes": 174379,
+      "sha256": "f213471710963a187227b4b0cf62e388b0cdd0814aa52c72eebc06e63108e61e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/wecamp.css.map",
+      "bytes": 200536,
+      "sha256": "7aeb04794a7611eeb456a0bd77fdcd8243668ffbe1ded16b4c47a61048900ad9"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/wecore.css",
+      "bytes": 174343,
+      "sha256": "ae1129a86ae546bf57a24cee0aec0539033f8d64f5b1662162f1a974c4d208ec"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/themes/wecore.css.map",
+      "bytes": 200458,
+      "sha256": "aeb6334bb3b95462ee27cc540cba540811cec04ad970938cbc6a6f94abf52d12"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/utilities.css",
+      "bytes": 1710,
+      "sha256": "e6a765dcc27fa743d8b0f71bb59fe491a8f6fa89c17b6b9ceda723a785f142c9"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/css/utilities.css.map",
+      "bytes": 1973,
+      "sha256": "3afb14eaebfbf99f23f95542c3799f27b5c35c22dc7b3616e2e7140bc8f5bd01"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/fonts/THIRD_PARTY_NOTICES.txt",
+      "bytes": 21470,
+      "sha256": "af1e921f4370f5df693c6c9dc9f2ba4a8104c4d9ce381706d7d78702f0939a99"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/fonts/hts.css",
+      "bytes": 1742,
+      "sha256": "a45577b9340f890654a582ec6cb0e63e5db4be52747e354b18ad2cd042757105"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/fonts/hudder.css",
+      "bytes": 1745,
+      "sha256": "3bcf37e206d397b4928894890351c1ff7207b4f80c07b884a3c167bb7e1d71d2"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/fonts/wecamp.css",
+      "bytes": 1781,
+      "sha256": "7372d12fdfbf6df19d8de72be68a9b6dd502e28c94e57bb19407a6b7904d8e8e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/fonts/wecore.css",
+      "bytes": 1745,
+      "sha256": "14e91adb0470ab006ddbe2714a2d37accaa372784b979e8d9dadbea481098866"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/icons/THIRD_PARTY_NOTICES.txt",
+      "bytes": 3488,
+      "sha256": "09ad00260a4c21446fbdf5e7bf8430ca0accec3989a463ec8badb837cb460201"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/icons/manifest.json",
+      "bytes": 7634,
+      "sha256": "e13511e3f8d0a17a22af58a594ea753ab45e10e2ad08624779b7684e3f766b84"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/icons/metadata.json",
+      "bytes": 7634,
+      "sha256": "e13511e3f8d0a17a22af58a594ea753ab45e10e2ad08624779b7684e3f766b84"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/icons/sprite.svg",
+      "bytes": 8233,
+      "sha256": "4fdda0c6de3a0058820fa94c45aa15641a51581cad480e982797994e77f5b9d0"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/release-manifest.json",
+      "bytes": 3001,
+      "sha256": "bb351699a73f93d543c0b36f6a915bf58bec2af223f893a4fe4a698e554d38e1"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/theme/bootstrap.js",
+      "bytes": 1213,
+      "sha256": "3076b7bbfb80b246c1705976f12ffaff09a23cfd0c09a38367b4563a11490221"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/theme/controller.js",
+      "bytes": 6879,
+      "sha256": "9c27862f037430ec3471e53c40ee53d25a64f98ddeeb3a59873a3b6f95618e5b"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/theme/identity-manifest.schema.json",
+      "bytes": 3615,
+      "sha256": "c014f010a24ad5802f02c5ec711108c917ffb390510a48a49b1d78ca110b3e7b"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/theme/identity.js",
+      "bytes": 8615,
+      "sha256": "8f76922582fbb222be4b6e752f8dbf68761243dc398b783e24f34f42185f849e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/theme/index.js",
+      "bytes": 295,
+      "sha256": "ffe536a58e7211ceb50b7970061c42dc51e5ef18d25f616b3d5c049ec6df0ac6"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/comfortable.css",
+      "bytes": 571,
+      "sha256": "52d0fc8b35258a1f11ca413daad19567b735ba3534a705dbeaae9301f4ceb2d9"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/comfortable.css.map",
+      "bytes": 704,
+      "sha256": "f9f7501a9d1357f17d67938aa01eb2b6af7ccd800d9c291a46c5834bc5b0d782"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/comfortable.min.css",
+      "bytes": 533,
+      "sha256": "acc697753a1dd56f416c84f7fd51f1fc9603a92ab52fee73222436eef30ecf45"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/comfortable.min.css.map",
+      "bytes": 709,
+      "sha256": "992f957ee533b6f218475ce3e29f384bd2001661287465fc1096ec3dafa52176"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/compact.css",
+      "bytes": 563,
+      "sha256": "73fb77d869a3432e8463e0b665466c781e2276f72d57a80281da3a25b4ae5641"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/compact.css.map",
+      "bytes": 692,
+      "sha256": "90e6fe882150ef7f017119ea16e173c11a062fc0e961926fa5f1c2588a04b509"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/compact.min.css",
+      "bytes": 525,
+      "sha256": "099263e8dec74a1ab59ad6e3f2574dc69098f25ef08b5324b4e780a9ac815b33"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/density/compact.min.css.map",
+      "bytes": 697,
+      "sha256": "1da4a5f9942c3fa91d575bdac49fbf5f34541a3cae9c51ef7c09f7a0d4b3919a"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css",
+      "bytes": 1852,
+      "sha256": "13f37e672334824c98ada3d66c2c2b7b499a0ca09088ac4ce0ac6cd863345be3"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css.map",
+      "bytes": 1990,
+      "sha256": "b52b1022e1a843e9f3929494461d338e5780ccbec76079cbbdf3552d0fefdd29"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/locale/fa.min.css",
+      "bytes": 1714,
+      "sha256": "cb092ccf5e0e6ae546b32f7749f40831a14131671efdd79930c2523bc5262124"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/locale/fa.min.css.map",
+      "bytes": 1995,
+      "sha256": "30a811e3310d3dc2f7d8f46581cf2d35bbeb4cd6475bb968038aebe555d8ef9b"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/primitives.css",
+      "bytes": 7585,
+      "sha256": "04faf3c888ac23bd20833da04cdb44aa812f3bf3c9fde42f1e9602db451df159"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/primitives.css.map",
+      "bytes": 8443,
+      "sha256": "0c366402da781850379f36367fc9654e1a25533cf07cf6a6ffeb0eb38ff7472a"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/primitives.min.css",
+      "bytes": 6529,
+      "sha256": "afba49569ecd9307049c4377a0246b736536186a5650df201264dd763e8441f0"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/primitives.min.css.map",
+      "bytes": 8448,
+      "sha256": "06cd1bfaf16dec3d92bcadb5a57cffa80c3020e1d48240f09901b41e068488ca"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/semantic.css",
+      "bytes": 8415,
+      "sha256": "f06589c5c932ca6ec15bf0a0479acbd539c9c8f99ace06e79ffed8d8d8ef81f1"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/semantic.css.map",
+      "bytes": 8663,
+      "sha256": "7fdaa35c3376ce97d675c5065e1053c0d26b0f7282ed245b867991dc592afc6d"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/semantic.min.css",
+      "bytes": 7611,
+      "sha256": "6b5bfda6e28eb307591c442b8353dd01e60baf7138af7cbc932e41389cbd2a68"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/semantic.min.css.map",
+      "bytes": 8668,
+      "sha256": "59dd132f476b5fbf40eb4b39367bf6f78365991a9f50134b270729c348b6269b"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/size-report.json",
+      "bytes": 1780,
+      "sha256": "6186647e6658f85896513beaacd9781cc9c1ed5f3a9dc1c191d161c4f4bf287f"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-dark.css",
+      "bytes": 2302,
+      "sha256": "d7a031efb0f108acd3c959b4096e90852aba50411aaaa3a89a305c4b34c9184d"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-dark.css.map",
+      "bytes": 2461,
+      "sha256": "40ab9b1c3e4cd649892289181fc55e224f8dcaa8cd154ea5ea940a37c154ccf5"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-dark.min.css",
+      "bytes": 2094,
+      "sha256": "ead845c393ddf232028c1acb622423b27ef21ae4e23d164d78e8e56d90741f8e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-dark.min.css.map",
+      "bytes": 2466,
+      "sha256": "7237030bdc24c957ae7c7ea3b83238e0f50cf910747ca321790ae00b3b84001e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-light.css",
+      "bytes": 2312,
+      "sha256": "e471da139726a2a40a09b0b506fe8b47ec833d03a9cc398bb86843dbbb79f83e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-light.css.map",
+      "bytes": 2472,
+      "sha256": "1a09b7dbf286efdbfd3f79bedd4c56a4a6a54e57336c638ca5dc9bb74c66e238"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-light.min.css",
+      "bytes": 2104,
+      "sha256": "bb3e2472fcb4911e7000aa4bd6907cea43e29a6fa15eb8ef85d2a72e12c38e8f"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hts-light.min.css.map",
+      "bytes": 2477,
+      "sha256": "2c32eb3f9bc72e96ac15f8d6734561a7b00ab9dac75e3e5f12d9666a0607aa6e"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-dark.css",
+      "bytes": 2308,
+      "sha256": "f68e2db980b495d18dc745100fb8da92bb0ede1084f20417cab78846e00c2c8c"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-dark.css.map",
+      "bytes": 2470,
+      "sha256": "4fc8060d4435196e33cbdf4a8539d321c699b5199a8556032938af3d8d403706"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-dark.min.css",
+      "bytes": 2100,
+      "sha256": "01bdc94b2a5187df917e20ad9d83afaace137b7b92964130e928a93083035cf8"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-dark.min.css.map",
+      "bytes": 2475,
+      "sha256": "f1091f463d015b3deb507e7f81dd27739f87b242c74b2a7307f97ba9266b5e86"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-light.css",
+      "bytes": 2318,
+      "sha256": "9074e2562ab53a7a57e6146686a0aaac3d46937a76ad0b0a08b5ce5916e6e363"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-light.css.map",
+      "bytes": 2481,
+      "sha256": "96f544734d3bd7ee0d4eafb5a37c8985e9e828351a1721e651cd5f66d44e057d"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-light.min.css",
+      "bytes": 2110,
+      "sha256": "337bdcc67989b06f1fe9a1dec9e212329821cc506814a54990edf8fc2d0041eb"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/hudder-light.min.css.map",
+      "bytes": 2486,
+      "sha256": "1ec26a25615dc993020ce7c7bb09055f3c590ea5cda855a3438adb841594c0ff"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-dark.css",
+      "bytes": 2320,
+      "sha256": "940b3abe0fad5ce9445fb570014d479494e1c51205722223a85febbc4a2d57a0"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-dark.css.map",
+      "bytes": 2482,
+      "sha256": "58c81122986478713c78effed83d2bcb1281fd9d12ac01387a8c6f867c3b5983"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-dark.min.css",
+      "bytes": 2112,
+      "sha256": "776b1a6ffe8233179d56fc1cd824e2813d20c39dc559532543c0f2a33bf453ca"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-dark.min.css.map",
+      "bytes": 2487,
+      "sha256": "c96d1c942b60c84792b45b5c53999e6fd77cdee28343972e0228016532f79450"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-light.css",
+      "bytes": 2330,
+      "sha256": "19996c8ab129bc22b3acb65df97e8ecaa20424d937828cf2daacf2496925b475"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-light.css.map",
+      "bytes": 2493,
+      "sha256": "029e14a477e562306aa055fff361a841a55849c8aa0864f4a91afefc87d53f14"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-light.min.css",
+      "bytes": 2122,
+      "sha256": "7b9d19a83feae9ace9a5da14fe7277608b50c71a7743e1beff39b7169d868d6d"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecamp-light.min.css.map",
+      "bytes": 2498,
+      "sha256": "bb95751a01d652886fd94d3b6ee70cd147cdc3b343f3461f1817ec887ad75ef6"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-dark.css",
+      "bytes": 2314,
+      "sha256": "07dca844c5512f032c09206d7eb62b0ce7b8242f3b5591e71be17201b536e6ad"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-dark.css.map",
+      "bytes": 2476,
+      "sha256": "a569ce25eecf0ad708f99bb23fdcb0dd6dee849fb47e5e87d6c7638b4f974775"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-dark.min.css",
+      "bytes": 2106,
+      "sha256": "c7a69c9b2c66fb2193a826ff744f6d3bfe47491709c1413ea56688ab67ac87cd"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-dark.min.css.map",
+      "bytes": 2481,
+      "sha256": "32d8518f60784013ea018ac8b8811b90e3710b0c067d9934e88f0fdf19cd5b69"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-light.css",
+      "bytes": 2324,
+      "sha256": "a20f04e39c2cc253e5b5e0f9fec614ddac6b33523550c5d768c984c8e5eff694"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-light.css.map",
+      "bytes": 2487,
+      "sha256": "284a4ec7fde49a3a4afb08c83c4139a9227bc5d16f51623dfa0803412521ca6c"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-light.min.css",
+      "bytes": 2116,
+      "sha256": "d2542aa78327c863b522caf850321297d7e431e4fc4f9bfc3da9710a0bb2d197"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/themes/wecore-light.min.css.map",
+      "bytes": 2492,
+      "sha256": "f600565f5442308f64bd7dc646c6ae6104ae2260a80d77f78b85a3e12d0bf66d"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/tokens.css",
+      "bytes": 35131,
+      "sha256": "196db1392094bbdfd8a8917dcdb2a41a4e0f6e1832c364e38f0fe58b393e25f7"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/tokens.css.map",
+      "bytes": 37140,
+      "sha256": "af42ec5339b2eaf2daa92f51e45594da1b8d53927a00de4c60b8b26198533dd1"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/tokens.min.css",
+      "bytes": 31366,
+      "sha256": "cb7c50f661850b549bdc662d178f0c3d8ca911f405a47dbde1e81eb93f958506"
+    },
+    {
+      "path": "static/vendor/hts-ds/1.0.1/tokens-css/tokens.min.css.map",
+      "bytes": 36572,
+      "sha256": "72a980ca046e578b5f4c6a554838ac807a67a786db8d4456a82c8c4b53c1ef3c"
+    }
+  ]
+}

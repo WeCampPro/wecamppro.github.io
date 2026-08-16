@@ -1,0 +1,80 @@
+{
+  "files": [
+    {
+      "minifiedBytes": 401,
+      "path": "css/density/comfortable.css",
+      "readableBytes": 439
+    },
+    {
+      "minifiedBytes": 393,
+      "path": "css/density/compact.css",
+      "readableBytes": 431
+    },
+    {
+      "minifiedBytes": 1582,
+      "path": "css/locale/fa.css",
+      "readableBytes": 1720
+    },
+    {
+      "minifiedBytes": 6397,
+      "path": "css/primitives.css",
+      "readableBytes": 7453
+    },
+    {
+      "minifiedBytes": 7479,
+      "path": "css/semantic.css",
+      "readableBytes": 8283
+    },
+    {
+      "minifiedBytes": 1962,
+      "path": "css/themes/hts-dark.css",
+      "readableBytes": 2170
+    },
+    {
+      "minifiedBytes": 1972,
+      "path": "css/themes/hts-light.css",
+      "readableBytes": 2180
+    },
+    {
+      "minifiedBytes": 1968,
+      "path": "css/themes/hudder-dark.css",
+      "readableBytes": 2176
+    },
+    {
+      "minifiedBytes": 1978,
+      "path": "css/themes/hudder-light.css",
+      "readableBytes": 2186
+    },
+    {
+      "minifiedBytes": 1980,
+      "path": "css/themes/wecamp-dark.css",
+      "readableBytes": 2188
+    },
+    {
+      "minifiedBytes": 1990,
+      "path": "css/themes/wecamp-light.css",
+      "readableBytes": 2198
+    },
+    {
+      "minifiedBytes": 1974,
+      "path": "css/themes/wecore-dark.css",
+      "readableBytes": 2182
+    },
+    {
+      "minifiedBytes": 1984,
+      "path": "css/themes/wecore-light.css",
+      "readableBytes": 2192
+    },
+    {
+      "minifiedBytes": 31234,
+      "path": "css/tokens.css",
+      "readableBytes": 34999
+    }
+  ],
+  "generated": true,
+  "schema": "hts-design-system/token-css-size-report/v1",
+  "source": {
+    "format": "DTCG 2025.10",
+    "sha256": "276f5787fa763a8aba3f99e4a68a5d25bd34a52926c27a70052e35753970d7ba"
+  }
+}

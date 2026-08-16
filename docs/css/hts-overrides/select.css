@@ -1,0 +1,7 @@
+/* HTS-WECAMP-010: bounded Select host-reset interop. */
+:where([data-hts-root]) .hts-select {
+  color: revert-layer;
+  font: revert-layer;
+  font-family: var(--hts-font-family-body);
+  margin: revert-layer;
+}

@@ -1,0 +1,48 @@
+/* WECAMP product composition for the released HTS Link contract.
+ *
+ * The released component is layered below the historical unlayered anchor
+ * reset. This bridge returns only those collisions to HTS, then retains the
+ * card-grid typography and layout that belong to WECAMP. Certificate routes
+ * never load this file. */
+
+:where([data-hts-root]) .hts-link.hts-link {
+  background-color: revert-layer;
+  color: revert-layer;
+  font-weight: revert-layer;
+  text-decoration: revert-layer;
+  transition: revert-layer;
+}
+
+/* hd.css changes every hovered anchor's color and clears hover/active outline.
+ * hd-page.css also gives every event-container anchor a legacy cyan ring. Use
+ * enough specificity to restore the released state and focus contracts. */
+:where([data-hts-root]) .hts-link.hts-link:is(:hover, :active) {
+  color: revert-layer;
+  outline: revert-layer;
+}
+
+:where([data-hts-root]) .hts-link.hts-link:focus-visible {
+  outline: revert-layer;
+  outline-offset: revert-layer;
+}
+
+@layer hts.overrides {
+  /* Link deliberately inherits typography. These action labels keep the
+   * existing card hierarchy while HTS owns color, decoration and states. */
+  :where([data-hts-root]) .wecamp-link-action {
+    font-size: var(--hts-font-size-body-sm);
+    font-weight: 900;
+  }
+
+  :where([data-hts-root]) .wecamp-link-action--camp {
+    margin-block-start: var(--hts-space-1);
+  }
+
+  :where([data-hts-root]) .wecamp-link-action--event {
+    inline-size: fit-content;
+  }
+
+  :where([data-hts-root]) .hd-ds-event-row > .wecamp-link-action {
+    flex: none;
+  }
+}

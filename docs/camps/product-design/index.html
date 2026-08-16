@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -284,11 +316,11 @@
     
     <div class="hd-camp-actions hd-ds-actions">
      
-      <a class="hd-ds-cta hd-ds-cta-primary" href="#register">پیش‌ثبت‌نام</a>
+      <a class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" href="#register">پیش‌ثبت‌نام</a>
      
      
       
-      <a class="hd-ds-cta hd-ds-cta-secondary" href="/files/%da%a9%d9%85%d9%be%20%d8%b7%d8%b1%d8%a7%d8%ad%db%8c%20%d9%85%d8%ad%d8%b5%d9%88%d9%84%20%d9%88%db%8c%e2%80%8c%da%a9%d9%85%d9%be.pdf" target="_blank" rel="noopener noreferrer">دانلود کاتالوگ</a>
+      <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/files/%da%a9%d9%85%d9%be%20%d8%b7%d8%b1%d8%a7%d8%ad%db%8c%20%d9%85%d8%ad%d8%b5%d9%88%d9%84%20%d9%88%db%8c%e2%80%8c%da%a9%d9%85%d9%be.pdf" target="_blank" rel="noopener noreferrer">دانلود کاتالوگ</a>
      
     </div>
    </div>
@@ -303,8 +335,9 @@
        </video>
       
       
-       <button class="hd-camp-play hd-camp-play-overlay" type="button" aria-label="پخش ویدیوی معرفی کمپ دیزاین محصول با صدا" data-hd-video="/vid/design1-intro.mp4" data-hd-video-kind="video">
-        <span aria-hidden="true"></span>
+       <button id="camp-video-trigger" class="hd-camp-play hd-camp-play-overlay" type="button" aria-label="پخش ویدیوی معرفی کمپ دیزاین محصول با صدا" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-hd-video="/vid/design1-intro.mp4">
+        <span class="hd-camp-play-icon" aria-hidden="true"></span>
+        <span class="hd-camp-play-label">پخش ویدیو</span>
        </button>
       
       </div>
@@ -368,7 +401,7 @@
      <span>پیش‌ثبت‌نام دوره آتی</span>
      <strong>اعلام می‌شود</strong>
     </div>
-    <a class="hd-button hd-button-sm" href="#register">پیش‌ثبت‌نام دوره آتی</a>
+    <a class="hts-button" data-variant="primary" data-size="md" href="#register">پیش‌ثبت‌نام دوره آتی</a>
    </div>
   
  </div>
@@ -796,7 +829,7 @@
     <p>با تکمیل فرم، در فهرست اطلاع‌رسانی و پیش‌ثبت‌نام دوره بعدی قرار می‌گیرید. جزئیات زمان‌بندی، ظرفیت و شهریه پس از نهایی شدن اعلام می‌شود.</p>
    </div>
    <aside class="hd-camp-register-panel">
-    <span class="hd-ds-camp-status" data-status="waitlist">پیش‌ثبت‌نام دوره آتی</span>
+    <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="waitlist">پیش‌ثبت‌نام دوره آتی</span>
     
     <div class="hd-camp-price">
      <small>شهریه</small>
@@ -811,13 +844,19 @@
       <input type="hidden" name="subject" value="پیش‌ثبت‌نام کمپ دیزاین محصول">
       <input type="hidden" name="redirect" value="https://wecamp.pro/success">
       <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
-      <label class="hd-checkout-label" for="camp-name-product-design">نام و نام خانوادگی</label>
-      <input id="camp-name-product-design" class="hd-input" type="text" name="name" autocomplete="name" required>
-      <label class="hd-checkout-label" for="camp-phone-product-design">موبایل</label>
-      <input dir="ltr" id="camp-phone-product-design" class="hd-input" type="tel" name="phone" autocomplete="tel" inputmode="tel" required>
-      <label class="hd-checkout-label" for="camp-email-product-design">ایمیل</label>
-      <input dir="ltr" id="camp-email-product-design" class="hd-input" type="email" name="email" autocomplete="email" inputmode="email" required>
-      <button class="hd-button hd-button-full" type="submit">ارسال پیش‌ثبت‌نام</button>
+      <div class="hts-field" data-control="input" data-required="true">
+       <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="camp-name-product-design">نام و نام خانوادگی</label>
+       <input id="camp-name-product-design" class="hts-input hts-field-control" data-size="lg" type="text" name="name" autocomplete="name" required>
+      </div>
+      <div class="hts-field" data-control="input" data-required="true">
+       <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="camp-phone-product-design">موبایل</label>
+       <input dir="ltr" id="camp-phone-product-design" class="hts-input hts-field-control" data-size="lg" type="tel" name="phone" autocomplete="tel" inputmode="tel" required>
+      </div>
+      <div class="hts-field" data-control="input" data-required="true">
+       <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="camp-email-product-design">ایمیل</label>
+       <input dir="ltr" id="camp-email-product-design" class="hts-input hts-field-control" data-size="lg" type="email" name="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <button class="hts-button wecamp-button-full" data-variant="primary" data-size="lg" type="submit">ارسال پیش‌ثبت‌نام</button>
       <div class="hd-form-success" aria-live="polite" aria-hidden="true">فرم با موفقیت ارسال شد.</div>
       <div class="hd-form-error" aria-live="polite" aria-hidden="true">خطایی رخ داد. لطفاً دوباره تلاش کنید.</div>
      </form>
@@ -827,7 +866,7 @@
  </div>
 </section>
 <div class="hd-camp-sticky-cta" role="region" aria-label="ثبت‌نام سریع">
- <a class="hd-button" href="#register">پیش‌ثبت‌نام دوره آتی<span class="hd-camp-sticky-price"> — اعلام می‌شود</span></a>
+ <a class="hts-button wecamp-button-accent" data-variant="primary" data-size="lg" href="#register">پیش‌ثبت‌نام دوره آتی<span class="hd-camp-sticky-price"> — اعلام می‌شود</span></a>
 </div>
 
 
@@ -839,37 +878,43 @@
    <p class="hd-camp-section-kicker hd-camp-section-kicker--plain">سوال‌های پرتکرار</p>
    <h2>ابهام‌های قبل از تصمیم</h2>
   </div>
-  <div class="hd-ds-accordion hd-camp-details">
+  <div class="hts-accordion hd-camp-details" data-type="multiple" data-collapsible="true" data-orientation="vertical">
    
-    <div class="hd-ds-accordion-item" x-data="{ open: false }">
-     <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="camp-faq-panel-0">
-      <span>دوره بعدی کی شروع می‌شود؟</span>
-      <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-     </button>
-     <div class="hd-ds-accordion-panel" id="camp-faq-panel-0" x-bind:hidden="!open">
-      <p class="hd-m-0">تاریخ شروع دوره بعدی هنوز نهایی نشده است. با تکمیل فرم پیش‌ثبت‌نام، به‌محض نهایی شدن زمان‌بندی و شهریه، اول از همه به شما اطلاع می‌دهیم.</p>
+    <details class="hts-accordion-item">
+     <summary class="hts-accordion-trigger">
+      <span class="hts-accordion-label">دوره بعدی کی شروع می‌شود؟</span>
+      <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+       <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+      </svg>
+     </summary>
+     <div class="hts-accordion-content">
+      <div class="hts-accordion-content-body"><p class="hd-m-0">تاریخ شروع دوره بعدی هنوز نهایی نشده است. با تکمیل فرم پیش‌ثبت‌نام، به‌محض نهایی شدن زمان‌بندی و شهریه، اول از همه به شما اطلاع می‌دهیم.</p></div>
      </div>
-    </div>
+    </details>
    
-    <div class="hd-ds-accordion-item" x-data="{ open: false }">
-     <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="camp-faq-panel-1">
-      <span>آیا برای شروع باید طراح حرفه‌ای باشم؟</span>
-      <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-     </button>
-     <div class="hd-ds-accordion-panel" id="camp-faq-panel-1" x-bind:hidden="!open">
-      <p class="hd-m-0">خیر. مسیر از پایه طراحی شده، اما زمان کافی برای تمرین و پروژه لازم است.</p>
+    <details class="hts-accordion-item">
+     <summary class="hts-accordion-trigger">
+      <span class="hts-accordion-label">آیا برای شروع باید طراح حرفه‌ای باشم؟</span>
+      <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+       <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+      </svg>
+     </summary>
+     <div class="hts-accordion-content">
+      <div class="hts-accordion-content-body"><p class="hd-m-0">خیر. مسیر از پایه طراحی شده، اما زمان کافی برای تمرین و پروژه لازم است.</p></div>
      </div>
-    </div>
+    </details>
    
-    <div class="hd-ds-accordion-item" x-data="{ open: false }">
-     <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="camp-faq-panel-2">
-      <span>خروجی دوره چیست؟</span>
-      <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-     </button>
-     <div class="hd-ds-accordion-panel" id="camp-faq-panel-2" x-bind:hidden="!open">
-      <p class="hd-m-0">خروجی اصلی یک کیس دیزاین قابل ارائه در پورتفولیو و تجربه دفاع از تصمیم‌های طراحی است.</p>
+    <details class="hts-accordion-item">
+     <summary class="hts-accordion-trigger">
+      <span class="hts-accordion-label">خروجی دوره چیست؟</span>
+      <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+       <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+      </svg>
+     </summary>
+     <div class="hts-accordion-content">
+      <div class="hts-accordion-content-body"><p class="hd-m-0">خروجی اصلی یک کیس دیزاین قابل ارائه در پورتفولیو و تجربه دفاع از تصمیم‌های طراحی است.</p></div>
      </div>
-    </div>
+    </details>
    
   </div>
  </div>
@@ -1070,8 +1115,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
@@ -1162,23 +1212,15 @@
 >
   <div class="hd-survey-panel">
     <div class="hd-survey-header">
-      <button type="button" class="hd-survey-close" aria-label="بستن" x-ref="close" @click="close()">
-        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g transform="translate(-101, -209)">
-              <g transform="translate(101, 209)">
-                <rect x="0" y="0" width="24" height="24"></rect>
-                <rect fill="#FFF" transform="translate(12, 12) rotate(45) translate(-12, -12)" x="11" y="5" width="2" height="14" rx="1"></rect>
-                <rect fill="#FFF" transform="translate(12, 12) rotate(135) translate(-12, -12)" x="11" y="5" width="2" height="14" rx="1"></rect>
-              </g>
-            </g>
-          </g>
+      <button type="button" class="hts-icon-button wecamp-survey-close" data-variant="quiet" data-size="sm" aria-label="بستن" x-ref="close" @click="close()">
+        <svg class="hts-icon" data-size="sm" data-hts-icon="close" aria-hidden="true" focusable="false">
+          <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close"></use>
         </svg>
       </button>
     </div>
     <div class="hd-survey-content">
       
-      <div class="hd-survey-embed hd-ds-band hd-ds-band-paper hd-ds-section-tight">
+      <div class="hd-survey-embed wecamp-band wecamp-band-paper wecamp-section-tight">
         <h2 class="hd-sr-only">فرم درخواست مشاوره</h2>
             <div class="hd-container hd-clearfix hd-checkout-layout">
      <div class="hd-checkout-main" data-hd-form-wrap>
@@ -1193,39 +1235,37 @@
         </div>
        </div>
        <fieldset class="hd-form-block">
-        <label class="hd-checkout-label" for="request-name">
-         نام و نام خانوادگی
-         <span class="hd-required">
-          *
-         </span>
-        </label>
-        <input class="hd-input" id="request-name" name="name" autocomplete="name" required="" type="text"/>
+        <div class="hts-field wecamp-field-flow" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-name">
+          نام و نام خانوادگی
+         </label>
+         <input class="hts-input hts-field-control" data-size="lg" id="request-name" name="name" autocomplete="name" required="" type="text"/>
+        </div>
         <div class="hd-form-row">
          <div class="hd-form-col">
-          <label class="hd-checkout-label" for="request-phone">
-         موبایل
-           <span class="hd-required">
-            *
-           </span>
-          </label>
-          <input dir="ltr" class="hd-input" id="request-phone" name="phone" autocomplete="tel" inputmode="tel" required="" type="tel" pattern="[0-9۰-۹]{10,11}" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید"/>
+          <div class="hts-field wecamp-field-flow" data-control="input" data-required="true">
+           <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-phone">
+            موبایل
+           </label>
+           <input dir="ltr" class="hts-input hts-field-control" data-size="lg" id="request-phone" name="phone" autocomplete="tel" inputmode="tel" required="" type="tel" pattern="[0-9۰-۹]{10,11}" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید"/>
+          </div>
          </div>
          <div class="hd-form-col">
-          <label class="hd-checkout-label" for="request-email">
-         ایمیل
-           <span class="hd-required">
-            *
-           </span>
-          </label>
-        <input dir="ltr" class="hd-input" id="request-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required="" type="email"/>
+          <div class="hts-field wecamp-field-flow" data-control="input" data-required="true">
+           <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-email">
+            ایمیل
+           </label>
+           <input dir="ltr" class="hts-input hts-field-control" data-size="lg" id="request-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required="" type="email"/>
+          </div>
          </div>
         </div>
         <div class="hd-form-row">
          <div class="hd-form-col">
-          <label class="hd-checkout-label" for="request-camp">
-         انتخاب موضوع آموزشی
-          </label>
-          <select class="hd-input hd-select" id="request-camp" name="Which Camp" autocomplete="off">
+          <div class="hts-field wecamp-field-flow" data-control="select">
+           <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-camp">
+            انتخاب موضوع آموزشی
+           </label>
+           <select class="hts-select hts-field-control" data-size="lg" id="request-camp" name="Which Camp" autocomplete="off">
              <option value="---">
               ---
              </option>
@@ -1247,13 +1287,15 @@
              <option value="Other">
               سایر
              </option>
-         </select>
+           </select>
+          </div>
          </div>
          <div class="hd-form-col">
-          <label class="hd-checkout-label" for="request-age-range">
-         بازه سنی شما
-          </label>
-          <select class="hd-input hd-select" id="request-age-range" name="age_range" autocomplete="off">
+          <div class="hts-field wecamp-field-flow" data-control="select">
+           <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-age-range">
+            بازه سنی شما
+           </label>
+           <select class="hts-select hts-field-control" data-size="lg" id="request-age-range" name="age_range" autocomplete="off">
              <option value="---">
               ---
              </option>
@@ -1272,22 +1314,25 @@
              <option value="45+">
               ۴۵ و بالاتر
              </option>
-          </select>
+           </select>
+          </div>
          </div>
         </div>
-        <label class="hd-checkout-label" for="request-questions">
-         می‌توانید سوال‌های خود را در اینجا بنویسید.
-        </label>
-        <textarea class="hd-input hd-textarea" id="request-questions" name="which product" autocomplete="off" minlength="20"></textarea>
-        <label class="hd-checkout-label" for="request-resume">
-         📑 رزومه
-         <p>
-          <small>
-           اگر پروفایل لینکدین یا رزومه آماده (آپلود شده روی گوگل‌درایو) دارید، لینک آن را درج کنید.
-          </small>
+        <div class="hts-field wecamp-field-flow" data-control="textarea">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-questions">
+          می‌توانید سوال‌های خود را در اینجا بنویسید.
+         </label>
+         <textarea class="hts-textarea hts-field-control" data-size="lg" data-resize="vertical" id="request-questions" name="which product" autocomplete="off" minlength="20"></textarea>
+        </div>
+        <div class="hts-field wecamp-field-flow" data-control="input">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="request-resume">
+          📑 رزومه
+         </label>
+         <input dir="ltr" class="hts-input hts-field-control" data-size="lg" id="request-resume" name="resume" autocomplete="url" inputmode="url" spellcheck="false" aria-describedby="request-resume--help" type="url"/>
+         <p id="request-resume--help" class="hts-text hts-field-help" data-role="body-sm" data-tone="secondary">
+          اگر پروفایل لینکدین یا رزومه آماده (آپلود شده روی گوگل‌درایو) دارید، لینک آن را درج کنید.
          </p>
-        </label>
-        <input dir="ltr" class="hd-input" id="request-resume" name="resume" autocomplete="url" inputmode="url" spellcheck="false" type="url"/>
+        </div>
        </fieldset>
 
        <input type="hidden" name="subject" id="var1" value="مشاوره درخواست کرد">
@@ -1295,7 +1340,9 @@
        <div class="hd-form-row">
         <div class="hd-form-col">
          <button
-           class="hd-ds-cta hd-ds-cta-primary hd-ds-cta-full"
+           class="hts-button wecamp-button-cta wecamp-button-accent wecamp-button-full"
+           data-variant="primary"
+           data-size="lg"
            type="submit"
            data-request-subject="مشاوره درخواست کرد"
            data-request-redirect="https://wecamp.pro/success">ارسال فرم</button>
@@ -1317,37 +1364,35 @@
 </div>
 
 
-<div
+ <dialog
+  id="camp-video-dialog"
+  class="hts-dialog wecamp-video-dialog"
   x-data="hdVideo()"
-  class="hd-modal"
-  x-cloak
-  role="dialog"
+  aria-labelledby="camp-video-dialog-title"
+  aria-describedby="camp-video-dialog-description"
   aria-modal="true"
-  aria-label="پخش ویدیو"
-  x-show="open"
-  x-transition.opacity.duration.300ms
-  @click.self="close()"
-  @keydown.escape.window="close()"
-  @keydown.tab="trap($event)"
+  @click="dismissOutside($event)"
+  @close="finishClose()"
   @hd-open-video.window="show($event.detail)"
 >
-  <div class="hd-modal-content">
-    <button type="button" class="hd-modal-close" aria-label="بستن" x-ref="close" @click="close()">&times;</button>
-    <template x-if="open && kind === 'video'">
-      <video class="hd-modal-media" controls playsinline x-ref="video" :src="src"></video>
-    </template>
-    <template x-if="open && kind === 'iframe'">
-      <iframe
-        class="hd-modal-media"
-        :src="src"
-        title="پخش ویدیو"
-        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
+  <header class="hts-dialog-header">
+    <h2 id="camp-video-dialog-title" class="hts-text hts-dialog-title" data-role="title-md" data-tone="primary">پخش ویدیو</h2>
+    <p id="camp-video-dialog-description" class="hts-text hts-dialog-description" data-role="body" data-tone="secondary">پخش ویدیوی معرفی کمپ دیزاین محصول با صدا</p>
+    <form class="hts-dialog-close" method="dialog">
+      <button type="submit" class="hts-icon-button" data-variant="quiet" data-size="sm" aria-label="بستن" x-ref="close">
+        <svg class="hts-icon" data-size="sm" data-hts-icon="close" aria-hidden="true" focusable="false">
+          <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close"></use>
+        </svg>
+      </button>
+    </form>
+  </header>
+  <div class="hts-dialog-body">
+    <template x-if="src">
+      <video class="wecamp-dialog-media" controls playsinline x-ref="video" :src="src"></video>
     </template>
   </div>
-</div>
+</dialog>
+
 
   <script>
    (function () {
@@ -1371,6 +1416,8 @@
    })();
   </script>
   <script src="/js/hd-survey.js" type="text/javascript"></script>
+  
   <script src="/js/hd-video.js" type="text/javascript"></script>
+  
  </body>
 </html>

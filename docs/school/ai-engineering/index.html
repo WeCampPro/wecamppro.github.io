@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -269,7 +301,7 @@
    </header>
 
    <main id="hd-main">
-<section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="school-hero-title">
+<section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="school-hero-title">
  <div class="hd-container">
   <div class="hd-ds-hero">
    <div class="hd-ds-hero-copy" data-hd-animate="fade-up" data-hd-animate-eager>
@@ -277,13 +309,13 @@
     <h1 id="school-hero-title">مهندس هوش مصنوعی شوید</h1>
     <p class="hd-ds-hero-lede">از تحلیل داده و برنامه‌نویسی تا طراحی سیستم‌های عامل‌محور و هوشمند؛ مسیری پروژه‌محور برای ورود جدی به بازار کار هوش مصنوعی.</p>
     <div class="hd-ds-actions">
-     <a class="hd-ds-cta hd-ds-cta-primary" href="/camps/agentic-ai/">مشاهده کمپ توسعه عامل‌های هوش مصنوعی</a>
-     <a class="hd-ds-cta hd-ds-cta-secondary" href="/request">درخواست مشاوره</a>
+     <a class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" href="/camps/agentic-ai/">مشاهده کمپ توسعه عامل‌های هوش مصنوعی</a>
+     <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/request">درخواست مشاوره</a>
     </div>
    </div>
    <div class="hd-ds-hero-media" data-hd-animate="fade-in-scale" data-hd-animate-eager>
-    <div class="hd-ds-frame">
-     <div class="hd-ds-frame-bar" aria-hidden="true"><span></span><span></span><span></span><em>مدرسان مدرسه</em></div>
+    <div class="wecamp-media-frame">
+     <div class="wecamp-media-frame-bar" aria-hidden="true"><span></span><span></span><span></span><em>مدرسان مدرسه</em></div>
      <picture><source type="image/avif" srcset="/img/school/ai-school-hero_hu_e26b9240627f17ec.avif 560w, /img/school/ai-school-hero_hu_1cbe243a0e74f952.avif 1120w" sizes="(min-width: 1000px) 530px, calc(100vw - 32px)"><source type="image/webp" srcset="/img/school/ai-school-hero_hu_26d6908c827a6726.webp 560w, /img/school/ai-school-hero_hu_45b30d69448e5810.webp 1120w" sizes="(min-width: 1000px) 530px, calc(100vw - 32px)"><img src="/img/school/ai-school-hero_hu_9d9b6cd0dbb5066a.jpg" alt="مدرسان مدرسه هوش مصنوعی وی‌کمپ" width="1272" height="720" fetchpriority="high" decoding="async"></picture>
     </div>
    </div>
@@ -291,27 +323,27 @@
  </div>
 </section>
 
-<section class="hd-ds-band hd-ds-band-paper hd-ds-section" id="camps" aria-labelledby="school-camps-title">
+<section class="wecamp-band wecamp-band-paper wecamp-section" id="camps" aria-labelledby="school-camps-title">
  <div class="hd-container">
-  <div class="hd-ds-section-head" data-hd-animate="fade-up">
+  <div class="wecamp-section-head" data-hd-animate="fade-up">
    <h2 id="school-camps-title">مسیر مناسب خود را در این مدرسه انتخاب کنید.</h2>
    <p>کمپ‌های فعال و آینده این مدرسه را بر اساس وضعیت، پروژه و خروجی مقایسه کنید.</p>
   </div>
   <div class="hd-ds-camp-grid">
      
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/agentic-ai/" aria-label="کمپ توسعه عامل‌های هوش مصنوعی"><picture><source type="image/avif" srcset="/img/campcards/agentic-ai_hu_1dfbca5bbe6e89c0.avif 360w, /img/campcards/agentic-ai_hu_5739d923f473a726.avif 480w, /img/campcards/agentic-ai_hu_76d61335566df9ac.avif 720w, /img/campcards/agentic-ai_hu_70fe99a935fc57c7.avif 1080w" sizes="(min-width: 1000px) 575px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/agentic-ai_hu_8bf7ee164ddeb235.webp 360w, /img/campcards/agentic-ai_hu_d4161fba3d770646.webp 480w, /img/campcards/agentic-ai_hu_5059a4470f4c4efb.webp 720w, /img/campcards/agentic-ai_hu_e849e92f0b5e77e4.webp 1080w" sizes="(min-width: 1000px) 575px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/agentic-ai_hu_4dc710515af92695.jpg" alt="مدرسان کمپ توسعه عامل‌های هوش مصنوعی وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه هوش مصنوعی وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="in-progress">در حال برگزاری</span>
+   <span class="wecamp-camp-school">مدرسه هوش مصنوعی وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="in-progress">در حال برگزاری</span>
   </div>
   <h3><a href="/camps/agentic-ai/">کمپ توسعه عامل‌های هوش مصنوعی</a></h3>
   <p>از برنامه‌نویسی پایتون به ساخت سیستم‌های Agentic AI برسید؛ با طراحی عامل‌ها، ابزارها، workflowها و همکاری چندعاملی در پروژه‌های واقعی.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>در حال برگزاری</dd></div><div><dt>شروع</dt><dd>۹ دی ۱۴۰۴</dd></div><div><dt>مدت</dt><dd>۱۲ هفته</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/agentic-ai/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/agentic-ai/">مشاهده جزئیات</a>
  </div>
 </article>
 
@@ -323,17 +355,17 @@
      <li>پیاده‌سازی عامل‌ها، ابزارها و جریان همکاری</li>
      <li>ارزیابی، روایت تصمیم‌ها و ارائه نهایی</li>
     </ul>
-    <a class="hd-ds-camp-link" href="/camps/agentic-ai/#project">جزئیات پروژه کمپ</a>
+    <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/agentic-ai/#project">جزئیات پروژه کمپ</a>
    </aside>
   </div>
  </div>
 </section>
 
-<section class="hd-ds-band hd-ds-band-strip" aria-labelledby="school-help-title">
+<section class="wecamp-band wecamp-band-strip" aria-labelledby="school-help-title">
  <div class="hd-container">
   <div class="hd-ds-strip-row" data-hd-animate="fade-up">
    <h2 id="school-help-title">مسیر مناسب‌تان در مدرسه هوش مصنوعی را با کمک تیم وی‌کمپ انتخاب کنید.</h2>
-   <a class="hd-ds-cta hd-ds-cta-secondary" href="/request">درخواست مشاوره</a>
+   <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/request">درخواست مشاوره</a>
   </div>
  </div>
 </section>
@@ -532,8 +564,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>

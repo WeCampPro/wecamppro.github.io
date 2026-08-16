@@ -1,99 +1,86 @@
-/* hd-video.js (W3.3) — accessible video modal replacing the Webflow w-lightbox
-   runtime and its embedded payloads. Reuses the WECORE hero-video.js modal
-   pattern (open/close, body-scroll lock, focus trap, focus restore, pause-on-close),
-   generalised to:
-     - many triggers per page (the camp/course preview thumbnails), and
-     - two media kinds: an inline <video> (local mp4) or an <iframe> (YouTube).
-
-   A thumbnail opens the modal by firing a window event, translated from a data
-   attribute by the delegated listener below:
-     <button ... data-hd-video="/vid/x.mp4"            data-hd-video-kind="video">
-     <button ... data-hd-video="https://…/embed/ID?…"  data-hd-video-kind="iframe">
-   The modal markup (layouts/partials/video-modal.html) is a single shared
-   instance; all styling is in hd.css §17 (.hd-modal-* / .hd-lightbox-thumb).
-
-   Loaded as a NON-deferred <script> near the end of <body> so this `alpine:init`
-   listener registers BEFORE the deferred Alpine core in <head> boots — the same
-   ordering contract hd-tabs.js (W3.1) / hd-survey.js (W3.2) rely on. */
+/* WECAMP camp-video host for the released native HTS Dialog contract.
+ *
+ * The browser owns top-layer modality, focus containment, Escape, and the
+ * native close-form behavior. This host owns only the caller's local MP4,
+ * trigger state/relationship attributes, outside-primary dismissal, playback
+ * teardown, and deterministic focus return. It loads before deferred Alpine. */
 document.addEventListener('alpine:init', () => {
   Alpine.data('hdVideo', () => ({
-    open: false,
-    kind: '',        // 'video' | 'iframe'
     src: '',
-    _opener: null,   // element to restore focus to on close
-    _previousBodyOverflow: null,
+    _opener: null,
 
     show(detail) {
-      if (!detail || !detail.src) return;
-      if (!this.open) {
-        this._opener = document.activeElement;
-        this._previousBodyOverflow = document.body.style.overflow;
-      }
-      this.kind = detail.kind === 'iframe' ? 'iframe' : 'video';
+      if (!detail || typeof detail.src !== 'string') return;
+      const cleanSrc = detail.src.split(/[?#]/, 1)[0];
+      if (!cleanSrc.startsWith('/vid/') || cleanSrc.includes('..') || !cleanSrc.endsWith('.mp4')) return;
+
+      const dialog = this.$root;
+      if (!dialog || !dialog.isConnected || dialog.open || typeof dialog.showModal !== 'function') return;
+
+      const trigger = detail.trigger;
+      this._opener = trigger && trigger.isConnected ? trigger : document.activeElement;
       this.src = detail.src;
-      this.open = true;
-      document.body.style.overflow = 'hidden';   // lock scroll behind the modal
+
       this.$nextTick(() => {
-        // The <video>/<iframe> is created by x-if once `open` flips; play it now.
-        // The opening click is a user gesture, so sound-on autoplay is allowed.
-        if (this.kind === 'video' && this.$refs.video) {
+        if (!dialog.isConnected || dialog.open) return;
+        try {
+          dialog.showModal();
+        } catch (error) {
+          this.src = '';
+          this._opener = null;
+          return;
+        }
+        if (this._opener && this._opener.isConnected) {
+          this._opener.setAttribute('aria-expanded', 'true');
+          this._opener.setAttribute('aria-controls', dialog.id);
+          this._opener.setAttribute('data-state', 'open');
+        }
+        if (this.$refs.close) this.$refs.close.focus();
+        if (this.$refs.video) {
           try { this.$refs.video.currentTime = 0; } catch (e) {}
           const playing = this.$refs.video.play();
           if (playing && playing.catch) playing.catch(() => {});
         }
-        if (this.$refs.close) this.$refs.close.focus();
       });
     },
 
-    close() {
-      if (!this.open) return;
-      // Flipping `open` removes the media via x-if, so playback (video AND iframe)
-      // stops immediately — no lingering audio.
-      this.open = false;
-      this.src = '';
-      this.kind = '';
-      document.body.style.overflow = this._previousBodyOverflow || '';
-      this._previousBodyOverflow = null;
-      const opener = this._opener;
-      this._opener = null;
-      if (opener && opener.isConnected && typeof opener.focus === 'function') opener.focus();
+    dismissOutside(event) {
+      if (event.target !== this.$root || event.button !== 0 || event.detail === 0) return;
+      if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+      const box = this.$root.getBoundingClientRect();
+      const outside = event.clientX < box.left || event.clientX > box.right ||
+        event.clientY < box.top || event.clientY > box.bottom;
+      if (outside) this.$root.close();
     },
 
-    /* Manual focus trap (Alpine core ships no focus plugin). Mirrors WECORE
-       hero-video.js: Tab / Shift+Tab wrap within the modal's visible focusables.
-       (Focus inside a cross-origin YouTube iframe can't be trapped — a universal
-       limitation; the <video> case is fully trapped.) */
-    trap(e) {
-      if (!this.open) return;
-      const sel = 'a[href],button:not([disabled]),video[controls],iframe,[tabindex]:not([tabindex="-1"])';
-      const items = Array.from(this.$root.querySelectorAll(sel))
-        .filter((el) => getComputedStyle(el).visibility !== 'hidden' && el.getClientRects().length > 0);
-      if (!items.length) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
+    finishClose() {
+      const opener = this._opener;
+      if (this.$refs.video) {
+        this.$refs.video.pause();
+        this.$refs.video.removeAttribute('src');
+        this.$refs.video.load();
       }
+      if (opener && opener.isConnected) {
+        opener.setAttribute('aria-expanded', 'false');
+        opener.removeAttribute('aria-controls');
+        opener.setAttribute('data-state', 'closed');
+      }
+      this.src = '';
+      this._opener = null;
+      if (opener && opener.isConnected && typeof opener.focus === 'function') opener.focus();
     },
   }));
 });
 
-/* Delegated trigger listener (mirrors hd-tabs.js's [data-open-tab] pattern): any
-   [data-hd-video] click opens the shared modal with that video, translated into
-   the window event the modal listens for — so the scattered thumbnails need no
-   Alpine scope of their own. */
-document.addEventListener('click', (e) => {
-  const trigger = e.target.closest('[data-hd-video]');
+/* Compose every consumer-owned video trigger with the one page-local Dialog. */
+document.addEventListener('click', (event) => {
+  const trigger = event.target.closest('[data-hd-video]');
   if (!trigger) return;
-  e.preventDefault();
+  event.preventDefault();
   window.dispatchEvent(new CustomEvent('hd-open-video', {
     detail: {
       src: trigger.getAttribute('data-hd-video'),
-      kind: trigger.getAttribute('data-hd-video-kind') || 'video',
+      trigger,
     },
   }));
 });

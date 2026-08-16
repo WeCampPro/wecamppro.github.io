@@ -1,0 +1,14 @@
+{
+  "file": "reset.css",
+  "mappings": ";AAAA;EACE;;;;EASA;;;;;;EAMA;;;;;EAKA",
+  "names": [],
+  "sources": [
+    "packages/css/src/reset.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.reset {\n  :where([data-hts-root]),\n  :where([data-hts-root]) *,\n  :where([data-hts-root])::before,\n  :where([data-hts-root])::after,\n  :where([data-hts-root]) *::before,\n  :where([data-hts-root]) *::after {\n    box-sizing: border-box;\n  }\n\n  :where([data-hts-root]) :is(button, input, optgroup, select, textarea) {\n    color: inherit;\n    font: inherit;\n    letter-spacing: inherit;\n  }\n\n  :where([data-hts-root]) :is(canvas, img, picture, svg, video) {\n    display: block;\n    max-inline-size: 100%;\n  }\n\n  :where([data-hts-root]) :is(img, video) {\n    block-size: auto;\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "9a6d19ebf196a949ab0f35224424ded6a30e20d507ed7d4d57cf2e078bbd2245"
+}

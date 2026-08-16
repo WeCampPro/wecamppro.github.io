@@ -1,0 +1,14 @@
+{
+  "file": "compact.css",
+  "mappings": "AAAA;EACE",
+  "names": [],
+  "sources": [
+    "css/density/compact.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.tokens {\n  :where([data-hts-root][data-hts-density=\"compact\"]) {\n    --hts-size-control-default: var(--hts-dimension-control-sm);\n    --hts-space-control-block: var(--hts-dimension-space-2);\n    --hts-space-control-inline: var(--hts-dimension-space-3);\n    --hts-space-layout-block: var(--hts-dimension-space-3);\n    --hts-space-layout-inline: var(--hts-dimension-space-2);\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "29acc225329353d416aad889f34cbdf705254e26cef00bb20d29106cf9ab9d03"
+}

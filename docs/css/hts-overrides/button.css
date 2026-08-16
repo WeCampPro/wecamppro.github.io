@@ -1,0 +1,306 @@
+/* WECAMP product composition for the released HTS Button contract.
+ *
+ * HTS is intentionally layered while the legacy site CSS is unlayered. The
+ * small interop block below returns only conflicting reset properties to the
+ * released layer; it does not duplicate the component. Everything after it is
+ * WECAMP-owned layout or the established orange/on-dark product meaning.
+ * Certificate routes never load this file. */
+
+:where([data-hts-root]) .hts-button {
+  appearance: none;
+  min-inline-size: revert-layer;
+  background-color: revert-layer;
+  border: revert-layer;
+  color: revert-layer;
+  cursor: revert-layer;
+  font: revert-layer;
+  font-family: var(--hts-font-family-body);
+  overflow: revert-layer;
+  text-transform: revert-layer;
+  transition: revert-layer;
+}
+
+/* hd.css's old normalize selector (`html input[type=…]`) is more specific
+ * than the component class and sets the WebKit alias back to `button`.
+ * Match the native input seam explicitly so released `appearance:none` wins. */
+:where([data-hts-root]) input.hts-button[type] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* camps-redesign.css deliberately lets native controls shrink inside grids.
+ * Restore the released Button minimum at the component seam; the sticky and
+ * decision-bar hosts opt back out below. */
+:where([data-hts-root]) .hd-camp-page .hts-button {
+  min-inline-size: revert-layer;
+}
+
+:where([data-hts-root]) a.hts-button:is(:hover, :active) {
+  color: revert-layer;
+  outline: revert-layer;
+}
+
+:where([data-hts-root]) .hts-button:disabled {
+  cursor: revert-layer;
+}
+
+/* Product-owned layout helpers. */
+:where([data-hts-root]) .wecamp-button-cta {
+  min-inline-size: 154px;
+}
+
+/* Match the camp reset's context specificity so the preserved CTA minimum is
+ * not demoted to the label's intrinsic width. */
+:where([data-hts-root]) .hd-camp-page .wecamp-button-cta {
+  min-inline-size: 154px;
+}
+
+:where([data-hts-root]) .wecamp-button-full {
+  inline-size: 100%;
+}
+
+:where([data-hts-root]) .hts-button[data-variant="primary"].hd-discounts {
+  block-size: 100%;
+}
+
+/* The single warm conversion role stays local to WECAMP. It is intentionally
+ * not a fifth released HTS variant. */
+:where([data-hts-root]) .wecamp-button-accent {
+  border-color: var(--wc-accent);
+  background-color: var(--wc-accent);
+  color: var(--wc-accent-ink);
+  box-shadow: 0 20px 44px rgba(255, 106, 43, 0.32);
+}
+
+:where([data-hts-root]) .hts-button.wecamp-button-accent:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  border-color: var(--wc-accent-deep);
+  background-color: var(--wc-accent-deep);
+  color: var(--wc-accent-ink);
+}
+
+/* Secondary actions invert only when their WECAMP band supplies a dark
+ * surface. The released variant remains secondary in markup and semantics. */
+:where([data-hts-root]) :is(
+  .wecamp-band-cobalt,
+  .wecamp-band-proof,
+  .wecamp-band-strip,
+  .hd-ds-on-dark
+) .hts-button[data-variant="secondary"] {
+  border-color: rgba(242, 242, 240, 0.5);
+  background-color: rgba(242, 242, 240, 0.1);
+  color: var(--wecamp-local-paper);
+}
+
+:where([data-hts-root]) :is(
+  .wecamp-band-cobalt,
+  .wecamp-band-proof,
+  .wecamp-band-strip,
+  .hd-ds-on-dark
+) .hts-button[data-variant="secondary"]:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  border-color: var(--wecamp-local-paper);
+  background-color: rgba(242, 242, 240, 0.16);
+  color: var(--wecamp-local-paper);
+}
+
+/* Topic filters keep aria-pressed as their sole state contract. The selected
+ * item restores the established paper-on-cobalt treatment without creating a
+ * product Button variant or duplicating HTS component chrome. */
+:where([data-hts-root]) .wecamp-band-cobalt .wecamp-topic-filter[aria-pressed="true"] {
+  border-color: var(--wecamp-local-paper);
+  background-color: var(--wecamp-local-paper);
+  color: var(--wc-cobalt);
+}
+
+:where([data-hts-root]) .wecamp-band-cobalt .wecamp-topic-filter[aria-pressed="true"]:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  border-color: var(--wecamp-local-paper);
+  background-color: var(--wecamp-local-paper);
+  color: var(--wc-cobalt);
+}
+
+/* Shared navigation composition. Certificates keep the old classes and use
+ * the frozen rules in hd.css; only non-certificate routes emit this class. */
+:where([data-hts-root]) .wecamp-nav-button {
+  min-block-size: 48px;
+  min-inline-size: auto;
+  padding: 12px 20px;
+  gap: var(--hd-space-xs);
+}
+
+:where([data-hts-root]) .wecamp-nav-button[data-variant="quiet"] {
+  border-color: transparent;
+  background-color: rgba(16, 16, 16, 0.08);
+  color: var(--wecamp-local-ink);
+}
+
+:where([data-hts-root]) .wecamp-nav-button[data-variant="quiet"]:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  background-color: rgba(16, 16, 16, 0.14);
+  color: var(--wecamp-local-ink);
+}
+
+:where([data-hts-root]) .hd-nav-transparent .wecamp-nav-button[data-variant="primary"] {
+  border-color: var(--wecamp-local-paper);
+  background-color: var(--wecamp-local-paper);
+  color: var(--wc-cobalt);
+}
+
+:where([data-hts-root]) .hd-nav-transparent .wecamp-nav-button[data-variant="primary"]:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  border-color: var(--wc-white);
+  background-color: var(--wc-white);
+  color: var(--wc-cobalt);
+}
+
+:where([data-hts-root]) .hd-nav-transparent .wecamp-nav-button[data-variant="quiet"] {
+  border-color: color-mix(in srgb, var(--wecamp-local-paper) 20%, transparent);
+  background-color: color-mix(in srgb, var(--wecamp-local-paper) 10%, transparent);
+  color: var(--wecamp-local-paper);
+}
+
+:where([data-hts-root]) .hd-nav-transparent .wecamp-nav-button[data-variant="quiet"]:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  border-color: color-mix(in srgb, var(--wecamp-local-paper) 20%, transparent);
+  background-color: color-mix(in srgb, var(--wecamp-local-paper) 18%, transparent);
+  color: var(--wecamp-local-paper);
+}
+
+/* Footer submit is an inverse secondary fitted to the existing 56px row. */
+:where([data-hts-root]) .wecamp-footer-button {
+  block-size: 56px;
+  min-inline-size: 116px;
+  border-color: var(--wecamp-local-paper);
+  background-color: var(--wecamp-local-paper);
+  color: var(--wc-cobalt);
+}
+
+:where([data-hts-root]) .wecamp-footer-button:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+  border-color: var(--wc-white);
+  background-color: var(--wc-white);
+  color: var(--wc-cobalt);
+}
+
+/* Product color composition must yield to the released disabled state. Forms
+ * set native `disabled` while submitting; without this bridge accent/inverse
+ * controls would keep looking active. */
+:where([data-hts-root]) .wecamp-button-accent:disabled,
+:where([data-hts-root]) .wecamp-footer-button:disabled,
+:where([data-hts-root]) :is(
+  .wecamp-band-cobalt,
+  .wecamp-band-proof,
+  .wecamp-band-strip,
+  .hd-ds-on-dark
+) .hts-button:disabled {
+  border-color: var(--hts-color-border);
+  background-color: var(--hts-color-surface-raised);
+  box-shadow: none;
+  color: var(--hts-color-text-muted);
+  cursor: not-allowed;
+}
+
+:where([data-hts-root]) .wecamp-button-accent:where([data-state="loading"][aria-disabled="true"]) {
+  box-shadow: none;
+}
+
+/* Camp payment/sticky Buttons were recolored legacy Buttons, not CTA-family
+ * elevations. Keep their normal state flat and use the released interaction
+ * shadows instead of importing the CTA's large orange glow. */
+:where([data-hts-root]) :is(.hd-camp-register-actions, .hd-camp-sticky-cta) .wecamp-button-accent {
+  box-shadow: none;
+}
+
+:where([data-hts-root]) :is(.hd-camp-register-actions, .hd-camp-sticky-cta) .wecamp-button-accent:where(:not(:disabled, [data-state="loading"])):hover {
+  box-shadow: var(--hts-shadow-xs);
+}
+
+:where([data-hts-root]) :is(.hd-camp-register-actions, .hd-camp-sticky-cta) .wecamp-button-accent:where(:not(:disabled, [data-state="loading"])):active {
+  box-shadow: inset 0 0 0 var(--hts-border-hairline) currentcolor;
+}
+
+/* Camp sticky/decision controls deliberately fill their own compact host. */
+:where([data-hts-root]) :is(.hd-camp-sticky-cta, .hd-camp-decision-bar) .hts-button {
+  min-inline-size: 0;
+}
+
+@media screen and (min-width: 1121px) {
+  :where([data-hts-root]) .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta .wecamp-button-accent {
+    border-color: var(--wc-cobalt);
+    background-color: var(--wc-cobalt);
+    color: var(--wecamp-local-paper);
+  }
+
+  :where([data-hts-root]) .hd-camp-page.hd-camp-register-visible .hd-camp-sticky-cta .wecamp-button-accent:is(:hover, :active) {
+    border-color: var(--wc-cobalt-deep);
+    background-color: var(--wc-cobalt-deep);
+    color: var(--wecamp-local-paper);
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  :where([data-hts-root]) .wecamp-nav-button {
+    min-block-size: 46px;
+    padding: 11px 16px;
+  }
+
+  :where([data-hts-root]) .wecamp-nav-button span {
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :where([data-hts-root]) .wecamp-nav-button {
+    min-block-size: 44px;
+    padding: 10px 12px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  :where([data-hts-root]) .wecamp-nav-button {
+    padding: 9px 10px;
+  }
+
+  :where([data-hts-root]) .wecamp-footer-button {
+    inline-size: 100%;
+  }
+}
+
+/* The released v1.0.1 focus contract is backdrop-independent: ink-950 outer
+ * outline plus a white inner spread. Four class repetitions deliberately
+ * match the maximum specificity of the existing product color compositions,
+ * so their normal shadow or the camp-wide cyan rule cannot replace either
+ * band. Every focus property still resolves from the released layer. */
+:where([data-hts-root]) .hts-button.hts-button.hts-button.hts-button:focus-visible {
+  outline: revert-layer;
+  outline-offset: revert-layer;
+  box-shadow: revert-layer;
+}
+
+@media (forced-colors: active) {
+  /* Product colors are unlayered and therefore outrank HTS even when their
+   * selectors are less specific. Match the product maximum, then hand the
+   * affected properties back to the released Button contract. v1.0.1 remains
+   * the sole owner of ButtonFace/ButtonText, Highlight/HighlightText, and the
+   * zero-duration forced-color transition. */
+  :where([data-hts-root]) .hts-button.hts-button.hts-button.hts-button {
+    border-color: revert-layer;
+    background-color: revert-layer;
+    box-shadow: revert-layer;
+    color: revert-layer;
+    forced-color-adjust: revert-layer;
+    transition: revert-layer;
+  }
+
+  :where([data-hts-root]) .hts-button.hts-button.hts-button.hts-button:where(:not(:disabled, [data-state="loading"])):is(:hover, :active) {
+    border-color: revert-layer;
+    background-color: revert-layer;
+    box-shadow: revert-layer;
+    color: revert-layer;
+    transition: revert-layer;
+  }
+
+  /* Selection remains perceivable without taking color ownership back from
+   * the released base/interaction states. */
+  :where([data-hts-root]) .wecamp-band-cobalt .wecamp-topic-filter[aria-pressed="true"] {
+    border-style: double;
+    border-width: 3px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.18em;
+  }
+}

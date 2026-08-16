@@ -1,0 +1,14 @@
+{
+  "file": "base.css",
+  "mappings": ";AAAA;EACE;;;;;;;;;;EAUA;;;;EAIA;;;;EAIA;;;;;EAMA;;;;;;;;EAQA;;;;;;AAMF;EACE;IACE;;;;IAIA;;;;IAIA;;;;;;;AAQJ;EACE;IACE",
+  "names": [],
+  "sources": [
+    "packages/css/src/base.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.base {\n  :where([data-hts-root]) {\n    color: var(--hts-color-text-primary);\n    color-scheme: light;\n    font-family: var(--hts-font-family-body);\n    font-size: var(--hts-font-size-body);\n    font-weight: var(--hts-font-weight-body);\n    letter-spacing: var(--hts-font-tracking-body);\n    line-height: var(--hts-font-line-height-body);\n  }\n\n  :where([data-hts-root]):where([data-hts-mode=\"dark\"]) {\n    color-scheme: dark;\n  }\n\n  :where([data-hts-root]):is(html, body) {\n    background-color: var(--hts-color-canvas);\n  }\n\n  :where([data-hts-root])::selection,\n  :where([data-hts-root]) *::selection {\n    background-color: var(--hts-color-selection-background);\n    color: var(--hts-color-selection-foreground);\n  }\n\n  :where([data-hts-root]) :is(button, input, optgroup, select, textarea) {\n    font-family: inherit;\n    font-size: inherit;\n    font-weight: inherit;\n    letter-spacing: inherit;\n    line-height: inherit;\n  }\n\n  :where([data-hts-root]) :focus-visible {\n    outline: var(--hts-focus-ring-width) solid var(--hts-color-focus-ring);\n    outline-offset: var(--hts-focus-ring-offset);\n  }\n}\n\n@media (forced-colors: active) {\n  @layer hts.base {\n    :where([data-hts-root]) {\n      forced-color-adjust: auto;\n    }\n\n    :where([data-hts-root]) :focus-visible {\n      outline-color: Highlight;\n    }\n\n    :where([data-hts-root])::selection,\n    :where([data-hts-root]) *::selection {\n      background-color: Highlight;\n      color: HighlightText;\n    }\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  @layer hts.base {\n    :where([data-hts-root]),\n    :where([data-hts-root]) *,\n    :where([data-hts-root])::before,\n    :where([data-hts-root])::after,\n    :where([data-hts-root]) *::before,\n    :where([data-hts-root]) *::after {\n      animation-duration: var(--hts-motion-duration-reduced) !important;\n      animation-iteration-count: 1 !important;\n      scroll-behavior: auto !important;\n    }\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "6f2977a4b5c9baee302c3e753efa78dd712c96303b48b3963423b69e48e6805d"
+}

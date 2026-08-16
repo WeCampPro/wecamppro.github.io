@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -268,7 +300,7 @@
     </div>
    </header>
 <main id="hd-main">
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="events-ai-hero-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="events-ai-hero-title">
      <div class="hd-container">
       <div class="hd-ds-hero-copy hd-ds-hero-copy--measure" data-hd-animate="fade-up" data-hd-animate-eager>
        <h1 id="events-ai-hero-title">رویدادهای هوش مصنوعی وی‌کمپ.</h1>
@@ -277,37 +309,37 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="events-ai-grid-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="events-ai-grid-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head hd-ds-section-head--measure" data-hd-animate="fade-up">
+      <div class="wecamp-section-head wecamp-section-head--measure" data-hd-animate="fade-up">
        <h2 id="events-ai-grid-title">رویدادهای اخیر هوش مصنوعی را ببینید.</h2>
       </div>
       <div class="hd-ds-event-grid" data-hd-animate="fade-up" role="list">
-       <article class="hd-ds-event-card" data-hd-animate="fade-in-scale" role="listitem">
+       <article class="wecamp-surface wecamp-event-card" data-hd-animate="fade-in-scale" role="listitem">
  <a class="hd-ds-event-media" href="https://eseminar.tv/wb168365" target="_blank" rel="noopener noreferrer" aria-label="مسیر شغلی هوش مصنوعی">
   <picture><source type="image/avif" srcset="/img/events/1404/agentic-ai-2_hu_c1caa6a6a14f467.avif 240w, /img/events/1404/agentic-ai-2_hu_fcc7c1fdb03c37ab.avif 480w, /img/events/1404/agentic-ai-2_hu_1d87b7eba09f5a17.avif 720w, /img/events/1404/agentic-ai-2_hu_81e3581c884e3496.avif 992w" sizes="200px"><source type="image/webp" srcset="/img/events/1404/agentic-ai-2_hu_b6c743357394e7c7.webp 240w, /img/events/1404/agentic-ai-2_hu_4312ad25172df089.webp 480w, /img/events/1404/agentic-ai-2_hu_c6c118110fe8fc2e.webp 720w, /img/events/1404/agentic-ai-2_hu_87198017ea9daceb.webp 992w" sizes="200px"><img src="/img/events/1404/agentic-ai-2_hu_2c97bb18d2d40c41.jpg" alt="مسیر شغلی هوش مصنوعی" width="992" height="640" loading="lazy" decoding="async"></picture>
  </a>
  <div class="hd-ds-event-body">
-  <span class="hd-ds-event-status" data-status="held">برگزار شده</span>
+  <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="held">برگزار شده</span>
   <h3><a href="https://eseminar.tv/wb168365" target="_blank" rel="noopener noreferrer">مسیر شغلی هوش مصنوعی</a></h3>
   <p>نقش‌های پرتقاضای AI و مهارت‌هایی که برای ورود به این بازار نیاز دارید.</p>
   <div class="hd-ds-event-meta"><span>۲۰ آذر ۱۴۰۴</span><span>آنلاین و حضوری</span>
   </div>
-  <a class="hd-ds-event-action" href="https://eseminar.tv/wb168365" target="_blank" rel="noopener noreferrer">مشاهده رویداد</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--event" data-variant="default" data-external="true" href="https://eseminar.tv/wb168365" target="_blank" rel="noopener noreferrer">مشاهده رویداد<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
  </div>
 </article>
 
-       <article class="hd-ds-event-card" data-hd-animate="fade-in-scale" role="listitem">
+       <article class="wecamp-surface wecamp-event-card" data-hd-animate="fade-in-scale" role="listitem">
  <a class="hd-ds-event-media" href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer" aria-label="وبینار عامل‌های هوش مصنوعی">
   <picture><source type="image/avif" srcset="/img/events/1404/agentic-ai_hu_c54ea2c66da1d49c.avif 240w, /img/events/1404/agentic-ai_hu_cc35192f27e4a98a.avif 480w, /img/events/1404/agentic-ai_hu_7eb56721cc6c12d2.avif 720w, /img/events/1404/agentic-ai_hu_e9ca93909d2c1d26.avif 992w" sizes="200px"><source type="image/webp" srcset="/img/events/1404/agentic-ai_hu_af14e0e880ddcffb.webp 240w, /img/events/1404/agentic-ai_hu_88149a0a631d7769.webp 480w, /img/events/1404/agentic-ai_hu_c1f9d2f420699a9b.webp 720w, /img/events/1404/agentic-ai_hu_d72bf8ccde60f48b.webp 992w" sizes="200px"><img src="/img/events/1404/agentic-ai_hu_9bf24bb9a540f0f7.jpg" alt="وبینار عامل‌های هوش مصنوعی" width="992" height="640" loading="lazy" decoding="async"></picture>
  </a>
  <div class="hd-ds-event-body">
-  <span class="hd-ds-event-status" data-status="video">ویدیو</span>
+  <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="video">ویدیو</span>
   <h3><a href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer">وبینار عامل‌های هوش مصنوعی</a></h3>
   <p>از مفهوم تا ساختارهای پیشرفته Agentic AI و افق سیستم‌های خودمختار.</p>
   <div class="hd-ds-event-meta"><span>۲۷ آبان ۱۴۰۴</span><span>یوتیوب</span>
   </div>
-  <a class="hd-ds-event-action" href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--event" data-variant="default" data-external="true" href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
  </div>
 </article>
 
@@ -315,7 +347,7 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-strip" aria-labelledby="events-ai-onward-title">
+    <section class="wecamp-band wecamp-band-strip" aria-labelledby="events-ai-onward-title">
      <div class="hd-container">
       <div class="hd-ds-strip-row" data-hd-animate="fade-up">
        <div class="hd-ds-strip-copy">
@@ -323,7 +355,7 @@
         <p>قدم بعدی، کمپ توسعه عامل‌های هوش مصنوعی است؛ پروژه‌محور و با همراهی منتورهای صنعت.</p>
        </div>
        
-       <a class="hd-ds-cta hd-ds-cta-primary" href="/camps/agentic-ai/">مشاهده کمپ توسعه عامل‌های هوش مصنوعی</a>
+       <a class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" href="/camps/agentic-ai/">مشاهده کمپ توسعه عامل‌های هوش مصنوعی</a>
       </div>
      </div>
     </section>
@@ -521,8 +553,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>

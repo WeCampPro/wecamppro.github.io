@@ -1,0 +1,7 @@
+/* HTS-WECAMP-009: restore the layered Textarea values after the host reset. */
+:where([data-hts-root]) .hts-textarea {
+  color: revert-layer;
+  font: revert-layer;
+  font-family: var(--hts-font-family-body);
+  margin: revert-layer;
+}

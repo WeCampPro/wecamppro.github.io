@@ -1,0 +1,14 @@
+{
+  "file": "fa.css",
+  "mappings": "AAAA;EACE",
+  "names": [],
+  "sources": [
+    "css/locale/fa.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.tokens {\n  :where([data-hts-root]):lang(fa) {\n    --hts-font-line-height-body: var(--hts-type-line-height-fa-body);\n    --hts-font-line-height-body-lg: var(--hts-type-line-height-fa-body-lg);\n    --hts-font-line-height-body-sm: var(--hts-type-line-height-fa-body-sm);\n    --hts-font-line-height-caption: var(--hts-type-line-height-fa-caption);\n    --hts-font-line-height-display-lg: var(--hts-type-line-height-fa-display-lg);\n    --hts-font-line-height-display-sm: var(--hts-type-line-height-fa-display-sm);\n    --hts-font-line-height-label: var(--hts-type-line-height-fa-label);\n    --hts-font-line-height-mono-sm: var(--hts-type-line-height-fa-mono-sm);\n    --hts-font-line-height-title-lg: var(--hts-type-line-height-fa-title-lg);\n    --hts-font-line-height-title-md: var(--hts-type-line-height-fa-title-md);\n    --hts-font-line-height-title-sm: var(--hts-type-line-height-fa-title-sm);\n    --hts-font-tracking-body: var(--hts-type-tracking-fa-body);\n    --hts-font-tracking-body-lg: var(--hts-type-tracking-fa-body-lg);\n    --hts-font-tracking-body-sm: var(--hts-type-tracking-fa-body-sm);\n    --hts-font-tracking-caption: var(--hts-type-tracking-fa-caption);\n    --hts-font-tracking-display-lg: var(--hts-type-tracking-fa-display-lg);\n    --hts-font-tracking-display-sm: var(--hts-type-tracking-fa-display-sm);\n    --hts-font-tracking-label: var(--hts-type-tracking-fa-label);\n    --hts-font-tracking-mono-sm: var(--hts-type-tracking-fa-mono-sm);\n    --hts-font-tracking-title-lg: var(--hts-type-tracking-fa-title-lg);\n    --hts-font-tracking-title-md: var(--hts-type-tracking-fa-title-md);\n    --hts-font-tracking-title-sm: var(--hts-type-tracking-fa-title-sm);\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "c6af48373f1bf4c4a944e262951e9e259004dd5bc3b8abf718d3529913652f4d"
+}

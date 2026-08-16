@@ -1,0 +1,5 @@
+/* HTS-WECAMP-014: expose the released flex trigger beneath the historical
+ * unlayered `summary { display: block; }` reset. Accordion chrome stays HTS-owned. */
+:where([data-hts-root]) summary.hts-accordion-trigger {
+  display: revert-layer;
+}

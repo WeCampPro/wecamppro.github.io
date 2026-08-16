@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -268,7 +300,7 @@
     </div>
    </header>
 <main id="hd-main">
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section-tight" aria-labelledby="teachers-hero-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section-tight" aria-labelledby="teachers-hero-title">
      <div class="hd-container">
       <div class="hd-ds-title-row" data-hd-animate="fade-up" data-hd-animate-eager>
        <h1 id="teachers-hero-title">مدرسان و منتورهایی که کنار شما هستند.</h1>
@@ -277,7 +309,7 @@
       </div>
       <div class="hd-ds-people-grid" data-hd-animate="fade-up" data-hd-animate-eager role="list">
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/armin-abbasi/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/armin-abbasi/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_b1fa61c49a4fa355.avif 200w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_e9f0e547ade3df1b.avif 360w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_a730f5fd447dd302.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c354aac9ac28c0fa.webp 200w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_8f6c80fd53d7eb72.webp 360w, /img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c0891c0346970974.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A2%D8%B1%D9%85%DB%8C%D9%86_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C_hu_c3572260dd07fa63.jpg" alt="آرمین عباسی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>آرمین عباسی</strong>
@@ -286,7 +318,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/morteza-farkhondepour/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/morteza-farkhondepour/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_6810a3fee8e03111.avif 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_34b315de96d2344e.avif 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_8e2283f48e81ba7a.webp 200w, /img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_b482eeb8b6473b8f.webp 290w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%B1%D8%AA%D8%B6%DB%8C_%D9%81%D8%B1%D8%AE%D9%86%D8%AF%D9%87%E2%80%8C%D9%BE%D9%88%D8%B1_hu_a2c1367f3abd1be2.jpg" alt="مرتضی فرخنده‌پور" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>مرتضی فرخنده‌پور</strong>
@@ -295,7 +327,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/paeez-mousavi/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/paeez-mousavi/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_adb6c4a09b2b032d.avif 200w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_8a5d12e04cbcc0c4.avif 360w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_64d7d8b875eccf4.avif 500w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_5b07e1ef430a932b.webp 200w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_6ed75906be7dc5fd.webp 360w, /img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_ed154384c434ff49.webp 500w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%BE%D8%A7%DB%8C%DB%8C%D8%B2_%D9%85%D9%88%D8%B3%D9%88%DB%8C_hu_6f9a0b66b1dbd432.jpg" alt="پاییز موسوی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>پاییز موسوی</strong>
@@ -304,7 +336,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/mahdi-bahari-developer" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/mahdi-bahari-developer" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_cc3fc5b461776bc2.avif 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_9eefb213cbd68edd.avif 230w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_da0e21a7a53d0b15.webp 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_a560437ac8dec748.webp 230w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%A8%D9%87%D8%A7%D8%B1%DB%8C_hu_ff534fba96119a23.jpg" alt="مهدی بهاری" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>مهدی بهاری</strong>
@@ -313,7 +345,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/farnazjamarani" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/farnazjamarani" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_baa266ac9e7c9dd6.avif 200w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_d131f21eccc2ef57.avif 360w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_7ff6bbe28a2acd30.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_6fb2f3e95d879a0f.webp 200w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_5ffcafb84f9a582d.webp 360w, /img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_7946164bd8a48bf7.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%81%D8%B1%D9%86%D8%A7%D8%B2_%D8%AC%D9%85%D8%A7%D8%B1%D8%A7%D9%86%DB%8C_hu_886a64abe033de07.jpg" alt="فرناز جمارانی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>فرناز جمارانی</strong>
@@ -322,7 +354,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/irsodeh/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/irsodeh/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_1906507c67497485.avif 200w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_9dba7d84d1f579be.avif 360w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_2bf6c8e161c5259e.avif 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_5c2293c389105e14.webp 200w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_8de068c3f58327d5.webp 360w, /img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_c685108681f6c40d.webp 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B3%D9%88%D8%AF%D9%87_%D9%85%D8%AD%D9%85%D8%AF%D8%A2%D8%A8%D8%A7%D8%AF%DB%8C_hu_86c58a40d7eec839.jpg" alt="سوده محمدآبادی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>سوده محمدآبادی</strong>
@@ -331,7 +363,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/salehmiri/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/salehmiri/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_4b75fda0f831a2dd.avif 200w, /img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_9507584cb8217cb5.avif 210w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_95e6f3d4c107a731.webp 200w, /img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_f3f3ec576246e238.webp 210w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B5%D8%A7%D9%84%D8%AD_%D9%85%DB%8C%D8%B1%DB%8C_hu_6a8ee9402e8fb7ad.jpg" alt="صالح میری" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>صالح میری</strong>
@@ -340,7 +372,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/alizokaei1/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/alizokaei1/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_15bdd5887e2c52a8.avif 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_d5ead3af98f5ec09.avif 360w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_c7922b188b3cc711.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_59f350c61086e20d.webp 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_76272e7d59f7dfd8.webp 360w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_c628f4fdb5d64b70.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%B0%DA%A9%D8%A7%DB%8C%DB%8C_hu_6864253210b5523c.jpg" alt="علی ذکایی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>علی ذکایی</strong>
@@ -349,7 +381,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/fatemeh-chehregan/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/fatemeh-chehregan/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_3dc2a0da03afd4ea.avif 200w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_41684ec47b607ef8.avif 360w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_c4c0ea2b8f05ff00.avif 381w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_89814a0cbb3e0062.webp 200w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_1275be3183e381b8.webp 360w, /img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_fe9550464e310dcb.webp 381w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%81%D8%A7%D8%B7%D9%85%D9%87_%DA%86%D9%87%D8%B1%DA%AF%D8%A7%D9%86_hu_4d8ae295a8e3c810.jpg" alt="فاطمه چهرگان" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>فاطمه چهرگان</strong>
@@ -358,7 +390,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.behance.net/saeidmirzaei" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.behance.net/saeidmirzaei" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_16094cab3a2a7569.avif 200w, /img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_5f2b1a72292bb873.avif 359w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_ba7c28507b6ca837.webp 200w, /img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_d0d7182e3dba8985.webp 359w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B3%D8%B9%DB%8C%D8%AF_%D9%85%DB%8C%D8%B1%D8%B2%D8%A7%DB%8C%DB%8C_hu_80f890baddb47df6.jpg" alt="سعید میرزایی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>سعید میرزایی</strong>
@@ -367,7 +399,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/rezamoradidesign/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/rezamoradidesign/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_3f71dbfa3fb34ce0.avif 200w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_9333cc2315925e7c.avif 360w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_12e8641161eb4301.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_55131269e5963815.webp 200w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_b162d09ae2c0beaf.webp 360w, /img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_3e31e40311909c5f.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B1%D8%B6%D8%A7_%D9%85%D8%B1%D8%A7%D8%AF%DB%8C_hu_297c43c342f0aeff.jpg" alt="رضا مرادی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>رضا مرادی</strong>
@@ -376,7 +408,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/m-rasouli/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/m-rasouli/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_cb0f684315566f82.avif 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_d418f46a664da1f1.avif 360w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_b66ffe2382ac58e2.avif 629w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_3a424f24f8548473.webp 200w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_7c632948f24b43a1.webp 360w, /img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_2fc0e99dccf16929.webp 629w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D9%87%D8%AF%DB%8C_%D8%B1%D8%B3%D9%88%D9%84%DB%8C_hu_8314cf1c85e0899b.jpg" alt="مهدی رسولی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>مهدی رسولی</strong>
@@ -385,7 +417,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/nesapabakht/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/nesapabakht/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_253ff5f184c3eb73.avif 200w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_b7402597befeea6a.avif 360w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_22e64e6a00308a4d.avif 430w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_e767f33dd93182d1.webp 200w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_b029813e30f395f5.webp 360w, /img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_e32e46ba57457b64.webp 430w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%86%D8%B3%D8%A7_%D9%BE%D8%A7%D8%A8%D8%AE%D8%AA%E2%80%8C%D8%B2%D8%A7%D8%AF%D9%87_hu_8af2f4162b79cb07.jpg" alt="نسا پابخت‌زاده" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>نسا پابخت‌زاده</strong>
@@ -394,7 +426,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/mohammad-shahmaleki/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/mohammad-shahmaleki/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_73a990fef01cc295.avif 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_f10eb498c518f47d.avif 303w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_8bab6952a8ff757f.webp 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_fbec980de1ff7077.webp 303w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D8%B4%D8%A7%D9%87%D9%85%D9%84%DA%A9%DB%8C_hu_95893c2e8c376341.jpg" alt="محمد شاهملکی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>محمد شاهملکی</strong>
@@ -403,7 +435,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/behnam-neshatpour-62a97265/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/behnam-neshatpour-62a97265/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_e789cf58d899be10.avif 200w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_be7f6a90143ba61d.avif 360w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_3e4003e42e144fbf.avif 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_63ee962f36c0d3a2.webp 200w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_a09dded0a061161b.webp 360w, /img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_1a53153fe4b507a2.webp 575w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A8%D9%87%D9%86%D8%A7%D9%85_%D9%86%D8%B4%D8%A7%D8%B7%E2%80%8C%D9%BE%D9%88%D8%B1_hu_1fff2f74e6aabe2.jpg" alt="بهنام نشاط‌پور" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>بهنام نشاط‌پور</strong>
@@ -412,7 +444,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/komeil-roudi-7b62536b" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/komeil-roudi-7b62536b" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_7390bf6a4d4d9de4.avif 200w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_324ff2a4689693e0.avif 360w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_3f1dbce9752ee1fc.avif 420w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_d3902a8306c1d46a.webp 200w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_6df85a9bc9cef3a2.webp 360w, /img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_96697d2f7f81aa0.webp 420w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%DA%A9%D9%85%DB%8C%D9%84_%D8%B1%D9%88%D8%AF%DB%8C_hu_fe2050db77eb3798.jpg" alt="کمیل رودی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>کمیل رودی</strong>
@@ -421,7 +453,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/mohammadpoursaadat/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/mohammadpoursaadat/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_9f66bd5ef16cd7b2.avif 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_5a8e9eeb83107438.avif 360w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_e56fa1bec9a8bb38.avif 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_9c5689fe9ffd01be.webp 200w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_cf30f6e6eaecb4f0.webp 360w, /img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_1998e05f899fd105.webp 640w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D9%85%D8%AD%D9%85%D8%AF_%D9%BE%D9%88%D8%B1%D8%B3%D8%B9%D8%A7%D8%AF%D8%AA_hu_155b0e874d3bd764.jpg" alt="محمد پورسعادت" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>محمد پورسعادت</strong>
@@ -430,7 +462,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/alibmn/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/alibmn/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_127973f1b4fd6cc3.avif 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_ed7c2a325b8c2430.avif 350w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_54da007a3f2298d.webp 200w, /img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_138cdb85a010e93a.webp 350w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%B9%D9%84%DB%8C_%D8%A8%D9%87%D9%85%D9%86%DB%8C_hu_5c4971dbf7235f2c.jpg" alt="علی بهمنی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>علی بهمنی</strong>
@@ -439,7 +471,7 @@
 </a>
 
        
-<a class="hd-ds-person-card" href="https://www.linkedin.com/in/benyaminnajafi/" target="_blank" rel="noopener noreferrer">
+<a class="wecamp-surface wecamp-person-card" href="https://www.linkedin.com/in/benyaminnajafi/" target="_blank" rel="noopener noreferrer">
  <picture><source type="image/avif" srcset="/img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_3f5799b36f8fbc28.avif 200w, /img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_19c23bc9ca9283ff.avif 333w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><source type="image/webp" srcset="/img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_7c40732dfd707a8d.webp 200w, /img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_ddb784f6d12745ac.webp 333w" sizes="(min-width: 1000px) 240px, (min-width: 640px) 45vw, calc(100vw - 62px)"><img src="/img/camps/square/%D8%A8%D9%86%DB%8C%D8%A7%D9%85%DB%8C%D9%86_%D9%86%D8%AC%D9%81%DB%8C_hu_f008cbdc0c2e952d.jpg" alt="بنیامین نجفی" width="320" height="320" loading="lazy" decoding="async"></picture>
  <div>
   <strong>بنیامین نجفی</strong>
@@ -451,7 +483,7 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-strip" aria-labelledby="teachers-join-title">
+    <section class="wecamp-band wecamp-band-strip" aria-labelledby="teachers-join-title">
      <div class="hd-container">
       <div class="hd-ds-strip-row" data-hd-animate="fade-up">
        <div class="hd-ds-strip-copy">
@@ -459,7 +491,7 @@
         <h2 id="teachers-join-title">برای همکاری با مدرسان جدید و پرانرژی آماده‌ایم.</h2>
         <p>اگر علاقه‌مند به اشتراک‌گذاری دانش و تجربه‌هایتان هستید، خوشحال می‌شویم با هم کار کنیم.</p>
        </div>
-       <a class="hd-ds-cta hd-ds-cta-primary" href="/contact">با ما در تماس باشید</a>
+       <a class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" href="/contact">با ما در تماس باشید</a>
       </div>
      </div>
     </section>
@@ -657,8 +689,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>

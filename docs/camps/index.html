@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -268,26 +300,26 @@
     </div>
    </header>
 <main id="hd-main" x-data="{ topic: 'all' }">
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="camps-hero-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="camps-hero-title">
      <div class="hd-container">
       <div class="hd-ds-hero-copy hd-ds-hero-copy--measure" data-hd-animate="fade-up" data-hd-animate-eager>
        <p class="hd-ds-eyebrow">کمپ‌های تخصصی وی‌کمپ</p>
        <h1 id="camps-hero-title">کمپ مناسب را سریع پیدا کنید.</h1>
        <p class="hd-ds-hero-lede">کمپ‌های فعال و آینده وی‌کمپ را بر اساس حوزه، وضعیت، پروژه و خروجی مقایسه کنید و مسیر خود را انتخاب کنید.</p>
-       <div class="hd-ds-chip-row" role="group" aria-label="فیلتر حوزه">
-        <button type="button" class="hd-ds-chip" @click="topic = 'all'" :aria-pressed="topic === 'all' ? 'true' : 'false'" aria-pressed="true">همه</button>
-        <button type="button" class="hd-ds-chip" @click="topic = 'ai'" :aria-pressed="topic === 'ai' ? 'true' : 'false'" aria-pressed="false">هوش مصنوعی</button>
-        <button type="button" class="hd-ds-chip" @click="topic = 'product'" :aria-pressed="topic === 'product' ? 'true' : 'false'" aria-pressed="false">دیزاین محصول</button>
-        <button type="button" class="hd-ds-chip" @click="topic = 'cloud'" :aria-pressed="topic === 'cloud' ? 'true' : 'false'" aria-pressed="false">کلود</button>
-        <button type="button" class="hd-ds-chip" @click="topic = 'research'" :aria-pressed="topic === 'research' ? 'true' : 'false'" aria-pressed="false">پژوهش کاربر</button>
+       <div class="wecamp-inline-cluster" role="group" aria-label="فیلتر حوزه">
+        <button type="button" class="hts-button wecamp-topic-filter" data-variant="secondary" data-size="sm" @click="topic = 'all'" :aria-pressed="topic === 'all' ? 'true' : 'false'" aria-pressed="true">همه</button>
+        <button type="button" class="hts-button wecamp-topic-filter" data-variant="secondary" data-size="sm" @click="topic = 'ai'" :aria-pressed="topic === 'ai' ? 'true' : 'false'" aria-pressed="false">هوش مصنوعی</button>
+        <button type="button" class="hts-button wecamp-topic-filter" data-variant="secondary" data-size="sm" @click="topic = 'product'" :aria-pressed="topic === 'product' ? 'true' : 'false'" aria-pressed="false">دیزاین محصول</button>
+        <button type="button" class="hts-button wecamp-topic-filter" data-variant="secondary" data-size="sm" @click="topic = 'cloud'" :aria-pressed="topic === 'cloud' ? 'true' : 'false'" aria-pressed="false">کلود</button>
+        <button type="button" class="hts-button wecamp-topic-filter" data-variant="secondary" data-size="sm" @click="topic = 'research'" :aria-pressed="topic === 'research' ? 'true' : 'false'" aria-pressed="false">پژوهش کاربر</button>
        </div>
       </div>
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="camps-grid-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="camps-grid-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+      <div class="wecamp-section-head" data-hd-animate="fade-up">
        <p class="hd-ds-kicker">مقایسه کمپ‌ها</p>
        <h2 id="camps-grid-title">همه کمپ‌ها را کنار هم ببینید.</h2>
        <p>وضعیت، سطح، فرمت، مدت و خروجی هر کمپ را بدون باز کردن صفحه‌های جزئیات مقایسه کنید.</p>
@@ -295,152 +327,152 @@
       <div class="hd-ds-camp-grid">
         <div class="hd-ds-camp-cell" data-topic="ai" x-show="topic === 'all' || topic === 'ai'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/agentic-ai/" aria-label="کمپ توسعه عامل‌های هوش مصنوعی"><picture><source type="image/avif" srcset="/img/campcards/agentic-ai_hu_1dfbca5bbe6e89c0.avif 360w, /img/campcards/agentic-ai_hu_5739d923f473a726.avif 480w, /img/campcards/agentic-ai_hu_76d61335566df9ac.avif 720w, /img/campcards/agentic-ai_hu_70fe99a935fc57c7.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/agentic-ai_hu_8bf7ee164ddeb235.webp 360w, /img/campcards/agentic-ai_hu_d4161fba3d770646.webp 480w, /img/campcards/agentic-ai_hu_5059a4470f4c4efb.webp 720w, /img/campcards/agentic-ai_hu_e849e92f0b5e77e4.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/agentic-ai_hu_4dc710515af92695.jpg" alt="مدرسان کمپ توسعه عامل‌های هوش مصنوعی وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه هوش مصنوعی وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="in-progress">در حال برگزاری</span>
+   <span class="wecamp-camp-school">مدرسه هوش مصنوعی وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="in-progress">در حال برگزاری</span>
   </div>
   <h3><a href="/camps/agentic-ai/">کمپ توسعه عامل‌های هوش مصنوعی</a></h3>
   <p>از برنامه‌نویسی پایتون به ساخت سیستم‌های Agentic AI برسید؛ با طراحی عامل‌ها، ابزارها، workflowها و همکاری چندعاملی در پروژه‌های واقعی.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>در حال برگزاری</dd></div><div><dt>شروع</dt><dd>۹ دی ۱۴۰۴</dd></div><div><dt>مدت</dt><dd>۱۲ هفته</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/agentic-ai/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/agentic-ai/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="product" x-show="topic === 'all' || topic === 'product'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/product-design/" aria-label="کمپ دیزاین محصول"><picture><source type="image/avif" srcset="/img/campcards/product-design_hu_4c48de47ed0bb48a.avif 360w, /img/campcards/product-design_hu_50fc854ecc9a2aea.avif 480w, /img/campcards/product-design_hu_de0b66f3ca45cc82.avif 720w, /img/campcards/product-design_hu_775909b6bc42fa11.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/product-design_hu_a26b3194b2473c0a.webp 360w, /img/campcards/product-design_hu_76aa004bc85c3251.webp 480w, /img/campcards/product-design_hu_e87ef1a803625798.webp 720w, /img/campcards/product-design_hu_c9eb04d9b6c7089f.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/product-design_hu_12c5414a9a761be9.jpg" alt="مدرسان کمپ دیزاین محصول وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه دیزاین محصول وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="waitlist">پیش‌ثبت‌نام دوره آتی</span>
+   <span class="wecamp-camp-school">مدرسه دیزاین محصول وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="waitlist">پیش‌ثبت‌نام دوره آتی</span>
   </div>
   <h3><a href="/camps/product-design/">کمپ دیزاین محصول</a></h3>
   <p>مسیر پروژه‌محور برای ورود جدی به UX/UI و دیزاین محصول؛ با منتورینگ، ورکشاپ‌های عملی و تمرکز بر پورتفولیو.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>پیش‌ثبت‌نام دوره آتی</dd></div><div><dt>مدت نمونه</dt><dd>حدود ۳ ماه</dd></div><div><dt>فرمت</dt><dd>هیبرید</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/product-design/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/product-design/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="cloud" x-show="topic === 'all' || topic === 'cloud'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/cloud-infra-management/" aria-label="کمپ مدیریت کلود"><picture><source type="image/avif" srcset="/img/campcards/cloud-infra-management_hu_44bf10f9f9998bf5.avif 360w, /img/campcards/cloud-infra-management_hu_1b3c4a01ed971e2f.avif 480w, /img/campcards/cloud-infra-management_hu_6d283410c20b4073.avif 720w, /img/campcards/cloud-infra-management_hu_9aba660b9de80ec5.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/cloud-infra-management_hu_639a890bc9b4b2ba.webp 360w, /img/campcards/cloud-infra-management_hu_d1e42364b3e59e71.webp 480w, /img/campcards/cloud-infra-management_hu_896e8ceb39920257.webp 720w, /img/campcards/cloud-infra-management_hu_251ade74a6c5f856.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/cloud-infra-management_hu_eebe1e230d55d32c.jpg" alt="مدرسان کمپ مدیریت زیرساخت ابری وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه مهندسی ابر وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="upcoming">در حال برنامه‌ریزی برای ۱۴۰۵</span>
+   <span class="wecamp-camp-school">مدرسه مهندسی ابر وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="upcoming">در حال برنامه‌ریزی برای ۱۴۰۵</span>
   </div>
   <h3><a href="/camps/cloud-infra-management/">کمپ مدیریت کلود</a></h3>
   <p>مسیر عملی برای ورود به مدیریت زیرساخت ابری؛ از لینوکس و شبکه تا OpenStack، Docker، Terraform و نگه‌داری سرویس‌های ابری.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>شروع</dt><dd>در ۱۴۰۵</dd></div><div><dt>مدت</dt><dd>حدود ۳ ماه</dd></div><div><dt>فرمت</dt><dd>تمرین‌محور با لابراتوار</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/cloud-infra-management/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/cloud-infra-management/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="research" x-show="topic === 'all' || topic === 'research'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/user-research/" aria-label="کمپ کاربرپژوهی"><picture><source type="image/avif" srcset="/img/campcards/user-research_hu_88323c60072a0f61.avif 360w, /img/campcards/user-research_hu_d8ccac53b33fd738.avif 480w, /img/campcards/user-research_hu_83888f8e2e8d3d40.avif 720w, /img/campcards/user-research_hu_857323a1a5e7d61b.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/user-research_hu_1c3c45058cb7f05f.webp 360w, /img/campcards/user-research_hu_a845f4604bce4922.webp 480w, /img/campcards/user-research_hu_522a7c03e4fb2aa2.webp 720w, /img/campcards/user-research_hu_822852dc70fabf89.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/user-research_hu_bd3636d3890850b1.jpg" alt="نشان تصویری کمپ کاربرپژوهی وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه دیزاین محصول وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="coming-soon">به‌زودی</span>
+   <span class="wecamp-camp-school">مدرسه دیزاین محصول وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="coming-soon">به‌زودی</span>
   </div>
   <h3><a href="/camps/user-research/">کمپ کاربرپژوهی</a></h3>
   <p>کمپ پیشرفته برای عمیق‌تر شدن در پژوهش کاربر، مصاحبه، تست کاربردپذیری و تبدیل داده‌های کیفی و کمی به تصمیم‌های محصول.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>به‌زودی</dd></div><div><dt>سطح</dt><dd>پیشرفته</dd></div><div><dt>پیش‌نیاز</dt><dd>تجربه UX یا دیزاین محصول</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/user-research/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/user-research/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="product" x-show="topic === 'all' || topic === 'product'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/product-design-advanced/" aria-label="کمپ پیشرفته دیزاین محصول"><picture><source type="image/avif" srcset="/img/campcards/product-design-advanced_hu_4c93b2a7f5cdb09d.avif 360w, /img/campcards/product-design-advanced_hu_2911e40a2d4d0c9a.avif 480w, /img/campcards/product-design-advanced_hu_87338a6a6b6463a9.avif 720w, /img/campcards/product-design-advanced_hu_97a1cf6ddbea86cc.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/product-design-advanced_hu_ce18eb4713396027.webp 360w, /img/campcards/product-design-advanced_hu_debcc36d9f0b3381.webp 480w, /img/campcards/product-design-advanced_hu_7e548e3c159452dd.webp 720w, /img/campcards/product-design-advanced_hu_c230ab71c496b037.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/product-design-advanced_hu_a8aadcc93334918d.jpg" alt="مدرسان مدرسه دیزاین محصول وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه دیزاین محصول وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="coming-soon">به‌زودی</span>
+   <span class="wecamp-camp-school">مدرسه دیزاین محصول وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="coming-soon">به‌زودی</span>
   </div>
   <h3><a href="/camps/product-design-advanced/">کمپ پیشرفته دیزاین محصول</a></h3>
   <p>برنامه پیشرفته برای طراحانی که می‌خواهند از اجرای UI/UX فراتر بروند و در تصمیم‌های محصول، سیستم دیزاین و استراتژی تجربه عمیق‌تر شوند.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>به‌زودی</dd></div><div><dt>سطح</dt><dd>پیشرفته</dd></div><div><dt>زمان شروع</dt><dd>اعلام می‌شود</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/product-design-advanced/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/product-design-advanced/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="product" x-show="topic === 'all' || topic === 'product'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/product-design-project/" aria-label="کمپ پروژه دیزاین محصول"><picture><source type="image/avif" srcset="/img/campcards/product-design-project_hu_99186045af591537.avif 360w, /img/campcards/product-design-project_hu_edd96f00156eb870.avif 480w, /img/campcards/product-design-project_hu_c4b7e19124d6eb34.avif 720w, /img/campcards/product-design-project_hu_25148b2f22b9bded.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/product-design-project_hu_40e8e5f1f6f4f28d.webp 360w, /img/campcards/product-design-project_hu_a3e54e5c39a6afae.webp 480w, /img/campcards/product-design-project_hu_ac5d1f117eda6d1d.webp 720w, /img/campcards/product-design-project_hu_1e30b7f31d407c23.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/product-design-project_hu_a77c27afe5d9f732.jpg" alt="مدرسان و منتورهای دیزاین محصول وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه دیزاین محصول وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="coming-soon">به‌زودی</span>
+   <span class="wecamp-camp-school">مدرسه دیزاین محصول وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="coming-soon">به‌زودی</span>
   </div>
   <h3><a href="/camps/product-design-project/">کمپ پروژه دیزاین محصول</a></h3>
   <p>برنامه‌ای متمرکز بر اجرای پروژه دیزاین محصول، دریافت بازخورد و تبدیل کار عملی به کیس‌استادی قابل ارائه.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>به‌زودی</dd></div><div><dt>تمرکز</dt><dd>پروژه و کیس‌استادی</dd></div><div><dt>زمان شروع</dt><dd>اعلام می‌شود</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/product-design-project/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/product-design-project/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="cloud" x-show="topic === 'all' || topic === 'cloud'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/cloud-infra-deployment/" aria-label="کمپ راه‌اندازی کلود با اپن‌استک"><picture><source type="image/avif" srcset="/img/campcards/cloud-infra-deployment_hu_5cbf3a0b6260df1d.avif 360w, /img/campcards/cloud-infra-deployment_hu_a5d63823315b35fc.avif 480w, /img/campcards/cloud-infra-deployment_hu_dceafd1c28941db0.avif 720w, /img/campcards/cloud-infra-deployment_hu_bd7c96a78b03df41.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/cloud-infra-deployment_hu_2c1129ab2103076c.webp 360w, /img/campcards/cloud-infra-deployment_hu_7c15d51966f04208.webp 480w, /img/campcards/cloud-infra-deployment_hu_6b1afe8381d91077.webp 720w, /img/campcards/cloud-infra-deployment_hu_16b30a0c840ea045.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/cloud-infra-deployment_hu_bb90452f8a1074dd.jpg" alt="از مدرسان و منتورهای وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه مهندسی ابر وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="coming-soon">به‌زودی</span>
+   <span class="wecamp-camp-school">مدرسه مهندسی ابر وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="coming-soon">به‌زودی</span>
   </div>
   <h3><a href="/camps/cloud-infra-deployment/">کمپ راه‌اندازی کلود با اپن‌استک</a></h3>
   <p>کمپ پیشرفته برای راه‌اندازی زیرساخت ابری با OpenStack؛ مناسب افرادی که تجربه جدی در لینوکس و زیرساخت متن‌باز دارند.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>به‌زودی</dd></div><div><dt>سطح</dt><dd>پیشرفته</dd></div><div><dt>پیش‌نیاز</dt><dd>دانش حرفه‌ای Linux و زیرساخت متن‌باز</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/cloud-infra-deployment/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/cloud-infra-deployment/">مشاهده جزئیات</a>
  </div>
 </article>
 
         </div>
         <div class="hd-ds-camp-cell" data-topic="cloud" x-show="topic === 'all' || topic === 'cloud'">
          
-<article class="hd-ds-camp-card" data-hd-animate="fade-in-scale">
+<article class="wecamp-surface wecamp-camp-card" data-hd-animate="fade-in-scale">
  <a class="hd-ds-camp-media" href="/camps/cloud-infra-deepdive/" aria-label="کمپ عمیق‌کاوی زیرساخت کلود"><picture><source type="image/avif" srcset="/img/campcards/cloud-infra-deepdive_hu_fb1641cbbc345d1d.avif 360w, /img/campcards/cloud-infra-deepdive_hu_3f3979f1e0c634af.avif 480w, /img/campcards/cloud-infra-deepdive_hu_55395982d680d0b9.avif 720w, /img/campcards/cloud-infra-deepdive_hu_5559650fe4f8b6ef.avif 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><source type="image/webp" srcset="/img/campcards/cloud-infra-deepdive_hu_c4b53e29f9c3e851.webp 360w, /img/campcards/cloud-infra-deepdive_hu_a3de6f5289da2f1b.webp 480w, /img/campcards/cloud-infra-deepdive_hu_2eb7d028b9ecf2da.webp 720w, /img/campcards/cloud-infra-deepdive_hu_46a00172c4f2e0c7.webp 1080w" sizes="(min-width: 1000px) 285px, (min-width: 640px) 48vw, calc(100vw - 32px)"><img src="/img/campcards/cloud-infra-deepdive_hu_98496e89b60df83c.jpg" alt="مدرسان مدرسه مهندسی ابر وی‌کمپ" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
  <div class="hd-ds-camp-body">
   <div class="hd-ds-camp-top">
-   <span>مدرسه مهندسی ابر وی‌کمپ</span>
-   <span class="hd-ds-camp-status" data-status="coming-soon">به‌زودی</span>
+   <span class="wecamp-camp-school">مدرسه مهندسی ابر وی‌کمپ</span>
+   <span class="hts-badge wecamp-status-badge" data-tone="info" data-size="sm" data-status="coming-soon">به‌زودی</span>
   </div>
   <h3><a href="/camps/cloud-infra-deepdive/">کمپ عمیق‌کاوی زیرساخت کلود</a></h3>
   <p>برنامه تکمیلی برای عمیق‌تر شدن در مفاهیم و عملیات زیرساخت ابری. جزئیات این کمپ در حال آماده‌سازی است.</p>
   <dl class="hd-ds-camp-facts">
    <div><dt>وضعیت</dt><dd>به‌زودی</dd></div><div><dt>زمان شروع</dt><dd>اعلام می‌شود</dd></div><div><dt>مدرسه</dt><dd>مهندسی ابر</dd></div>
   </dl>
-  <a class="hd-ds-camp-link" href="/camps/cloud-infra-deepdive/">مشاهده جزئیات</a>
+  <a class="hts-link wecamp-link-action wecamp-link-action--camp" data-variant="default" href="/camps/cloud-infra-deepdive/">مشاهده جزئیات</a>
  </div>
 </article>
 
@@ -449,16 +481,16 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-proof hd-ds-section" aria-labelledby="camps-help-title">
+    <section class="wecamp-band wecamp-band-proof wecamp-section" aria-labelledby="camps-help-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head hd-ds-section-head--measure" data-hd-animate="fade-up">
+      <div class="wecamp-section-head wecamp-section-head--measure" data-hd-animate="fade-up">
        <p class="hd-ds-eyebrow">مطمئن نیستید؟</p>
        <h2 id="camps-help-title">کمپ مناسب را با کمک تیم وی‌کمپ انتخاب کنید.</h2>
        <p>اگر بین کمپ‌ها مردد هستید، با تیم وی‌کمپ صحبت کنید؛ اگر انتخاب‌تان روشن است، از صفحهٔ همان کمپ ادامه دهید.</p>
       </div>
       <div class="hd-ds-actions" data-hd-animate="fade-up">
        
-       <a class="hd-ds-cta hd-ds-cta-primary" href="/request">درخواست مشاوره</a>
+       <a class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" href="/request">درخواست مشاوره</a>
       </div>
      </div>
     </section>
@@ -656,8 +688,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>

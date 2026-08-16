@@ -1,0 +1,14 @@
+{
+  "file": "utilities.css",
+  "mappings": ";AAAA;EACE;;;;;;;;;;;;EAaA;;;;;;EAOA;;;;;;;EAQA;;;;;;EAOA;;;;;;;;AASF;EACE;IACE",
+  "names": [],
+  "sources": [
+    "packages/css/src/utilities.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.utilities {\n  :where([data-hts-root]).hts-sr-only,\n  :where([data-hts-root]) .hts-sr-only {\n    block-size: 1px !important;\n    border: 0 !important;\n    clip-path: inset(50%) !important;\n    inline-size: 1px !important;\n    margin: -1px !important;\n    overflow: hidden !important;\n    padding: 0 !important;\n    position: absolute !important;\n    white-space: nowrap !important;\n  }\n\n  :where([data-hts-root]).hts-focus-ring:focus-visible,\n  :where([data-hts-root]) .hts-focus-ring:focus-visible {\n    outline: var(--hts-focus-ring-width) solid var(--hts-color-ink-950);\n    outline-offset: var(--hts-focus-ring-offset);\n    box-shadow: 0 0 0 var(--hts-focus-ring-width) var(--hts-color-white);\n  }\n\n  :where([data-hts-root]).hts-container,\n  :where([data-hts-root]) .hts-container {\n    inline-size: 100%;\n    margin-inline: auto;\n    max-inline-size: var(--hts-layout-page-max);\n    padding-inline: var(--hts-layout-gutter);\n  }\n\n  :where([data-hts-root]).hts-stack,\n  :where([data-hts-root]) .hts-stack {\n    display: flex;\n    flex-direction: column;\n    gap: var(--hts-space-layout-block);\n  }\n\n  :where([data-hts-root]).hts-cluster,\n  :where([data-hts-root]) .hts-cluster {\n    align-items: center;\n    display: flex;\n    flex-wrap: wrap;\n    gap: var(--hts-space-layout-inline);\n  }\n}\n\n@media (forced-colors: active) {\n  @layer hts.utilities {\n    :where([data-hts-root]).hts-focus-ring:focus-visible,\n    :where([data-hts-root]) .hts-focus-ring:focus-visible {\n      outline-color: Highlight;\n      box-shadow: none;\n    }\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "9a6d19ebf196a949ab0f35224424ded6a30e20d507ed7d4d57cf2e078bbd2245"
+}

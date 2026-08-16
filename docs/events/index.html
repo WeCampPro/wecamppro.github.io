@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -268,7 +300,7 @@
     </div>
    </header>
 <main id="hd-main">
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section-tight" aria-labelledby="events-hero-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section-tight" aria-labelledby="events-hero-title">
      <div class="hd-container">
       <div class="hd-ds-hero-copy hd-measure-xl" data-hd-animate="fade-up" data-hd-animate-eager>
        <h1 id="events-hero-title">اگر هنوز آماده کمپ نیستید، از رویدادها شروع کنید.</h1>
@@ -277,7 +309,7 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="events-feature-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="events-feature-title">
      <div class="hd-container">
       <p class="hd-ds-kicker" data-hd-animate="fade-up">آخرین رویداد</p>
       <article class="hd-ds-event-feature" data-hd-animate="fade-up">
@@ -289,7 +321,7 @@
         </div>
         <h2 id="events-feature-title"><a href="/events/ai/">مسیر شغلی هوش مصنوعی</a></h2>
         <p>نقش‌های پرتقاضای AI و مهارت‌هایی که برای ورود به این بازار نیاز دارید.</p>
-        <a class="hd-ds-event-action" href="/events/ai/">جزئیات رویداد</a>
+        <a class="hts-link wecamp-link-action wecamp-link-action--event" data-variant="default" href="/events/ai/">جزئیات رویداد</a>
        </div>
       </article>
 
@@ -305,7 +337,7 @@
           <p class="hd-ds-event-row-meta"><span>۲۷ آبان ۱۴۰۴</span><span>ویدیو</span>
           </p>
          </div>
-         <a class="hd-ds-event-action" href="https://youtu.be/Z3uMYQSrLsE" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب</a>
+         <a class="hts-link wecamp-link-action wecamp-link-action--event" data-variant="default" href="https://youtu.be/Z3uMYQSrLsE" data-external="true" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
         </article>
         <article class="hd-ds-event-row" role="listitem">
          <a class="hd-ds-event-row-thumb" href="https://youtu.be/IlGXEDMx_VM" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
@@ -316,7 +348,7 @@
           <p class="hd-ds-event-row-meta"><span>۱۰ مهر ۱۴۰۴</span><span>ویدیو</span>
           </p>
          </div>
-         <a class="hd-ds-event-action" href="https://youtu.be/IlGXEDMx_VM" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب</a>
+         <a class="hts-link wecamp-link-action wecamp-link-action--event" data-variant="default" href="https://youtu.be/IlGXEDMx_VM" data-external="true" target="_blank" rel="noopener noreferrer">تماشا در یوتیوب<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
         </article>
         <article class="hd-ds-event-row" role="listitem">
          <a class="hd-ds-event-row-thumb" href="https://eseminar.tv/wb158310" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
@@ -327,24 +359,28 @@
           <p class="hd-ds-event-row-meta"><span>۲۴ اردیبهشت ۱۴۰۴</span><span>برگزار شده</span>
           </p>
          </div>
-         <a class="hd-ds-event-action" href="https://eseminar.tv/wb158310" target="_blank" rel="noopener noreferrer">مشاهده رویداد</a>
+         <a class="hts-link wecamp-link-action wecamp-link-action--event" data-variant="default" href="https://eseminar.tv/wb158310" data-external="true" target="_blank" rel="noopener noreferrer">مشاهده رویداد<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
         </article>
        </div>
       </div>
      </div>
     </section>
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" id="newsletter" aria-labelledby="events-news-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" id="newsletter" aria-labelledby="events-news-title">
      <div class="hd-container">
-      <div class="hd-ds-card hd-events-news-card" data-hd-animate="fade-up">
-       <div class="hd-ds-section-head hd-m-0">
+      <div class="wecamp-surface wecamp-form-surface hd-events-news-card" data-hd-animate="fade-up">
+       <div class="wecamp-section-head hd-m-0">
         <p class="hd-ds-kicker">خبرنامه رویدادها</p>
         <h2 id="events-news-title" class="hd-h2-fluid-sm">هیچ رویدادی را از دست ندهید.</h2>
         <p>ساده‌ترین راه برای اینکه همیشه در جریان رویدادهای تازه باشید.</p>
        </div>
        <div class="hd-form-wrap">
         <form action="https://formspree.io/f/mjkvpvqz" class="hd-events-news-form" id="event-newsletter-form" method="POST" name="event-newsletter-form">
-         <input dir="ltr" aria-label="ایمیل خبرنامه رویدادها" autocomplete="email" class="input newsletter-events hd-field hd-events-news-field" id="Email" inputmode="email" maxlength="256" name="Email" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-         <button class="hd-ds-cta hd-ds-cta-primary" type="submit">اشتراک</button>
+         <div class="hts-field hd-events-news-field" data-control="input" data-required="true">
+          <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="Email">ایمیل خبرنامه رویدادها</label>
+          <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="Email" inputmode="email" maxlength="256" name="Email" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" aria-describedby="Email--help" type="email"/>
+          <p id="Email--help" class="hts-text hts-field-help" data-role="body-sm" data-tone="secondary">ما هرگز برایتان اسپم ارسال نمی‌کنیم.</p>
+         </div>
+         <button class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" type="submit">اشتراک</button>
         </form>
         <div class="success-message newsletter hd-form-success" aria-live="polite" aria-hidden="true">
          <div>متشکریم! عضویت شما در خبرنامه ثبت شد.</div>
@@ -352,22 +388,21 @@
         <div class="error-message hd-form-error" aria-live="polite" aria-hidden="true">
          <div>خطایی رخ داد. لطفاً دوباره تلاش کنید.</div>
         </div>
-        <p class="hd-events-news-note">ما هرگز برایتان اسپم ارسال نمی‌کنیم.</p>
        </div>
       </div>
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-proof hd-ds-section" aria-labelledby="events-onward-title">
+    <section class="wecamp-band wecamp-band-proof wecamp-section" aria-labelledby="events-onward-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head hd-measure-md" data-hd-animate="fade-up">
+      <div class="wecamp-section-head hd-measure-md" data-hd-animate="fade-up">
        <h2 id="events-onward-title">رویداد بعدی یا اولین کمپ‌تان؟</h2>
        <p>عضو خبرنامه شوید تا از رویداد بعدی باخبر شوید؛ یا اگر آماده یادگیری عمیق‌تر هستید، کمپ‌های پروژه‌محور وی‌کمپ را ببینید.</p>
       </div>
       <div class="hd-ds-actions" data-hd-animate="fade-up">
        
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="#newsletter">عضویت در خبرنامه رویدادها</a>
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps">مشاهده کمپ‌ها</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="#newsletter">عضویت در خبرنامه رویدادها</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/camps">مشاهده کمپ‌ها</a>
       </div>
      </div>
     </section>
@@ -565,8 +600,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>

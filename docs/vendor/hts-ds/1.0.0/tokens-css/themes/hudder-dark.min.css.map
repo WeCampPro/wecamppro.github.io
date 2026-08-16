@@ -1,0 +1,14 @@
+{
+  "file": "hudder-dark.min.css",
+  "mappings": "AAAA,kBACE",
+  "names": [],
+  "sources": [
+    "css/themes/hudder-dark.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.tokens {\n  :where([data-hts-root][data-hts-theme=\"hudder\"][data-hts-mode=\"dark\"]) {\n    --hts-color-action-danger-background: var(--hts-color-red-300);\n    --hts-color-action-danger-foreground: var(--hts-color-ink-950);\n    --hts-color-action-primary-background: var(--hts-color-blue-600);\n    --hts-color-action-primary-background-hover: var(--hts-color-blue-700);\n    --hts-color-action-primary-foreground: var(--hts-color-white);\n    --hts-color-border: var(--hts-color-ink-700);\n    --hts-color-border-interactive: var(--hts-color-slate-300);\n    --hts-color-canvas: var(--hts-color-ink-950);\n    --hts-color-focus-ring: var(--hts-color-cobalt-300);\n    --hts-color-overlay-background: var(--hts-color-ink-alpha-64);\n    --hts-color-selection-background: var(--hts-color-blue-800);\n    --hts-color-selection-foreground: var(--hts-color-white);\n    --hts-color-status-danger-background: var(--hts-color-red-950);\n    --hts-color-status-danger-foreground: var(--hts-color-red-300);\n    --hts-color-status-info-background: var(--hts-color-navy-950);\n    --hts-color-status-info-foreground: var(--hts-color-cobalt-300);\n    --hts-color-status-success-background: var(--hts-color-green-950);\n    --hts-color-status-success-foreground: var(--hts-color-green-300);\n    --hts-color-status-warning-background: var(--hts-color-amber-950);\n    --hts-color-status-warning-foreground: var(--hts-color-amber-300);\n    --hts-color-surface: var(--hts-color-ink-900);\n    --hts-color-surface-raised: var(--hts-color-ink-800);\n    --hts-color-text-inverse: var(--hts-color-ink-950);\n    --hts-color-text-muted: var(--hts-color-slate-300);\n    --hts-color-text-primary: var(--hts-color-white);\n    --hts-color-text-secondary: var(--hts-color-slate-200);\n    --hts-font-family-body: var(--hts-type-family-hts);\n    --hts-font-family-display: var(--hts-type-family-hts);\n    --hts-font-family-mono: var(--hts-type-family-mono);\n    --hts-shadow-lg: var(--hts-elevation-dark-lg);\n    --hts-shadow-md: var(--hts-elevation-dark-md);\n    --hts-shadow-sm: var(--hts-elevation-dark-sm);\n    --hts-shadow-xs: var(--hts-elevation-dark-xs);\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "4eb17b71d5d3f521926c6f704328ebff74bae59006b72cd01f49767cba59f3ec"
+}

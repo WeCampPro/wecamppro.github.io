@@ -5,7 +5,7 @@
    HTML while using local brand artwork for a more premium proof surface.
    ========================================================================== */
 
-.hd-cert-page {
+.hd-cert-page, .hd-cert-list {
   --hd-cert-blue: #0b2f9f;
   --hd-cert-ink: #101010;
   --hd-cert-paper: #f2f2f0;

@@ -1,0 +1,354 @@
+{
+  "generated": true,
+  "icons": [
+    {
+      "categories": [
+        "action"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "add",
+      "sourceName": "plus",
+      "symbolId": "hts-icon-add"
+    },
+    {
+      "categories": [
+        "action"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "remove",
+      "sourceName": "minus",
+      "symbolId": "hts-icon-remove"
+    },
+    {
+      "categories": [
+        "action"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "close",
+      "sourceName": "x",
+      "symbolId": "hts-icon-close"
+    },
+    {
+      "categories": [
+        "action",
+        "status"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "check",
+      "sourceName": "check",
+      "symbolId": "hts-icon-check"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "chevron-down",
+      "sourceName": "chevron-down",
+      "symbolId": "hts-icon-chevron-down"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "chevron-up",
+      "sourceName": "chevron-up",
+      "symbolId": "hts-icon-chevron-up"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": true,
+      "name": "chevron-start",
+      "sourceName": "chevron-left",
+      "symbolId": "hts-icon-chevron-start"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": true,
+      "name": "chevron-end",
+      "sourceName": "chevron-right",
+      "symbolId": "hts-icon-chevron-end"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": true,
+      "name": "arrow-start",
+      "sourceName": "arrow-left",
+      "symbolId": "hts-icon-arrow-start"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": true,
+      "name": "arrow-end",
+      "sourceName": "arrow-right",
+      "symbolId": "hts-icon-arrow-end"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": true,
+      "name": "external-link",
+      "sourceName": "external-link",
+      "symbolId": "hts-icon-external-link"
+    },
+    {
+      "categories": [
+        "navigation"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "menu",
+      "sourceName": "menu",
+      "symbolId": "hts-icon-menu"
+    },
+    {
+      "categories": [
+        "action",
+        "data"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "search",
+      "sourceName": "search",
+      "symbolId": "hts-icon-search"
+    },
+    {
+      "categories": [
+        "status"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "info",
+      "sourceName": "info",
+      "symbolId": "hts-icon-info"
+    },
+    {
+      "categories": [
+        "status"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "success",
+      "sourceName": "circle-check",
+      "symbolId": "hts-icon-success"
+    },
+    {
+      "categories": [
+        "status"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "warning",
+      "sourceName": "triangle-alert",
+      "symbolId": "hts-icon-warning"
+    },
+    {
+      "categories": [
+        "status"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "danger",
+      "sourceName": "circle-alert",
+      "symbolId": "hts-icon-danger"
+    },
+    {
+      "categories": [
+        "visibility"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "eye",
+      "sourceName": "eye",
+      "symbolId": "hts-icon-eye"
+    },
+    {
+      "categories": [
+        "visibility"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "eye-off",
+      "sourceName": "eye-off",
+      "symbolId": "hts-icon-eye-off"
+    },
+    {
+      "categories": [
+        "action",
+        "content"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "copy",
+      "sourceName": "copy",
+      "symbolId": "hts-icon-copy"
+    },
+    {
+      "categories": [
+        "action",
+        "transfer"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "download",
+      "sourceName": "download",
+      "symbolId": "hts-icon-download"
+    },
+    {
+      "categories": [
+        "action",
+        "transfer"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "upload",
+      "sourceName": "upload",
+      "symbolId": "hts-icon-upload"
+    },
+    {
+      "categories": [
+        "action",
+        "settings"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "settings",
+      "sourceName": "settings",
+      "symbolId": "hts-icon-settings"
+    },
+    {
+      "categories": [
+        "people"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "user",
+      "sourceName": "user",
+      "symbolId": "hts-icon-user"
+    },
+    {
+      "categories": [
+        "people"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "users",
+      "sourceName": "users",
+      "symbolId": "hts-icon-users"
+    },
+    {
+      "categories": [
+        "date-time"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "calendar",
+      "sourceName": "calendar",
+      "symbolId": "hts-icon-calendar"
+    },
+    {
+      "categories": [
+        "date-time"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "clock",
+      "sourceName": "clock",
+      "symbolId": "hts-icon-clock"
+    },
+    {
+      "categories": [
+        "action",
+        "data"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "filter",
+      "sourceName": "filter",
+      "symbolId": "hts-icon-filter"
+    },
+    {
+      "categories": [
+        "action",
+        "data"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "sort",
+      "sourceName": "arrow-up-down",
+      "symbolId": "hts-icon-sort"
+    },
+    {
+      "categories": [
+        "action"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "more",
+      "sourceName": "ellipsis",
+      "symbolId": "hts-icon-more"
+    },
+    {
+      "categories": [
+        "action"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "refresh",
+      "sourceName": "refresh-cw",
+      "symbolId": "hts-icon-refresh"
+    },
+    {
+      "categories": [
+        "security"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "lock",
+      "sourceName": "lock",
+      "symbolId": "hts-icon-lock"
+    },
+    {
+      "categories": [
+        "security"
+      ],
+      "defaultDecorative": true,
+      "directional": false,
+      "name": "unlock",
+      "sourceName": "unlock",
+      "symbolId": "hts-icon-unlock"
+    }
+  ],
+  "schema": "hts-design-system/icon-manifest/v1",
+  "source": {
+    "license": "ISC",
+    "package": "lucide-static",
+    "sha256": "655441a429c3a51dead50a2bad105d5b2e5cd7348a7c4acada568a7d59cde262",
+    "version": "1.27.0"
+  },
+  "sprite": {
+    "path": "sprite.svg",
+    "symbolPrefix": "hts-icon-"
+  }
+}

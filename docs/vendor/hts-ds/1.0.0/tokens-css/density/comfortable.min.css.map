@@ -1,0 +1,14 @@
+{
+  "file": "comfortable.min.css",
+  "mappings": "AAAA,kBACE",
+  "names": [],
+  "sources": [
+    "css/density/comfortable.css"
+  ],
+  "sourcesContent": [
+    "@layer hts.tokens {\n  :where([data-hts-root][data-hts-density=\"comfortable\"]) {\n    --hts-size-control-default: var(--hts-dimension-control-md);\n    --hts-space-control-block: var(--hts-dimension-space-3);\n    --hts-space-control-inline: var(--hts-dimension-space-4);\n    --hts-space-layout-block: var(--hts-dimension-space-4);\n    --hts-space-layout-inline: var(--hts-dimension-space-3);\n  }\n}\n"
+  ],
+  "version": 3,
+  "x_hts_generated": true,
+  "x_hts_source_sha256": "225dbc602e0c96c6064955d283f763f1de3e2ce4fcd09bfa1da53aa7d4ed9296"
+}

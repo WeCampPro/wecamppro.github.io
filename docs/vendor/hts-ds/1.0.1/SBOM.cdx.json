@@ -1,0 +1,591 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "pkg:npm/@axe-core/playwright@4.12.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MPL-2.0"
+          }
+        }
+      ],
+      "name": "@axe-core/playwright",
+      "purl": "pkg:npm/@axe-core/playwright@4.12.1",
+      "type": "library",
+      "version": "4.12.1"
+    },
+    {
+      "bom-ref": "pkg:npm/@changesets/cli@2.31.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@changesets/cli",
+      "purl": "pkg:npm/@changesets/cli@2.31.1",
+      "type": "library",
+      "version": "2.31.1"
+    },
+    {
+      "bom-ref": "pkg:npm/@cyclonedx/cyclonedx-npm@6.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "@cyclonedx/cyclonedx-npm",
+      "purl": "pkg:npm/@cyclonedx/cyclonedx-npm@6.0.0",
+      "type": "library",
+      "version": "6.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/@fontsource-variable/geist@5.3.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "name": "@fontsource-variable/geist",
+      "purl": "pkg:npm/@fontsource-variable/geist@5.3.0",
+      "type": "library",
+      "version": "5.3.0"
+    },
+    {
+      "bom-ref": "pkg:npm/@fontsource-variable/plus-jakarta-sans@5.3.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "name": "@fontsource-variable/plus-jakarta-sans",
+      "purl": "pkg:npm/@fontsource-variable/plus-jakarta-sans@5.3.0",
+      "type": "library",
+      "version": "5.3.0"
+    },
+    {
+      "bom-ref": "pkg:npm/@fontsource-variable/vazirmatn@5.3.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "name": "@fontsource-variable/vazirmatn",
+      "purl": "pkg:npm/@fontsource-variable/vazirmatn@5.3.0",
+      "type": "library",
+      "version": "5.3.0"
+    },
+    {
+      "bom-ref": "pkg:npm/@fontsource/ibm-plex-mono@5.3.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "name": "@fontsource/ibm-plex-mono",
+      "purl": "pkg:npm/@fontsource/ibm-plex-mono@5.3.0",
+      "type": "library",
+      "version": "5.3.0"
+    },
+    {
+      "bom-ref": "pkg:npm/@playwright/test@1.62.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "@playwright/test",
+      "purl": "pkg:npm/@playwright/test@1.62.0",
+      "type": "library",
+      "version": "1.62.0"
+    },
+    {
+      "bom-ref": "pkg:npm/@storybook/addon-a11y@10.5.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@storybook/addon-a11y",
+      "purl": "pkg:npm/@storybook/addon-a11y@10.5.5",
+      "type": "library",
+      "version": "10.5.5"
+    },
+    {
+      "bom-ref": "pkg:npm/@storybook/addon-docs@10.5.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@storybook/addon-docs",
+      "purl": "pkg:npm/@storybook/addon-docs@10.5.5",
+      "type": "library",
+      "version": "10.5.5"
+    },
+    {
+      "bom-ref": "pkg:npm/@storybook/addon-vitest@10.5.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@storybook/addon-vitest",
+      "purl": "pkg:npm/@storybook/addon-vitest@10.5.5",
+      "type": "library",
+      "version": "10.5.5"
+    },
+    {
+      "bom-ref": "pkg:npm/@storybook/react-vite@10.5.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@storybook/react-vite",
+      "purl": "pkg:npm/@storybook/react-vite@10.5.5",
+      "type": "library",
+      "version": "10.5.5"
+    },
+    {
+      "bom-ref": "pkg:npm/@tailwindcss/cli@4.3.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@tailwindcss/cli",
+      "purl": "pkg:npm/@tailwindcss/cli@4.3.3",
+      "type": "library",
+      "version": "4.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/@testing-library/react@16.3.2",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@testing-library/react",
+      "purl": "pkg:npm/@testing-library/react@16.3.2",
+      "type": "library",
+      "version": "16.3.2"
+    },
+    {
+      "bom-ref": "pkg:npm/@testing-library/user-event@14.6.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@testing-library/user-event",
+      "purl": "pkg:npm/@testing-library/user-event@14.6.1",
+      "type": "library",
+      "version": "14.6.1"
+    },
+    {
+      "bom-ref": "pkg:npm/@types/node@24.13.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@types/node",
+      "purl": "pkg:npm/@types/node@24.13.3",
+      "type": "library",
+      "version": "24.13.3"
+    },
+    {
+      "bom-ref": "pkg:npm/@types/react@19.2.17",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@types/react",
+      "purl": "pkg:npm/@types/react@19.2.17",
+      "type": "library",
+      "version": "19.2.17"
+    },
+    {
+      "bom-ref": "pkg:npm/@types/react-dom@19.2.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@types/react-dom",
+      "purl": "pkg:npm/@types/react-dom@19.2.3",
+      "type": "library",
+      "version": "19.2.3"
+    },
+    {
+      "bom-ref": "pkg:npm/@vitejs/plugin-react@6.0.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "@vitejs/plugin-react",
+      "purl": "pkg:npm/@vitejs/plugin-react@6.0.4",
+      "type": "library",
+      "version": "6.0.4"
+    },
+    {
+      "bom-ref": "pkg:npm/ajv@8.20.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "ajv",
+      "purl": "pkg:npm/ajv@8.20.0",
+      "type": "library",
+      "version": "8.20.0"
+    },
+    {
+      "bom-ref": "pkg:npm/eslint@10.8.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "eslint",
+      "purl": "pkg:npm/eslint@10.8.0",
+      "type": "library",
+      "version": "10.8.0"
+    },
+    {
+      "bom-ref": "pkg:npm/jsdom@30.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "jsdom",
+      "purl": "pkg:npm/jsdom@30.0.0",
+      "type": "library",
+      "version": "30.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/lightningcss@1.33.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MPL-2.0"
+          }
+        }
+      ],
+      "name": "lightningcss",
+      "purl": "pkg:npm/lightningcss@1.33.0",
+      "type": "library",
+      "version": "1.33.0"
+    },
+    {
+      "bom-ref": "pkg:npm/lucide-react@1.27.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ],
+      "name": "lucide-react",
+      "purl": "pkg:npm/lucide-react@1.27.0",
+      "type": "library",
+      "version": "1.27.0"
+    },
+    {
+      "bom-ref": "pkg:npm/lucide-static@1.27.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ],
+      "name": "lucide-static",
+      "purl": "pkg:npm/lucide-static@1.27.0",
+      "type": "library",
+      "version": "1.27.0"
+    },
+    {
+      "bom-ref": "pkg:npm/pnpm@11.17.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "pnpm",
+      "purl": "pkg:npm/pnpm@11.17.0",
+      "type": "library",
+      "version": "11.17.0"
+    },
+    {
+      "bom-ref": "pkg:npm/prettier@3.9.6",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "prettier",
+      "purl": "pkg:npm/prettier@3.9.6",
+      "type": "library",
+      "version": "3.9.6"
+    },
+    {
+      "bom-ref": "pkg:npm/radix-ui@1.6.7",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "radix-ui",
+      "purl": "pkg:npm/radix-ui@1.6.7",
+      "type": "library",
+      "version": "1.6.7"
+    },
+    {
+      "bom-ref": "pkg:npm/react@19.2.8",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "react",
+      "purl": "pkg:npm/react@19.2.8",
+      "type": "library",
+      "version": "19.2.8"
+    },
+    {
+      "bom-ref": "pkg:npm/react-dom@19.2.8",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "react-dom",
+      "purl": "pkg:npm/react-dom@19.2.8",
+      "type": "library",
+      "version": "19.2.8"
+    },
+    {
+      "bom-ref": "pkg:npm/storybook@10.5.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "storybook",
+      "purl": "pkg:npm/storybook@10.5.5",
+      "type": "library",
+      "version": "10.5.5"
+    },
+    {
+      "bom-ref": "pkg:npm/style-dictionary@5.5.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "style-dictionary",
+      "purl": "pkg:npm/style-dictionary@5.5.0",
+      "type": "library",
+      "version": "5.5.0"
+    },
+    {
+      "bom-ref": "pkg:npm/stylelint@17.14.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "stylelint",
+      "purl": "pkg:npm/stylelint@17.14.1",
+      "type": "library",
+      "version": "17.14.1"
+    },
+    {
+      "bom-ref": "pkg:npm/stylelint-config-standard@40.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "stylelint-config-standard",
+      "purl": "pkg:npm/stylelint-config-standard@40.0.0",
+      "type": "library",
+      "version": "40.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/svgo@4.0.2",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "svgo",
+      "purl": "pkg:npm/svgo@4.0.2",
+      "type": "library",
+      "version": "4.0.2"
+    },
+    {
+      "bom-ref": "pkg:npm/tailwindcss@4.3.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "tailwindcss",
+      "purl": "pkg:npm/tailwindcss@4.3.3",
+      "type": "library",
+      "version": "4.3.3"
+    },
+    {
+      "bom-ref": "pkg:npm/typescript@6.0.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "typescript",
+      "purl": "pkg:npm/typescript@6.0.3",
+      "type": "library",
+      "version": "6.0.3"
+    },
+    {
+      "bom-ref": "pkg:npm/typescript-eslint@8.65.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "typescript-eslint",
+      "purl": "pkg:npm/typescript-eslint@8.65.0",
+      "type": "library",
+      "version": "8.65.0"
+    },
+    {
+      "bom-ref": "pkg:npm/vite@8.1.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "vite",
+      "purl": "pkg:npm/vite@8.1.5",
+      "type": "library",
+      "version": "8.1.5"
+    },
+    {
+      "bom-ref": "pkg:npm/vitest@4.1.10",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "vitest",
+      "purl": "pkg:npm/vitest@4.1.10",
+      "type": "library",
+      "version": "4.1.10"
+    },
+    {
+      "bom-ref": "pkg:npm/yaml@2.9.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ],
+      "name": "yaml",
+      "purl": "pkg:npm/yaml@2.9.0",
+      "type": "library",
+      "version": "2.9.0"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "name": "hts-design-system",
+      "type": "application",
+      "version": "1.0.1"
+    },
+    "timestamp": "1970-01-01T00:00:00.000Z"
+  },
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-000000000000",
+  "specVersion": "1.6",
+  "version": 1
+}

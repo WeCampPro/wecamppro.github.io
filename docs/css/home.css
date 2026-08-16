@@ -5,16 +5,13 @@
 .hd-home-page {
   /* Thin aliases onto the --wc-* brand tokens (hd-tokens.css) — edit values there. */
   --hd-index-blue: var(--wc-cobalt);
-  --hd-index-ink: var(--wc-ink);
-  --hd-index-paper: var(--wc-paper);
-  --hd-index-muted: var(--wc-muted);
-  --hd-index-line: var(--wc-line);
+  --hd-index-ink: var(--wecamp-local-ink);
+  --hd-index-paper: var(--wecamp-local-paper);
+  --hd-index-muted: var(--wecamp-local-muted);
+  --hd-index-line: var(--wecamp-local-line);
   --hd-index-cyan: var(--wc-cyan);
-  --hd-index-green: var(--wc-green);
   --hd-index-accent-on-light: var(--wc-accent-on-light); /* accent text on light bands — stat numbers ONLY;
-                                                            index CTAs are hd-ds-cta (hd-page.css), so the
-                                                            fill/hover/ink aliases were dead (uiux-3.2) */
-  --hd-index-green-ink: var(--wc-green-ink);        /* AA text on solid green status fill */
+                                                            action fill lives in the local HTS Button override */
   --hd-index-stat-cell: var(--wc-stat-cell);        /* opaque stat cell */
   --hd-index-radius: var(--wc-radius);
 
@@ -78,9 +75,8 @@
   line-height: 1.9;
 }
 
-/* Eyebrow, kicker and CTA primitives come from hd-page.css (.hd-ds-eyebrow,
-   .hd-ds-kicker, .hd-ds-cta*) — the hd-index-* forks were consolidated away
-   in uiux-0.2. */
+/* Eyebrow and kicker primitives come from hd-page.css; their old homepage
+   forks were consolidated away in uiux-0.2. */
 
 /* Hero and home navigation */
 
@@ -274,29 +270,6 @@
   font-size: clamp(20px, 2.4vw, 32px);
   font-weight: 900;
   line-height: 1.3;
-}
-
-/* Dark-band status pill (uiux-0.2 one-off, fixed in uiux-7.1): SOLID green fill
-   + dark green ink (5.45:1) instead of a low-alpha tint over an unpredictable
-   backdrop — Linear/Vercel-style solid chip, per the status color contract. */
-.hd-index-featured-camp span {
-  align-self: flex-start;
-  flex: none;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--hd-index-green);
-  color: var(--hd-index-green-ink);
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1.25;
-}
-
-/* The green «open registration» chip is reserved for status="active"; a
-   featured camp in any other state (e.g. «در حال برگزاری») gets a neutral
-   light chip so it never reads as open on the cobalt hero band. */
-.hd-index-featured-camp span:not([data-status="active"]) {
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--wc-cobalt);
 }
 
 .hd-index-proof-window > img,
@@ -535,8 +508,7 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
   background: var(--hd-index-paper);
 }
 
-/* Page modifier: topic chips are the shared .hd-ds-chip / .hd-ds-chip-row;
-   the homepage only adds spacing below the row. */
+/* The homepage only adds spacing below the shared product Link cluster. */
 .hd-index-topic-row {
   margin-block-end: 22px;
 }
@@ -597,9 +569,9 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
   border-radius: var(--hd-index-radius);
   background: var(--hd-index-blue);
   color: var(--hd-index-paper);
-  /* Persian digit — render in the brand font (Vazirmatn); the Latin display
-     font lacks Persian glyphs and fell back to a system face. */
-  font-family: var(--hd-font-heading);
+  /* Persian digit — route through the released body stack to the vendored
+     standard Vazirmatn Variable face. */
+  font-family: var(--hts-font-family-body);
   font-size: 22px;
   font-weight: 900;
   line-height: 1;
@@ -656,9 +628,9 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
   border-radius: 50%;
   background: rgba(11, 47, 159, 0.1);
   color: var(--hd-index-blue);
-  /* Persian digit — render in the brand font (Vazirmatn); the Latin display
-     font lacks Persian glyphs and fell back to a system face. */
-  font-family: var(--hd-font-heading);
+  /* Persian digit — route through the released body stack to the vendored
+     standard Vazirmatn Variable face. */
+  font-family: var(--hts-font-family-body);
   font-weight: 900;
 }
 
@@ -798,7 +770,7 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
   border-radius: 999px;
   background: #fff;
   color: var(--hd-index-muted); /* 5.88:1 on white (uiux-7.1; was 48% ink at 3.4:1) */
-  font-family: var(--hd-font-latin);
+  font-family: var(--hts-font-family-display);
   font-size: 12px;
   font-style: normal;
   line-height: 1;
@@ -821,7 +793,7 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
 .hd-index-cert-body p {
   margin: 18px 0 0;
   color: var(--hd-index-blue);
-  font-family: var(--hd-font-latin);
+  font-family: var(--hts-font-family-display);
   font-size: 12px;
   font-weight: 900;
   line-height: 1.3;
@@ -871,7 +843,7 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
 }
 
 /* Page modifier: placement of the single cert CTA inside the copy grid. */
-.hd-index-cert-copy .hd-ds-cta-primary {
+.hd-index-cert-copy .hts-button[data-variant="primary"] {
   justify-self: start;
   margin-block-start: 8px;
 }
@@ -1018,11 +990,11 @@ a.hd-index-proof-window:hover .hd-index-proof-cta svg {
 
   /* Page modifier: the homepage event teaser stacks below 767px (the events
      catalog keeps its own responsive recipe in hd-page.css). */
-  .hd-index-events .hd-ds-event-card {
+  .hd-index-events .wecamp-event-card {
     grid-template-columns: 1fr;
   }
 
-  .hd-index-events .hd-ds-event-card img {
+  .hd-index-events .wecamp-event-card img {
     min-height: auto;
     aspect-ratio: 16 / 10;
   }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-hts-root data-hts-theme="wecamp" data-hts-mode="light" data-hts-density="comfortable">
  <head><meta charset="utf-8"/>
   
   <script type="text/javascript">document.documentElement.classList.add("hd-js");</script>
@@ -18,10 +18,13 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   
   
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/vendor/fonts/vazirmatn/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin/>
-  <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendor/hts-ds/1.0.1/css/themes/wecamp.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/vendor/hts-ds/1.0.1/tokens-css/locale/fa.css" rel="stylesheet" type="text/css"/>
+  
+  
   
   <link href="/css/hd-tokens.css" rel="stylesheet" type="text/css"/>
   
@@ -34,6 +37,28 @@
   <link href="/css/hd-page.css" rel="stylesheet" type="text/css"/>
   
   <link href="/css/footer.css" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/css/hts-overrides/button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/icon-button.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/link.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/badge.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/input.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/textarea.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/select.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/form-field.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/accordion.css" rel="stylesheet" type="text/css"/>
+  
+  <link href="/css/hts-overrides/dialog.css" rel="stylesheet" type="text/css"/>
+  
   
   <script defer src="/vendor/js/alpinejs@3.15.12.min.js" type="text/javascript"></script>
   <script defer src="/js/hd-animations.js" type="text/javascript"></script>
@@ -226,19 +251,24 @@
        <a class="hd-nav-brand" href="/" aria-label="وی‌کمپ">
         <img class="hd-nav-logo" src="/img/logo.png" alt="" width="200" height="40"/>
        </a>
-       <button type="button" class="hd-nav-toggle"
+       
+       <button type="button" class="hts-icon-button wecamp-nav-menu-button"
+               data-variant="quiet"
+               data-size="md"
                x-ref="menuToggle"
                @click.stop="toggleMenu()"
                aria-controls="hd-nav-menu"
                :aria-expanded="menuOpen ? 'true' : 'false'"
                aria-label="باز کردن منو"
                :aria-label="menuOpen ? 'بستن منو' : 'باز کردن منو'">
-        <span class="hd-nav-toggle-icon" aria-hidden="true">
-         <span></span>
-         <span></span>
-         <span></span>
-        </span>
+        <svg class="hts-icon" data-size="md" data-hts-icon="menu"
+             :data-hts-icon="menuOpen ? 'close' : 'menu'"
+             aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu"
+              :href="menuOpen ? '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-close' : '/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-menu'"></use>
+        </svg>
        </button>
+       
       </div>
 
       
@@ -251,14 +281,16 @@
         </svg>
         <span class="hd-nav-account-label">ورود</span>
        </a>
-       <a class="hd-button hd-button-header" href="/camps">
+       <a class="hts-button wecamp-nav-button" data-variant="primary" data-size="md" href="/camps">
         <span>همه کمپ‌ها</span>
-        <svg class="hd-button-header-icon" viewBox="0 0 20 20" aria-hidden="true">
-         <path d="M12.5 5 7.5 10l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <svg class="hts-icon wecamp-nav-button-icon" data-size="md" data-hts-icon="chevron-end" data-hts-directional="true" aria-hidden="true" focusable="false">
+         <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-end"></use>
         </svg>
+        
        </a>
        
-       <a class="hd-button hd-button-header hd-button-header-ghost" href="/camps/agentic-ai/">
+       <a class="hts-button wecamp-nav-button" data-variant="quiet" data-size="md" href="/camps/agentic-ai/">
         <span>کمپ هوش مصنوعی</span>
        </a>
        
@@ -268,7 +300,7 @@
     </div>
    </header>
 <main id="hd-main">
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="contact-hero-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="contact-hero-title">
      <div class="hd-container">
       <div class="hd-ds-hero-copy hd-measure-xl" data-hd-animate="fade-up" data-hd-animate-eager>
        <p class="hd-ds-eyebrow">تماس با ما</p>
@@ -278,43 +310,43 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="contact-form-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="contact-form-title">
      <div class="hd-container">
       <div class="hd-ds-hero">
        <div class="hd-ds-hero-copy" data-hd-animate="fade-up">
         <p class="hd-ds-kicker">ارسال پیام</p>
         <h2 id="contact-form-title" class="hd-h2-fluid-md">پیام‌تان را برای ما بفرستید.</h2>
-        <div class="hd-ds-card hd-mbs-20">
+        <div class="wecamp-surface wecamp-form-surface wecamp-contact-form-card hd-mbs-20">
          <div class="hd-form-wrap">
           <form id="contact-form" name="contact-form" action="https://api.web3forms.com/submit" method="POST">
            <input type="hidden" name="access_key" value="6540d8e6-186a-4cff-87b0-9e5c89f50b08">
            <div class="hd-layout-grid contact-us-form-grid">
-            <div class="input-wrapper">
-             <label for="name">نام کامل</label>
-             <input class="input hd-field" id="name" autocomplete="name" maxlength="256" name="name" placeholder="نام و نام خانوادگی" required="" type="text"/>
+            <div class="hts-field" data-control="input" data-required="true">
+             <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="name">نام کامل</label>
+             <input class="hts-input hts-field-control" data-size="lg" id="name" autocomplete="name" maxlength="256" name="name" placeholder="نام و نام خانوادگی" required="" type="text"/>
             </div>
-            <div class="input-wrapper">
-             <label for="Email">آدرس ایمیل</label>
-             <input dir="ltr" class="input hd-field" id="Email" autocomplete="email" inputmode="email" maxlength="256" name="Email" placeholder="example@youremail.com" required="" spellcheck="false" type="email"/>
+            <div class="hts-field" data-control="input" data-required="true">
+             <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="Email">آدرس ایمیل</label>
+             <input dir="ltr" class="hts-input hts-field-control" data-size="lg" id="Email" autocomplete="email" inputmode="email" maxlength="256" name="Email" placeholder="example@youremail.com" required="" spellcheck="false" type="email"/>
             </div>
-            <div class="input-wrapper">
-             <label for="Phone">شماره تلفن</label>
-             <input dir="ltr" class="input hd-field" id="Phone" autocomplete="tel" inputmode="tel" maxlength="256" name="Phone" pattern="[0-9۰-۹]{10,11}" placeholder="۰۹۱۹۲۳۴۵۶۷۸" required="" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید" type="tel"/>
+            <div class="hts-field" data-control="input" data-required="true">
+             <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="Phone">شماره تلفن</label>
+             <input dir="ltr" class="hts-input hts-field-control" data-size="lg" id="Phone" autocomplete="tel" inputmode="tel" maxlength="256" name="Phone" pattern="[0-9۰-۹]{10,11}" placeholder="۰۹۱۹۲۳۴۵۶۷۸" required="" title="لطفا با فرمت ۰۹۱۲۳۴۵۶۷۸۹ درج کنید" type="tel"/>
             </div>
-            <div class="input-wrapper">
-             <label for="Subject">موضوع</label>
-             <input class="input hd-field" id="Subject" autocomplete="off" maxlength="256" name="Subject" placeholder="چطور می‌توانیم به شما کمک کنیم؟" type="text"/>
+            <div class="hts-field" data-control="input">
+             <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="Subject">موضوع</label>
+             <input class="hts-input hts-field-control" data-size="lg" id="Subject" autocomplete="off" maxlength="256" name="Subject" placeholder="چطور می‌توانیم به شما کمک کنیم؟" type="text"/>
             </div>
            </div>
-           <div class="input-wrapper word-area">
-            <label for="Message">متن پیام</label>
-            <textarea class="text-area hd-field" id="Message" autocomplete="off" maxlength="5000" name="Message" placeholder="در چه زمینه‌ای می‌توانیم به شما کمک کنیم؟ لطفاً با جزئیات توضیح دهید." required=""></textarea>
+           <div class="hts-field wecamp-contact-message-field" data-control="textarea" data-required="true">
+            <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="Message">متن پیام</label>
+            <textarea class="hts-textarea hts-field-control" data-size="lg" data-resize="vertical" id="Message" autocomplete="off" maxlength="5000" name="Message" placeholder="در چه زمینه‌ای می‌توانیم به شما کمک کنیم؟ لطفاً با جزئیات توضیح دهید." required=""></textarea>
            </div>
            <input type="hidden" name="subject" value="پیام جدید از فرم تماس">
            <input type="hidden" name="redirect" value="https://wecamp.pro/">
            
            <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
-           <button class="hd-ds-cta hd-ds-cta-primary" type="submit">ارسال پیام</button>
+           <button class="hts-button wecamp-button-cta wecamp-button-accent" data-variant="primary" data-size="lg" type="submit">ارسال پیام</button>
           </form>
           <div class="success-message hd-contact-us hd-form-success" aria-live="polite" aria-hidden="true">
            <div>فرم با موفقیت ارسال شد. به‌زودی با شما تماس می‌گیریم.</div>
@@ -329,24 +361,24 @@
        <div class="hd-ds-hero-copy" data-hd-animate="fade-up">
         <p class="hd-ds-kicker">راه‌های تماس مستقیم</p>
         <h2 class="hd-h2-fluid-md">مستقیم در ارتباط باشید.</h2>
-        <div class="hd-ds-card-grid hd-grid-cols-2 hd-mbs-20">
-         <div class="hd-ds-contact-card">
+        <div class="wecamp-card-grid hd-grid-cols-2 hd-mbs-20">
+         <div class="wecamp-surface wecamp-contact-card">
           <span>تلفن — تهران</span>
           <a href="tel:02182802264">۰۲۱-۸۲۸۰۲۲۶۴</a>
           <a href="tel:09369090351">۰۹۳۶۹۰۹۰۳۵۱</a>
          </div>
-         <div class="hd-ds-contact-card">
+         <div class="wecamp-surface wecamp-contact-card">
           <span>ایمیل</span>
           <a href="mailto:we@wecamp.pro">we@wecamp.pro</a>
           <a href="mailto:info@wecamp.pro">info@wecamp.pro</a>
          </div>
-         <div class="hd-ds-contact-card hd-col-span-full">
+         <div class="wecamp-surface wecamp-contact-card hd-col-span-full">
           <span>شبکه‌های اجتماعی</span>
-          <div class="hd-ds-chip-row hd-mbs-6">
-           <a class="hd-ds-chip" href="https://t.me/wecamppro" target="_blank" rel="noopener">تلگرام</a>
-           <a class="hd-ds-chip" href="https://x.com/wecamppro" target="_blank" rel="noopener">ایکس</a>
-           <a class="hd-ds-chip" href="https://www.instagram.com/wecamppro" target="_blank" rel="noopener">اینستاگرام</a>
-           <a class="hd-ds-chip" href="https://www.linkedin.com/company/wecamppro" target="_blank" rel="noopener">لینکدین</a>
+          <div class="wecamp-inline-cluster hd-mbs-6">
+           <a class="hts-link wecamp-link-social" data-variant="default" data-external="true" href="https://t.me/wecamppro" target="_blank" rel="noopener">تلگرام<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
+           <a class="hts-link wecamp-link-social" data-variant="default" data-external="true" href="https://x.com/wecamppro" target="_blank" rel="noopener">ایکس<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
+           <a class="hts-link wecamp-link-social" data-variant="default" data-external="true" href="https://www.instagram.com/wecamppro" target="_blank" rel="noopener">اینستاگرام<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
+           <a class="hts-link wecamp-link-social" data-variant="default" data-external="true" href="https://www.linkedin.com/company/wecamppro" target="_blank" rel="noopener">لینکدین<svg aria-hidden="true" data-hts-directional="true" data-hts-icon="external-link" focusable="false"><use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-external-link"></use></svg></a>
           </div>
          </div>
         </div>
@@ -355,64 +387,72 @@
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-paper hd-ds-section" aria-labelledby="contact-faq-title">
+    <section class="wecamp-band wecamp-band-paper wecamp-section" aria-labelledby="contact-faq-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head" data-hd-animate="fade-up">
+      <div class="wecamp-section-head" data-hd-animate="fade-up">
        <p class="hd-ds-kicker">سؤالات متداول</p>
        <h2 id="contact-faq-title">پاسخ پرسش‌های رایج.</h2>
       </div>
-      <div class="hd-ds-accordion hd-measure-xl" data-hd-animate="fade-up">
-       <div class="hd-ds-accordion-item" x-data="{ open: false }">
-        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-0">
-         <span>وی‌کمپ چه زمانی تأسیس شد؟</span>
-         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="hd-ds-accordion-panel" id="contact-faq-panel-0" x-bind:hidden="!open">
-         <p class="hd-m-0">وی‌کمپ فعالیت رسمی خود را در پاییز ۱۴۰۳ آغاز کرد و از همان زمان به‌عنوان بستری تخصصی برای یادگیری و رشد در حوزه‌های نوین شکل گرفت. هدف ما از ابتدا ایجاد محیطی حرفه‌ای، به‌روز و کاربردی بوده است.</p>
+      <div class="hts-accordion hd-measure-xl" data-type="multiple" data-collapsible="true" data-orientation="vertical" data-hd-animate="fade-up">
+       <details class="hts-accordion-item">
+        <summary class="hts-accordion-trigger">
+         <span class="hts-accordion-label">وی‌کمپ چه زمانی تأسیس شد؟</span>
+         <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+          <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+         </svg>
+        </summary>
+        <div class="hts-accordion-content">
+         <div class="hts-accordion-content-body"><p class="hd-m-0">وی‌کمپ فعالیت رسمی خود را در پاییز ۱۴۰۳ آغاز کرد و از همان زمان به‌عنوان بستری تخصصی برای یادگیری و رشد در حوزه‌های نوین شکل گرفت. هدف ما از ابتدا ایجاد محیطی حرفه‌ای، به‌روز و کاربردی بوده است.</p></div>
         </div>
-       </div>
-       <div class="hd-ds-accordion-item" x-data="{ open: false }">
-        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-1">
-         <span>روش‌های پرداخت برای دوره‌ها چیست؟</span>
-         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="hd-ds-accordion-panel" id="contact-faq-panel-1" x-bind:hidden="!open">
-         <p class="hd-m-0">از طریق درگاه پرداخت و نیز به‌صورت مستقیم با کارت‌به‌کارت.</p>
+       </details>
+       <details class="hts-accordion-item">
+        <summary class="hts-accordion-trigger">
+         <span class="hts-accordion-label">روش‌های پرداخت برای دوره‌ها چیست؟</span>
+         <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+          <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+         </svg>
+        </summary>
+        <div class="hts-accordion-content">
+         <div class="hts-accordion-content-body"><p class="hd-m-0">از طریق درگاه پرداخت و نیز به‌صورت مستقیم با کارت‌به‌کارت.</p></div>
         </div>
-       </div>
-       <div class="hd-ds-accordion-item" x-data="{ open: false }">
-        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-2">
-         <span>آیا می‌توانم کمپی را به‌صورت اقساطی ثبت‌نام کنم؟</span>
-         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="hd-ds-accordion-panel" id="contact-faq-panel-2" x-bind:hidden="!open">
-         <p class="hd-m-0">بله، شرایط پرداخت قسطی شهریه وجود دارد. می‌توانید از درگاه پرداخت دیجی‌پی شهریه را در قالب کسر از اعتبار خود یا وام پرداخت کنید. برای روش‌های دیگر با ما تماس بگیرید.</p>
+       </details>
+       <details class="hts-accordion-item">
+        <summary class="hts-accordion-trigger">
+         <span class="hts-accordion-label">آیا می‌توانم کمپی را به‌صورت اقساطی ثبت‌نام کنم؟</span>
+         <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+          <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+         </svg>
+        </summary>
+        <div class="hts-accordion-content">
+         <div class="hts-accordion-content-body"><p class="hd-m-0">بله، شرایط پرداخت قسطی شهریه وجود دارد. می‌توانید از درگاه پرداخت دیجی‌پی شهریه را در قالب کسر از اعتبار خود یا وام پرداخت کنید. برای روش‌های دیگر با ما تماس بگیرید.</p></div>
         </div>
-       </div>
-       <div class="hd-ds-accordion-item" x-data="{ open: false }">
-        <button type="button" class="hd-ds-accordion-trigger" :aria-expanded="open" @click="open = !open" aria-controls="contact-faq-panel-3">
-         <span>آیا امکان استفاده از تخفیف وجود دارد؟</span>
-         <span class="hd-ds-accordion-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="hd-ds-accordion-panel" id="contact-faq-panel-3" x-bind:hidden="!open">
-         <p class="hd-m-0">کمپ‌ها معمولاً دارای تخفیف ثبت‌نام زودهنگام در هفته بازگشایی ثبت‌نام هستند. ما را در شبکه‌های اجتماعی دنبال کنید تا از شروع ثبت‌نام کمپ‌ها به‌موقع آگاه شوید.</p>
+       </details>
+       <details class="hts-accordion-item">
+        <summary class="hts-accordion-trigger">
+         <span class="hts-accordion-label">آیا امکان استفاده از تخفیف وجود دارد؟</span>
+         <svg class="hts-icon hts-accordion-indicator" data-size="md" data-hts-icon="chevron-down" aria-hidden="true" focusable="false">
+          <use href="/vendor/hts-ds/1.0.1/icons/sprite.svg#hts-icon-chevron-down"></use>
+         </svg>
+        </summary>
+        <div class="hts-accordion-content">
+         <div class="hts-accordion-content-body"><p class="hd-m-0">کمپ‌ها معمولاً دارای تخفیف ثبت‌نام زودهنگام در هفته بازگشایی ثبت‌نام هستند. ما را در شبکه‌های اجتماعی دنبال کنید تا از شروع ثبت‌نام کمپ‌ها به‌موقع آگاه شوید.</p></div>
         </div>
-       </div>
+       </details>
       </div>
      </div>
     </section>
 
-    <section class="hd-ds-band hd-ds-band-cobalt hd-ds-band-motif hd-ds-section" aria-labelledby="contact-cta-title">
+    <section class="wecamp-band wecamp-band-cobalt wecamp-band-motif wecamp-section" aria-labelledby="contact-cta-title">
      <div class="hd-container">
-      <div class="hd-ds-section-head hd-measure-md" data-hd-animate="fade-up">
+      <div class="wecamp-section-head hd-measure-md" data-hd-animate="fade-up">
        <p class="hd-ds-eyebrow">پرسش دیگری دارید؟</p>
        <h2 id="contact-cta-title">پرسش‌تان را مستقیم با تیم وی‌کمپ در میان بگذارید.</h2>
        <p>فرم همین صفحه را پر کنید؛ طی یک روز کاری با شما تماس می‌گیریم. اگر هم آماده انتخاب هستید، کمپ‌ها را ببینید.</p>
       </div>
       <div class="hd-ds-actions" data-hd-animate="fade-up">
        
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="#contact-form">فرم تماس را پر کنید</a>
-       <a class="hd-ds-cta hd-ds-cta-secondary" href="/camps">مشاهده کمپ‌ها</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="#contact-form">فرم تماس را پر کنید</a>
+       <a class="hts-button wecamp-button-cta" data-variant="secondary" data-size="lg" href="/camps">مشاهده کمپ‌ها</a>
       </div>
      </div>
     </section>
@@ -610,8 +650,13 @@
       </div>
       <div class="hd-form-wrap hd-form-block-newsletter">
        <form action="https://formspree.io/f/mjkvpvqz" method="POST" class="hd-form-newsletter" id="footer-newsletter-form" name="footer-newsletter-form">
-        <input dir="ltr" aria-label="ایمیل خبرنامه" autocomplete="email" class="hd-input hd-input-newsletter hd-field" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
-        <input class="hd-button hd-button-newsletter hd-inline-block" type="submit" value="اشتراک"/>
+        
+        <div class="hts-field wecamp-footer-field" data-control="input" data-required="true">
+         <label class="hts-text hts-field-label" data-role="label" data-tone="primary" for="email-4">ایمیل خبرنامه</label>
+         <input dir="ltr" autocomplete="email" class="hts-input hts-field-control" data-size="lg" id="email-4" inputmode="email" maxlength="256" name="email-4" placeholder="ایمیل‌تان را وارد کنید" required="" spellcheck="false" type="email"/>
+        </div>
+        
+        <input class="hts-button wecamp-footer-button" data-variant="secondary" data-size="lg" type="submit" value="اشتراک"/>
        </form>
        <div class="hd-success-message-newsletter hd-form-success" aria-live="polite" aria-hidden="true">
         <div>
