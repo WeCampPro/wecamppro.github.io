@@ -733,6 +733,13 @@
 
 .page-wrapper .hd-payment-processor-logo {
   max-height: 24px;
+  /* repo-audit-015: these marks now declare their 60x32 source dimensions so the
+     box is reserved before the bytes arrive. Without `width: auto` the width
+     attribute would fix the used width at 60px while max-height clamped the
+     height to 24px, stretching the logo — the exact "hard-coded visual width
+     fighting a responsive rule" the task warns against. Height drives, width
+     follows the intrinsic ratio, and the rendered 45x24 is unchanged. */
+  width: auto;
   margin: 0;
 }
 
@@ -844,5 +851,27 @@
 
   .page-wrapper .hd-newsletter-title {
     font-size: 18px;
+  }
+}
+
+
+/* ----- Newsletter row alignment ------------------------------------------
+   The subscribe row puts an .hts-field beside a bare submit button. The HTS
+   field is a grid that stacks its LABEL above the control, so it is 86px tall
+   (label 22 + gap 8 + control 56) while the button is 56px. With the row's
+   `align-items: center` the button centred against the whole field and sat
+   exactly (86-56)/2 = 15px ABOVE the input it belongs to.
+
+   End-alignment puts the button's bottom edge on the control's bottom edge.
+   Scoped to the row layout: below 480px .hd-form-newsletter switches to a
+   column, where align-items controls horizontal placement instead.
+
+   Caveat, reported to the design system: .hts-field renders help and error text
+   BELOW the control in DOM order, so `end` would drift again if this field ever
+   gained either. HTS ships no inline field+button pattern, which is the real
+   gap — see HTS-NEXT-WECAMP-20260819-01 in the design-system ledger. */
+@media screen and (min-width: 480px) {
+  .page-wrapper .wecamp-newsletter-row {
+    align-items: end;
   }
 }

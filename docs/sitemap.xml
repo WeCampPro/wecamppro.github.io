@@ -1,59 +1,78 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://wecamp.pro/about/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/contact/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/events/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/events/ai/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/partnership/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/request/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/school/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/school/ai-engineering/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/school/cloud-engineering/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/school/product-design/</loc>
-  </url><url>
-    <loc>https://wecamp.pro/success/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/teachers/</loc>
-  </url><url>
-    <loc>https://wecamp.pro/categories/</loc>
-  </url><url>
-    <loc>https://wecamp.pro/tags/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/register/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/product-design-project/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/product-design-advanced/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/agentic-ai/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/product-design/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/cloud-infra-deployment/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/cloud-infra-deepdive/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/user-research/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/camps/cloud-infra-management/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/cert/wc-1404-ai-0001/</loc>
-  </url><url>
+  </url>
+  <url>
+    <loc>https://wecamp.pro/en/cert/wc-1404-ai-0001/</loc>
+  </url>
+  <url>
     <loc>https://wecamp.pro/cert/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://wecamp.pro/</loc>
   </url>
 </urlset>

@@ -17,7 +17,7 @@
 
    Loaded as a NON-deferred <script> near the end of <body> so this `alpine:init`
    listener registers BEFORE the deferred Alpine core in <head> boots — the same
-   ordering contract hd-tabs.js (W3.1) and nav.html (W2.1) rely on. */
+   ordering contract nav.html (W2.1) relies on. */
 document.addEventListener('alpine:init', () => {
   Alpine.data('hdSurvey', (config = {}) => ({
     position: config.position === 'left' ? 'left' : 'right',

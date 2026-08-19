@@ -760,6 +760,23 @@ li {
   background-color: var(--hd-form-error-bg);    /* #ffdede */
   color: var(--wecamp-local-color-error);                 /* 4.8:1 on the wash — the footer banner inherited paper white at 1.1:1 (uiux-7.1) */
 }
+.hd-form-error a {
+  color: currentColor;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+}
+.hd-field-error {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin: 0;
+  color: var(--hts-color-status-danger-foreground, var(--wecamp-local-color-error));
+  overflow-wrap: anywhere;
+}
+.hd-form-success:focus-visible,
+.hd-form-error:focus-visible {
+  outline: var(--hts-focus-ring-width, 2px) solid var(--hts-color-focus-ring, var(--wc-cobalt));
+  outline-offset: var(--hts-focus-ring-offset, 2px);
+}
 .hd-form-success[aria-hidden="true"],
 .hd-form-error[aria-hidden="true"] {
   display: none;
@@ -1431,7 +1448,7 @@ li {
    §16 Porsline survey slide-in (hd-survey.js + partials/survey.html) —
    .hd-survey overlay + panel, position-aware via --right/--left modifiers;
    overlay 700ms / panel 500ms. (The old §16(a) scroll-snap carousel died in
-   the uiux-8.1 census — no page carries [data-hd-slider-*].) */
+   the uiux-8.1 census; repo-audit-016 then deleted the script itself.) */
 .hd-survey {
   position: fixed;
   height: 0;

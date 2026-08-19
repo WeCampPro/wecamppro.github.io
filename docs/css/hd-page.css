@@ -460,11 +460,33 @@
   line-height: 1.5;
 }
 
+/* repo-audit-005: the catalog filter's result line. Sits between the section
+   head and the grid so the count a visitor filtered to is the last thing they
+   read before the cards — on a phone it is what tells them the tap worked. */
+.wecamp-filter-status {
+  margin: 0 0 14px;
+  color: var(--hd-ds-muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 /* ----- Camp card (shared: schools, camps list, school detail) ------------ */
 .hd-ds-camp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 14px;
+}
+
+/* The /camps/ catalog filters by hiding cells, so the number of VISIBLE cards
+   changes while the grid stays the same width. auto-fit collapses the tracks it
+   no longer needs, which made a single-result filter (e.g. ?topic=research)
+   stretch one card across the whole row. auto-fill keeps the tracks, so a
+   filtered card is exactly the width it had in the full grid.
+   Only the catalog opts in: ds/school-detail.html deliberately renders wider
+   cards and passes its own media_sizes for them. */
+.hd-ds-camp-grid--filtered {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .wecamp-camp-card {
@@ -999,54 +1021,6 @@ a.wecamp-person-card:focus-visible,
   letter-spacing: 2px;
 }
 
-/* ----- Long-form reading (terms / default list) -------------------------- */
-.hd-ds-prose {
-  max-width: 72ch;
-  color: var(--hd-ds-ink);
-  font-size: 16px;
-  line-height: 2;
-}
-
-.hd-ds-prose h1 {
-  font-size: clamp(30px, 4vw, 52px);
-  font-weight: 900;
-  margin: 0 0 24px;
-}
-
-.hd-ds-prose h2 {
-  font-size: clamp(22px, 2.6vw, 30px);
-  font-weight: 900;
-  margin: 40px 0 12px;
-}
-
-.hd-ds-prose h3 {
-  font-size: 20px;
-  font-weight: 800;
-  margin: 28px 0 10px;
-}
-
-.hd-ds-prose p,
-.hd-ds-prose li {
-  color: var(--hd-ds-muted);
-  margin: 0 0 14px;
-}
-
-.hd-ds-prose ul,
-.hd-ds-prose ol {
-  padding-inline-start: 1.4em;
-  margin: 0 0 16px;
-}
-
-.hd-ds-prose a {
-  color: var(--hd-ds-cobalt);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.hd-ds-prose a:hover {
-  text-decoration: underline;
-}
-
 /* ----- Contact channel card ---------------------------------------------- */
 .wecamp-contact-card {
   display: grid;
@@ -1116,4 +1090,188 @@ a.wecamp-person-card:focus-visible,
   .hd-ds-event-row-thumb {
     display: none;
   }
+}
+
+/* ========================================================================== */
+/* repo-audit-007 — touch target contract                                     */
+/*                                                                            */
+/* Two tiers, both measured by scripts/audit/target-size.cjs:                  */
+/*                                                                            */
+/*   24px  the WCAG 2.2 AA floor. Applies to every non-inline control at every */
+/*         width, because a control that is hard to hit with a mouse is hard   */
+/*         to hit with anything.                                              */
+/*   44px  the touch tier, on COARSE POINTERS ONLY: primary actions, filter    */
+/*         chips, icon-only controls, menu controls, and isolated card and     */
+/*         footer actions. Gated on `pointer: coarse` so a mouse keeps the     */
+/*         established desktop density — the census emulates a real coarse     */
+/*         pointer so this media query is genuinely exercised, not assumed.    */
+/*                                                                            */
+/* Links inside running prose are deliberately excluded: WCAG exempts them,    */
+/* and turning an in-sentence link into a 44px block wrecks reading rhythm.    */
+/*                                                                            */
+/* Everything below grows the HIT AREA, never the glyph: min-block-size plus   */
+/* centring, or logical padding. Icon and type scale are untouched, and every  */
+/* rule uses logical properties so RTL order and safe-area handling stand.     */
+
+/* ----- AA floor: non-inline controls -------------------------------------
+   min-block-size ONLY. These elements already have a display that honours it
+   (flex, block or inline-block), so overriding `display` here is both
+   unnecessary and harmful: an earlier version of this rule forced
+   `display: inline-flex` on all of them, which shrink-wrapped the nav brand and
+   collapsed its logo from 142x28 to 42x8, and squeezed the header's «همه کمپ‌ها»
+   and «کمپ هوش مصنوعی» buttons from one line at 139px wide onto two lines at
+   118px. Measured display per element before touching anything:
+     .hd-nav-link flex 21px · .hd-dropdown-toggle flex 21px · .hd-nav-brand
+     block 19.6px at 390 · .hd-mega-link block · .hd-footer-link inline-block. */
+.hd-nav-link,
+.hd-nav-brand,
+.hd-mega-link,
+.hd-footer-link,
+.hd-dropdown-toggle,
+.hd-index-subnav a {
+  min-block-size: 24px;
+}
+
+/* The one genuine exception: an event title link is `display: inline`, and
+   min-block-size does not apply to an inline box, so this selector really does
+   need a flex display to reach the floor. */
+.hd-ds-event-row-body h3 a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 24px;
+}
+
+/* ----- Touch tier: coarse pointers ---------------------------------------- */
+@media (pointer: coarse) {
+  /* Icon-only controls carry no text to grow with, so the box grows around the
+     painted 34px circle. The circle itself is unchanged. */
+  .hd-social-media-icon-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+
+  /* Filter chips, primary actions and the menu controls. min-block-size keeps
+     the type scale; centring keeps the label optically where it was. */
+  .wecamp-topic-filter,
+  .hts-button,
+  .hd-nav-toggle,
+  .hd-dropdown-toggle,
+  .hts-dialog-close button {
+    min-block-size: 44px;
+  }
+
+  .hd-dropdown-toggle,
+  .hd-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Isolated card and sticky actions: a card's single «مشاهده جزئیات» is the
+     only target in its row, so it may take the full width it already spans. */
+  .wecamp-link-action,
+  .hd-camp-sticky-cta a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+}
+
+/* Focus indication must enclose the whole effective target, not just the
+   glyph — these controls became larger than their painted box above. */
+.hd-social-media-icon-wrapper:focus-visible,
+.wecamp-topic-filter:focus-visible,
+.wecamp-link-action:focus-visible,
+.hd-nav-link:focus-visible,
+.hd-mega-link:focus-visible,
+.hd-footer-link:focus-visible,
+.hd-nav-brand:focus-visible {
+  outline: 2px solid var(--wc-cobalt);
+  outline-offset: 2px;
+}
+
+/* ----- repo-audit-011: local chat launcher ------------------------------- */
+/* A first-party control that offers chat without contacting anyone. The remote
+   widget replaces it only after deliberate activation, at which point this
+   button hides so two launchers never stack.
+   Sized past the 44px touch tier, and kept clear of the camp sticky register
+   bar on narrow viewports with the same 96px math the widget itself uses. */
+.hd-chat-launcher {
+  position: fixed;
+  inset-block-end: calc(20px + env(safe-area-inset-bottom, 0px));
+  /* PHYSICAL right, deliberately, not inset-inline-end. The Goftino widget this
+     button stands in for pins its own launcher to bottom/right 20px regardless
+     of direction, so on this RTL site a logical inset put the local button on
+     the LEFT and the widget it opened on the RIGHT. Matching the physical
+     placement makes the hand-off seamless: the remote launcher appears exactly
+     where the visitor just pressed. */
+  right: 20px;
+  z-index: 900;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 56px;
+  block-size: 56px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--wc-cobalt);
+  color: var(--wc-white, #fff);
+  box-shadow: var(--wc-shadow-card);
+  cursor: pointer;
+}
+
+.hd-chat-launcher[disabled] {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.hd-chat-launcher:focus-visible {
+  outline: 3px solid var(--wc-accent);
+  outline-offset: 3px;
+}
+
+.hd-chat-launcher[hidden] {
+  display: none;
+}
+
+/* The status line is for assistive technology; it must not paint over content
+   or intercept taps, but it must stay in the accessibility tree. */
+.hd-chat-status {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@media (max-width: 1120px) {
+  .hd-camp-page ~ * .hd-chat-launcher,
+  .hd-camp-page .hd-chat-launcher,
+  body:has(.hd-camp-page) .hd-chat-launcher {
+    inset-block-end: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+
+/* ----- Header CTA reading order (RTL) -------------------------------------
+   .hd-nav-end sets `direction: ltr` so the header cluster itself can be laid
+   out left-to-right. That LTR is inherited by each CTA, so the button's own
+   flex row ordered its children left-to-right too: the label landed on the
+   left and the trailing chevron on the RIGHT — i.e. before the text in RTL
+   reading order, and on the opposite side from where the site has always shown
+   it. Restoring RTL inside the button puts the chevron after the label again;
+   the HTS directional icon still mirrors itself via :dir(rtl), so it keeps
+   pointing the right way.
+   Scoped to .wecamp-nav-button, the product-page class — the certificate branch
+   emits .hd-button-header and its output stays exactly as issued. */
+.hd-nav-end .wecamp-nav-button {
+  direction: rtl;
 }

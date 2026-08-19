@@ -995,6 +995,13 @@
   gap: 12px;
 }
 
+/* The success banner is a sibling in the data-owned form wrapper. Keep the
+   form's terminal hidden state stronger than its authored grid display. */
+.hd-camp-compact-form[hidden],
+.hd-camp-email-form[hidden] {
+  display: none;
+}
+
 .hd-camp-sticky-cta {
   position: fixed;
   z-index: 900;
